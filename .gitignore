@@ -1,0 +1,84 @@
+# ============================================================
+# .gitignore — XKStudio (Nuxt 4 + Vue 3 + Cloudflare Pages)
+# ============================================================
+
+# ─── Nuxt Build Artifacts ───────────────────────────────────
+.nuxt/
+.output/
+dist/
+.cache/
+
+# Nuxt auto-generated files (recreated by `nuxt prepare`)
+app/.nuxt/
+
+# ─── Node.js ────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Lock files — keep only ONE (npm used here)
+# yarn.lock
+# pnpm-lock.yaml
+
+# ─── Environment & Secrets ──────────────────────────────────
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Wrangler / Cloudflare secrets
+.dev.vars
+.dev.vars.*
+
+# ─── Cloudflare / Wrangler ──────────────────────────────────
+.wrangler/
+wrangler.toml.bak
+
+# ─── TypeScript ─────────────────────────────────────────────
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# ─── macOS System Files ─────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+Thumbs.db
+ehthumbs.db
+
+# ─── IDE & Editors ──────────────────────────────────────────
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.fleet/
+
+# ─── Logs ───────────────────────────────────────────────────
+logs/
+*.log
+*.log.*
+
+# ─── Testing ────────────────────────────────────────────────
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+playwright-report/
+test-results/
+
+# ─── Miscellaneous ──────────────────────────────────────────
+*.local
+*.bak
+*.tmp
+*.temp
+.nitro/
