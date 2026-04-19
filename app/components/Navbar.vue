@@ -5,19 +5,19 @@
       <ul class="nav-group nav-left">
         <li>
           <NuxtLink to="/services" class="nav-link" title="Dịch vụ">
-            <span class="nav-icon">🎙️</span>
+            <span class="nav-icon"><i class="fa-solid fa-microphone-lines"></i></span>
             <span class="nav-text">Dịch vụ</span>
           </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/products" class="nav-link" title="Sản phẩm">
-            <span class="nav-icon">💿</span>
+            <span class="nav-icon"><i class="fa-solid fa-compact-disc"></i></span>
             <span class="nav-text">Sản phẩm</span>
           </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/live-band" class="nav-link" title="Live Band">
-            <span class="nav-icon">🎸</span>
+            <span class="nav-icon"><i class="fa-solid fa-guitar"></i></span>
             <span class="nav-text">Live Band</span>
           </NuxtLink>
         </li>
@@ -25,7 +25,7 @@
 
       <!-- CENTER: Logo -->
       <NuxtLink to="/" class="logo" title="Trang chủ">
-        <span class="logo-icon">🎵</span>
+        <span class="logo-icon"><i class="fa-solid fa-music"></i></span>
         <span class="logo-text">XKStudio</span>
       </NuxtLink>
 
@@ -33,19 +33,19 @@
       <ul class="nav-group nav-right">
         <li>
           <NuxtLink to="/pricing" class="nav-link" title="Bảng giá">
-            <span class="nav-icon">💰</span>
+            <span class="nav-icon"><i class="fa-solid fa-tag"></i></span>
             <span class="nav-text">Bảng giá</span>
           </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/about" class="nav-link" title="Về chúng tôi">
-            <span class="nav-icon">👥</span>
+            <span class="nav-icon"><i class="fa-solid fa-users"></i></span>
             <span class="nav-text">Về chúng tôi</span>
           </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/contact" class="nav-link nav-cta" title="Liên hệ">
-            <span class="nav-icon">📩</span>
+            <span class="nav-icon"><i class="fa-solid fa-paper-plane"></i></span>
             <span class="nav-text">Liên hệ</span>
           </NuxtLink>
         </li>

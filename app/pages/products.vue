@@ -21,9 +21,9 @@
         <div class="products-grid">
           <div v-for="p in filteredProducts" :key="p.title" class="product-card">
             <div class="product-cover">
-              <div class="cover-placeholder">{{ p.emoji }}</div>
+              <div class="cover-placeholder"><i :class="p.faIcon"></i></div>
               <div class="product-overlay">
-                <a v-if="p.link" :href="p.link" target="_blank" rel="noopener" class="play-btn">▶ Nghe</a>
+                <a v-if="p.link" :href="p.link" target="_blank" rel="noopener" class="play-btn"><i class="fa-solid fa-play"></i> Nghe</a>
               </div>
             </div>
             <div class="product-info">
@@ -68,14 +68,14 @@ useSchemaOrg([
 const activeCategory = ref('Tất cả')
 
 const products = [
-  { emoji: '🎵', title: 'Dự án thu âm ca khúc', artist: 'Ca sĩ indie Hà Nội', category: 'Thu âm', year: '2025', link: '' },
-  { emoji: '🎛️', title: 'Mix & Master EP', artist: 'Nhóm nhạc underground', category: 'Mix & Master', year: '2025', link: '' },
-  { emoji: '🎹', title: 'Hòa âm ca khúc pop ballad', artist: 'Ca sĩ chuyên nghiệp', category: 'Hòa âm', year: '2024', link: '' },
-  { emoji: '🎬', title: 'Nhạc nền TVC thương hiệu', artist: 'Agency quảng cáo', category: 'Video & TVC', year: '2024', link: '' },
-  { emoji: '🎙️', title: 'Podcast doanh nghiệp', artist: 'Startup Fintech', category: 'Podcast', year: '2025', link: '' },
-  { emoji: '🌟', title: 'Sản xuất beat hip-hop', artist: 'Rapper độc lập', category: 'Beat Production', year: '2025', link: '' },
-  { emoji: '🎶', title: 'Nhạc phim ngắn', artist: 'Đoàn làm phim sinh viên', category: 'Hòa âm', year: '2024', link: '' },
-  { emoji: '🏆', title: 'Full album 10 bài', artist: 'Ca sĩ mainstream', category: 'Thu âm', year: '2023', link: '' }
+  { faIcon: 'fa-solid fa-music fa-3x', title: 'Dự án thu âm ca khúc', artist: 'Ca sĩ indie Hà Nội', category: 'Thu âm', year: '2025', link: '' },
+  { faIcon: 'fa-solid fa-sliders fa-3x', title: 'Mix & Master EP', artist: 'Nhóm nhạc underground', category: 'Mix & Master', year: '2025', link: '' },
+  { faIcon: 'fa-solid fa-keyboard fa-3x', title: 'Hòa âm ca khúc pop ballad', artist: 'Ca sĩ chuyên nghiệp', category: 'Hòa âm', year: '2024', link: '' },
+  { faIcon: 'fa-solid fa-film fa-3x', title: 'Nhạc nền TVC thương hiệu', artist: 'Agency quảng cáo', category: 'Video & TVC', year: '2024', link: '' },
+  { faIcon: 'fa-solid fa-microphone-lines fa-3x', title: 'Podcast doanh nghiệp', artist: 'Startup Fintech', category: 'Podcast', year: '2025', link: '' },
+  { faIcon: 'fa-solid fa-star fa-3x', title: 'Sản xuất beat hip-hop', artist: 'Rapper độc lập', category: 'Beat Production', year: '2025', link: '' },
+  { faIcon: 'fa-solid fa-headphones fa-3x', title: 'Nhạc phim ngắn', artist: 'Đoàn làm phim sinh viên', category: 'Hòa âm', year: '2024', link: '' },
+  { faIcon: 'fa-solid fa-trophy fa-3x', title: 'Full album 10 bài', artist: 'Ca sĩ mainstream', category: 'Thu âm', year: '2023', link: '' }
 ]
 
 const categories = computed(() => ['Tất cả', ...new Set(products.map(p => p.category))])
@@ -125,7 +125,7 @@ const filteredProducts = computed(() => {
   background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(139,92,246,0.1));
   display: flex; align-items: center; justify-content: center;
 }
-.cover-placeholder { font-size: 4rem; }
+.cover-placeholder { font-size: 4rem; color: var(--primary); display: flex; align-items: center; justify-content: center; }
 
 .product-overlay {
   position: absolute; inset: 0;

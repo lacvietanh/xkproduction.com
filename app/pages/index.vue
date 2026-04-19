@@ -22,7 +22,7 @@
         <div class="hero-visual">
           <img src="/images/hero-studio.png" alt="XKStudio - Phòng thu chuyên nghiệp" />
           <button class="play-overlay" aria-label="Xem video giới thiệu">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            <i class="fa-solid fa-play" style="margin-left:2px"></i>
           </button>
         </div>
       </section>
@@ -46,7 +46,7 @@
             <div class="project-thumb">
               <img src="/images/hero-studio.png" :alt="w.title" />
               <div class="thumb-overlay">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                <i class="fa-solid fa-play fa-lg"></i>
               </div>
             </div>
             <div class="project-info">
@@ -91,9 +91,9 @@
       <section class="contact-section">
         <h2 class="section-heading neon-accent">LIÊN HỆ & TƯ VẤN</h2>
         <div class="contact-info">
-          <div class="contact-item"><span class="ci-icon">📞</span><span>Hotline: 0355.356.294</span></div>
-          <div class="contact-item"><span class="ci-icon">📧</span><span>Email : xkstudio29@gmail.com</span></div>
-          <div class="contact-item"><span class="ci-icon">💬</span><span>Zalo: 0355.356.294</span></div>
+          <div class="contact-item"><span class="ci-icon"><i class="fa-solid fa-phone"></i></span><span>Hotline: 0355.356.294</span></div>
+          <div class="contact-item"><span class="ci-icon"><i class="fa-solid fa-envelope"></i></span><span>Email : xkstudio29@gmail.com</span></div>
+          <div class="contact-item"><span class="ci-icon"><i class="fa-solid fa-comment"></i></span><span>Zalo: 0355.356.294</span></div>
         </div>
         <form class="contact-form glass-card" @submit.prevent>
           <div class="form-grid">
@@ -139,10 +139,10 @@ onMounted(() => {
 })
 
 const stats = [
-  { svg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>', value: '2000+', target: 2000, label: 'DỰ ÁN HOÀN THIỆN' },
-  { svg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>', value: '50+', target: 50, label: 'HỌC VIÊN ĐÀO TẠO' },
-  { svg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>', value: '30+', target: 30, label: 'ĐỐI TÁC CHIẾN LƯỢC' },
-  { svg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>', value: '7', target: 7, label: 'NĂM KINH NGHIỆM' }
+  { svg: '<i class="fa-solid fa-download fa-lg"></i>', value: '2000+', target: 2000, label: 'DỰ ÁN HOÀN THIỆN' },
+  { svg: '<i class="fa-solid fa-graduation-cap fa-lg"></i>', value: '50+', target: 50, label: 'HỌC VIÊN ĐÀO TẠO' },
+  { svg: '<i class="fa-solid fa-handshake fa-lg"></i>', value: '30+', target: 30, label: 'ĐỐI TÁC CHIẾN LƯỢC' },
+  { svg: '<i class="fa-solid fa-clock fa-lg"></i>', value: '7', target: 7, label: 'NĂM KINH NGHIỆM' }
 ]
 
 const works = [
@@ -155,9 +155,9 @@ const works = [
 ]
 
 const services = [
-  { svg: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>', title: 'AUDIO PRODUCTION', desc: 'Chuyên production, đội ngũ âm xuất trường nghiệm.' },
-  { svg: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>', title: 'MUSIC PRODUCTION', desc: 'Học viên production, mixing, vocalist đã được.' },
-  { svg: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polygon points="10,7 10,13 15,10"/></svg>', title: 'MEDIA & TVC', desc: 'Doanh nghiệp, agency, TVC, media & TVC chiến lược.' }
+  { svg: '<i class="fa-solid fa-microphone fa-lg"></i>', title: 'AUDIO PRODUCTION', desc: 'Chuyên production, đội ngũ âm xuất trường nghiệm.' },
+  { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'MUSIC PRODUCTION', desc: 'Học viên production, mixing, vocalist đã được.' },
+  { svg: '<i class="fa-solid fa-film fa-lg"></i>', title: 'MEDIA & TVC', desc: 'Doanh nghiệp, agency, TVC, media & TVC chiến lược.' }
 ]
 </script>
 
@@ -337,6 +337,7 @@ const services = [
 }
 .project-card:hover .thumb-overlay { opacity: 1; }
 .thumb-overlay svg { filter: drop-shadow(0 0 10px rgba(0,162,255,0.6)); }
+.thumb-overlay i { filter: drop-shadow(0 0 10px rgba(0,162,255,0.6)); font-size: 2rem; }
 .project-info { padding: 0.7rem 0.9rem; }
 .project-info strong { display: block; font-size: 0.82rem; color: var(--text-main); margin-bottom: 0.1rem; }
 .project-info span { font-size: 0.72rem; color: var(--text-muted); }

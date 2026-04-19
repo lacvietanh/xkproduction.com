@@ -5,7 +5,7 @@
     aria-label="Scroll to top"
     @click="scrollToTop"
   >
-    ↑
+    <i class="fa-solid fa-chevron-up"></i>
   </button>
 </template>
 

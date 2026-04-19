@@ -21,7 +21,7 @@
           </div>
           <div style="background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(139,92,246,0.08) 100%); border-radius: 12px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; min-height: 280px;">
             <div style="text-align: center;">
-              <div style="font-size: 4rem; margin-bottom: 1rem;">🎙️</div>
+              <div style="font-size: 4rem; margin-bottom: 1rem;"><i class="fa-solid fa-microphone-lines" style="color: var(--primary);"></i></div>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Hơn 7 năm đồng hành cùng nghệ sĩ & doanh nghiệp Việt Nam</p>
             </div>
           </div>
@@ -34,19 +34,19 @@
         <div class="section-title"><h2>Sứ mệnh & Giá trị</h2><p>Những nguyên tắc định hướng mọi dự án chúng tôi thực hiện</p></div>
         <div class="grid-2" style="margin-top: 3rem;">
           <div class="card">
-            <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+            <div style="font-size: 2rem; margin-bottom: 1rem;"><i class="fa-solid fa-bullseye" style="color: var(--primary);"></i></div>
             <h3>Sứ mệnh</h3>
             <p style="color: var(--text-light);">Trao quyền cho nghệ sĩ và doanh nghiệp thông qua các giải pháp sản xuất âm thanh chuyên nghiệp, truyền cảm hứng và tạo ra tác động thực sự.</p>
           </div>
           <div class="card">
-            <div style="font-size: 2rem; margin-bottom: 1rem;">⭐</div>
+            <div style="font-size: 2rem; margin-bottom: 1rem;"><i class="fa-solid fa-star" style="color: var(--primary);"></i></div>
             <h3>Giá trị cốt lõi</h3>
             <ul style="text-align: left; color: var(--text-light); list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.6rem;">✓ Chất lượng trong từng dự án</li>
-              <li style="margin-bottom: 0.6rem;">✓ Minh bạch & chuyên nghiệp</li>
-              <li style="margin-bottom: 0.6rem;">✓ Sáng tạo & đổi mới liên tục</li>
-              <li style="margin-bottom: 0.6rem;">✓ Đồng hành & lắng nghe khách hàng</li>
-              <li>✓ Cam kết đúng timeline & ngân sách</li>
+              <li style="margin-bottom: 0.6rem;"><i class="fa-solid fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i>Chất lượng trong từng dự án</li>
+              <li style="margin-bottom: 0.6rem;"><i class="fa-solid fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i>Minh bạch &amp; chuyên nghiệp</li>
+              <li style="margin-bottom: 0.6rem;"><i class="fa-solid fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i>Sáng tạo &amp; đổi mới liên tục</li>
+              <li style="margin-bottom: 0.6rem;"><i class="fa-solid fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i>Đồng hành &amp; lắng nghe khách hàng</li>
+              <li><i class="fa-solid fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i>Cam kết đúng timeline &amp; ngân sách</li>
             </ul>
           </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="section-title"><h2>Đội ngũ</h2><p>Những con người tài năng đằng sau XKStudio</p></div>
         <div class="grid-4" style="margin-top: 3rem;">
           <div v-for="m in team" :key="m.name" class="card" style="text-align: center;">
-            <div style="font-size: 4rem; margin-bottom: 1rem;">{{ m.emoji }}</div>
+            <div style="font-size: 4rem; margin-bottom: 1rem;"><i :class="m.faIcon" style="color: var(--primary);"></i></div>
             <h3>{{ m.name }}</h3>
             <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">{{ m.role }}</p>
             <p style="color: var(--text-muted); font-size: 0.85rem;">{{ m.desc }}</p>
@@ -90,10 +90,10 @@ useSchemaOrg([
 ])
 
 const team = [
-  { emoji: '🎧', name: 'Xuân Kiệt', role: 'Founder & Producer', desc: 'Hơn 7 năm kinh nghiệm sản xuất và định hướng sáng tạo' },
-  { emoji: '🎛️', name: 'Mix Engineer', role: 'Mixing & Mastering', desc: 'Chuyên gia xử lý âm thanh chuẩn quốc tế' },
-  { emoji: '🎼', name: 'Hòa Âm Sĩ', role: 'Phối khí & Sáng tác', desc: 'Biên soạn bản phối đa thể loại' },
-  { emoji: '🎬', name: 'Video Producer', role: 'MV & TVC', desc: 'Đạo diễn và ekip sản xuất hình ảnh' }
+  { faIcon: 'fa-solid fa-headphones', name: 'Xuân Kiệt', role: 'Founder & Producer', desc: 'Hơn 7 năm kinh nghiệm sản xuất và định hướng sáng tạo' },
+  { faIcon: 'fa-solid fa-sliders', name: 'Mix Engineer', role: 'Mixing & Mastering', desc: 'Chuyên gia xử lý âm thanh chuẩn quốc tế' },
+  { faIcon: 'fa-solid fa-music', name: 'Hòa Âm Sĩ', role: 'Phối khí & Sáng tác', desc: 'Biên soạn bản phối đa thể loại' },
+  { faIcon: 'fa-solid fa-film', name: 'Video Producer', role: 'MV & TVC', desc: 'Đạo diễn và ekip sản xuất hình ảnh' }
 ]
 </script>
 

@@ -12,7 +12,7 @@
 
         <!-- Thu âm -->
         <div class="pricing-section">
-          <h2 class="pricing-cat">🎤 Thu âm bài hát</h2>
+          <h2 class="pricing-cat"><i class="fa-solid fa-microphone"></i> Thu âm bài hát</h2>
           <div class="pricing-table">
             <div v-for="p in thuAmPlans" :key="p.name" class="pricing-card" :class="{ featured: p.featured }">
               <div v-if="p.badge" class="pricing-badge">{{ p.badge }}</div>
@@ -29,7 +29,7 @@
 
         <!-- Mix & Master -->
         <div class="pricing-section">
-          <h2 class="pricing-cat">🎛️ Mixing & Mastering</h2>
+          <h2 class="pricing-cat"><i class="fa-solid fa-sliders"></i> Mixing &amp; Mastering</h2>
           <div class="pricing-table">
             <div v-for="p in mixPlans" :key="p.name" class="pricing-card" :class="{ featured: p.featured }">
               <div v-if="p.badge" class="pricing-badge">{{ p.badge }}</div>
@@ -46,7 +46,7 @@
 
         <!-- Hòa âm phối khí -->
         <div class="pricing-section">
-          <h2 class="pricing-cat">🎹 Hòa âm phối khí</h2>
+          <h2 class="pricing-cat"><i class="fa-solid fa-keyboard"></i> Hòa âm phối khí</h2>
           <div class="pricing-table">
             <div v-for="p in hoaAmPlans" :key="p.name" class="pricing-card" :class="{ featured: p.featured }">
               <div v-if="p.badge" class="pricing-badge">{{ p.badge }}</div>
@@ -204,7 +204,7 @@ const hoaAmPlans = [
   padding-left: 1.2rem;
   position: relative;
 }
-.pricing-features li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+.pricing-features li::before { font-family: 'Font Awesome 6 Free'; content: '\f00c'; font-weight: 900; position: absolute; left: 0; color: var(--primary); }
 
 .pricing-cta { width: 100%; text-align: center; margin-top: auto; }
 

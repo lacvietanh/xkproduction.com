@@ -14,7 +14,7 @@
         <div class="contact-info">
           <h2>Thông tin liên hệ</h2>
           <div v-for="info in contactInfo" :key="info.title" class="contact-item">
-            <span class="contact-icon">{{ info.icon }}</span>
+            <span class="contact-icon"><i :class="info.faIcon"></i></span>
             <div>
               <strong>{{ info.title }}</strong>
               <div v-html="info.content" class="contact-content"></div>
@@ -106,11 +106,11 @@ const handleSubmit = () => {
 }
 
 const contactInfo = [
-  { icon: '📞', title: 'Hotline / Zalo', content: '<a href="tel:0355356294">0355.356.294</a>' },
-  { icon: '📧', title: 'Email', content: '<a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a>' },
-  { icon: '💬', title: 'Zalo', content: '<a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a>' },
-  { icon: '👤', title: 'Facebook', content: '<a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener">facebook.com/ngxkiet</a>' },
-  { icon: '📍', title: 'Địa chỉ', content: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng, Tỉnh Đồng Nai ( Bình Phước Cũ)' }
+  { faIcon: 'fa-solid fa-phone', title: 'Hotline / Zalo', content: '<a href="tel:0355356294">0355.356.294</a>' },
+  { faIcon: 'fa-solid fa-envelope', title: 'Email', content: '<a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a>' },
+  { faIcon: 'fa-solid fa-comment', title: 'Zalo', content: '<a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a>' },
+  { faIcon: 'fa-brands fa-facebook-f', title: 'Facebook', content: '<a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener">facebook.com/ngxkiet</a>' },
+  { faIcon: 'fa-solid fa-location-dot', title: 'Địa chỉ', content: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng, Tỉnh Đồng Nai ( Bình Phước Cũ)' }
 ]
 </script>
 

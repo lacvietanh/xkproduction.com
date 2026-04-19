@@ -23,28 +23,28 @@
         </div>
         <div class="lb-intro-highlights">
           <div class="highlight-item">
-            <span class="highlight-icon">🔊</span>
+            <span class="highlight-icon"><i class="fa-solid fa-volume-high"></i></span>
             <div>
               <strong>Hệ thống Line Array</strong>
               <p>Loa array công suất lớn, phủ đều mọi không gian từ 50 đến 5000 khách.</p>
             </div>
           </div>
           <div class="highlight-item">
-            <span class="highlight-icon">💡</span>
+            <span class="highlight-icon"><i class="fa-solid fa-lightbulb"></i></span>
             <div>
               <strong>Ánh sáng chuyên nghiệp</strong>
               <p>Moving head, LED par, laser, màn hình LED – thiết kế sáng tạo theo concept.</p>
             </div>
           </div>
           <div class="highlight-item">
-            <span class="highlight-icon">🎸</span>
+            <span class="highlight-icon"><i class="fa-solid fa-guitar"></i></span>
             <div>
               <strong>Ban nhạc Live</strong>
               <p>Acoustic duo, full band, DJ – biểu diễn đa phong cách, chuyên nghiệp.</p>
             </div>
           </div>
           <div class="highlight-item">
-            <span class="highlight-icon">🎛️</span>
+            <span class="highlight-icon"><i class="fa-solid fa-sliders"></i></span>
             <div>
               <strong>Kỹ thuật viên FOH/Monitor</strong>
               <p>Đội ngũ engineer kinh nghiệm thực chiến, đảm bảo chất lượng tuyệt đối.</p>
@@ -62,7 +62,7 @@
 
         <div class="lb-services-grid">
           <div v-for="s in services" :key="s.title" class="lb-service-card">
-            <div class="lb-service-icon">{{ s.icon }}</div>
+            <div class="lb-service-icon"><i :class="s.faIcon"></i></div>
             <h3>{{ s.title }}</h3>
             <p>{{ s.desc }}</p>
             <ul>
@@ -85,7 +85,7 @@
             <h3>{{ pkg.name }}</h3>
             <p class="pkg-scale">{{ pkg.scale }}</p>
             <ul>
-              <li v-for="item in pkg.includes" :key="item">✓ {{ item }}</li>
+              <li v-for="item in pkg.includes" :key="item"><i class="fa-solid fa-check"></i> {{ item }}</li>
             </ul>
             <NuxtLink to="/contact" class="btn btn-primary pkg-cta">Nhận báo giá</NuxtLink>
           </div>
@@ -127,9 +127,9 @@
         </div>
 
         <div class="cta-footer">
-          <p>📞 Hotline: <a href="tel:0355356294">0355.356.294</a></p>
-          <p>📧 Email: <a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a></p>
-          <p>💬 Zalo: <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a></p>
+          <p><i class="fa-solid fa-phone"></i> Hotline: <a href="tel:0355356294">0355.356.294</a></p>
+          <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a></p>
+          <p><i class="fa-solid fa-comment"></i> Zalo: <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a></p>
         </div>
       </div>
     </section>
@@ -154,25 +154,25 @@ useScrollAnimation()
 
 const services = [
   {
-    icon: '🔊',
+    faIcon: 'fa-solid fa-volume-high fa-2x',
     title: 'Cho thuê Âm thanh',
     desc: 'Hệ thống loa line array, sub, monitor chuyên nghiệp cho mọi không gian.',
     features: ['Loa line array JBL / RCF / QSC', 'Mixer digital Allen & Heath / Yamaha', 'Micro không dây Shure / Sennheiser', 'Kỹ thuật viên FOH & Monitor']
   },
   {
-    icon: '💡',
+    faIcon: 'fa-solid fa-lightbulb fa-2x',
     title: 'Cho thuê Ánh sáng',
     desc: 'Thiết kế ánh sáng sân khấu từ cổ điển đến hiện đại, theo concept riêng.',
     features: ['Moving head beam / wash / spot', 'LED par, LED bar, strobe', 'Máy khói, laser show', 'Màn hình LED indoor / outdoor']
   },
   {
-    icon: '🎸',
+    faIcon: 'fa-solid fa-guitar fa-2x',
     title: 'Ban nhạc Live',
     desc: 'Cung cấp ban nhạc chuyên nghiệp, biểu diễn đa phong cách cho sự kiện.',
     features: ['Acoustic duo / trio', 'Full band (5-7 thành viên)', 'DJ & MC chuyên nghiệp', 'Ca sĩ khách mời theo yêu cầu']
   },
   {
-    icon: '🎪',
+    faIcon: 'fa-solid fa-star fa-2x',
     title: 'Setup Sân khấu trọn gói',
     desc: 'Thiết kế, dựng sân khấu và vận hành kỹ thuật toàn bộ chương trình.',
     features: ['Sân khấu modular linh hoạt', 'Backdrop & truss chuyên dụng', 'Hệ thống rigging an toàn', 'Đội ngũ stage manager']
@@ -402,11 +402,12 @@ const packages = [
 }
 
 .lb-service-card ul li::before {
-  content: '✓';
+  font-family: 'Font Awesome 6 Free';
+  content: '\f00c';
+  font-weight: 900;
   position: absolute;
   left: 0;
   color: var(--accent);
-  font-weight: 700;
 }
 
 /* PACKAGES */

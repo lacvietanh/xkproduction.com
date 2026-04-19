@@ -3,13 +3,13 @@
     <div class="max-width">
       <div class="footer-content">
         <div class="footer-column">
-          <h4>🎵 XKStudio</h4>
+          <h4><i class="fa-solid fa-music"></i> XKStudio</h4>
           <p>Phòng thu âm &amp; studio sản xuất âm nhạc chuyên nghiệp. Đồng hành cùng ca sĩ, producer và doanh nghiệp từ ý tưởng đến phát hành.</p>
           <div class="social-links">
-            <a href="https://www.facebook.com/ngxkiet" title="Facebook" target="_blank" rel="noopener">f</a>
-            <a href="#" title="Instagram" target="_blank" rel="noopener">📷</a>
-            <a href="#" title="YouTube" target="_blank" rel="noopener">▶️</a>
-            <a href="#" title="TikTok" target="_blank" rel="noopener">♪</a>
+            <a href="https://www.facebook.com/ngxkiet" title="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" title="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" title="YouTube" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" title="TikTok" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
           </div>
         </div>
 
@@ -37,10 +37,10 @@
         <div class="footer-column">
           <h4>Liên hệ</h4>
           <ul>
-            <li><a href="tel:0355356294">📞 0355.356.294</a></li>
-            <li><a href="mailto:xkstudio29@gmail.com">📧 xkstudio29@gmail.com</a></li>
-            <li><a href="https://zalo.me/0355356294" target="_blank" rel="noopener">💬 Zalo</a></li>
-            <li><a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener">👤 Facebook</a></li>
+            <li><a href="tel:0355356294"><i class="fa-solid fa-phone"></i> 0355.356.294</a></li>
+            <li><a href="mailto:xkstudio29@gmail.com"><i class="fa-solid fa-envelope"></i> xkstudio29@gmail.com</a></li>
+            <li><a href="https://zalo.me/0355356294" target="_blank" rel="noopener"><i class="fa-solid fa-comment"></i> Zalo</a></li>
+            <li><a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
           </ul>
         </div>
       </div>
