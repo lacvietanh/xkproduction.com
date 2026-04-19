@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://xkstudio.vn',
     name: 'XKStudio',
-    description: 'XKStudio - Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp tại Hà Nội',
+    description: 'XKStudio - Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp',
     defaultLocale: 'vi',
   },
 
@@ -19,16 +19,17 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       htmlAttrs: { lang: 'vi' },
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap' }
       ]
     }
   },
 
   // === CSS ===
   css: [
-    '~/assets/css/style.css',
-    '~/assets/css/layout.css',
-    '~/assets/css/responsive.css'
+    '~/assets/css/style.css'
   ],
 
   // === COMPONENTS (flat, no subdirectory prefix) ===
@@ -41,7 +42,7 @@ export default defineNuxtConfig({
     preset: 'cloudflare-pages',
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/about', '/services', '/products', '/pricing', '/contact', '/faq']
+      routes: ['/', '/about', '/services', '/products', '/live-band', '/pricing', '/contact', '/faq']
     }
   },
 

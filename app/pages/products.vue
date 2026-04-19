@@ -90,7 +90,7 @@ const filteredProducts = computed(() => {
 .page-hero {
   padding-top: 140px;
   padding-bottom: 4rem;
-  background: linear-gradient(135deg, #0a0e27 0%, #11142b 100%);
+  background: linear-gradient(135deg, #06080f 0%, #0d1117 100%);
   text-align: center;
 }
 .page-hero h1 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; }

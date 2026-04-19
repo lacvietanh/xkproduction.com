@@ -23,8 +23,8 @@
 
           <div class="contact-hours">
             <h3>Giờ làm việc</h3>
-            <p>Thứ 2 – Thứ 6: 9:00 – 21:00</p>
-            <p>Thứ 7 – Chủ nhật: 9:00 – 18:00</p>
+            <p>Thứ 2 – Thứ 6: 7:00 – 22:00</p>
+            <p>Thứ 7 – Chủ nhật: 8:00 – 20:00</p>
           </div>
         </div>
 
@@ -87,14 +87,14 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Liên hệ',
-  description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering và sản xuất âm nhạc chuyên nghiệp tại Hà Nội.',
+  description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering và sản xuất âm nhạc chuyên nghiệp.',
   ogTitle: 'Liên hệ - XKStudio'
 })
 
 useSchemaOrg([
   defineWebPage({
     name: 'Liên hệ',
-    description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering và sản xuất âm nhạc chuyên nghiệp tại Hà Nội.'
+    description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering và sản xuất âm nhạc chuyên nghiệp.'
   })
 ])
 
@@ -110,7 +110,7 @@ const contactInfo = [
   { icon: '📧', title: 'Email', content: '<a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a>' },
   { icon: '💬', title: 'Zalo', content: '<a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a>' },
   { icon: '👤', title: 'Facebook', content: '<a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener">facebook.com/ngxkiet</a>' },
-  { icon: '📍', title: 'Địa chỉ', content: 'Hà Nội, Việt Nam' }
+  { icon: '📍', title: 'Địa chỉ', content: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng, Tỉnh Đồng Nai ( Bình Phước Cũ)' }
 ]
 </script>
 
@@ -118,7 +118,7 @@ const contactInfo = [
 .page-hero {
   padding-top: 140px;
   padding-bottom: 4rem;
-  background: linear-gradient(135deg, #0a0e27 0%, #11142b 100%);
+  background: linear-gradient(135deg, #06080f 0%, #0d1117 100%);
   text-align: center;
 }
 .page-hero h1 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; }
