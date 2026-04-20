@@ -139,7 +139,7 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Live Band & Sự kiện',
-  description: 'Quốc Chí Sound & Lighting – Giải pháp âm thanh, ánh sáng & ban nhạc chuyên nghiệp cho mọi sự kiện tại Hà Nội. Đối tác chiến lược của XKStudio.',
+  description: 'Quốc Chí Sound & Lighting – Giải pháp âm thanh, ánh sáng & ban nhạc chuyên nghiệp cho mọi sự kiện. Đối tác chiến lược của XKStudio.',
   ogTitle: 'Live Band & Sự kiện - XKStudio'
 })
 

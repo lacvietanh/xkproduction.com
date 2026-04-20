@@ -19,9 +19,9 @@ useSeoMeta({
   },
   ogType: 'website',
   ogTitle: 'XKStudio - Phòng thu âm chuyên nghiệp',
-  ogDescription: 'Thu âm, mixing, mastering, phối khí & sản xuất MV/TVC chuyên nghiệp tại Hà Nội.',
-  description: 'Thu âm, mixing, mastering, phối khí & sản xuất MV/TVC chuyên nghiệp tại Hà Nội.',
-  keywords: 'studio âm nhạc, thu âm, mixing, mastering, phối khí, sáng tác, Hà Nội'
+  ogDescription: 'Thu âm, mixing, mastering, phối khí & sản xuất MV/TVC chuyên nghiệp.',
+  description: 'Thu âm, mixing, mastering, phối khí & sản xuất MV/TVC chuyên nghiệp.',
+  keywords: 'studio âm nhạc, thu âm, mixing, mastering, phối khí, sáng tác.'
 });
 
 // Global Default JSON-LD Schema
@@ -29,14 +29,14 @@ useSchemaOrg([
   defineOrganization({
     name: 'XKStudio',
     logo: '/favicon.ico',
-    description: 'Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp tại Hà Nội',
+    description: 'Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp.',
     sameAs: [
       // Add social links here in the future
     ]
   }),
   defineWebSite({
     name: 'XKStudio',
-    description: 'Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp tại Hà Nội'
+    description: 'Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp.'
   })
 ]);
 </script>

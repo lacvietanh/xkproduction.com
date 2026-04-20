@@ -29,7 +29,7 @@
           <ul>
             <li><NuxtLink to="/">Trang chủ</NuxtLink></li>
             <li><NuxtLink to="/about">Về chúng tôi</NuxtLink></li>
-            <li><NuxtLink to="/pricing">Bảng giá</NuxtLink></li>
+            <li><NuxtLink to="/courses">Khóa Học</NuxtLink></li>
             <li><NuxtLink to="/faq">FAQ</NuxtLink></li>
           </ul>
         </div>

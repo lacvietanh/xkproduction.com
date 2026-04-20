@@ -12,8 +12,8 @@
       <!-- HERO -->
       <section class="hero-section">
         <div class="hero-text">
-          <h1>NƠI ÂM THANH TRỞ<br/>THÀNH <span class="neon-text">KIỆT TÁC.</span></h1>
-          <p class="hero-desc">Chuyên sâu Mix, Master, Hòa âm, &amp; Sản xuất Media theo chuẩn mực quốc tế.</p>
+          <h1>GIẢI PHÁP ÂM NHẠC CHUYÊN NGHIỆP <span class="neon-text">CHO MỌI NGHỆ SĨ.</span></h1>
+          <p class="hero-desc">Chuyên sâu Mix, Master, Hòa âm, Live Band, Media, TVC....</p>
           <div class="hero-actions">
             <NuxtLink to="/contact" class="btn-neon">BẮT ĐẦU DỰ ÁN</NuxtLink>
             <NuxtLink to="/products" class="btn-ghost">KHÁM PHÁ TÁC PHẨM</NuxtLink>
@@ -68,7 +68,7 @@
             <div class="svc-icon" v-html="svc.svg"></div>
             <h3>{{ svc.title }}</h3>
             <p>{{ svc.desc }}</p>
-            <NuxtLink to="/services" class="svc-link neon-text-sm">Xem chi tiết</NuxtLink>
+            <NuxtLink :to="svc.link" class="svc-link neon-text-sm">Xem chi tiết</NuxtLink>
           </div>
         </div>
       </section>
@@ -155,9 +155,9 @@ const works = [
 ]
 
 const services = [
-  { svg: '<i class="fa-solid fa-microphone fa-lg"></i>', title: 'AUDIO PRODUCTION', desc: 'Chuyên production, đội ngũ âm xuất trường nghiệm.' },
-  { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'MUSIC PRODUCTION', desc: 'Học viên production, mixing, vocalist đã được.' },
-  { svg: '<i class="fa-solid fa-film fa-lg"></i>', title: 'MEDIA & TVC', desc: 'Doanh nghiệp, agency, TVC, media & TVC chiến lược.' }
+  { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'MUSIC PRODUCTION', desc: 'Sản xuất âm nhạc chuyên nghiệp — mixing, mastering, hòa âm phối khí.', link: '/services' },
+  { svg: '<i class="fa-solid fa-graduation-cap fa-lg"></i>', title: 'KHOÁ HỌC', desc: 'Đào tạo producer, mixing engineer, vocalist từ cơ bản đến nâng cao.', link: '/courses' },
+  { svg: '<i class="fa-solid fa-guitar fa-lg"></i>', title: 'LIVE BAND', desc: 'Dàn nhạc live chuyên nghiệp cho sự kiện, sân khấu & biểu diễn.', link: '/live-band' }
 ]
 </script>
 

@@ -73,11 +73,11 @@
     <section style="padding: 0 0 5rem;">
       <div class="max-width">
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.0838068088755!2d105.8344206!3d20.9913684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31452843ffc2bdd1%3A0xa1c7a6c2d3b6e7f8!2sHanoi%2C%20Vietnam!5e0!3m2!1svi!2svn!4v1640000000000"
-            width="100%" height="380" style="border:0; display: block;" allowfullscreen loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" title="Bản đồ XKStudio"
-          ></iframe>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=11.71792651529057,107.11719352335317"
+            target="_blank" rel="noopener"
+            style="display:flex;align-items:center;justify-content:center;height:380px;background:rgba(20,24,45,0.6);color:var(--primary);font-size:1rem;font-weight:600;text-decoration:none;gap:0.75rem;"
+          ><i class="fa-solid fa-map-location-dot" style="font-size:2rem;"></i> Xem vị trí XKStudio trên Google Maps</a>
         </div>
       </div>
     </section>

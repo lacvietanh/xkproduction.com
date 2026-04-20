@@ -68,7 +68,7 @@ useSchemaOrg([
 const activeCategory = ref('Tất cả')
 
 const products = [
-  { faIcon: 'fa-solid fa-music fa-3x', title: 'Dự án thu âm ca khúc', artist: 'Ca sĩ indie Hà Nội', category: 'Thu âm', year: '2025', link: '' },
+  { faIcon: 'fa-solid fa-music fa-3x', title: 'Dự án thu âm ca khúc', artist: 'Ca sĩ indie', category: 'Thu âm', year: '2025', link: '' },
   { faIcon: 'fa-solid fa-sliders fa-3x', title: 'Mix & Master EP', artist: 'Nhóm nhạc underground', category: 'Mix & Master', year: '2025', link: '' },
   { faIcon: 'fa-solid fa-keyboard fa-3x', title: 'Hòa âm ca khúc pop ballad', artist: 'Ca sĩ chuyên nghiệp', category: 'Hòa âm', year: '2024', link: '' },
   { faIcon: 'fa-solid fa-film fa-3x', title: 'Nhạc nền TVC thương hiệu', artist: 'Agency quảng cáo', category: 'Video & TVC', year: '2024', link: '' },

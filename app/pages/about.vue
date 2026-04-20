@@ -78,14 +78,14 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Về chúng tôi',
-  description: 'Tìm hiểu về XKStudio - phòng thu âm & sản xuất âm nhạc chuyên nghiệp tại Hà Nội. Đội ngũ producer, mix engineer và kỹ thuật viên giàu kinh nghiệm.',
+  description: 'Tìm hiểu về XKStudio - phòng thu âm & sản xuất âm nhạc chuyên nghiệp. Đội ngũ producer, mix engineer và kỹ thuật viên giàu kinh nghiệm.',
   ogTitle: 'Về chúng tôi - XKStudio'
 })
 
 useSchemaOrg([
   defineWebPage({
     name: 'Về chúng tôi',
-    description: 'Tìm hiểu về XKStudio - phòng thu âm & sản xuất âm nhạc chuyên nghiệp tại Hà Nội. Đội ngũ producer, mix engineer và kỹ thuật viên giàu kinh nghiệm.'
+    description: 'Tìm hiểu về XKStudio - phòng thu âm & sản xuất âm nhạc chuyên nghiệp. Đội ngũ producer, mix engineer và kỹ thuật viên giàu kinh nghiệm.'
   })
 ])
 

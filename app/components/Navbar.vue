@@ -32,9 +32,9 @@
       <!-- RIGHT: Liên hệ / Info -->
       <ul class="nav-group nav-right">
         <li>
-          <NuxtLink to="/pricing" class="nav-link" title="Bảng giá">
-            <span class="nav-icon"><i class="fa-solid fa-tag"></i></span>
-            <span class="nav-text">Bảng giá</span>
+          <NuxtLink to="/courses" class="nav-link" title="Khóa Học">
+            <span class="nav-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+            <span class="nav-text">Khóa Học</span>
           </NuxtLink>
         </li>
         <li>
