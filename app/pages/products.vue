@@ -25,7 +25,7 @@
               <div v-else class="cover-placeholder"><i class="fa-solid fa-music fa-3x"></i></div>
               <div class="product-overlay">
                 <a v-if="p.link" :href="p.link" target="_blank" rel="noopener" class="play-btn">
-                  <i class="fa-brands fa-youtube"></i> Xem
+                  <i :class="p.link.includes('tiktok') ? 'fa-brands fa-tiktok' : 'fa-brands fa-youtube'"></i> Xem
                 </a>
               </div>
             </div>
@@ -145,6 +145,17 @@ const products = [
     credits: [
       { role: 'Music Producer', name: 'XK' },
       { role: 'Mixing & Mastering', name: 'XK' }
+    ]
+  },
+  {
+    title: 'Tết Xa (Cover)',
+    artist: 'Khánh Linh',
+    category: 'Thu âm',
+    year: '2024',
+    link: 'https://www.tiktok.com/@xkstudio/video/7589982843418266901?lang=vi-VN',
+    thumb: '/images/hero-studio.png',
+    credits: [
+      { role: 'Recording / Mixing', name: 'XK' }
     ]
   }
 ]

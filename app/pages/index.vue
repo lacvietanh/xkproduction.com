@@ -51,7 +51,7 @@
             <div class="project-thumb">
               <img :src="w.thumb" :alt="w.title" />
               <div class="thumb-overlay">
-                <i class="fa-brands fa-youtube fa-2x"></i>
+                <i :class="w.url.includes('tiktok') ? 'fa-brands fa-tiktok fa-2x' : 'fa-brands fa-youtube fa-2x'"></i>
               </div>
             </div>
             <div class="project-info">
@@ -61,6 +61,7 @@
           </a>
         </div>
       </section>
+
     </div>
 
     <!-- ========== RIGHT COLUMN ========== -->
@@ -115,6 +116,32 @@
       </section>
     </div>
   </div>
+
+  <!-- CẢM NHẬN KHÁCH HÀNG -->
+  <section class="testimonials-section full-width">
+    <h2 class="section-heading neon-accent text-center" style="text-align: center; margin-bottom: 2rem;">CẢM NHẬN TỪ NGHỆ SĨ</h2>
+    <div class="testimonials-grid">
+      <div
+        v-for="(t, i) in testimonials.slice(0, 4)" :key="i"
+        class="testimonial-card glass-card"
+      >
+        <div class="tcard-header">
+          <div class="tcard-avatar">
+            <span class="avatar-initial">{{ t.name.charAt(0) }}</span>
+          </div>
+          <div class="tcard-meta">
+            <strong class="tcard-name">{{ t.name }}</strong>
+            <span class="tcard-role">{{ t.role }}</span>
+            <div class="tcard-stars">
+              <i v-for="n in 5" :key="n" class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <span class="tcard-quote-icon"><i class="fa-solid fa-quote-right"></i></span>
+        </div>
+        <p class="tcard-body">{{ t.body }}</p>
+      </div>
+    </div>
+  </section>
 </div>
 </template>
 
@@ -186,6 +213,12 @@ const works = [
     artist: 'Mai Linh (Cover)',
     url: 'https://www.youtube.com/watch?v=P8FPXHJe_go',
     thumb: `https://img.youtube.com/vi/P8FPXHJe_go/hqdefault.jpg`
+  },
+  {
+    title: 'Tết Xa (Cover)',
+    artist: 'Khánh Linh',
+    url: 'https://www.tiktok.com/@xkstudio/video/7589982843418266901?lang=vi-VN',
+    thumb: '/images/hero-studio.png'
   }
 ]
 
@@ -193,6 +226,34 @@ const services = [
   { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'MUSIC PRODUCTION', desc: 'Đánh thức linh hồn của bài hát. Từ ý tưởng thô sơ đến bản phối lộng lẫy, chuẩn quốc tế trên mọi nền tảng.', link: '/services' },
   { svg: '<i class="fa-solid fa-graduation-cap fa-lg"></i>', title: 'KHOÁ HỌC', desc: 'Chuyển giao đam mê. Nơi nuôi dưỡng và đào tạo những thế hệ Music Producer & Vocalist thực thụ.', link: '/courses' },
   { svg: '<i class="fa-solid fa-guitar fa-lg"></i>', title: 'LIVE BAND', desc: 'Bùng nổ cảm xúc trên sân khấu. Mang âm nhạc sống động hòa vào từng nhịp đập của khán giả.', link: '/live-band' }
+]
+
+const testimonials = [
+  {
+    name: 'Revan',
+    role: 'Nghệ Sĩ / Rapper',
+    body: 'Mình đã trải qua không ít phòng thu, nhưng XKStudio là nơi đầu tiên mình cảm thấy âm nhạc của mình được thực sự lắng nghe. Từ khâu tư vấn concept đến lúc bản mix hoàn thiện, mọi chi tiết đều được chăm chút cẩn thận. Kiet và team không chỉ làm đúng yêu cầu — họ còn biết cách đẩy bản nhạc lên một tầng cao hơn mà mình chưa nghĩ tới. Hài lòng, có tâm và thực sự có tầm.'
+  },
+  {
+    name: 'Howl',
+    role: 'Nghệ Sĩ / Rapper',
+    body: 'Đến XKStudio lần đầu mình không kỳ vọng nhiều, nhưng kết quả cuối cùng vượt xa những gì mình tưởng tượng. Sound rõ ràng, sắc nét, và quan trọng hơn — nó đúng chất. Đội ngũ làm việc chuyên nghiệp, phản hồi nhanh, không có gì phải phàn nàn.'
+  },
+  {
+    name: 'Cao Thành Lâm',
+    role: 'Singer',
+    body: 'Với mình, giọng hát là tất cả. XKStudio hiểu điều đó. Họ biết cách thu âm để giọng ca được trình bày tự nhiên nhất, không bị xử lý quá tay. Mỗi session ở đây đều thoải mái và hiệu quả. Chắc chắn sẽ quay lại cho những dự án tiếp theo.'
+  },
+  {
+    name: 'Fesu',
+    role: 'Singer',
+    body: 'XKStudio có một điều mà không phải studio nào cũng có — sự kiên nhẫn. Họ không rush, không qua loa. Ngồi làm việc cùng team ở đây mình học được rất nhiều về cách xây dựng âm thanh. Sản phẩm ra lò chất lượng, mình tự hào khi chia sẻ lên mạng.'
+  },
+  {
+    name: 'Phương Thanh Tuyền',
+    role: 'Singer',
+    body: 'Lần đầu vào studio mình khá hồi hộp, nhưng không khí ở XKStudio rất thân thiện và chuyên nghiệp. Anh Kiệt tư vấn rất tận tình, giúp mình chọn được tone phù hợp với chất giọng. Bản thu hoàn thành đúng hạn, âm thanh ấm và sạch — đúng những gì mình cần.'
+  }
 ]
 </script>
 
@@ -297,6 +358,7 @@ const services = [
 }
 .col-left, .col-right {
   display: flex; flex-direction: column; gap: 2rem;
+  min-width: 0;
 }
 
 .section-heading {
@@ -424,20 +486,87 @@ const services = [
 .contact-form textarea { resize: vertical; min-height: 65px; }
 
 /* ==============================================
+   TESTIMONIALS
+   ============================================== */
+.testimonials-section.full-width {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2.5rem 5rem;
+}
+
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+}
+
+.testimonial-card {
+  padding: 1.4rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.85rem;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+}
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 20px rgba(0,162,255,0.09);
+}
+
+.tcard-header {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+}
+.tcard-avatar {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a8cff 0%, #00d4aa 100%);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 14px rgba(0,162,255,0.3);
+}
+.avatar-initial {
+  font-size: 1.1rem; font-weight: 800; color: #fff;
+  text-transform: uppercase; letter-spacing: 0;
+}
+.tcard-meta { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
+.tcard-name {
+  font-size: 0.88rem; font-weight: 700;
+  color: var(--text-main); letter-spacing: 0.4px;
+}
+.tcard-role {
+  font-size: 0.72rem; color: var(--text-muted);
+  letter-spacing: 0.6px;
+}
+.tcard-stars {
+  display: flex; gap: 2px; margin-top: 0.2rem;
+}
+.tcard-stars i {
+  font-size: 0.65rem; color: #f5c542;
+  filter: drop-shadow(0 0 4px rgba(245,197,66,0.5));
+}
+.tcard-quote-icon {
+  color: rgba(0,162,255,0.2); font-size: 1.4rem;
+  flex-shrink: 0; margin-top: -0.1rem;
+}
+.tcard-body {
+  font-size: 0.8rem; color: var(--text-light);
+  line-height: 1.7; font-style: italic;
+  margin: 0; flex: 1;
+}
+
+/* ==============================================
    RESPONSIVE
    ============================================== */
 @media (max-width: 1024px) {
   .dashboard { grid-template-columns: 1fr; gap: 2rem; }
   .hero-section { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .dashboard { padding: 1.25rem; }
+  .testimonials-section.full-width { padding: 0 1.25rem 3rem; }
   .hero-section { grid-template-columns: 1fr; gap: 1.5rem; }
   .hero-text h1 { font-size: 1.8rem; }
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .services-cards { grid-template-columns: 1fr; }
   .founder-card { flex-direction: column; text-align: center; }
+  .testimonials-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .home-page { padding-top: 56px; }
