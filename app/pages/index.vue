@@ -12,11 +12,11 @@
       <!-- HERO -->
       <section class="hero-section">
         <div class="hero-text">
-          <h1>GIẢI PHÁP ÂM NHẠC CHUYÊN NGHIỆP <span class="neon-text">CHO MỌI NGHỆ SĨ.</span></h1>
-          <p class="hero-desc">Chuyên sâu Mix, Master, Hòa âm, Live Band, Media, TVC....</p>
+          <h1>NƠI CẢM XÚC THĂNG HOA,<br/><span class="neon-text">MỌI THANH ÂM TRỞ THÀNH KIỆT TÁC.</span></h1>
+          <p class="hero-desc">Chúng tôi không chỉ thu âm, chúng tôi bắt trọn linh hồn của bài hát. Nơi nâng tầm nghệ thuật bằng các tiêu chuẩn khắt khe nhất về Mix, Master & Hòa âm.</p>
           <div class="hero-actions">
             <NuxtLink to="/contact" class="btn-neon">BẮT ĐẦU DỰ ÁN</NuxtLink>
-            <NuxtLink to="/products" class="btn-ghost">KHÁM PHÁ TÁC PHẨM</NuxtLink>
+            <NuxtLink to="/products" class="btn-ghost">LẮNG NGHE TÁC PHẨM</NuxtLink>
           </div>
         </div>
         <div class="hero-visual">
@@ -40,20 +40,25 @@
 
       <!-- DỰ ÁN TIÊU BIỂU -->
       <section class="featured-section">
-        <h2 class="section-heading neon-accent">DỰ ÁN TIÊU BIỂU</h2>
+        <h2 class="section-heading neon-accent">DỰ ÁN CHẠM ĐẾN KHÁN GIẢ</h2>
         <div class="projects-grid">
-          <div v-for="(w, i) in works" :key="i" class="project-card glass-card">
+          <a
+            v-for="(w, i) in works" :key="i"
+            :href="w.url"
+            target="_blank" rel="noopener noreferrer"
+            class="project-card glass-card"
+          >
             <div class="project-thumb">
-              <img src="/images/hero-studio.png" :alt="w.title" />
+              <img :src="w.thumb" :alt="w.title" />
               <div class="thumb-overlay">
-                <i class="fa-solid fa-play fa-lg"></i>
+                <i class="fa-brands fa-youtube fa-2x"></i>
               </div>
             </div>
             <div class="project-info">
               <strong>{{ w.title }}</strong>
               <span>{{ w.artist }}</span>
             </div>
-          </div>
+          </a>
         </div>
       </section>
     </div>
@@ -62,7 +67,7 @@
     <div class="col-right">
       <!-- DỊCH VỤ CHÍNH -->
       <section class="services-section">
-        <h2 class="section-heading neon-accent">DỊCH VỤ CHÍNH</h2>
+        <h2 class="section-heading neon-accent">KHỞI NGUỒN CỦA NHỮNG BẢN HIT</h2>
         <div class="services-cards">
           <div v-for="svc in services" :key="svc.title" class="svc-card glass-card">
             <div class="svc-icon" v-html="svc.svg"></div>
@@ -81,7 +86,7 @@
             <img src="/images/hero-studio.png" alt="Nguyễn Xuân Kiệt- Founder" />
           </div>
           <div class="founder-quote">
-            <blockquote>"Tạo ra âm thanh là nghệ thuật,<br/>nâng tầm nó là trách nhiệm."</blockquote>
+            <blockquote>"Âm nhạc không chỉ để nghe, mà là để cảm nhận.<br/>Tạo ra âm thanh là kỹ thuật, chạm đến trái tim mới là nghệ thuật."</blockquote>
             <cite>- Nguyễn Xuân Kiệt</cite>
           </div>
         </div>
@@ -97,15 +102,15 @@
         </div>
         <form class="contact-form glass-card" @submit.prevent>
           <div class="form-grid">
-            <input type="text" placeholder="Name" required />
-            <input type="tel" placeholder="Phone" required />
+            <input type="text" placeholder="Họ và tên" required />
+            <input type="tel" placeholder="Số điện thoại" required />
           </div>
           <div class="form-grid">
-            <select><option value="">Project type</option><option>Thu âm</option><option>Mix &amp; Master</option><option>Sản xuất</option><option>Video/TVC</option></select>
-            <input type="text" placeholder="Planscript" />
+            <select><option value="">Loại dự án</option><option>Thu âm</option><option>Mix &amp; Master</option><option>Sản xuất</option><option>Video/TVC</option></select>
+            <input type="text" placeholder="Kịch bản / Yêu cầu" />
           </div>
-          <textarea placeholder="Message" rows="3"></textarea>
-          <button type="submit" class="btn-neon btn-full">Submit</button>
+          <textarea placeholder="Lời nhắn" rows="3"></textarea>
+          <button type="submit" class="btn-neon btn-full">Gửi thông tin</button>
         </form>
       </section>
     </div>
@@ -146,18 +151,48 @@ const stats = [
 ]
 
 const works = [
-  { title: 'Bài Hát A', artist: 'Nghệ Sĩ B' },
-  { title: 'Bài Hát A', artist: 'Nghệ Sĩ B' },
-  { title: 'Bài Hát A', artist: 'Nghệ Sĩ B' },
-  { title: 'Bài Hát A', artist: 'Nghệ Sĩ B' },
-  { title: 'Bài Hát A', artist: 'Nghệ Sĩ B' },
-  { title: 'Bài Hát A', artist: 'Nghệ Sĩ B' }
+  {
+    title: 'Chẳng Muốn Nói Nhiều Lời',
+    artist: 'Revan',
+    url: 'https://www.youtube.com/watch?v=IxlFvQQP_4c',
+    thumb: `https://img.youtube.com/vi/IxlFvQQP_4c/hqdefault.jpg`
+  },
+  {
+    title: 'Lý Do Bắt Đầu',
+    artist: 'Revan',
+    url: 'https://www.youtube.com/watch?v=vzfr1ddayYY',
+    thumb: `https://img.youtube.com/vi/vzfr1ddayYY/hqdefault.jpg`
+  },
+  {
+    title: 'Love Dự Phòng',
+    artist: 'Howl',
+    url: 'https://www.youtube.com/watch?v=OCnKTCslJUU',
+    thumb: `https://img.youtube.com/vi/OCnKTCslJUU/hqdefault.jpg`
+  },
+  {
+    title: 'Áo Cũ Tình Mới',
+    artist: 'Remake Remix',
+    url: 'https://www.youtube.com/watch?v=hlvg9YBxRqY',
+    thumb: `https://img.youtube.com/vi/hlvg9YBxRqY/hqdefault.jpg`
+  },
+  {
+    title: 'Kiếp Sau',
+    artist: 'Phương Thanh Tuyển (Cover)',
+    url: 'https://www.youtube.com/watch?v=z4GB-X1OiPg',
+    thumb: `https://img.youtube.com/vi/z4GB-X1OiPg/hqdefault.jpg`
+  },
+  {
+    title: 'Viết Tiếp Câu Chuyện Hoà Bình',
+    artist: 'Mai Linh (Cover)',
+    url: 'https://www.youtube.com/watch?v=P8FPXHJe_go',
+    thumb: `https://img.youtube.com/vi/P8FPXHJe_go/hqdefault.jpg`
+  }
 ]
 
 const services = [
-  { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'MUSIC PRODUCTION', desc: 'Sản xuất âm nhạc chuyên nghiệp — mixing, mastering, hòa âm phối khí.', link: '/services' },
-  { svg: '<i class="fa-solid fa-graduation-cap fa-lg"></i>', title: 'KHOÁ HỌC', desc: 'Đào tạo producer, mixing engineer, vocalist từ cơ bản đến nâng cao.', link: '/courses' },
-  { svg: '<i class="fa-solid fa-guitar fa-lg"></i>', title: 'LIVE BAND', desc: 'Dàn nhạc live chuyên nghiệp cho sự kiện, sân khấu & biểu diễn.', link: '/live-band' }
+  { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'MUSIC PRODUCTION', desc: 'Đánh thức linh hồn của bài hát. Từ ý tưởng thô sơ đến bản phối lộng lẫy, chuẩn quốc tế trên mọi nền tảng.', link: '/services' },
+  { svg: '<i class="fa-solid fa-graduation-cap fa-lg"></i>', title: 'KHOÁ HỌC', desc: 'Chuyển giao đam mê. Nơi nuôi dưỡng và đào tạo những thế hệ Music Producer & Vocalist thực thụ.', link: '/courses' },
+  { svg: '<i class="fa-solid fa-guitar fa-lg"></i>', title: 'LIVE BAND', desc: 'Bùng nổ cảm xúc trên sân khấu. Mang âm nhạc sống động hòa vào từng nhịp đập của khán giả.', link: '/live-band' }
 ]
 </script>
 
@@ -324,7 +359,7 @@ const services = [
    FEATURED PROJECTS (GLASS CARDS)
    ============================================== */
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.project-card { overflow: hidden; cursor: pointer; transition: all 0.4s ease; }
+.project-card { overflow: hidden; cursor: pointer; transition: all 0.4s ease; text-decoration: none; display: block; }
 .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 20px rgba(0,162,255,0.08); }
 .project-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; }
 .project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
