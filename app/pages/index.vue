@@ -2,7 +2,7 @@
 <div class="home-page">
   <!-- KT2: IMMERSIVE BACKGROUND -->
   <div class="immersive-bg">
-    <img src="/images/hero-studio.png" alt="" aria-hidden="true" />
+    <img src="/images/hero-studio.png" alt="Không gian phòng thu âm chuyên nghiệp XKStudio" aria-hidden="true" />
   </div>
 
   <!-- TWO-COLUMN DASHBOARD -->
@@ -12,7 +12,7 @@
       <!-- HERO -->
       <section class="hero-section">
         <div class="hero-text">
-          <h1>NƠI CẢM XÚC THĂNG HOA,<br/><span class="neon-text">MỌI THANH ÂM TRỞ THÀNH KIỆT TÁC.</span></h1>
+          <h1>Recording &<br/>Music Production <br/>Sound & Light<br/><span class="neon-text">Chuyên Nghiệp</span></h1>
           <p class="hero-desc">Chúng tôi không chỉ thu âm, chúng tôi bắt trọn linh hồn của bài hát. Nơi nâng tầm nghệ thuật bằng các tiêu chuẩn khắt khe nhất về Mix, Master & Hòa âm.</p>
           <div class="hero-actions">
             <NuxtLink to="/contact" class="btn-neon">BẮT ĐẦU DỰ ÁN</NuxtLink>
@@ -20,10 +20,7 @@
           </div>
         </div>
         <div class="hero-visual">
-          <img src="/images/hero-studio.png" alt="XKStudio - Phòng thu chuyên nghiệp" />
-          <button class="play-overlay" aria-label="Xem video giới thiệu">
-            <i class="fa-solid fa-play" style="margin-left:2px"></i>
-          </button>
+          <img src="/images/hero-studio.png" alt="Dịch vụ phòng thu âm, hoà âm phối khí chuyên nghiệp tại XKStudio" />
         </div>
       </section>
 
@@ -70,21 +67,25 @@
       <section class="services-section">
         <h2 class="section-heading neon-accent">KHỞI NGUỒN CỦA NHỮNG BẢN HIT</h2>
         <div class="services-cards">
-          <div v-for="svc in services" :key="svc.title" class="svc-card glass-card">
+          <NuxtLink
+            v-for="svc in services" :key="svc.title"
+            :to="svc.link"
+            class="svc-card glass-card"
+          >
             <div class="svc-icon" v-html="svc.svg"></div>
             <h3>{{ svc.title }}</h3>
             <p>{{ svc.desc }}</p>
-            <NuxtLink :to="svc.link" class="svc-link neon-text-sm">Xem chi tiết</NuxtLink>
-          </div>
+            <span class="svc-link neon-text-sm">Xem chi tiết</span>
+          </NuxtLink>
         </div>
       </section>
 
       <!-- VỀ CHÚNG TÔI -->
       <section class="founder-section">
-        <h2 class="section-heading neon-accent">VỀ CHÚNG TÔI - NHÀ SÁNG LẬP</h2>
+        <h2 class="section-heading neon-accent">FOUNDER</h2>
         <div class="founder-card glass-card">
           <div class="founder-avatar">
-            <img src="/images/hero-studio.png" alt="Nguyễn Xuân Kiệt- Founder" />
+            <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Music Producer & Founder XKStudio" />
           </div>
           <div class="founder-quote">
             <blockquote>"Âm nhạc không chỉ để nghe, mà là để cảm nhận.<br/>Tạo ra âm thanh là kỹ thuật, chạm đến trái tim mới là nghệ thuật."</blockquote>
@@ -146,8 +147,37 @@
 </template>
 
 <script setup lang="ts">
-useSeoMeta({ title: 'Trang chủ', description: 'XKStudio - Nơi âm thanh trở thành kiệt tác. Phòng thu âm & sản xuất âm nhạc chuyên nghiệp.', ogTitle: 'XKStudio — Nơi âm thanh trở thành kiệt tác' })
-useSchemaOrg([defineWebPage({ name: 'Trang chủ' })])
+useSeoMeta({
+  title: 'XKStudio - Phòng Thu Âm, Hoà Âm Phối Khí & Sân Khấu Sự Kiện Chuyên Nghiệp',
+  description: 'Phòng thu âm chuyên nghiệp XKStudio: Dịch vụ thu âm bài hát, hoà âm phối khí, quay MV/TVC, cho thuê âm thanh ánh sáng & sân khấu sự kiện trọn gói. Uy tín & Chất lượng.',
+  ogTitle: 'XKStudio — Phòng Thu Âm, Hoà Âm Phối Khí & Sân Khấu Sự Kiện',
+  ogDescription: 'Dịch vụ thu âm chuyên nghiệp, hoà âm phối khí bài hát, quay MV/TVC và cho thuê âm thanh ánh sáng sân khấu sự kiện tại XKStudio.',
+  keywords: 'XKStudio, phòng thu âm, phòng thu âm chuyên nghiệp, hoà âm phối khí, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc, phòng thu âm hcm, mix master bài hát'
+})
+useSchemaOrg([
+  defineWebPage({ name: 'Phòng Thu Âm, Hoà Âm Phối Khí & Sân Khấu Sự Kiện - XKStudio' }),
+  defineLocalBusiness({
+    name: 'XKStudio',
+    image: '/images/hero-studio.png',
+    telephone: '0355356294',
+    email: 'xkstudio29@gmail.com',
+    address: {
+      streetAddress: 'Liên hệ qua Hotline/Zalo để được tư vấn địa chỉ gần nhất',
+      addressLocality: 'Hồ Chí Minh',
+      addressRegion: 'HCM',
+      postalCode: '700000',
+      addressCountry: 'VN'
+    },
+    geo: {
+      latitude: '10.762622',
+      longitude: '106.660172'
+    },
+    openingHoursSpecification: [
+      { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '22:00' }
+    ],
+    priceRange: '$$'
+  })
+])
 
 onMounted(() => {
   if (!import.meta.client) return
@@ -223,7 +253,7 @@ const works = [
 ]
 
 const services = [
-  { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'MUSIC PRODUCTION', desc: 'Đánh thức linh hồn của bài hát. Từ ý tưởng thô sơ đến bản phối lộng lẫy, chuẩn quốc tế trên mọi nền tảng.', link: '/services' },
+  { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'HOÀ ÂM PHỐI KHÍ', desc: 'Đánh thức linh hồn của bài hát. Từ ý tưởng thô sơ đến bản phối lộng lẫy, chuẩn quốc tế trên mọi nền tảng.', link: '/services' },
   { svg: '<i class="fa-solid fa-graduation-cap fa-lg"></i>', title: 'KHOÁ HỌC', desc: 'Chuyển giao đam mê. Nơi nuôi dưỡng và đào tạo những thế hệ Music Producer & Vocalist thực thụ.', link: '/courses' },
   { svg: '<i class="fa-solid fa-guitar fa-lg"></i>', title: 'LIVE BAND', desc: 'Bùng nổ cảm xúc trên sân khấu. Mang âm nhạc sống động hòa vào từng nhịp đập của khán giả.', link: '/live-band' }
 ]
@@ -375,8 +405,13 @@ const testimonials = [
   gap: 2.5rem; align-items: center;
 }
 .hero-text h1 {
-  font-size: 2.4rem; font-weight: 800; line-height: 1.15;
+  font-size: 2rem; font-weight: 800; line-height: 1.25;
   color: var(--text-main); margin-bottom: 1rem; letter-spacing: -0.01em;
+}
+.hero-text h1 .neon-text {
+  font-size: 2.4rem;
+  display: inline-block;
+  margin-top: 0.15rem;
 }
 .hero-desc {
   color: var(--text-light); font-size: 0.9rem;
@@ -421,8 +456,27 @@ const testimonials = [
    FEATURED PROJECTS (GLASS CARDS)
    ============================================== */
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.project-card { overflow: hidden; cursor: pointer; transition: all 0.4s ease; text-decoration: none; display: block; }
-.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.4), 0 0 20px rgba(0,162,255,0.08); }
+.project-card {
+  overflow: hidden; cursor: pointer; transition: all 0.4s ease; text-decoration: none; display: block;
+  border: 1px solid rgba(0,162,255,0.25);
+  box-shadow: 0 0 0px rgba(0,162,255,0), inset 0 0 0 0 rgba(0,162,255,0);
+  position: relative;
+}
+.project-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,162,255,0.5) 0%, rgba(0,212,170,0.3) 50%, rgba(0,162,255,0.1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.project-card:hover::before { opacity: 1; }
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 0 18px rgba(0,162,255,0.18), 0 12px 35px rgba(0,0,0,0.45); border-color: rgba(0,162,255,0.55); }
 .project-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; }
 .project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
 .project-card:hover .project-thumb img { transform: scale(1.08); }
@@ -446,6 +500,7 @@ const testimonials = [
 .svc-card {
   padding: 1.5rem 1rem; text-align: center; transition: all 0.4s;
   display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+  cursor: pointer; text-decoration: none;
 }
 .svc-card:hover { transform: translateY(-4px); }
 .svc-icon { color: var(--primary); margin-bottom: 0.3rem; filter: drop-shadow(0 0 8px rgba(0,162,255,0.5)); }
@@ -561,7 +616,8 @@ const testimonials = [
   .dashboard { padding: 1.25rem; }
   .testimonials-section.full-width { padding: 0 1.25rem 3rem; }
   .hero-section { grid-template-columns: 1fr; gap: 1.5rem; }
-  .hero-text h1 { font-size: 1.8rem; }
+  .hero-text h1 { font-size: 1.6rem; }
+  .hero-text h1 .neon-text { font-size: 2rem; }
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .services-cards { grid-template-columns: 1fr; }
@@ -570,7 +626,8 @@ const testimonials = [
 }
 @media (max-width: 480px) {
   .home-page { padding-top: 56px; }
-  .hero-text h1 { font-size: 1.5rem; }
+  .hero-text h1 { font-size: 1.4rem; }
+  .hero-text h1 .neon-text { font-size: 1.7rem; }
   .stats-bar { grid-template-columns: 1fr 1fr; padding: 1rem; }
   .projects-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }

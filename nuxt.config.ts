@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://xkstudio.vn',
     name: 'XKStudio',
-    description: 'XKStudio - Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp',
+    description: 'XKStudio - Phòng thu âm, Hoà âm phối khí, Mixing, Mastering, Quay MV/TVC, Sân khấu sự kiện & Âm thanh ánh sáng, Soung & Lighting',
     defaultLocale: 'vi',
   },
 

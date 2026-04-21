@@ -62,15 +62,16 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Sản phẩm',
-  description: 'Các sản phẩm âm nhạc tiêu biểu do XKStudio sản xuất, mixing, mastering và hòa âm phối khí cho ca sĩ và doanh nghiệp tại Việt Nam.',
-  ogTitle: 'Sản phẩm - XKStudio'
+  title: 'Sản phẩm Âm nhạc tiêu biểu - XKStudio',
+  description: 'Các dự án âm nhạc tiêu biểu do XKStudio thực hiện: Hoà âm phối khí, mix & master cho nghệ sĩ và doanh nghiệp. Nâng tầm sản phẩm âm nhạc của bạn.',
+  ogTitle: 'Sản phẩm Âm nhạc tiêu biểu - XKStudio',
+  keywords: 'XKStudio, sản phẩm âm nhạc, dự án âm nhạc, hoà âm phối khí, thu âm chuyên nghiệp, mixing, mastering'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Sản phẩm',
-    description: 'Các sản phẩm âm nhạc tiêu biểu do XKStudio sản xuất, mixing, mastering và hòa âm phối khí cho ca sĩ và doanh nghiệp tại Việt Nam.'
+    name: 'Sản phẩm tiêu biểu',
+    description: 'Các sản phẩm âm nhạc tiêu biểu do XKStudio thực hiện: Thu âm, mixing, mastering và hòa âm phối khí tại Việt Nam.'
   })
 ])
 
@@ -80,7 +81,7 @@ const products = [
   {
     title: 'Love Dự Phòng',
     artist: 'Howl',
-    category: 'Music Production',
+    category: 'Hoà âm phối khí',
     year: '2025',
     link: 'https://www.youtube.com/watch?v=OCnKTCslJUU',
     thumb: 'https://img.youtube.com/vi/OCnKTCslJUU/hqdefault.jpg',
@@ -104,7 +105,7 @@ const products = [
   {
     title: 'Lý Do Bắt Đầu',
     artist: 'Revan',
-    category: 'Music Production',
+    category: 'Hoà âm phối khí',
     year: '2025',
     link: 'https://www.youtube.com/watch?v=vzfr1ddayYY',
     thumb: 'https://img.youtube.com/vi/vzfr1ddayYY/hqdefault.jpg',
@@ -138,7 +139,7 @@ const products = [
   {
     title: 'Áo Cũ Tình Mới',
     artist: 'Remake Remix',
-    category: 'Music Production',
+    category: 'Hoà âm phối khí',
     year: '2024',
     link: 'https://www.youtube.com/watch?v=hlvg9YBxRqY',
     thumb: 'https://img.youtube.com/vi/hlvg9YBxRqY/hqdefault.jpg',

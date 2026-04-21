@@ -127,15 +127,17 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Dịch vụ & Bảng giá',
-  description: 'Dịch vụ phòng thu âm, mixing, mastering, phối khí, sản xuất MV, TVC và bảng giá chi tiết tại XKStudio. Minh bạch, không phát sinh.',
-  ogTitle: 'Dịch vụ & Bảng giá - XKStudio'
+  title: 'Bảng giá Thu âm, Mix & Master, Hoà âm Phối khí - XKStudio',
+  description: 'Bảng giá dịch vụ phòng thu âm, mixing & mastering, hoà âm phối khí, quay MV/TVC, sân khấu sự kiện và âm thanh ánh sáng chuyên nghiệp tại XKStudio. Từ 350.000₫.',
+  ogTitle: 'Bảng giá Dịch vụ Thu âm, Mix & Master, Hoà âm Phối khí - XKStudio',
+  ogDescription: 'Bảng giá chi tiết dịch vụ thu âm chuyên nghiệp, mixing & mastering, hoà âm phối khí, sân khấu sự kiện tại XKStudio. Minh bạch, không phát sinh.',
+  keywords: 'XKStudio, phòng thu âm, bảng giá thu âm, giá mix master, giá hoà âm phối khí, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Dịch vụ & Bảng giá',
-    description: 'Dịch vụ phòng thu âm, mixing, mastering, phối khí, sản xuất MV, TVC và bảng giá chi tiết tại XKStudio.'
+    name: 'Bảng giá Thu âm, Mix & Master, Hoà âm Phối khí - XKStudio',
+    description: 'Bảng giá dịch vụ phòng thu âm, mixing & mastering, hoà âm phối khí, quay MV/TVC mới nhất tại XKStudio.'
   })
 ])
 

@@ -15,13 +15,14 @@
 // Global Default SEO Configuration
 useSeoMeta({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `${titleChunk} - XKStudio` : 'XKStudio - Phòng thu âm chuyên nghiệp';
+    return titleChunk ? `${titleChunk} - XKStudio` : 'XKStudio - Phòng Thu Âm, Hoà Âm Phối Khí, Sân Khấu Sự Kiện & Âm Thanh Ánh Sáng';
   },
   ogType: 'website',
-  ogTitle: 'XKStudio - Phòng thu âm chuyên nghiệp',
-  ogDescription: 'Thu âm, mixing, mastering, phối khí & sản xuất MV/TVC chuyên nghiệp.',
-  description: 'Thu âm, mixing, mastering, phối khí & sản xuất MV/TVC chuyên nghiệp.',
-  keywords: 'studio âm nhạc, thu âm, mixing, mastering, phối khí, sáng tác.'
+  ogSiteName: 'XKStudio',
+  ogTitle: 'XKStudio - Phòng Thu Âm, Hoà Âm Phối Khí, Sân Khấu Sự Kiện & Âm Thanh Ánh Sáng',
+  ogDescription: 'Dịch vụ phòng thu âm chuyên nghiệp, hoà âm phối khí, quay MV/TVC, cho thuê âm thanh ánh sáng sân khấu sự kiện tại XKStudio.',
+  description: 'XKStudio cung cấp giải pháp âm thanh chuyên nghiệp: Phòng thu âm, mix & master, hoà âm phối khí bài hát, quay MV/TVC, thiết kế sân khấu sự kiện & cho thuê âm thanh ánh sáng trọn gói.',
+  keywords: 'XKStudio, phòng thu âm, phòng thu âm chuyên nghiệp, thu âm bài hát, hoà âm phối khí, mix nhạc, master nhạc, quay mv, quay tvc, sân khấu sự kiện, âm thanh ánh sáng, cho thuê âm thanh, cho thuê ánh sáng, live band, sound light, phòng thu âm hcm, phòng thu âm uy tín'
 });
 
 // Global Default JSON-LD Schema
@@ -29,14 +30,16 @@ useSchemaOrg([
   defineOrganization({
     name: 'XKStudio',
     logo: '/favicon.ico',
-    description: 'Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp.',
+    description: 'Phòng thu âm & media production chuyên nghiệp | Sound & Light.',
     sameAs: [
-      // Add social links here in the future
+      'https://www.youtube.com/@Xkstudio29',
+      'https://www.tiktok.com/@xkstudio',
+      'https://www.facebook.com/ngxkiet'
     ]
   }),
   defineWebSite({
     name: 'XKStudio',
-    description: 'Phòng thu âm & Sản xuất âm nhạc chuyên nghiệp.'
+    description: 'Phòng thu âm & media production chuyên nghiệp | Sound & Light.'
   })
 ]);
 </script>

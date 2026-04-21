@@ -87,14 +87,14 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Liên hệ',
-  description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering và sản xuất âm nhạc chuyên nghiệp.',
+  description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering bài hát chuyên nghiệp.',
   ogTitle: 'Liên hệ - XKStudio'
 })
 
 useSchemaOrg([
   defineWebPage({
     name: 'Liên hệ',
-    description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering và sản xuất âm nhạc chuyên nghiệp.'
+    description: 'Liên hệ XKStudio để đặt lịch thu âm, tư vấn mixing/mastering bài hát chuyên nghiệp.'
   })
 ])
 

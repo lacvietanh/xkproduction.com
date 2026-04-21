@@ -2,14 +2,14 @@
   <div>
     <section class="page-hero">
       <div class="max-width">
-        <h1>Về XKStudio</h1>
-        <p class="page-hero-sub">Câu chuyện, sứ mệnh và đội ngũ đằng sau những dự án âm nhạc</p>
+        <h1>Giới Thiệu XKStudio</h1>
+        <p class="page-hero-sub">Câu chuyện và sứ mệnh đằng sau những dự án âm nhạc</p>
       </div>
     </section>
 
     <section id="story" style="padding: 5rem 0;">
       <div class="max-width">
-        <div class="section-title"><h2>Câu chuyện của chúng tôi</h2><p>Hành trình từ một phòng thu nhỏ đến trung tâm sản xuất âm nhạc chuyên nghiệp</p></div>
+        <div class="section-title"><h2>Câu chuyện của chúng tôi</h2><p>Hành trình từ một phòng thu nhỏ đến trung tâm âm thanh chuyên nghiệp</p></div>
         <div class="grid-2" style="gap: 3rem; margin-top: 3rem;">
           <div>
             <p style="color: var(--text-light); line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.5rem;">
@@ -21,7 +21,9 @@
           </div>
           <div style="background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(139,92,246,0.08) 100%); border-radius: 12px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; min-height: 280px;">
             <div style="text-align: center;">
-              <div style="font-size: 4rem; margin-bottom: 1rem;"><i class="fa-solid fa-microphone-lines" style="color: var(--primary);"></i></div>
+              <div style="margin-bottom: 1.5rem;">
+                <img src="/images/xuankiet-studio.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKStudio" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(0, 162, 255, 0.2);" />
+              </div>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Hơn 7 năm đồng hành cùng nghệ sĩ & doanh nghiệp Việt Nam</p>
             </div>
           </div>
@@ -53,19 +55,6 @@
       </div>
     </section>
 
-    <section id="team" style="padding: 5rem 0;">
-      <div class="max-width">
-        <div class="section-title"><h2>Đội ngũ</h2><p>Những con người tài năng đằng sau XKStudio</p></div>
-        <div class="grid-4" style="margin-top: 3rem;">
-          <div v-for="m in team" :key="m.name" class="card" style="text-align: center;">
-            <div style="font-size: 4rem; margin-bottom: 1rem;"><i :class="m.faIcon" style="color: var(--primary);"></i></div>
-            <h3>{{ m.name }}</h3>
-            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">{{ m.role }}</p>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">{{ m.desc }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section id="cta" style="text-align: center; padding: 5rem 2rem; background: var(--bg-surface);">
       <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Hãy cùng tạo ra điều tuyệt vời</h2>
@@ -77,24 +66,19 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Về chúng tôi',
-  description: 'Tìm hiểu về XKStudio - phòng thu âm & sản xuất âm nhạc chuyên nghiệp. Đội ngũ producer, mix engineer và kỹ thuật viên giàu kinh nghiệm.',
-  ogTitle: 'Về chúng tôi - XKStudio'
+  title: 'Giới Thiệu về XKStudio - Phòng Thu Âm & Âm Thanh Ánh Sáng',
+  description: 'Khám phá câu chuyện và sứ mệnh của XKStudio. Chúng tôi cung cấp dịch vụ phòng thu âm, hoà âm phối khí, sân khấu sự kiện & quay MV/TVC chuyên nghiệp tại Việt Nam.',
+  ogTitle: 'Giới Thiệu về XKStudio - Phòng Thu Âm & Âm Thanh Ánh Sáng',
+  keywords: 'XKStudio, giới thiệu XKStudio, phòng thu âm chuyên nghiệp, hoà âm phối khí, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Về chúng tôi',
-    description: 'Tìm hiểu về XKStudio - phòng thu âm & sản xuất âm nhạc chuyên nghiệp. Đội ngũ producer, mix engineer và kỹ thuật viên giàu kinh nghiệm.'
+    name: 'Giới Thiệu XKStudio',
+    description: 'Tìm hiểu về XKStudio - Phòng thu âm, hoà âm phối khí, sân khấu sự kiện & âm thanh ánh sáng. Đội ngũ kỹ thuật viên giàu kinh nghiệm.'
   })
 ])
 
-const team = [
-  { faIcon: 'fa-solid fa-headphones', name: 'Xuân Kiệt', role: 'Founder & Producer', desc: 'Hơn 7 năm kinh nghiệm sản xuất và định hướng sáng tạo' },
-  { faIcon: 'fa-solid fa-sliders', name: 'Mix Engineer', role: 'Mixing & Mastering', desc: 'Chuyên gia xử lý âm thanh chuẩn quốc tế' },
-  { faIcon: 'fa-solid fa-music', name: 'Hòa Âm Sĩ', role: 'Phối khí & Sáng tác', desc: 'Biên soạn bản phối đa thể loại' },
-  { faIcon: 'fa-solid fa-film', name: 'Video Producer', role: 'MV & TVC', desc: 'Đạo diễn và ekip sản xuất hình ảnh' }
-]
 </script>
 
 <style scoped>

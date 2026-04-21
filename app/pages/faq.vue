@@ -2,21 +2,25 @@
   <div>
     <section class="page-hero">
       <div class="max-width">
+        <div class="hero-badge"><i class="fa-solid fa-circle-question"></i> HỎI &amp; ĐÁP</div>
         <h1>Câu hỏi thường gặp</h1>
         <p class="page-hero-sub">Giải đáp nhanh về dịch vụ, quy trình và bảng giá tại XKStudio</p>
       </div>
     </section>
 
-    <section style="padding: 5rem 0;">
+    <section class="faq-section">
       <div class="max-width faq-container">
         <FaqItem v-for="faq in faqs" :key="faq.question" :question="faq.question" :answer="faq.answer" />
       </div>
     </section>
 
-    <section style="text-align: center; padding: 4rem 2rem; background: var(--bg-surface);">
-      <h2 style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 1rem;">Vẫn còn câu hỏi?</h2>
-      <p style="color: var(--text-light); margin-bottom: 2rem;">Hãy liên hệ trực tiếp — chúng tôi sẽ tư vấn trong vòng 24 giờ.</p>
-      <NuxtLink to="/contact" class="btn btn-primary">Liên hệ ngay</NuxtLink>
+    <section class="cta-section">
+      <div class="cta-inner">
+        <div class="cta-icon"><i class="fa-solid fa-headset"></i></div>
+        <h2>Vẫn còn câu hỏi?</h2>
+        <p>Hãy liên hệ trực tiếp — chúng tôi sẽ tư vấn trong vòng 24 giờ.</p>
+        <NuxtLink to="/contact" class="cta-btn">Liên hệ ngay <i class="fa-solid fa-arrow-right"></i></NuxtLink>
+      </div>
     </section>
   </div>
 </template>
@@ -50,16 +54,152 @@ const faqs = [
 <style scoped>
 .page-hero {
   padding-top: 140px;
-  padding-bottom: 4rem;
-  background: linear-gradient(135deg, #06080f 0%, #0d1117 100%);
+  padding-bottom: 5rem;
+  background: linear-gradient(160deg, #06080f 0%, #0d1117 60%, rgba(26, 140, 255, 0.04) 100%);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-.page-hero h1 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; }
-.page-hero-sub { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
 
-.faq-container { max-width: 800px; margin: 0 auto; }
+.page-hero::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(26, 140, 255, 0.05) 0%, transparent 65%);
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
 
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(26, 140, 255, 0.25);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  background: rgba(26, 140, 255, 0.06);
+}
+
+.page-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #e6edf3 30%, #1a8cff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* FAQ SECTION */
+.faq-section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.faq-container {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* CTA SECTION */
+.cta-section {
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(13, 17, 23, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.cta-inner {
+  text-align: center;
+  max-width: 520px;
+  padding: 3.5rem 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(26, 140, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 60px rgba(26, 140, 255, 0.06), 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.cta-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  filter: drop-shadow(0 0 12px rgba(26, 140, 255, 0.4));
+}
+
+.cta-inner h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.85rem;
+}
+
+.cta-inner p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, #1a8cff 0%, #0066cc 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(26, 140, 255, 0.35);
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(26, 140, 255, 0.5), 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.cta-btn i {
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover i {
+  transform: translateX(3px);
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .page-hero h1 { font-size: 1.9rem; }
+  .page-hero h1 { font-size: 2rem; }
+  .cta-inner { padding: 2.5rem 1.5rem; }
+  .cta-inner h2 { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .page-hero h1 { font-size: 1.7rem; }
 }
 </style>

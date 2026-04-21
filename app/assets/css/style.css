@@ -73,6 +73,66 @@ a {
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 /* ==========================================
+   BUTTONS — Global
+   ========================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1a8cff 0%, #0066cc 100%);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(26, 140, 255, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(26, 140, 255, 0.5), 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(26, 140, 255, 0.4);
+  color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   SECTION SUBTITLE — Global
+   ========================================== */
+.section-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  line-height: 1.6;
+}
+
+/* ==========================================
    ACCESSIBILITY
    ========================================== */
 @media (prefers-reduced-motion: reduce) {

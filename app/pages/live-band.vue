@@ -54,6 +54,24 @@
       </div>
     </section>
 
+    <!-- GALLERY -->
+    <section class="lb-gallery">
+      <div class="max-width">
+        <h2 class="lb-gallery-title">Hình ảnh thực tế</h2>
+        <div class="lb-gallery-grid">
+          <div class="lb-gallery-item">
+            <img src="/images/quocchi-1.jpg" alt="Hệ thống âm thanh ánh sáng sân khấu sự kiện XKStudio - Quốc Chí Sound & Lighting" />
+          </div>
+          <div class="lb-gallery-item">
+            <img src="/images/quocchi-2.jpg" alt="Ban nhạc live biểu chuyên nghiệp tại sự kiện - XKStudio" />
+          </div>
+          <div class="lb-gallery-item">
+            <img src="/images/quocchi-3.jpg" alt="Thiết kế sân khấu và lắp đặt âm thanh ánh sáng chuyên nghiệp" />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SERVICES -->
     <section class="lb-services">
       <div class="max-width">
@@ -138,15 +156,17 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Live Band & Sự kiện',
-  description: 'Quốc Chí Sound & Lighting – Giải pháp âm thanh, ánh sáng & ban nhạc chuyên nghiệp cho mọi sự kiện. Đối tác chiến lược của XKStudio.',
-  ogTitle: 'Live Band & Sự kiện - XKStudio'
+  title: 'Cho thuê Âm thanh Ánh sáng & Sân khấu Sự kiện - XKStudio',
+  description: 'Cho thuê âm thanh, ánh sáng sân khấu chuyên nghiệp & ban nhạc live cho sự kiện, đám cưới, gala, festival. Hệ thống line array, moving head, LED hiện đại tại XKStudio.',
+  ogTitle: 'Cho thuê Âm thanh Ánh sáng, Sân khấu & Ban nhạc Sự kiện - XKStudio',
+  ogDescription: 'Giải pháp trọn gói cho thuê âm thanh ánh sáng, sân khấu sự kiện và ban nhạc live chuyên nghiệp cho mọi quy mô sự kiện.',
+  keywords: 'XKStudio, cho thuê âm thanh, cho thuê ánh sáng, sân khấu sự kiện, âm thanh ánh sáng, ban nhạc live, band nhạc sự kiện, sound & light, âm thanh ánh sáng đám cưới'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Live Band & Sự kiện',
-    description: 'Quốc Chí Sound & Lighting – Giải pháp âm thanh, ánh sáng & ban nhạc chuyên nghiệp cho mọi sự kiện.'
+    name: 'Cho thuê Âm thanh Ánh sáng & Sân khấu Sự kiện - XKStudio',
+    description: 'Cho thuê âm thanh, ánh sáng sân khấu & ban nhạc live chuyên nghiệp cho mọi sự kiện tại XKStudio.'
   })
 ])
 
@@ -264,6 +284,54 @@ const packages = [
   max-width: 650px;
   margin: 0 auto;
   line-height: 1.7;
+}
+
+/* GALLERY */
+.lb-gallery {
+  max-width: 1200px;
+  margin: 2rem auto 4rem;
+  padding: 0 2rem;
+}
+
+.lb-gallery-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.lb-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.lb-gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 162, 255, 0.2);
+  aspect-ratio: 4/3;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.lb-gallery-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,162,255,0.55);
+  box-shadow: 0 0 20px rgba(0,162,255,0.2), 0 12px 35px rgba(0,0,0,0.45);
+}
+
+.lb-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.lb-gallery-item:hover img {
+  transform: scale(1.05);
 }
 
 /* INTRO */

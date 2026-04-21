@@ -38,9 +38,9 @@
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/about" class="nav-link" title="Về chúng tôi">
-            <span class="nav-icon"><i class="fa-solid fa-users"></i></span>
-            <span class="nav-text">Về chúng tôi</span>
+          <NuxtLink to="/about" class="nav-link" title="Giới Thiệu">
+            <span class="nav-icon"><i class="fa-solid fa-circle-info"></i></span>
+            <span class="nav-text">Giới Thiệu</span>
           </NuxtLink>
         </li>
         <li>

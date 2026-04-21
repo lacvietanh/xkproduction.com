@@ -3,7 +3,7 @@
     <section class="page-hero">
       <div class="max-width">
         <div class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> ĐÀO TẠO CHUYÊN NGHIỆP</div>
-        <h1>Khoá học Sản xuất Âm nhạc</h1>
+        <h1>Khoá học Music Producer</h1>
         <p class="page-hero-sub">Nâng tầm kỹ năng hoà âm phối khí, mixing & mastering cùng đội ngũ chuyên gia hàng đầu tại XKStudio.</p>
       </div>
     </section>
@@ -110,15 +110,17 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Khoá Học',
-  description: 'Khóa học sản xuất âm nhạc chuyên nghiệp — Hoà âm phối khí, Mixing, Mastering tại XKStudio. Học 1 kèm 1, thực hành trên dự án thật.',
-  ogTitle: 'Khoá Học Sản xuất Âm nhạc - XKStudio'
+  title: 'Khoá học Music Producer & Kỹ thuật viên Thu âm',
+  description: 'Khoá học đào tạo Music Producer chuyên nghiệp tại XKStudio — Hoà âm phối khí, mixing & mastering. Học 1 kèm 1, thực hành trên dự án thật.',
+  ogTitle: 'Khoá học Music Producer & Kỹ thuật viên Thu âm - XKStudio',
+  ogDescription: 'Đào tạo Music Producer, hoà âm phối khí, mixing & mastering chuyên nghiệp. Học 1 kèm 1, thực hành trên dự án thật tại XKStudio.',
+  keywords: 'khoá học music producer, học mixing mastering, khoá học hoà âm phối khí, đào tạo kỹ thuật viên thu âm, XKStudio'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Khoá Học',
-    description: 'Khóa học sản xuất âm nhạc chuyên nghiệp — Hoà âm phối khí, Mixing, Mastering tại XKStudio.'
+    name: 'Khoá học Music Producer & Kỹ thuật viên Thu âm - XKStudio',
+    description: 'Khoá học đào tạo Music Producer chuyên nghiệp — Hoà âm phối khí, mixing & mastering tại XKStudio.'
   })
 ])
 
