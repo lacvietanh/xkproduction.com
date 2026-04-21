@@ -4,7 +4,7 @@
       <div class="footer-content">
         <div class="footer-column">
           <h4><i class="fa-solid fa-music"></i> XKStudio</h4>
-          <p>Phòng thu âm chuyên nghiệp XKStudio tại TP.HCM. Chuyên thu âm bài hát, hoà âm phối khí, quay MV/TVC & cho thuê âm thanh ánh sáng sân khấu sự kiện trọn gói.</p>
+          <p>Phòng thu âm chuyên nghiệp XKStudio. Chuyên thu âm bài hát, hoà âm phối khí, mixing, mastering, quay MV/TVC & cho thuê âm thanh ánh sáng sân khấu sự kiện trọn gói.</p>
           <div class="social-links">
             <a href="https://www.facebook.com/ngxkiet" title="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" title="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
