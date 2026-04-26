@@ -22,7 +22,7 @@
           <div style="background: linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(139,92,246,0.08) 100%); border-radius: 12px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; min-height: 280px;">
             <div style="text-align: center;">
               <div style="margin-bottom: 1.5rem;">
-                <img src="/images/xuankiet-studio.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKStudio" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(0, 162, 255, 0.2);" />
+                <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKStudio" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(0, 162, 255, 0.2);" />
               </div>
               <p style="color: var(--text-muted); font-size: 0.95rem;">Hơn 7 năm đồng hành cùng nghệ sĩ & doanh nghiệp Việt Nam</p>
             </div>
@@ -66,16 +66,28 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Giới Thiệu về XKStudio - Phòng Thu Âm & Âm Thanh Ánh Sáng',
-  description: 'Khám phá câu chuyện và sứ mệnh của XKStudio. Chúng tôi cung cấp dịch vụ phòng thu âm, hoà âm phối khí, sân khấu sự kiện & quay MV/TVC chuyên nghiệp tại Việt Nam.',
-  ogTitle: 'Giới Thiệu về XKStudio - Phòng Thu Âm & Âm Thanh Ánh Sáng',
-  keywords: 'XKStudio, giới thiệu XKStudio, phòng thu âm chuyên nghiệp, hoà âm phối khí, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc'
+  title: 'Giới Thiệu XKStudio - Phòng Thu Âm & Âm Thanh Ánh Sáng Chuyên Nghiệp',
+  description: 'XKStudio — Phòng thu âm và media production chương nghiệp. Hơn 7 năm đồng hành cùng 2000+ dự án âm nhạc, 30+ đối tác, 50+ học viên đào tạo. Founder: Nguyễn Xuân Kiệt — Music Producer & Sound Engineer.',
+  ogTitle: 'Giới Thiệu XKStudio - Phòng Thu Âm & Media Production',
+  ogDescription: 'Khám phá câu chuyện XKStudio: Hơn 7 năm xây dựng, 2000+ dự án, đội ngũ Founder Nguyễn Xuân Kiệt và sứ mệnh nâng tầm âm nhạc Việt.',
+  ogImage: '/images/founder-kiet.jpg',
+  ogImageAlt: 'Nguyễn Xuân Kiệt - Founder & Music Producer XKStudio',
+  twitterCard: 'summary_large_image',
+  keywords: 'giới thiệu XKStudio, Nguyễn Xuân Kiệt, founder XKStudio, music producer, phòng thu âm chuyên nghiệp, về chúng tôi'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Giới Thiệu XKStudio',
+    name: 'Giới Thiệu XKStudio - Phòng Thu Âm & Âm Thanh Ánh Sáng',
     description: 'Tìm hiểu về XKStudio - Phòng thu âm, hoà âm phối khí, sân khấu sự kiện & âm thanh ánh sáng. Đội ngũ kỹ thuật viên giàu kinh nghiệm.'
+  }),
+  definePerson({
+    name: 'Nguyễn Xuân Kiệt',
+    jobTitle: 'Founder & Music Producer',
+    worksFor: { name: 'XKStudio', url: 'https://xkproduction.com' },
+    description: 'Music Producer & Sound Engineer với hơn 7 năm kinh nghiệm, Founder của XKStudio.',
+    image: 'https://xkproduction.com/images/founder-kiet.jpg',
+    sameAs: ['https://www.facebook.com/ngxkiet']
   })
 ])
 

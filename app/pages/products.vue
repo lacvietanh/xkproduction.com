@@ -63,8 +63,12 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Sản phẩm Âm nhạc tiêu biểu - XKStudio',
-  description: 'Các dự án âm nhạc tiêu biểu do XKStudio thực hiện: Hoà âm phối khí, mix & master cho nghệ sĩ và doanh nghiệp. Nâng tầm sản phẩm âm nhạc của bạn.',
+  description: 'Các dự án âm nhạc tiêu biểu do XKStudio thực hiện: Hoà âm phối khí, mix & master cho nghệ sĩ Revan, Howl, Phương Thanh Tuyền... Nâng tầm sản phẩm âm nhạc của bạn.',
   ogTitle: 'Sản phẩm Âm nhạc tiêu biểu - XKStudio',
+  ogDescription: 'Nghe các tác phẩm thực tế do XKStudio sản xuất: Hoà âm phối khí, mixing & mastering, thu âm chuyên nghiệp cho 2000+ dự án.',
+  ogImage: '/images/hero-studio.png',
+  ogImageAlt: 'Sản phẩm âm nhạc XKStudio - Hoà âm phối khí & Mix Master',
+  twitterCard: 'summary_large_image',
   keywords: 'XKStudio, sản phẩm âm nhạc, dự án âm nhạc, hoà âm phối khí, thu âm chuyên nghiệp, mixing, mastering'
 })
 
@@ -98,8 +102,8 @@ const products = [
     link: 'https://www.youtube.com/watch?v=IxlFvQQP_4c',
     thumb: 'https://img.youtube.com/vi/IxlFvQQP_4c/hqdefault.jpg',
     credits: [
-      { role: 'Mixing & Mastering', name: 'XK' },
-      { role: 'Guitarist', name: 'XK' }
+      { role: 'Mixing & Mastering', name: 'Nguyễn Xuân Kiệt' },
+      { role: 'Guitarist', name: 'Nguyễn Xuân Kiệt' }
     ]
   },
   {
@@ -154,9 +158,9 @@ const products = [
     category: 'Thu âm',
     year: '2024',
     link: 'https://www.tiktok.com/@xkstudio/video/7589982843418266901?lang=vi-VN',
-    thumb: '/images/hero-studio.png',
+    thumb: '/images/quocchi-3.jpg',
     credits: [
-      { role: 'Recording / Mixing', name: 'XK' }
+      { role: 'Recording / Mixing', name: 'Nguyễn Xuân Kiệt' }
     ]
   }
 ]

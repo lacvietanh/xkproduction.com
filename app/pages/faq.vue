@@ -27,16 +27,31 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Câu hỏi thường gặp',
-  description: 'Giải đáp các câu hỏi thường gặp về dịch vụ thu âm, mixing, mastering, hòa âm phối khí và sản xuất MV tại XKStudio.',
-  ogTitle: 'Câu hỏi thường gặp - XKStudio'
+  title: 'Hỏi & Đáp - Câu hỏi thường gặp về Thu âm, Mix Master | XKStudio',
+  description: 'Giải đáp câu hỏi về giá thu âm (từ 350k), quy trình, thời gian hoàn thành, nhận mix master online, phát hành Spotify... tại XKStudio.',
+  ogTitle: 'Câu hỏi thường gặp về Dịch vụ Thu âm & Mix Master - XKStudio',
+  ogDescription: 'Tìm hiểu về giá thu âm, quy trình, hỗ trợ online, phát hành Spotify & các dịch vụ tại XKStudio.',
+  ogImage: '/images/hero-studio.png',
+  twitterCard: 'summary_large_image',
+  keywords: 'faq thu âm, câu hỏi phòng thu, giá thu âm bao nhiêu, mix master online, phát hành Spotify, XKStudio'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Câu hỏi thường gặp',
-    description: 'Giải đáp các câu hỏi thường gặp về dịch vụ thu âm, mixing, mastering, hòa âm phối khí và sản xuất MV tại XKStudio.'
-  })
+    name: 'Câu hỏi thường gặp - XKStudio',
+    description: 'Giải đáp các câu hỏi về dịch vụ thu âm, mixing, mastering, hòa âm phối khí và sản xuất MV tại XKStudio.'
+  }),
+  {
+    '@type': 'FAQPage',
+    'mainEntity': [
+      { '@type': 'Question', 'name': 'Chi phí thu âm tại XKStudio là bao nhiêu?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Chi phí thu âm bắt đầu từ 350.000₫/bài cho gói Cơ Bản, đến 1.800.000₫+ cho gói Cao Cấp. Xem chi tiết tại trang Bảng giá.' } },
+      { '@type': 'Question', 'name': 'Làm thế nào để đặt lịch thu âm hoặc sản xuất?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Bạn có thể liên hệ qua Zalo (0355.356.294), điện thoại hoặc form trên trang Liên hệ. Chúng tôi sẽ xác nhận lịch và gửi hướng dẫn chuẩn bị.' } },
+      { '@type': 'Question', 'name': 'XKStudio có hỗ trợ phát hành nhạc lên Spotify không?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Có. XKStudio hỗ trợ phát hành lên Spotify, Apple Music, YouTube Music trong 1–2 tuần sau khi hoàn thành mastering.' } },
+      { '@type': 'Question', 'name': 'Thời gian hoàn thành dự án bao lâu?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Demo/beat có thể trong 48h, mixing & mastering từ 3–7 ngày, sản xuất MV từ 2–4 tuần.' } },
+      { '@type': 'Question', 'name': 'XKStudio có nhận dự án từ tỉnh thành khác không?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Có. Chúng tôi nhận mixing, mastering, hòa âm phối khí và tư vấn online cho khách hàng trên toàn quốc.' } },
+      { '@type': 'Question', 'name': 'XKStudio có hỗ trợ sản xuất MV, TVC không?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Có. XKStudio cung cấp dịch vụ sản xuất MV, TVC, podcast với ekip đa chuyên môn từ tiền kỳ, hậu kỳ đến phát hành đa nền tảng.' } }
+    ]
+  }
 ])
 
 const faqs = [

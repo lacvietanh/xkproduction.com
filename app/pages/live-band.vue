@@ -156,17 +156,35 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Cho thuê Âm thanh Ánh sáng & Sân khấu Sự kiện - XKStudio',
-  description: 'Cho thuê âm thanh, ánh sáng sân khấu chuyên nghiệp & ban nhạc live cho sự kiện, đám cưới, gala, festival. Hệ thống line array, moving head, LED hiện đại tại XKStudio.',
-  ogTitle: 'Cho thuê Âm thanh Ánh sáng, Sân khấu & Ban nhạc Sự kiện - XKStudio',
-  ogDescription: 'Giải pháp trọn gói cho thuê âm thanh ánh sáng, sân khấu sự kiện và ban nhạc live chuyên nghiệp cho mọi quy mô sự kiện.',
-  keywords: 'XKStudio, cho thuê âm thanh, cho thuê ánh sáng, sân khấu sự kiện, âm thanh ánh sáng, ban nhạc live, band nhạc sự kiện, sound & light, âm thanh ánh sáng đám cưới'
+  title: 'Cho thuê Âm thanh Ánh sáng, Ban nhạc Live & Sân khấu Sự kiện - XKStudio',
+  description: 'Cho thuê âm thanh, ánh sáng sân khấu chuyên nghiệp & ban nhạc live cho đám cười, gala, festival, hội nghị. Hệ thống line array, moving head, LED hiện đại. Hotline: 0355.356.294.',
+  ogTitle: 'Cho thuê Âm thanh, Ánh sáng Sân khấu & Ban nhạc Sự kiện - XKStudio',
+  ogDescription: 'Giải pháp trọn gói âm thanh, ánh sáng, sân khấu & ban nhạc live cho mọi quy mô sự kiện. Hệ thống line array JBL/RCF, moving head, laser chuyên nghiệp.',
+  ogImage: '/images/hero-studio.png',
+  ogImageAlt: 'Cho thuê âm thanh ánh sáng sân khấu XKStudio',
+  twitterCard: 'summary_large_image',
+  keywords: 'cho thuê âm thanh, cho thuê ánh sáng, sân khấu sự kiện, âm thanh ánh sáng, ban nhạc live, band nhạc sự kiện, sound light, âm thanh ánh sáng đám cười, XKStudio'
 })
 
 useSchemaOrg([
   defineWebPage({
     name: 'Cho thuê Âm thanh Ánh sáng & Sân khấu Sự kiện - XKStudio',
     description: 'Cho thuê âm thanh, ánh sáng sân khấu & ban nhạc live chuyên nghiệp cho mọi sự kiện tại XKStudio.'
+  }),
+  defineProduct({
+    name: 'Dịch vụ Cho Thuê Âm Thanh Sân Khấu',
+    description: 'Hệ thống loa line array, sub, monitor chuyên nghiệp cho mọi không gian sự kiện.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' }
+  }),
+  defineProduct({
+    name: 'Dịch vụ Cho Thuê Ánh Sáng Sân Khấu',
+    description: 'Thiết kế ánh sáng sân khấu từ cổ điển đến hiện đại: moving head, LED par, laser show, màn hình LED.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' }
+  }),
+  defineProduct({
+    name: 'Dịch vụ Ban Nhạc Live Sự Kiện',
+    description: 'Cung cấp ban nhạc live chuyên nghiệp: Acoustic duo, full band 5-7 thành viên, DJ & MC cho mọi loại sự kiện.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' }
   })
 ])
 

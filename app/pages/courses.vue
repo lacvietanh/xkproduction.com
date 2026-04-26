@@ -110,17 +110,38 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Khoá học Music Producer & Kỹ thuật viên Thu âm',
-  description: 'Khoá học đào tạo Music Producer chuyên nghiệp tại XKStudio — Hoà âm phối khí, mixing & mastering. Học 1 kèm 1, thực hành trên dự án thật.',
+  title: 'Khoá học Music Producer, Mixing & Mastering - XKStudio',
+  description: 'Khoá học đào tạo Music Producer tại XKStudio: Hoà âm phối khí, Mixing, Mastering chuyên nghiệp. Học 1 kèm 1, thực hành trên dự án thật. Từ 3.000.000₫/khoá.',
   ogTitle: 'Khoá học Music Producer & Kỹ thuật viên Thu âm - XKStudio',
-  ogDescription: 'Đào tạo Music Producer, hoà âm phối khí, mixing & mastering chuyên nghiệp. Học 1 kèm 1, thực hành trên dự án thật tại XKStudio.',
-  keywords: 'khoá học music producer, học mixing mastering, khoá học hoà âm phối khí, đào tạo kỹ thuật viên thu âm, XKStudio'
+  ogDescription: 'Đào tạo Music Producer, hoà âm phối khí, mixing & mastering chuyên nghiệp. Học 1 kèm 1, lớp tối đa 3 người, có chứng nhận. Hotline: 0355.356.294',
+  ogImage: '/images/hero-studio.png',
+  ogImageAlt: 'Khoá học Music Producer & Mixing Mastering tại XKStudio',
+  twitterCard: 'summary_large_image',
+  keywords: 'khoá học music producer, học mixing mastering, khoá học hoà âm phối khí, đào tạo kỹ thuật viên thu âm, XKStudio, học âm nhạc, music producer hcm'
 })
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Khoá học Music Producer & Kỹ thuật viên Thu âm - XKStudio',
+    name: 'Khoá học Music Producer, Mixing & Mastering Chuyên Nghiệp - XKStudio',
     description: 'Khoá học đào tạo Music Producer chuyên nghiệp — Hoà âm phối khí, mixing & mastering tại XKStudio.'
+  }),
+  defineCourse({
+    name: 'Khoá học Hoà Âm Phối Khí',
+    description: 'Nắm vững kiến thức nhạc lý, kỹ thuật phối khí từ đơn giản đến phức tạp với nhiều thể loại âm nhạc.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' },
+    hasCourseInstance: [{ courseMode: 'onsite', duration: 'P6M', courseWorkload: 'PT10H', price: '5000000', priceCurrency: 'VND' }]
+  }),
+  defineCourse({
+    name: 'Khoá học Mixing',
+    description: 'Học kỹ thuật mix vocal, nhạc cụ, balance, EQ, compression và các plugin chuyên nghiệp.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' },
+    hasCourseInstance: [{ courseMode: 'onsite', duration: 'P4M', courseWorkload: 'PT8H', price: '4000000', priceCurrency: 'VND' }]
+  }),
+  defineCourse({
+    name: 'Khoá học Mastering',
+    description: 'Kỹ thuật mastering chuẩn phát hành Spotify, Apple Music, YouTube & Radio.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' },
+    hasCourseInstance: [{ courseMode: 'onsite', duration: 'P2M', courseWorkload: 'PT6H', price: '3000000', priceCurrency: 'VND' }]
   })
 ])
 

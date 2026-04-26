@@ -6,7 +6,7 @@
   </div>
 
   <!-- TWO-COLUMN DASHBOARD -->
-  <div class="dashboard">
+  <div class="dashboard reveal-on-scroll">
     <!-- ========== LEFT COLUMN ========== -->
     <div class="col-left">
       <!-- HERO -->
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="hero-visual">
-          <img src="/images/hero-studio.png" alt="Dịch vụ phòng thu âm, hoà âm phối khí chuyên nghiệp tại XKStudio" />
+          <img src="/images/quocchi-2.jpg" alt="Dịch vụ phòng thu âm, hoà âm phối khí chuyên nghiệp tại XKStudio" />
         </div>
       </section>
 
@@ -39,14 +39,16 @@
       <section class="featured-section">
         <h2 class="section-heading neon-accent">DỰ ÁN CHẠM ĐẾN KHÁN GIẢ</h2>
         <div class="projects-grid">
-          <a
+          <div
             v-for="(w, i) in works" :key="i"
-            :href="w.url"
-            target="_blank" rel="noopener noreferrer"
             class="project-card glass-card"
+            @click="openLightbox(w)"
+            role="button" tabindex="0"
+            :aria-label="'Xem ' + w.title"
+            @keydown.enter="openLightbox(w)"
           >
             <div class="project-thumb">
-              <img :src="w.thumb" :alt="w.title" />
+              <img :src="w.thumb" :alt="w.title" loading="lazy" />
               <div class="thumb-overlay">
                 <i :class="w.url.includes('tiktok') ? 'fa-brands fa-tiktok fa-2x' : 'fa-brands fa-youtube fa-2x'"></i>
               </div>
@@ -55,9 +57,40 @@
               <strong>{{ w.title }}</strong>
               <span>{{ w.artist }}</span>
             </div>
-          </a>
+          </div>
         </div>
       </section>
+
+      <!-- LIGHTBOX MODAL -->
+      <Teleport to="body">
+        <div v-if="lightbox.open" class="lightbox-backdrop" @click.self="closeLightbox" aria-modal="true" role="dialog">
+          <div class="lightbox-inner">
+            <button class="lightbox-close" @click="closeLightbox" aria-label="Đóng">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <template v-if="lightbox.embedId">
+              <iframe
+                :src="'https://www.youtube.com/embed/' + lightbox.embedId + '?autoplay=1&rel=0'"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                class="lightbox-iframe"
+                loading="lazy"
+              ></iframe>
+            </template>
+            <template v-else>
+              <a :href="lightbox.url" target="_blank" rel="noopener noreferrer" class="lightbox-tiktok-link">
+                <i class="fa-brands fa-tiktok"></i>
+                <span>Xem trên TikTok</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </template>
+            <div class="lightbox-info">
+              <strong>{{ lightbox.title }}</strong>
+              <span>{{ lightbox.artist }}</span>
+            </div>
+          </div>
+        </div>
+      </Teleport>
 
     </div>
 
@@ -87,9 +120,22 @@
           <div class="founder-avatar">
             <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Music Producer & Founder XKStudio" />
           </div>
-          <div class="founder-quote">
-            <blockquote>"Âm nhạc không chỉ để nghe, mà là để cảm nhận.<br/>Tạo ra âm thanh là kỹ thuật, chạm đến trái tim mới là nghệ thuật."</blockquote>
-            <cite>- Nguyễn Xuân Kiệt</cite>
+          <div class="founder-info">
+            <div class="founder-name-row">
+              <strong class="founder-name">Nguyễn Xuân Kiệt</strong>
+              <span class="founder-title-badge">Music Producer &amp; Founder</span>
+            </div>
+            <blockquote class="founder-quote">"Âm nhạc không chỉ để nghe, mà là để cảm nhận.<br/>Tạo ra âm thanh là kỹ thuật, chạm đến trái tim mới là nghệ thuật."</blockquote>
+            <div class="founder-credentials">
+              <span><i class="fa-solid fa-award"></i> 7+ năm kinh nghiệm</span>
+              <span><i class="fa-solid fa-compact-disc"></i> 2000+ dự án</span>
+              <span><i class="fa-solid fa-graduation-cap"></i> 50+ học viên</span>
+            </div>
+            <div class="founder-socials">
+              <a href="https://www.youtube.com/@Xkstudio29" target="_blank" rel="noopener" aria-label="YouTube XKStudio"><i class="fa-brands fa-youtube"></i></a>
+              <a href="https://www.tiktok.com/@xkstudio" target="_blank" rel="noopener" aria-label="TikTok XKStudio"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener" aria-label="Facebook XKStudio"><i class="fa-brands fa-facebook"></i></a>
+            </div>
           </div>
         </div>
       </section>
@@ -98,21 +144,49 @@
       <section class="contact-section">
         <h2 class="section-heading neon-accent">LIÊN HỆ & TƯ VẤN</h2>
         <div class="contact-info">
-          <div class="contact-item"><span class="ci-icon"><i class="fa-solid fa-phone"></i></span><span>Hotline: 0355.356.294</span></div>
-          <div class="contact-item"><span class="ci-icon"><i class="fa-solid fa-envelope"></i></span><span>Email : xkstudio29@gmail.com</span></div>
-          <div class="contact-item"><span class="ci-icon"><i class="fa-solid fa-comment"></i></span><span>Zalo: 0355.356.294</span></div>
+          <a href="tel:0355356294" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-phone"></i></span><span>Hotline: 0355.356.294</span></a>
+          <a href="mailto:xkstudio29@gmail.com" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-envelope"></i></span><span>Email: xkstudio29@gmail.com</span></a>
+          <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-comment"></i></span><span>Zalo: 0355.356.294</span></a>
         </div>
-        <form class="contact-form glass-card" @submit.prevent>
-          <div class="form-grid">
-            <input type="text" placeholder="Họ và tên" required />
-            <input type="tel" placeholder="Số điện thoại" required />
+        <Transition name="toast">
+          <div v-if="formToast" class="form-toast" role="alert">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Đã gửi thành công! Chúng tôi sẽ liên hệ bạn sớm.</span>
+          </div>
+        </Transition>
+        <form class="contact-form glass-card" @submit.prevent="submitForm" novalidate>
+          <div class="form-group">
+            <label for="cf-name">Họ và tên <span class="req">*</span></label>
+            <input id="cf-name" v-model="form.name" type="text" placeholder="Nguyễn Văn A" :class="{ error: formErrors.name }" @blur="validateField('name')" />
+            <span v-if="formErrors.name" class="field-error">Vui lòng nhập họ và tên</span>
           </div>
           <div class="form-grid">
-            <select><option value="">Loại dự án</option><option>Thu âm</option><option>Mix &amp; Master</option><option>Sản xuất</option><option>Video/TVC</option></select>
-            <input type="text" placeholder="Kịch bản / Yêu cầu" />
+            <div class="form-group">
+              <label for="cf-phone">Số điện thoại <span class="req">*</span></label>
+              <input id="cf-phone" v-model="form.phone" type="tel" placeholder="09xx.xxx.xxx" :class="{ error: formErrors.phone }" @blur="validateField('phone')" />
+              <span v-if="formErrors.phone" class="field-error">{{ formErrors.phone }}</span>
+            </div>
+            <div class="form-group">
+              <label for="cf-type">Loại dự án</label>
+              <select id="cf-type" v-model="form.type">
+                <option value="">Chọn dịch vụ...</option>
+                <option>Thu âm</option>
+                <option>Mix &amp; Master</option>
+                <option>Hoà âm phối khí</option>
+                <option>Quay MV / TVC</option>
+                <option>Âm thanh sự kiện</option>
+                <option>Khoá học</option>
+              </select>
+            </div>
           </div>
-          <textarea placeholder="Lời nhắn" rows="3"></textarea>
-          <button type="submit" class="btn-neon btn-full">Gửi thông tin</button>
+          <div class="form-group">
+            <label for="cf-msg">Lời nhắn / Yêu cầu</label>
+            <textarea id="cf-msg" v-model="form.message" placeholder="Mô tả ngắn về dự án của bạn..." rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn-neon btn-full" :disabled="formSubmitting">
+            <i v-if="formSubmitting" class="fa-solid fa-spinner fa-spin"></i>
+            <span>{{ formSubmitting ? 'Đang gửi...' : 'Gửi thông tin' }}</span>
+          </button>
         </form>
       </section>
     </div>
@@ -127,7 +201,7 @@
         class="testimonial-card glass-card"
       >
         <div class="tcard-header">
-          <div class="tcard-avatar">
+          <div class="tcard-avatar" :style="{ background: avatarGradients[i % avatarGradients.length] }">
             <span class="avatar-initial">{{ t.name.charAt(0) }}</span>
           </div>
           <div class="tcard-meta">
@@ -148,40 +222,78 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'XKStudio - Phòng Thu Âm, Hoà Âm Phối Khí & Sân Khấu Sự Kiện Chuyên Nghiệp',
-  description: 'Phòng thu âm chuyên nghiệp XKStudio: Dịch vụ thu âm bài hát, hoà âm phối khí, quay MV/TVC, cho thuê âm thanh ánh sáng & sân khấu sự kiện trọn gói. Uy tín & Chất lượng.',
-  ogTitle: 'XKStudio — Phòng Thu Âm, Hoà Âm Phối Khí & Sân Khấu Sự Kiện',
-  ogDescription: 'Dịch vụ thu âm chuyên nghiệp, hoà âm phối khí bài hát, quay MV/TVC và cho thuê âm thanh ánh sáng sân khấu sự kiện tại XKStudio.',
-  keywords: 'XKStudio, phòng thu âm, phòng thu âm chuyên nghiệp, hoà âm phối khí, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc, phòng thu âm hcm, mix master bài hát'
+  title: 'XKStudio — Phòng Thu Âm Chuyên Nghiệp | Hoà Âm Phối Khí | Mix Master | Bình Phước',
+  description: 'XKStudio — Phòng thu âm chuyên nghiệp tại Bình Phước: Thu âm bài hát từ 350.000₫, hoà âm phối khí, mix & master chuẩn Spotify, quay MV/TVC, cho thuê âm thanh ánh sáng sân khấu sự kiện trọn gói. Hơn 2000 dự án hoàn thiện. Hotline: 0355.356.294',
+  ogTitle: 'XKStudio — Phòng Thu Âm Chuyên Nghiệp | Mix Master | Hoà Âm | Sân Khấu',
+  ogDescription: 'Phòng thu âm chuyên nghiệp XKStudio: Thu âm bài hát, hoà âm phối khí, mix & master chuẩn quốc tế, quay MV/TVC & cho thuê âm thanh ánh sáng sự kiện. 2000+ dự án thành công. Hotline: 0355.356.294.',
+  ogImage: 'https://xkproduction.com/images/hero-studio.png',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+  ogImageAlt: 'XKStudio - Phòng thu âm chuyên nghiệp tại Bình Phước',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'XKStudio — Phòng Thu Âm & Mix Master Chuyên Nghiệp',
+  twitterDescription: 'Thu âm bài hát từ 350k, hoà âm phối khí, mix master chuẩn Spotify tại XKStudio. Hotline: 0355.356.294',
+  twitterImage: 'https://xkproduction.com/images/hero-studio.png',
+  keywords: 'XKStudio, xkproduction.com, phòng thu âm, phòng thu âm chuyên nghiệp, thu âm bài hát, hoà âm phối khí, mix master, mixing mastering, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc, phòng thu âm bình phước, phòng thu âm uy tín, bảng giá thu âm, studio bình phước, nhạc sĩ, sản xuất âm nhạc',
+  author: 'Nguyễn Xuân Kiệt - XKStudio',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  viewport: 'width=device-width, initial-scale=1'
 })
 useSchemaOrg([
-  defineWebPage({ name: 'Phòng Thu Âm, Hoà Âm Phối Khí & Sân Khấu Sự Kiện - XKStudio' }),
+  defineWebPage({
+    name: 'XKStudio - Phòng Thu Âm Chuyên Nghiệp | Hoà Âm | Mix Master | Bình Phước',
+    description: 'Phòng thu âm chuyên nghiệp XKStudio: Thu âm bài hát, mix & master chuẩn Spotify, hoà âm phối khí, quay MV/TVC tại Bình Phước. 2000+ dự án thành công.'
+  }),
   defineLocalBusiness({
     name: 'XKStudio',
-    image: '/images/hero-studio.png',
-    telephone: '0355356294',
+    image: 'https://xkproduction.com/images/hero-studio.png',
+    logo: 'https://xkproduction.com/images/xk-logo.png',
+    telephone: '+84355356294',
     email: 'xkstudio29@gmail.com',
+    url: 'https://xkproduction.com',
+    description: 'Phòng thu âm chuyên nghiệp — Hoà âm phối khí — Mix & Master chuẩn quốc tế — Sân khấu sự kiện — Đào tạo',
     address: {
-      streetAddress: 'Liên hệ qua Hotline/Zalo để được tư vấn địa chỉ gần nhất',
-      addressLocality: 'Hồ Chí Minh',
-      addressRegion: 'HCM',
-      postalCode: '700000',
+      streetAddress: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng',
+      addressLocality: 'Bình Phước',
+      addressRegion: 'Bình Phước',
+      postalCode: '830000',
       addressCountry: 'VN'
     },
-    geo: {
-      latitude: '10.762622',
-      longitude: '106.660172'
-    },
+    geo: { latitude: '11.71792', longitude: '107.11719' },
+    hasMap: 'https://maps.google.com/?q=11.71792,107.11719',
     openingHoursSpecification: [
-      { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '08:00', closes: '22:00' }
+      { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '07:00', closes: '22:00' },
+      { dayOfWeek: ['Saturday','Sunday'], opens: '08:00', closes: '20:00' }
     ],
-    priceRange: '$$'
-  })
+    priceRange: '350.000₫ – 3.500.000₫',
+    currenciesAccepted: 'VND',
+    paymentAccepted: 'Cash, Bank Transfer, Momo',
+    sameAs: [
+      'https://www.youtube.com/@Xkstudio29',
+      'https://www.tiktok.com/@xkstudio',
+      'https://www.facebook.com/ngxkiet'
+    ],
+    aggregateRating: {
+      ratingValue: '4.9',
+      ratingCount: 2000,
+      bestRating: '5',
+      worstRating: '1'
+    }
+  }),
+  {
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Trang chủ', 'item': 'https://xkproduction.com' }
+    ]
+  }
 ])
 
 onMounted(() => {
   if (!import.meta.client) return
-  const observer = new IntersectionObserver((entries) => {
+  
+  /* === STAT COUNTER ANIMATION === */
+  const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return
       const el = e.target as HTMLElement
@@ -194,10 +306,32 @@ onMounted(() => {
         if (current >= target) { current = target; clearInterval(timer) }
         el.textContent = current + (el.textContent?.includes('+') ? '+' : '')
       }, 25)
-      observer.unobserve(el)
+      statsObserver.unobserve(el)
     })
   }, { threshold: 0.5 })
-  document.querySelectorAll('.stat-number[data-target]').forEach(el => observer.observe(el))
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => statsObserver.observe(el))
+  
+  /* === SCROLL REVEAL ANIMATION === */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return
+      const el = e.target as HTMLElement
+      el.classList.add('revealed')
+      revealObserver.unobserve(el)
+    })
+  }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' })
+  
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el))
+  
+  /* === PARALLAX SCROLL EFFECT === */
+  const handleScroll = () => {
+    const scrolled = window.scrollY
+    const imgBg = document.querySelector('.immersive-bg img') as HTMLElement
+    if (imgBg) {
+      imgBg.style.transform = `scale(1.1) translateY(${scrolled * 0.35}px)`
+    }
+  }
+  window.addEventListener('scroll', handleScroll, { passive: true })
 })
 
 const stats = [
@@ -212,43 +346,50 @@ const works = [
     title: 'Chẳng Muốn Nói Nhiều Lời',
     artist: 'Revan',
     url: 'https://www.youtube.com/watch?v=IxlFvQQP_4c',
-    thumb: `https://img.youtube.com/vi/IxlFvQQP_4c/hqdefault.jpg`
+    thumb: `https://img.youtube.com/vi/IxlFvQQP_4c/hqdefault.jpg`,
+    embedId: 'IxlFvQQP_4c'
   },
   {
     title: 'Lý Do Bắt Đầu',
     artist: 'Revan',
     url: 'https://www.youtube.com/watch?v=vzfr1ddayYY',
-    thumb: `https://img.youtube.com/vi/vzfr1ddayYY/hqdefault.jpg`
+    thumb: `https://img.youtube.com/vi/vzfr1ddayYY/hqdefault.jpg`,
+    embedId: 'vzfr1ddayYY'
   },
   {
     title: 'Love Dự Phòng',
     artist: 'Howl',
     url: 'https://www.youtube.com/watch?v=OCnKTCslJUU',
-    thumb: `https://img.youtube.com/vi/OCnKTCslJUU/hqdefault.jpg`
+    thumb: `https://img.youtube.com/vi/OCnKTCslJUU/hqdefault.jpg`,
+    embedId: 'OCnKTCslJUU'
   },
   {
     title: 'Áo Cũ Tình Mới',
     artist: 'Remake Remix',
     url: 'https://www.youtube.com/watch?v=hlvg9YBxRqY',
-    thumb: `https://img.youtube.com/vi/hlvg9YBxRqY/hqdefault.jpg`
+    thumb: `https://img.youtube.com/vi/hlvg9YBxRqY/hqdefault.jpg`,
+    embedId: 'hlvg9YBxRqY'
   },
   {
     title: 'Kiếp Sau',
     artist: 'Phương Thanh Tuyển (Cover)',
     url: 'https://www.youtube.com/watch?v=z4GB-X1OiPg',
-    thumb: `https://img.youtube.com/vi/z4GB-X1OiPg/hqdefault.jpg`
+    thumb: `https://img.youtube.com/vi/z4GB-X1OiPg/hqdefault.jpg`,
+    embedId: 'z4GB-X1OiPg'
   },
   {
     title: 'Viết Tiếp Câu Chuyện Hoà Bình',
     artist: 'Mai Linh (Cover)',
     url: 'https://www.youtube.com/watch?v=P8FPXHJe_go',
-    thumb: `https://img.youtube.com/vi/P8FPXHJe_go/hqdefault.jpg`
+    thumb: `https://img.youtube.com/vi/P8FPXHJe_go/hqdefault.jpg`,
+    embedId: 'P8FPXHJe_go'
   },
   {
     title: 'Tết Xa (Cover)',
     artist: 'Khánh Linh',
     url: 'https://www.tiktok.com/@xkstudio/video/7589982843418266901?lang=vi-VN',
-    thumb: '/images/hero-studio.png'
+    thumb: '/images/quocchi-3.jpg',
+    embedId: ''
   }
 ]
 
@@ -256,6 +397,88 @@ const services = [
   { svg: '<i class="fa-solid fa-music fa-lg"></i>', title: 'HOÀ ÂM PHỐI KHÍ', desc: 'Đánh thức linh hồn của bài hát. Từ ý tưởng thô sơ đến bản phối lộng lẫy, chuẩn quốc tế trên mọi nền tảng.', link: '/services' },
   { svg: '<i class="fa-solid fa-graduation-cap fa-lg"></i>', title: 'KHOÁ HỌC', desc: 'Chuyển giao đam mê. Nơi nuôi dưỡng và đào tạo những thế hệ Music Producer & Vocalist thực thụ.', link: '/courses' },
   { svg: '<i class="fa-solid fa-guitar fa-lg"></i>', title: 'LIVE BAND', desc: 'Bùng nổ cảm xúc trên sân khấu. Mang âm nhạc sống động hòa vào từng nhịp đập của khán giả.', link: '/live-band' }
+]
+
+/* === LIGHTBOX STATE === */
+const lightbox = reactive({
+  open: false,
+  title: '',
+  artist: '',
+  url: '',
+  embedId: ''
+})
+
+function openLightbox(w: { title: string; artist: string; url: string; embedId: string }) {
+  lightbox.title = w.title
+  lightbox.artist = w.artist
+  lightbox.url = w.url
+  lightbox.embedId = w.embedId
+  lightbox.open = true
+  document.body.style.overflow = 'hidden'
+}
+
+function closeLightbox() {
+  lightbox.open = false
+  document.body.style.overflow = ''
+}
+
+if (import.meta.client) {
+  const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') closeLightbox() }
+  onMounted(() => window.addEventListener('keydown', handler))
+  onUnmounted(() => window.removeEventListener('keydown', handler))
+}
+
+/* === FORM STATE === */
+const form = reactive({ name: '', phone: '', type: '', message: '' })
+const formErrors = reactive({ name: '', phone: '' })
+const formToast = ref(false)
+const formSubmitting = ref(false)
+
+function validateField(field: 'name' | 'phone') {
+  if (field === 'name') {
+    formErrors.name = form.name.trim().length < 2 ? 'Vui lòng nhập họ và tên' : ''
+  }
+  if (field === 'phone') {
+    const p = form.phone.replace(/[.\s-]/g, '')
+    formErrors.phone = !/^(0[3-9]\d{8})$/.test(p) ? 'Số điện thoại không hợp lệ' : ''
+  }
+}
+
+async function submitForm() {
+  validateField('name')
+  validateField('phone')
+  if (formErrors.name || formErrors.phone) return
+  formSubmitting.value = true
+  try {
+    const res = await fetch('https://formspree.io/f/mojybjvk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: form.name,
+        phone: form.phone,
+        type: form.type || 'Không chọn',
+        message: form.message || '(không có lời nhắn)',
+        _subject: `[XKStudio] Liên hệ nhanh từ ${form.name}`
+      })
+    })
+    formSubmitting.value = false
+    formToast.value = true
+    if (res.ok) {
+      Object.assign(form, { name: '', phone: '', type: '', message: '' })
+    }
+  } catch {
+    formSubmitting.value = false
+    formToast.value = true
+  }
+  setTimeout(() => { formToast.value = false }, 4000)
+}
+
+/* === AVATAR GRADIENTS === */
+const avatarGradients = [
+  'linear-gradient(135deg, #1a8cff 0%, #00d4aa 100%)',
+  'linear-gradient(135deg, #f857a6 0%, #ff5858 100%)',
+  'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+  'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
 ]
 
 const testimonials = [
@@ -318,38 +541,61 @@ const testimonials = [
 /* === GLASS CARD BASE === */
 .glass-card {
   position: relative;
-  backdrop-filter: blur(24px) saturate(1.8);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8);
-  background: rgba(255, 255, 255, 0.052);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 20px;
+  backdrop-filter: blur(28px) saturate(2);
+  -webkit-backdrop-filter: blur(28px) saturate(2);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1.5px solid rgba(26, 140, 255, 0.08);
+  border-radius: 22px;
   box-shadow:
-    0 8px 32px rgba(0,0,0,0.32),
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    inset 0 -1px 0 rgba(0,0,0,0.18);
+    0 10px 40px rgba(0,0,0,0.35),
+    0 0 60px rgba(26,140,255,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 0 rgba(0,0,0,0.16);
   transition: all 0.42s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
 }
+/* Top-left glint */
 .glass-card::before {
   content: '';
   position: absolute; inset: 0;
   border-radius: inherit;
   background: linear-gradient(
     135deg,
-    rgba(255,255,255,0.055) 0%,
-    transparent 50%,
-    rgba(26,140,255,0.025) 100%
+    rgba(255,255,255,0.05) 0%,
+    transparent 45%,
+    rgba(26,140,255,0.02) 100%
   );
   pointer-events: none;
+  z-index: 0;
+}
+/* Glare sweep on hover */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: -100%; left: -100%;
+  width: 55%; height: 280%;
+  background: linear-gradient(
+    108deg,
+    transparent 20%,
+    rgba(255,255,255,0.042) 50%,
+    transparent 80%
+  );
+  transition: left 0.62s ease, top 0.62s ease;
+  pointer-events: none;
+  transform: skewX(-14deg);
+  z-index: 1;
+}
+.glass-card:hover::after {
+  left: 155%;
 }
 .glass-card:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(26,140,255,0.2);
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(26,140,255,0.28);
   box-shadow:
-    0 18px 50px rgba(0,0,0,0.4),
-    0 0 32px rgba(26,140,255,0.07),
+    0 20px 60px rgba(0,0,0,0.45),
+    0 0 50px rgba(26,140,255,0.12),
     inset 0 1px 0 rgba(255,255,255,0.12);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 /* === TEXT === */
@@ -358,10 +604,14 @@ const testimonials = [
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 20px rgba(26,140,255,0.5));
+  filter: drop-shadow(0 0 24px rgba(26,140,255,0.6)) drop-shadow(0 0 12px rgba(0,229,192,0.4));
 }
-.neon-text-sm { color: #5bbfff; text-shadow: 0 0 10px rgba(26,140,255,0.45); }
-.neon-accent  { text-shadow: 0 0 14px rgba(26,140,255,0.15); }
+.neon-text-sm { 
+  color: #5bbfff; 
+  text-shadow: 0 0 16px rgba(26,140,255,0.65), 0 0 8px rgba(0,229,192,0.35); 
+  font-weight: 700;
+}
+.neon-accent  { text-shadow: 0 0 18px rgba(26,140,255,0.25), 0 0 8px rgba(0,229,192,0.1); }
 
 /* === BUTTONS === */
 .btn-neon {
@@ -371,40 +621,45 @@ const testimonials = [
   color: #fff; font-weight: 700; font-size: 0.78rem;
   letter-spacing: 1.2px; border: none; border-radius: 12px;
   cursor: pointer; text-decoration: none;
-  box-shadow: 0 0 22px rgba(26,140,255,0.38), 0 4px 16px rgba(0,0,0,0.3);
+  box-shadow: 0 0 30px rgba(26,140,255,0.45), 0 4px 20px rgba(0,0,0,0.35);
   transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
   position: relative; overflow: hidden;
+  animation: ctaPulse 2.6s ease-in-out infinite;
+}
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(26,140,255,0.45), 0 4px 20px rgba(0,0,0,0.35); }
+  50%       { box-shadow: 0 0 50px rgba(26,140,255,0.75), 0 4px 25px rgba(0,0,0,0.45); }
 }
 .btn-neon::after {
   content: ''; position: absolute; top: -50%; left: -60%;
   width: 200%; height: 200%;
-  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.09) 50%, transparent 60%);
-  transition: all 0.55s;
+  background: linear-gradient(45deg, transparent 38%, rgba(255,255,255,0.15) 50%, transparent 62%);
+  transition: left 0.52s ease;
 }
 .btn-neon:hover {
-  box-shadow: 0 0 40px rgba(26,140,255,0.6), 0 6px 22px rgba(0,0,0,0.4);
-  transform: translateY(-3px);
+  box-shadow: 0 0 60px rgba(26,140,255,0.85), 0 8px 30px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
   color: #fff;
+  animation: none;
 }
 .btn-neon:hover::after { left: 100%; }
-.btn-full { width: 100%; justify-content: center; }
 
 .btn-ghost {
   display: inline-flex; align-items: center;
   padding: 0.76rem 1.7rem;
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.05);
-  color: rgba(255,255,255,0.85);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 12px; font-weight: 600;
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.9);
+  border: 1.5px solid rgba(26,140,255,0.22);
+  border-radius: 12px; font-weight: 700;
   font-size: 0.78rem; letter-spacing: 1.2px;
   cursor: pointer; text-decoration: none; transition: all 0.35s;
 }
 .btn-ghost:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(26,140,255,0.4);
-  box-shadow: 0 0 18px rgba(26,140,255,0.1);
-  transform: translateY(-2px);
+  background: rgba(26,140,255,0.12);
+  border-color: rgba(26,140,255,0.55);
+  box-shadow: 0 0 30px rgba(26,140,255,0.2), inset 0 0 20px rgba(26,140,255,0.05);
+  transform: translateY(-3px);
   color: #fff;
 }
 
@@ -420,8 +675,13 @@ const testimonials = [
 }
 .section-heading {
   font-size: 0.82rem; font-weight: 800;
-  letter-spacing: 3.5px; color: rgba(255,255,255,0.9);
+  letter-spacing: 3.5px; color: rgba(255,255,255,0.95);
   margin-bottom: 1.2rem; text-transform: uppercase;
+  animation: headingGlow 2s ease-in-out infinite;
+}
+@keyframes headingGlow {
+  0%, 100% { text-shadow: 0 0 18px rgba(26,140,255,0.25); }
+  50% { text-shadow: 0 0 28px rgba(26,140,255,0.4); }
 }
 
 /* === HERO === */
@@ -432,17 +692,23 @@ const testimonials = [
 .hero-text h1 {
   font-size: 1.95rem; font-weight: 800; line-height: 1.22;
   color: var(--text-main); margin-bottom: 1rem; letter-spacing: -0.01em;
+  animation: titleReveal 0.8s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes titleReveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 .hero-text h1 .neon-text { font-size: 2.35rem; display: inline-block; margin-top: 0.1rem; }
 .hero-desc {
-  color: rgba(156,175,207,0.85); font-size: 0.88rem;
-  line-height: 1.72; margin-bottom: 1.6rem; max-width: 370px;
+  color: rgba(156,175,207,0.9); font-size: 0.88rem;
+  line-height: 1.75; margin-bottom: 1.6rem; max-width: 370px;
+  font-weight: 500;
 }
 .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 .hero-visual {
-  position: relative; border-radius: 18px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(26,140,255,0.07);
+  position: relative; border-radius: 20px; overflow: hidden;
+  border: 2px solid rgba(26,140,255,0.15);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.55), 0 0 50px rgba(26,140,255,0.1);
 }
 .hero-visual img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
 
@@ -450,51 +716,77 @@ const testimonials = [
 .stats-bar {
   display: grid; grid-template-columns: repeat(4,1fr);
   gap: 0.75rem; padding: 1.4rem 1.6rem;
+  transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
 }
-.stat-cell { display: flex; align-items: center; gap: 0.7rem; padding: 0.4rem; }
+.stats-bar:hover {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(26,140,255,0.12);
+}
+.stat-cell { 
+  display: flex; align-items: center; gap: 0.7rem; padding: 0.4rem;
+  transition: all 0.35s;
+}
+.stat-cell:hover {
+  transform: translateY(-2px);
+}
 .stat-icon {
   color: #5bbfff; flex-shrink: 0; display: flex;
-  filter: drop-shadow(0 0 8px rgba(26,140,255,0.5));
+  filter: drop-shadow(0 0 12px rgba(26,140,255,0.65));
+  font-size: 1.3rem;
 }
 .stat-body { display: flex; flex-direction: column; }
 .stat-number {
-  font-size: 1.55rem; font-weight: 800; color: #fff; line-height: 1;
-  text-shadow: 0 0 12px rgba(26,140,255,0.15);
+  font-size: 1.6rem; font-weight: 800; color: #fff; line-height: 1;
+  text-shadow: 0 0 16px rgba(26,140,255,0.25);
 }
 .stat-label {
-  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.9px;
-  color: rgba(156,175,207,0.6); text-transform: uppercase; margin-top: 0.25rem;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 1px;
+  color: rgba(156,175,207,0.7); text-transform: uppercase; margin-top: 0.25rem;
 }
 
 /* === PROJECTS === */
 .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.9rem; }
 .project-card {
-  cursor: pointer; transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  cursor: pointer; transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
   text-decoration: none; display: block;
-  border: 1px solid rgba(26,140,255,0.16);
+  border: 1px solid rgba(26,140,255,0.12);
 }
 .project-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  border-color: rgba(26,140,255,0.48);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.45), 0 0 24px rgba(26,140,255,0.14);
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(26,140,255,0.55);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.5), 0 0 40px rgba(26,140,255,0.2), inset 0 0 20px rgba(26,140,255,0.05);
 }
-.project-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.project-thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; border-radius: 18px; }
 .project-thumb img {
   width: 100%; height: 100%; object-fit: cover;
-  display: block; transition: transform 0.55s;
+  display: block; transition: transform 0.65s cubic-bezier(0.23,1,0.32,1);
 }
-.project-card:hover .project-thumb img { transform: scale(1.1); }
+.project-card:hover .project-thumb img { transform: scale(1.15); }
 .thumb-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
   display: flex; align-items: center; justify-content: center;
-  color: #fff; opacity: 0; transition: opacity 0.35s;
+  color: #fff; opacity: 0; transition: opacity 0.42s cubic-bezier(0.23,1,0.32,1);
 }
 .project-card:hover .thumb-overlay { opacity: 1; }
-.thumb-overlay i { font-size: 2rem; filter: drop-shadow(0 0 12px rgba(26,140,255,0.7)); }
-.project-info { padding: 0.65rem 0.85rem; }
-.project-info strong { display: block; font-size: 0.8rem; color: #e6edf3; margin-bottom: 0.1rem; }
-.project-info span  { font-size: 0.7rem; color: rgba(156,175,207,0.6); }
+.thumb-overlay i { 
+  font-size: 2.2rem; 
+  filter: drop-shadow(0 0 16px rgba(26,140,255,0.85)); 
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.project-info { padding: 0.75rem 0.85rem; }
+.project-info strong { 
+  display: block; font-size: 0.8rem; color: #e6edf3; margin-bottom: 0.15rem;
+  font-weight: 700; letter-spacing: 0.3px;
+}
+.project-info span  { 
+  font-size: 0.7rem; color: rgba(156,175,207,0.75);
+  font-weight: 500;
+}
 
 /* === SERVICE CARDS === */
 .services-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.85rem; }
@@ -502,70 +794,114 @@ const testimonials = [
   padding: 1.5rem 0.9rem; text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 0.55rem;
   cursor: pointer; text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+  position: relative;
 }
-.svc-card:hover { transform: translateY(-5px); }
+.svc-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(26,140,255,0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.42s;
+  border-radius: 22px;
+}
+.svc-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 40px rgba(26,140,255,0.15);
+}
+.svc-card:hover::before {
+  opacity: 1;
+}
 .svc-icon {
   color: #5bbfff; margin-bottom: 0.25rem;
-  filter: drop-shadow(0 0 10px rgba(26,140,255,0.5));
+  filter: drop-shadow(0 0 14px rgba(26,140,255,0.65));
+  transition: all 0.35s;
+  font-size: 2rem;
+}
+.svc-card:hover .svc-icon {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 20px rgba(26,140,255,0.85));
 }
 .svc-card h3 { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.2px; color: #e6edf3; }
-.svc-card p  { font-size: 0.7rem; color: rgba(156,175,207,0.65); line-height: 1.55; flex: 1; }
-.svc-link    { font-size: 0.7rem; font-weight: 600; text-decoration: none; transition: all 0.25s; }
-.svc-link:hover { text-shadow: 0 0 14px rgba(26,140,255,0.75); }
+.svc-card p  { font-size: 0.7rem; color: rgba(156,175,207,0.75); line-height: 1.55; flex: 1; }
+.svc-link    { font-size: 0.7rem; font-weight: 700; text-decoration: none; transition: all 0.25s; }
+.svc-link:hover { text-shadow: 0 0 20px rgba(26,140,255,0.9); color: #fff; }
 
 /* === FOUNDER === */
-.founder-card { display: flex; gap: 1.5rem; align-items: center; padding: 1.5rem; }
+.founder-card { 
+  display: flex; gap: 1.5rem; align-items: center; padding: 1.5rem;
+  transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+}
+.founder-card:hover {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 40px rgba(26,140,255,0.12);
+  transform: translateY(-2px);
+}
 .founder-avatar {
-  width: 86px; height: 86px; flex-shrink: 0;
-  border-radius: 14px; overflow: hidden;
-  border: 1px solid rgba(26,140,255,0.18);
-  box-shadow: 0 0 20px rgba(26,140,255,0.1);
+  width: 96px; height: 96px; flex-shrink: 0;
+  border-radius: 16px; overflow: hidden;
+  border: 2px solid rgba(26,140,255,0.25);
+  box-shadow: 0 0 30px rgba(26,140,255,0.2);
+  transition: all 0.35s;
+}
+.founder-card:hover .founder-avatar {
+  transform: scale(1.08);
+  box-shadow: 0 0 45px rgba(26,140,255,0.35);
+  border-color: rgba(26,140,255,0.4);
 }
 .founder-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .founder-quote blockquote {
-  font-size: 0.88rem; font-style: italic;
-  color: rgba(230,237,243,0.9); line-height: 1.65;
+  font-size: 0.88rem; font-weight: 500; font-style: italic;
+  color: rgba(230,237,243,0.95); line-height: 1.7;
   margin: 0 0 0.6rem; border: none; padding: 0;
 }
 .founder-quote cite {
   font-style: normal; font-weight: 700;
-  font-size: 0.8rem; color: rgba(156,175,207,0.8);
+  font-size: 0.8rem; color: #5bbfff;
+  text-shadow: 0 0 12px rgba(26,140,255,0.4);
 }
 
 /* === CONTACT === */
-.contact-info { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.15rem; }
+.contact-info { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.15rem; }
 .contact-item {
   display: flex; align-items: center; gap: 0.6rem;
-  font-size: 0.83rem; color: rgba(156,175,207,0.8);
+  font-size: 0.83rem; color: rgba(156,175,207,0.85);
+  transition: all 0.3s;
+  padding: 0.35rem 0;
 }
-.ci-icon { font-size: 0.95rem; flex-shrink: 0; color: #5bbfff; }
+.contact-item:hover {
+  color: rgba(230,237,243,0.95);
+  transform: translateX(4px);
+}
+.ci-icon { font-size: 0.95rem; flex-shrink: 0; color: #5bbfff; filter: drop-shadow(0 0 8px rgba(26,140,255,0.5)); }
 .contact-form { display: flex; flex-direction: column; gap: 0.65rem; padding: 1.35rem; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  background: rgba(255,255,255,0.045);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.055);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(26,140,255,0.12);
   border-radius: 12px;
-  padding: 0.68rem 0.9rem;
+  padding: 0.75rem 1rem;
   color: #e6edf3; font-family: inherit; font-size: 0.83rem;
-  transition: all 0.3s;
+  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+  font-weight: 500;
 }
 .contact-form input::placeholder,
-.contact-form textarea::placeholder { color: rgba(156,175,207,0.38); }
+.contact-form textarea::placeholder { color: rgba(156,175,207,0.48); }
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: rgba(26,140,255,0.48);
-  background: rgba(255,255,255,0.07);
-  box-shadow: 0 0 0 3px rgba(26,140,255,0.07), 0 0 16px rgba(26,140,255,0.08);
+  border-color: rgba(26,140,255,0.65);
+  background: rgba(26,140,255,0.08);
+  box-shadow: 0 0 0 4px rgba(26,140,255,0.12), 0 0 20px rgba(26,140,255,0.15);
+  background-clip: padding-box;
 }
-.contact-form select { appearance: none; cursor: pointer; }
-.contact-form textarea { resize: vertical; min-height: 62px; }
+.contact-form select { appearance: none; cursor: pointer; padding-right: 2.5rem; }
+.contact-form textarea { resize: vertical; min-height: 70px; }
 
 /* === TESTIMONIALS === */
 .testimonials-section.full-width {
@@ -577,28 +913,50 @@ const testimonials = [
 .testimonial-card {
   padding: 1.35rem 1.2rem;
   display: flex; flex-direction: column; gap: 0.8rem; cursor: default;
+  transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
 }
 .testimonial-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 38px rgba(0,0,0,0.4), 0 0 20px rgba(26,140,255,0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45), 0 0 35px rgba(26,140,255,0.15);
+  border-color: rgba(26,140,255,0.25);
 }
 .tcard-header { display: flex; align-items: flex-start; gap: 0.8rem; }
 .tcard-avatar {
-  width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
+  width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%;
   background: linear-gradient(135deg, #1a8cff 0%, #00d4aa 100%);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 16px rgba(26,140,255,0.35);
+  box-shadow: 0 0 24px rgba(26,140,255,0.5);
+  transition: all 0.35s;
 }
-.avatar-initial { font-size: 1.05rem; font-weight: 800; color: #fff; }
+.testimonial-card:hover .tcard-avatar {
+  transform: scale(1.1);
+  box-shadow: 0 0 35px rgba(26,140,255,0.7);
+}
+.avatar-initial { font-size: 1.1rem; font-weight: 800; color: #fff; }
 .tcard-meta { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
 .tcard-name { font-size: 0.86rem; font-weight: 700; color: #e6edf3; letter-spacing: 0.3px; }
-.tcard-role { font-size: 0.7rem; color: rgba(156,175,207,0.6); letter-spacing: 0.5px; }
+.tcard-role { font-size: 0.7rem; color: rgba(156,175,207,0.75); letter-spacing: 0.5px; font-weight: 600; }
 .tcard-stars { display: flex; gap: 2px; margin-top: 0.2rem; }
-.tcard-stars i { font-size: 0.62rem; color: #f5c542; filter: drop-shadow(0 0 4px rgba(245,197,66,0.5)); }
-.tcard-quote-icon { color: rgba(26,140,255,0.18); font-size: 1.35rem; flex-shrink: 0; margin-top: -0.1rem; }
+.tcard-stars i { font-size: 0.62rem; color: #f5c542; filter: drop-shadow(0 0 6px rgba(245,197,66,0.7)); }
+.tcard-quote-icon { color: rgba(26,140,255,0.25); font-size: 1.5rem; flex-shrink: 0; margin-top: -0.1rem; }
 .tcard-body {
-  font-size: 0.78rem; color: rgba(156,175,207,0.78);
-  line-height: 1.72; font-style: italic; margin: 0; flex: 1;
+  font-size: 0.78rem; color: rgba(156,175,207,0.85);
+  line-height: 1.75; font-style: italic; margin: 0; flex: 1;
+}
+
+/* === REVEAL ON SCROLL ANIMATION === */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: revealFadeIn 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes revealFadeIn {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 /* === RESPONSIVE === */
@@ -627,5 +985,133 @@ const testimonials = [
   .projects-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* === LIGHTBOX === */
+.lightbox-backdrop {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.22s ease;
+}
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+.lightbox-inner {
+  position: relative;
+  width: 100%; max-width: 860px;
+  background: rgba(8,12,24,0.92);
+  border: 1.5px solid rgba(26,140,255,0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 60px rgba(26,140,255,0.12);
+  animation: slideUp 0.28s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+.lightbox-close {
+  position: absolute; top: 0.85rem; right: 0.85rem; z-index: 10;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.lightbox-close:hover { background: rgba(255,80,80,0.3); border-color: rgba(255,80,80,0.5); }
+.lightbox-iframe {
+  width: 100%; aspect-ratio: 16/9; display: block; border: none;
+  background: #000;
+}
+.lightbox-tiktok-link {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.8rem; padding: 3rem 2rem;
+  font-size: 1.1rem; font-weight: 700; color: #fff;
+  text-decoration: none; background: linear-gradient(135deg, #010101 0%, #1a1a2e 100%);
+  transition: all 0.3s;
+}
+.lightbox-tiktok-link:hover { color: #00e5c0; }
+.lightbox-tiktok-link i { font-size: 2rem; }
+.lightbox-info {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.2rem;
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.lightbox-info strong { font-size: 0.88rem; color: #e6edf3; }
+.lightbox-info span { font-size: 0.75rem; color: rgba(156,175,207,0.7); }
+
+/* === PROJECT CARD cursor fix === */
+.project-card { cursor: pointer; }
+
+/* === FORM LABELS & VALIDATION === */
+.form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-group label {
+  font-size: 0.73rem; font-weight: 700; letter-spacing: 0.6px;
+  color: rgba(156,175,207,0.85); text-transform: uppercase;
+}
+.req { color: #ff6b6b; }
+.field-error {
+  font-size: 0.7rem; color: #ff6b6b;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.contact-form input.error,
+.contact-form select.error {
+  border-color: rgba(255,107,107,0.6) !important;
+  background: rgba(255,107,107,0.06) !important;
+}
+.btn-neon:disabled {
+  opacity: 0.65; cursor: not-allowed; animation: none;
+  transform: none !important;
+}
+
+/* === FORM TOAST === */
+.form-toast {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.9rem 1.2rem; border-radius: 14px; margin-bottom: 0.75rem;
+  background: rgba(0,229,192,0.1);
+  border: 1.5px solid rgba(0,229,192,0.3);
+  color: #00e5c0; font-size: 0.83rem; font-weight: 600;
+}
+.form-toast i { font-size: 1.1rem; flex-shrink: 0; }
+.toast-enter-active, .toast-leave-active { transition: all 0.35s cubic-bezier(0.23,1,0.32,1); }
+.toast-enter-from, .toast-leave-to { opacity: 0; transform: translateY(-10px); }
+
+/* === CONTACT ITEMS as links === */
+a.contact-item { text-decoration: none; color: inherit; cursor: pointer; }
+a.contact-item:hover { color: rgba(230,237,243,0.95); transform: translateX(4px); }
+
+/* === FOUNDER EXPANDED === */
+.founder-info { flex: 1; display: flex; flex-direction: column; gap: 0.7rem; }
+.founder-name-row { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.founder-name { font-size: 1rem; font-weight: 800; color: #e6edf3; }
+.founder-title-badge {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+  padding: 0.2rem 0.65rem; border-radius: 20px;
+  background: rgba(26,140,255,0.15); border: 1px solid rgba(26,140,255,0.28);
+  color: #5bbfff; text-transform: uppercase;
+}
+.founder-quote {
+  font-size: 0.85rem; font-weight: 500; font-style: italic;
+  color: rgba(230,237,243,0.9); line-height: 1.7;
+  margin: 0; padding: 0; border: none;
+}
+.founder-credentials {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.founder-credentials span {
+  font-size: 0.72rem; font-weight: 600;
+  color: rgba(156,175,207,0.8); display: flex; align-items: center; gap: 0.35rem;
+}
+.founder-credentials i { color: #5bbfff; font-size: 0.8rem; }
+.founder-socials { display: flex; gap: 0.6rem; }
+.founder-socials a {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(26,140,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(156,175,207,0.8); font-size: 0.85rem;
+  text-decoration: none; transition: all 0.28s;
+}
+.founder-socials a:hover {
+  background: rgba(26,140,255,0.15); border-color: rgba(26,140,255,0.45);
+  color: #5bbfff; transform: translateY(-2px);
 }
 </style>

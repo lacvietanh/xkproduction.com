@@ -113,6 +113,24 @@
           </div>
         </div>
 
+        <!-- Live Band & Âm thanh Sự kiện -->
+        <div class="pricing-section">
+          <h3 class="pricing-cat"><i class="fa-solid fa-guitar"></i> Live Band &amp; Âm thanh Sự kiện</h3>
+          <div class="pricing-table">
+            <div v-for="p in liveBandPlans" :key="p.name" class="pricing-card" :class="{ featured: p.featured }">
+              <div v-if="p.badge" class="pricing-badge">{{ p.badge }}</div>
+              <h4 class="pricing-name">{{ p.name }}</h4>
+              <div class="pricing-price">{{ p.price }}</div>
+              <p class="pricing-desc">{{ p.desc }}</p>
+              <ul class="pricing-features">
+                <li v-for="f in p.features" :key="f">{{ f }}</li>
+              </ul>
+              <NuxtLink to="/contact" class="btn btn-primary pricing-cta">Nhận báo giá</NuxtLink>
+            </div>
+          </div>
+          <p class="lb-note"><i class="fa-solid fa-circle-info"></i> Giá báo trên là tham khảo — thực tế phụ thuộc địa điểm, số lượng khách và yêu cầu cụ thể. Liên hệ để được tư vấn miễn phí.</p>
+        </div>
+
         <!-- CTA -->
         <div class="pricing-cta-block">
           <h2>Cần báo giá tùy chỉnh?</h2>
@@ -127,17 +145,49 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Bảng giá Thu âm, Mix & Master, Hoà âm Phối khí - XKStudio',
-  description: 'Bảng giá dịch vụ phòng thu âm, mixing & mastering, hoà âm phối khí, quay MV/TVC, sân khấu sự kiện và âm thanh ánh sáng chuyên nghiệp tại XKStudio. Từ 350.000₫.',
-  ogTitle: 'Bảng giá Dịch vụ Thu âm, Mix & Master, Hoà âm Phối khí - XKStudio',
-  ogDescription: 'Bảng giá chi tiết dịch vụ thu âm chuyên nghiệp, mixing & mastering, hoà âm phối khí, sân khấu sự kiện tại XKStudio. Minh bạch, không phát sinh.',
-  keywords: 'XKStudio, phòng thu âm, bảng giá thu âm, giá mix master, giá hoà âm phối khí, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc'
+  title: 'Bảng giá Thu âm, Mix & Master, Hoà âm Phối khí, Live Band & Sự kiện - XKStudio',
+  description: 'Bảng giá XKStudio: Thu âm từ 350.000₫, Mixing & Mastering từ 300.000₫, Hoà âm phối khí từ 1.500.000₫, Live Band & Âm thanh sự kiện theo yêu cầu. Minh bạch, không phát sinh. Hotline: 0355.356.294',
+  ogTitle: 'Bảng giá Dịch vụ Thu âm, Mix & Master, Live Band & Sự kiện - XKStudio',
+  ogDescription: 'Thu âm từ 350k, mix master từ 300k, hoà âm từ 1.5tr, live band & âm thanh sự kiện trọn gói tại XKStudio. Minh bạch, không phát sinh. Hotline: 0355.356.294',
+  ogImage: '/images/hero-studio.png',
+  ogImageAlt: 'Bảng giá dịch vụ phòng thu âm XKStudio',
+  twitterCard: 'summary_large_image',
+  keywords: 'bảng giá thu âm, giá mix master, giá hoà âm phối khí, live band giá rẻ, cho thuê âm thanh ánh sáng, ban nhạc sự kiện, phòng thu âm chuyên nghiệp, XKStudio, bảng giá mixing mastering, dịch vụ thu âm hcm, báo giá sự kiện'
 })
 
 useSchemaOrg([
   defineWebPage({
     name: 'Bảng giá Thu âm, Mix & Master, Hoà âm Phối khí - XKStudio',
-    description: 'Bảng giá dịch vụ phòng thu âm, mixing & mastering, hoà âm phối khí, quay MV/TVC mới nhất tại XKStudio.'
+    description: 'Bảng giá chi tiết dịch vụ phòng thu âm, mixing mastering, hoà âm phối khí, quay MV/TVC mới nhất tại XKStudio.'
+  }),
+  defineProduct({
+    name: 'Dịch vụ Thu âm Bài Hát Chuyên Nghiệp',
+    description: 'Thu âm bài hát chuyên nghiệp tại XKStudio — Cơ Bản, Nâng Cao, Pro và Cao Cấp.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' },
+    offers: [
+      { name: 'Gói Thu âm Cơ Bản', price: '350000', priceCurrency: 'VND', description: 'Thu âm 1-2 tiếng, chỉnh sửa cơ bản, xuất file WAV/MP3, 1 lần revision' },
+      { name: 'Gói Thu âm Nâng Cao', price: '550000', priceCurrency: 'VND', description: 'Thu âm 2-3 tiếng, vocal production đầy đủ, 2 lần revision' },
+      { name: 'Gói Thu âm Pro', price: '1000000', priceCurrency: 'VND', description: 'Thu âm không giới hạn session, vocal coaching, xuất multi-track, 3 lần revision' },
+      { name: 'Gói Thu âm Cao Cấp', price: '1800000', priceCurrency: 'VND', description: 'Thu âm không giới hạn, storytelling coaching, revision không giới hạn' }
+    ]
+  }),
+  defineProduct({
+    name: 'Dịch vụ Mixing & Mastering Chuyên Nghiệp',
+    description: 'Mixing & mastering chuẩn phát hành Spotify, Apple Music, YouTube, Radio tại XKStudio.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' },
+    offers: [
+      { name: 'Mix & Master Cơ Bản', price: '300000', priceCurrency: 'VND', description: 'Mixing stereo track + mastering chuẩn streaming, xuất WAV + MP3' },
+      { name: 'Mix & Master Chuyên Nghiệp', price: '500000', priceCurrency: 'VND', description: 'Xử lý multi-track, chuẩn phát hành quốc tế, 2 lần revision' }
+    ]
+  }),
+  defineProduct({
+    name: 'Dịch vụ Hoà Âm Phối Khí',
+    description: 'Hoà âm phối khí chuyên nghiệp cho mọi thể loại âm nhạc tại XKStudio.',
+    provider: { name: 'XKStudio', url: 'https://xkproduction.com' },
+    offers: [
+      { name: 'Hoà âm Cơ bản', price: '1500000', priceCurrency: 'VND', description: 'Phối khí 1 thể loại, MIDI programming cơ bản, stem xuất riêng' },
+      { name: 'Hoà âm Chuyên nghiệp', price: '3500000', priceCurrency: 'VND', description: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn' }
+    ]
   })
 ])
 
@@ -152,7 +202,10 @@ const packages = [
   { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cơ bản', category: 'HÒA ÂM', desc: 'Demo, bài hát acoustic đơn giản, nhạc trẻ, pop-ballad cơ bản.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' },
   { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Chuyên nghiệp', category: 'HÒA ÂM', desc: 'Dự án chuyên nghiệp, MV ca nhạc, nhạc TVC doanh nghiệp hoặc phối khí phức tạp.', price: 'TỪ 3.500.000₫', isPopular: false, color: 'orange' },
   { faIcon: 'fa-solid fa-sliders', title: 'Mix & Mastering Chuyên nghiệp', category: 'MIX & MASTER', desc: 'Xử lý multi-track, EQ, Compressor, Reverb, Delay, chuẩn phát hành Spotify, Apple Music...', price: 'TỪ 500.000₫', isPopular: false, color: 'blue' },
-  { faIcon: 'fa-solid fa-film', title: 'Quay MV chuyên nghiệp', category: 'VIDEO', desc: 'Quay MV 5 góc máy, bao gồm Studio và Ngoại cảnh, ekip đầy đủ.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' }
+  { faIcon: 'fa-solid fa-film', title: 'Quay MV chuyên nghiệp', category: 'VIDEO', desc: 'Quay MV 5 góc máy, bao gồm Studio và Ngoại cảnh, ekip đầy đủ.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' },
+  { faIcon: 'fa-solid fa-guitar', title: 'Gói Tiệc & Đám cưới', category: 'LIVE BAND', desc: '50–300 khách. Loa active, ánh sáng LED, acoustic duo hoặc DJ chuyên nghiệp.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: false, color: 'orange' },
+  { faIcon: 'fa-solid fa-volume-high', title: 'Gói Gala & Doanh nghiệp', category: 'LIVE BAND', desc: '300–1000 khách. Line array + full light show + full band 5–7 thành viên.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: true, color: 'green' },
+  { faIcon: 'fa-solid fa-tower-broadcast', title: 'Gói Festival & Ngoài trời', category: 'LIVE BAND', desc: '1000–5000+ khách. Line array đôi, laser show, sân khấu modular, đội kỹ thuật đầy đủ.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: false, color: 'blue' }
 ]
 
 const categories = computed(() => ['Tất cả', ...new Set(packages.map(p => p.category))])
@@ -233,6 +286,30 @@ const hoaAmPlans = [
     desc: 'Dự án MV, TVC, nhạc phim hoặc phối khí phức tạp nhiều lớp.',
     features: ['Phối khí đa thể loại, đa lớp', 'Nhạc cụ thật (nếu cần)', 'Orchestration nếu yêu cầu', 'Full stem delivery', 'Unlimited revision', 'Hỗ trợ phát hành'],
     featured: true, badge: 'Chuyên nghiệp'
+  }
+]
+
+const liveBandPlans = [
+  {
+    name: 'Gói Tiệc & Đám cưới',
+    price: 'Liên hệ báo giá',
+    desc: 'Giải pháp âm thanh, ánh sáng & ban nhạc cho tiệc cưới, sinh nhật từ 50–300 khách.',
+    features: ['Hệ thống loa active 2–4 top + sub', 'Ánh sáng LED par + moving head cơ bản', 'Micro không dây 2–4 cây', 'Acoustic duo hoặc DJ chuyên nghiệp', 'Kỹ thuật viên vận hành', 'Setup & teardown included'],
+    featured: false, badge: ''
+  },
+  {
+    name: 'Gói Gala & Doanh nghiệp',
+    price: 'Liên hệ báo giá',
+    desc: 'Trọn gói âm thanh, ánh sáng & ban nhạc cho gala dinner, hội nghị, sự kiện doanh nghiệp 300–1000 khách.',
+    features: ['Loa line array 8–12 top + sub', 'Full light show (beam, wash, LED)', 'Mixer digital + micro premium', 'Full band 5–7 thành viên', 'FOH + Monitor engineer', 'Màn hình LED sân khấu', 'Stage manager'],
+    featured: true, badge: 'Phổ biến nhất'
+  },
+  {
+    name: 'Gói Festival & Ngoài trời',
+    price: 'Liên hệ báo giá',
+    desc: 'Giải pháp tổng thể cho festival, concert, sự kiện ngoài trời quy mô 1000–5000+ khách.',
+    features: ['Line array đôi + delay tower', 'Light show + laser chuyên nghiệp', 'Sân khấu modular lớn + truss', 'Multiple band & DJ set', 'Đội kỹ thuật đầy đủ (FOH, monitor, light)', 'Stage manager + giám sát toàn chương trình'],
+    featured: false, badge: ''
   }
 ]
 </script>
@@ -389,6 +466,16 @@ const hoaAmPlans = [
 }
 .pricing-cta-block h2 { font-size: 2rem; color: var(--text-main); margin-bottom: 1rem; }
 .pricing-cta-block p { color: var(--text-light); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+.lb-note {
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.lb-note i { color: var(--primary); flex-shrink: 0; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
