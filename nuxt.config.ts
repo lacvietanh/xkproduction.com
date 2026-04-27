@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   // === SEO MODULE CONFIG ===
-  ogImage: { enabled: true },
+  ogImage: { enabled: false },
   robots: {
     disallow: ['/cdn-cgi/'],
   },
