@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "npm run generate && npx wrangler pages deploy dist --project-name xkproduction"
+    "deploy": "npm run generate && npx wrangler pages deploy dist --project-name xkproduction.com"
   },
   "dependencies": {
     "@takumi-rs/core": "^1.0.12",
