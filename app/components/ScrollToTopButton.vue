@@ -42,8 +42,8 @@ onUnmounted(() => {
 <style scoped>
 .scroll-to-top {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 8.5rem; /* Nâng lên để không đè cụm nút liên hệ */
+  right: 1.5rem; /* Thẳng hàng với cụm nút liên hệ */
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -74,8 +74,8 @@ onUnmounted(() => {
   .scroll-to-top {
     width: 45px;
     height: 45px;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: 8.5rem;
+    right: 1rem;
   }
 }
 </style>
