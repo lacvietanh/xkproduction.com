@@ -112,6 +112,14 @@ onMounted(() => {
 .phone-btn i { font-size: 0.9rem; }
 
 /* Mobile: thu gọn chỉ còn icon */
+@media (max-width: 768px) {
+  /* Always visible on mobile for better conversion */
+  .sticky-contact {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+  }
+}
 @media (max-width: 480px) {
   .sticky-contact { bottom: 1.2rem; right: 1rem; }
   .btn-label { display: none; }

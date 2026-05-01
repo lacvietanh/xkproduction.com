@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://xkproduction.com',
     name: 'XKStudio',
-    description: 'XKStudio — Phòng thu âm chuyên nghiệp, Hoà âm phối khí, Mixing & Mastering, Quay MV/TVC, Sân khấu sự kiện & Âm thanh ánh sáng tại Bình Phước.',
+    description: 'XKStudio — Phòng thu âm chuyên nghiệp tại Bình Phước. Hoà âm phối khí, Mix & Master chuẩn Spotify, thu âm bài hát giá rẻ từ 350.000₫, quay MV/TVC, cho thuê âm thanh ánh sáng sân khấu sự kiện trọn gói. Hotline: 0355.356.294',
     defaultLocale: 'vi',
     trailingSlash: false,
     indexable: true,
@@ -31,6 +31,7 @@ export default defineNuxtConfig({
       { loc: '/about',     priority: 0.7,  changefreq: 'monthly' },
       { loc: '/contact',   priority: 0.8,  changefreq: 'monthly' },
       { loc: '/faq',       priority: 0.7,  changefreq: 'monthly' },
+      { loc: '/blog',      priority: 0.8,  changefreq: 'weekly'  },
       { loc: '/privacy',   priority: 0.3,  changefreq: 'yearly'  },
     ],
   },
@@ -100,7 +101,7 @@ export default defineNuxtConfig({
     preset: 'cloudflare-pages',
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/about', '/services', '/products', '/live-band', '/courses', '/contact', '/faq', '/privacy', '/sitemap.xml', '/robots.txt'],
+      routes: ['/', '/about', '/services', '/products', '/live-band', '/courses', '/contact', '/faq', '/blog', '/privacy', '/sitemap.xml', '/robots.txt'],
     },
     routeRules: {
       '/**': {

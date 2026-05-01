@@ -31,6 +31,77 @@
       </div>
     </section>
 
+    <!-- NGHỆ SĨ TIÊU BIỂU -->
+    <section id="artists" class="artists-section">
+      <div class="max-width">
+        <div class="section-title">
+          <h2>Nghệ Sĩ Đã Tin Tưởng XKStudio</h2>
+          <p>Những giọng ca tài năng đã chọn XKStudio để hiện thực hóa âm nhạc của mình</p>
+        </div>
+        <div class="artists-grid">
+          <!-- Cao Thành Lâm -->
+          <div class="artist-card">
+            <div class="artist-photo-wrap">
+              <img src="/images/cao-thanh-lam.jpg" alt="Cao Thành Lâm - Singer tại XKStudio Bình Phước" class="artist-photo" loading="lazy" />
+              <div class="artist-photo-glow"></div>
+            </div>
+            <div class="artist-info">
+              <strong class="artist-name">Cao Thành Lâm</strong>
+              <span class="artist-role"><i class="fa-solid fa-microphone"></i> Singer</span>
+              <blockquote class="artist-quote">
+                "XKStudio hiểu điều mà nhiều studio không có — sự tôn trọng giọng hát tự nhiên. Mỗi session ở đây đều thoải mái và hiệu quả, chắc chắn sẽ quay lại."
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Revan -->
+          <div class="artist-card">
+            <div class="artist-photo-wrap">
+              <img src="/images/revan.jpg" alt="Revan - Rapper tại XKStudio" class="artist-photo" loading="lazy" />
+              <div class="artist-photo-glow"></div>
+            </div>
+            <div class="artist-info">
+              <strong class="artist-name">Revan</strong>
+              <span class="artist-role"><i class="fa-solid fa-music"></i> Nghệ Sĩ / Rapper</span>
+              <blockquote class="artist-quote">
+                "XKStudio là nơi đầu tiên mình cảm thấy âm nhạc thực sự được lắng nghe. Từ tư vấn concept đến bản mix hoàn thiện — mọi chi tiết đều được chăm chút."
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Howl -->
+          <div class="artist-card">
+            <div class="artist-photo-wrap">
+              <img src="/images/howl.jpg" alt="Howl - Rapper tại XKStudio" class="artist-photo" loading="lazy" />
+              <div class="artist-photo-glow"></div>
+            </div>
+            <div class="artist-info">
+              <strong class="artist-name">Howl</strong>
+              <span class="artist-role"><i class="fa-solid fa-music"></i> Nghệ Sĩ / Rapper</span>
+              <blockquote class="artist-quote">
+                "Kết quả cuối cùng vượt xa những gì mình tưởng tượng. Sound rõ ràng, sắc nét, và đúng chất. Đội ngũ chuyên nghiệp, phản hồi nhanh."
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Fesu -->
+          <div class="artist-card">
+            <div class="artist-photo-wrap">
+              <img src="/images/fesu.jpg" alt="Fesu - Singer tại XKStudio" class="artist-photo" loading="lazy" />
+              <div class="artist-photo-glow"></div>
+            </div>
+            <div class="artist-info">
+              <strong class="artist-name">Fesu</strong>
+              <span class="artist-role"><i class="fa-solid fa-microphone"></i> Singer</span>
+              <blockquote class="artist-quote">
+                "XKStudio có một điều mà không phải studio nào cũng có — sự kiên nhẫn. Không rush, không qua loa. Sản phẩm ra lò chất lượng, mình tự hào chia sẻ."
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="mission" style="padding: 4rem 0; background: var(--bg-surface);">
       <div class="max-width">
         <div class="section-title"><h2>Sứ mệnh & Giá trị</h2><p>Những nguyên tắc định hướng mọi dự án chúng tôi thực hiện</p></div>
@@ -131,4 +202,101 @@ useSchemaOrg([
 .section-title { text-align: center; }
 .section-title h2 { font-size: 2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }
 .section-title p { color: var(--text-light); }
+
+/* ===== ARTISTS SECTION ===== */
+.artists-section {
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #06080f 0%, #0a0d18 100%);
+}
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.artist-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(26,140,255,0.1);
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  backdrop-filter: blur(12px);
+}
+.artist-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(26,140,255,0.28);
+  background: rgba(26,140,255,0.06);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(26,140,255,0.08);
+}
+.artist-photo-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+.artist-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(26,140,255,0.35);
+  box-shadow: 0 0 20px rgba(26,140,255,0.25);
+  transition: border-color 0.35s, box-shadow 0.35s;
+}
+.artist-card:hover .artist-photo {
+  border-color: rgba(26,140,255,0.7);
+  box-shadow: 0 0 30px rgba(26,140,255,0.45);
+}
+.artist-photo-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #1a8cff, #00e5c0, #8b5cf6, #1a8cff);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s;
+  filter: blur(6px);
+}
+.artist-card:hover .artist-photo-glow { opacity: 0.5; }
+
+.artist-info { width: 100%; }
+.artist-name {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.35rem;
+}
+.artist-role {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: #5bbfff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.artist-role i { font-size: 0.75rem; }
+.artist-quote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .artists-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .artists-grid { grid-template-columns: 1fr; }
+}
 </style>

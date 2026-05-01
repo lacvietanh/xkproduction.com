@@ -194,15 +194,16 @@
 
   <!-- CẢM NHẬN KHÁCH HÀNG -->
   <section class="testimonials-section full-width">
-    <h2 class="section-heading neon-accent text-center" style="text-align: center; margin-bottom: 2rem;">CẢM NHẬN TỪ NGHỆ SĨ</h2>
+    <h2 class="section-heading neon-accent text-center" style="text-align: center; margin-bottom: 0.5rem;">CẢM NHẬN TỪ NGHỆ SĨ</h2>
+    <p class="testimonials-subtitle">Hơn 2000+ nghệ sĩ đã tin tưởng XKStudio cho dự án âm nhạc của mình</p>
     <div class="testimonials-grid">
       <div
         v-for="(t, i) in testimonials.slice(0, 4)" :key="i"
         class="testimonial-card glass-card"
       >
         <div class="tcard-header">
-          <div class="tcard-avatar" :style="{ background: avatarGradients[i % avatarGradients.length] }">
-            <span class="avatar-initial">{{ t.name.charAt(0) }}</span>
+          <div class="tcard-avatar-img">
+            <img :src="t.avatar" :alt="t.name + ' - Khách hàng XKStudio'" loading="lazy" />
           </div>
           <div class="tcard-meta">
             <strong class="tcard-name">{{ t.name }}</strong>
@@ -214,7 +215,19 @@
           <span class="tcard-quote-icon"><i class="fa-solid fa-quote-right"></i></span>
         </div>
         <p class="tcard-body">{{ t.body }}</p>
+        <div class="tcard-project" v-if="t.project">
+          <i class="fa-solid fa-music"></i>
+          <span>Dự án: {{ t.project }}</span>
+        </div>
       </div>
+    </div>
+    <!-- Google Reviews CTA -->
+    <div class="reviews-cta">
+      <a href="https://g.page/r/xkstudio/review" target="_blank" rel="noopener" class="btn-review">
+        <i class="fa-brands fa-google"></i>
+        <span>Đánh giá chúng tôi trên Google</span>
+        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i>
+      </a>
     </div>
   </section>
 </div>
@@ -286,6 +299,35 @@ useSchemaOrg([
     'itemListElement': [
       { '@type': 'ListItem', 'position': 1, 'name': 'Trang chủ', 'item': 'https://xkproduction.com' }
     ]
+  },
+  // Review schema cho SEO
+  {
+    '@type': 'Review',
+    'itemReviewed': { '@type': 'LocalBusiness', 'name': 'XKStudio' },
+    'author': { '@type': 'Person', 'name': 'Revan' },
+    'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' },
+    'reviewBody': 'XKStudio là nơi đầu tiên mình cảm thấy âm nhạc của mình được thực sự lắng nghe. Từ khâu tư vấn concept đến lúc bản mix hoàn thiện, mọi chi tiết đều được chăm chút cẩn thận.'
+  },
+  {
+    '@type': 'Review',
+    'itemReviewed': { '@type': 'LocalBusiness', 'name': 'XKStudio' },
+    'author': { '@type': 'Person', 'name': 'Howl' },
+    'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' },
+    'reviewBody': 'Sound rõ ràng, sắc nét, và quan trọng hơn — nó đúng chất. Đội ngũ làm việc chuyên nghiệp, phản hồi nhanh, không có gì phải phàn nàn.'
+  },
+  {
+    '@type': 'Review',
+    'itemReviewed': { '@type': 'LocalBusiness', 'name': 'XKStudio' },
+    'author': { '@type': 'Person', 'name': 'Cao Thành Lâm' },
+    'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' },
+    'reviewBody': 'Họ biết cách thu âm để giọng ca được trình bày tự nhiên nhất, không bị xử lý quá tay. Mỗi session ở đây đều thoải mái và hiệu quả.'
+  },
+  {
+    '@type': 'Review',
+    'itemReviewed': { '@type': 'LocalBusiness', 'name': 'XKStudio' },
+    'author': { '@type': 'Person', 'name': 'Phương Thanh Tuyền' },
+    'reviewRating': { '@type': 'Rating', 'ratingValue': '5', 'bestRating': '5' },
+    'reviewBody': 'Anh Kiệt tư vấn rất tận tình, giúp mình chọn được tone phù hợp với chất giọng. Bản thu hoàn thành đúng hạn, âm thanh ấm và sạch.'
   }
 ])
 
@@ -485,26 +527,36 @@ const testimonials = [
   {
     name: 'Revan',
     role: 'Nghệ Sĩ / Rapper',
+    avatar: '/images/revan.jpg',
+    project: 'Chẳng Muốn Nói Nhiều Lời',
     body: 'Mình đã trải qua không ít phòng thu, nhưng XKStudio là nơi đầu tiên mình cảm thấy âm nhạc của mình được thực sự lắng nghe. Từ khâu tư vấn concept đến lúc bản mix hoàn thiện, mọi chi tiết đều được chăm chút cẩn thận. Kiet và team không chỉ làm đúng yêu cầu — họ còn biết cách đẩy bản nhạc lên một tầng cao hơn mà mình chưa nghĩ tới. Hài lòng, có tâm và thực sự có tầm.'
   },
   {
     name: 'Howl',
     role: 'Nghệ Sĩ / Rapper',
+    avatar: '/images/howl.jpg',
+    project: 'Love Dự Phòng',
     body: 'Đến XKStudio lần đầu mình không kỳ vọng nhiều, nhưng kết quả cuối cùng vượt xa những gì mình tưởng tượng. Sound rõ ràng, sắc nét, và quan trọng hơn — nó đúng chất. Đội ngũ làm việc chuyên nghiệp, phản hồi nhanh, không có gì phải phàn nàn.'
   },
   {
     name: 'Cao Thành Lâm',
     role: 'Singer',
+    avatar: '/images/cao-thanh-lam.jpg',
+    project: '',
     body: 'Với mình, giọng hát là tất cả. XKStudio hiểu điều đó. Họ biết cách thu âm để giọng ca được trình bày tự nhiên nhất, không bị xử lý quá tay. Mỗi session ở đây đều thoải mái và hiệu quả. Chắc chắn sẽ quay lại cho những dự án tiếp theo.'
   },
   {
     name: 'Fesu',
     role: 'Singer',
+    avatar: '/images/fesu.jpg',
+    project: '',
     body: 'XKStudio có một điều mà không phải studio nào cũng có — sự kiên nhẫn. Họ không rush, không qua loa. Ngồi làm việc cùng team ở đây mình học được rất nhiều về cách xây dựng âm thanh. Sản phẩm ra lò chất lượng, mình tự hào khi chia sẻ lên mạng.'
   },
   {
     name: 'Phương Thanh Tuyền',
     role: 'Singer',
+    avatar: '/images/quocchi-3.jpg',
+    project: 'Kiếp Sau (Cover)',
     body: 'Lần đầu vào studio mình khá hồi hộp, nhưng không khí ở XKStudio rất thân thiện và chuyên nghiệp. Anh Kiệt tư vấn rất tận tình, giúp mình chọn được tone phù hợp với chất giọng. Bản thu hoàn thành đúng hạn, âm thanh ấm và sạch — đúng những gì mình cần.'
   }
 ]
@@ -909,6 +961,13 @@ const testimonials = [
   max-width: 1300px; margin: 0 auto;
   padding: 0 2rem 5rem;
 }
+.testimonials-subtitle {
+  text-align: center;
+  color: rgba(156,175,207,0.7);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
 .testimonials-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
 .testimonial-card {
   padding: 1.35rem 1.2rem;
@@ -921,18 +980,22 @@ const testimonials = [
   border-color: rgba(26,140,255,0.25);
 }
 .tcard-header { display: flex; align-items: flex-start; gap: 0.8rem; }
-.tcard-avatar {
-  width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%;
-  background: linear-gradient(135deg, #1a8cff 0%, #00d4aa 100%);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 24px rgba(26,140,255,0.5);
+/* Avatar with real image */
+.tcard-avatar-img {
+  width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(26,140,255,0.3);
+  box-shadow: 0 0 20px rgba(26,140,255,0.4);
   transition: all 0.35s;
 }
-.testimonial-card:hover .tcard-avatar {
-  transform: scale(1.1);
-  box-shadow: 0 0 35px rgba(26,140,255,0.7);
+.tcard-avatar-img img {
+  width: 100%; height: 100%; object-fit: cover;
 }
-.avatar-initial { font-size: 1.1rem; font-weight: 800; color: #fff; }
+.testimonial-card:hover .tcard-avatar-img {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(26,140,255,0.65);
+  border-color: rgba(26,140,255,0.55);
+}
 .tcard-meta { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
 .tcard-name { font-size: 0.86rem; font-weight: 700; color: #e6edf3; letter-spacing: 0.3px; }
 .tcard-role { font-size: 0.7rem; color: rgba(156,175,207,0.75); letter-spacing: 0.5px; font-weight: 600; }
@@ -943,6 +1006,39 @@ const testimonials = [
   font-size: 0.78rem; color: rgba(156,175,207,0.85);
   line-height: 1.75; font-style: italic; margin: 0; flex: 1;
 }
+/* Project tag */
+.tcard-project {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.7rem; font-weight: 600;
+  color: rgba(91,191,255,0.8);
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(26,140,255,0.1);
+}
+.tcard-project i { font-size: 0.65rem; }
+/* Google Reviews CTA */
+.reviews-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+.btn-review {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.7rem 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(26,140,255,0.15);
+  border-radius: 50px;
+  color: rgba(230,237,243,0.85);
+  font-size: 0.82rem; font-weight: 700;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+.btn-review:hover {
+  background: rgba(26,140,255,0.1);
+  border-color: rgba(26,140,255,0.45);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(26,140,255,0.2);
+}
+.btn-review i:first-child { font-size: 1rem; color: #4285f4; }
 
 /* === REVEAL ON SCROLL ANIMATION === */
 .reveal-on-scroll {

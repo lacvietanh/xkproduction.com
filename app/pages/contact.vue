@@ -115,15 +115,30 @@
       </div>
     </section>
 
-    <!-- Map -->
-    <section style="padding: 0 0 5rem;">
+    <!-- Google Maps Embed -->
+    <section class="map-section">
       <div class="max-width">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+        <h2 class="map-heading"><i class="fa-solid fa-map-location-dot"></i> Vị trí XKStudio</h2>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.123!2d107.11719352335317!3d11.71792651529057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDQzJzA0LjUiTiAxMDfCsDA3JzAyLjAiRQ!5e0!3m2!1svi!2svn!4v1714500000000!5m2!1svi!2svn"
+            width="100%"
+            height="420"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Vị trí XKStudio trên Google Maps - QL14 km25, Nghĩa Trung, Bù Đăng, Bình Phước"
+          ></iframe>
           <a
             href="https://www.google.com/maps/search/?api=1&query=11.71792651529057,107.11719352335317"
             target="_blank" rel="noopener"
-            style="display:flex;align-items:center;justify-content:center;height:380px;background:rgba(20,24,45,0.6);color:var(--primary);font-size:1rem;font-weight:600;text-decoration:none;gap:0.75rem;"
-          ><i class="fa-solid fa-map-location-dot" style="font-size:2rem;"></i> Xem vị trí XKStudio trên Google Maps</a>
+            class="map-directions-link"
+          >
+            <i class="fa-solid fa-diamond-turn-right"></i>
+            Chỉ đường đến XKStudio
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i>
+          </a>
         </div>
       </div>
     </section>
@@ -152,6 +167,7 @@ useSchemaOrg([
     telephone: '+84355356294',
     email: 'xkstudio29@gmail.com',
     url: 'https://xkproduction.com',
+    image: 'https://xkproduction.com/images/hero-studio.png',
     address: {
       streetAddress: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng',
       addressLocality: 'Bình Phước',
@@ -159,10 +175,19 @@ useSchemaOrg([
       postalCode: '830000',
       addressCountry: 'VN'
     },
+    geo: { latitude: '11.71792', longitude: '107.11719' },
+    hasMap: 'https://maps.google.com/?q=11.71792,107.11719',
     openingHoursSpecification: [
       { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '07:00', closes: '22:00' },
       { dayOfWeek: ['Saturday','Sunday'], opens: '08:00', closes: '20:00' }
-    ]
+    ],
+    priceRange: '350.000₫ – 3.500.000₫',
+    aggregateRating: {
+      ratingValue: '4.9',
+      ratingCount: 2000,
+      bestRating: '5',
+      worstRating: '1'
+    }
   })
 ])
 
@@ -324,11 +349,65 @@ const contactInfo = [
 .form-submit { width: 100%; padding: 1rem; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
 .form-submit:disabled { opacity: 0.65; cursor: not-allowed; }
 
+/* === MAP SECTION === */
+.map-section {
+  padding: 0 0 5rem;
+}
+.map-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.map-heading i {
+  color: var(--primary);
+}
+.map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(26,140,255,0.12);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  position: relative;
+}
+.map-container iframe {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  border: none;
+  filter: brightness(0.85) contrast(1.1) saturate(0.9);
+  transition: filter 0.35s ease;
+}
+.map-container:hover iframe {
+  filter: brightness(0.95) contrast(1.05) saturate(1);
+}
+.map-directions-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  background: rgba(20,24,45,0.9);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-top: 1px solid rgba(26,140,255,0.12);
+  transition: all 0.28s ease;
+}
+.map-directions-link:hover {
+  background: rgba(26,140,255,0.08);
+  color: #5bbfff;
+}
+
 @media (max-width: 992px) {
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
 }
 @media (max-width: 576px) {
   .form-row { grid-template-columns: 1fr; }
   .page-hero h1 { font-size: 1.9rem; }
+  .map-container iframe { min-height: 280px; }
 }
 </style>
