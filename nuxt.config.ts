@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   // === SITE CONFIG — dùng bởi @nuxtjs/seo ===
   site: {
     url: 'https://xkproduction.com',
-    name: 'XKStudio',
-    description: 'XKStudio — Phòng thu âm chuyên nghiệp tại Bình Phước. Hoà âm phối khí, Mix & Master chuẩn Spotify, thu âm bài hát giá rẻ từ 350.000₫, quay MV/TVC, cho thuê âm thanh ánh sáng sân khấu sự kiện trọn gói. Hotline: 0355.356.294',
+    name: 'XKStudio — Phòng Thu Âm Chuyên Nghiệp',
+    description: 'XKStudio — Phòng thu âm chuyên nghiệp tại Bình Phước & Đồng Nai. Hoà âm phối khí chuẩn quốc tế, Mix & Master Spotify-compliant, Thu âm chuyên nghiệp từ 350K, Quay MV/TVC, Cho thuê Sound & Lighting sự kiện. 7+ năm kinh nghiệm, 2000+ dự án thành công.',
     defaultLocale: 'vi',
     trailingSlash: false,
     indexable: true,

@@ -60,10 +60,10 @@
         <h2 class="lb-gallery-title">Hình ảnh thực tế</h2>
         <div class="lb-gallery-grid">
           <div class="lb-gallery-item">
-            <img src="/images/quocchi-1.jpg" alt="Hệ thống âm thanh ánh sáng sân khấu sự kiện XKStudio - Quốc Chí Sound & Lighting" />
+            <img src="/images/quocchi-2.jpg" alt="Hệ thống âm thanh ánh sáng sân khấu sự kiện XKStudio - Quốc Chí Sound & Lighting" />
           </div>
           <div class="lb-gallery-item">
-            <img src="/images/quocchi-2.jpg" alt="Ban nhạc live biểu chuyên nghiệp tại sự kiện - XKStudio" />
+            <img src="/images/quocchi-3.jpg" alt="Ban nhạc live biểu chuyên nghiệp tại sự kiện - XKStudio" />
           </div>
           <div class="lb-gallery-item">
             <img src="/images/quocchi-3.jpg" alt="Thiết kế sân khấu và lắp đặt âm thanh ánh sáng chuyên nghiệp" />

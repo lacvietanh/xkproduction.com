@@ -58,10 +58,12 @@
             <span class="nav-indicator" aria-hidden="true"></span>
           </NuxtLink>
         </li>
+        <li class="nav-separator" aria-hidden="true"></li>
         <li>
           <NuxtLink to="/contact" class="nav-link nav-cta" title="Liên hệ đặt lịch thu âm XKStudio" :aria-current="$route.path === '/contact' ? 'page' : undefined">
-            <span class="nav-icon"><i class="fa-solid fa-paper-plane"></i></span>
-            <span class="nav-text">Liên hệ</span>
+            <span class="nav-icon"><i class="fa-solid fa-phone"></i></span>
+            <span class="nav-text">Đặt Lịch Ngay</span>
+            <span class="nav-pulse" aria-hidden="true"></span>
           </NuxtLink>
         </li>
       </ul>
@@ -273,27 +275,60 @@ onMounted(() => {
 }
 .nav-text { line-height: 1; }
 
-/* --- CTA (Liên hệ) — Premium button --- */
+/* --- CTA (Đặt Lịch Ngay) — Premium button --- */
+.nav-separator {
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(180deg, transparent, rgba(26,140,255,0.3), transparent);
+  margin: 0 0.3rem;
+  border-radius: 1px;
+}
+
 .nav-cta {
-  background: linear-gradient(135deg, rgba(26,140,255,0.18) 0%, rgba(0,229,192,0.08) 100%);
-  border: 1px solid rgba(26, 140, 255, 0.35);
+  background: linear-gradient(135deg, rgba(26,140,255,0.22) 0%, rgba(0,229,192,0.12) 100%);
+  border: 1.5px solid rgba(26, 140, 255, 0.45);
   font-weight: 700;
   color: #5bbfff;
   transition: all 0.32s cubic-bezier(0.23,1,0.32,1);
-  box-shadow: 0 0 0 rgba(26,140,255,0);
+  box-shadow: 0 0 0 rgba(26,140,255,0), inset 0 0 0 rgba(26,140,255,0);
   animation: ctaNavPulse 3s ease-in-out infinite;
+  position: relative;
+  padding: 0.55rem 1rem;
 }
+
+.nav-pulse {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: #00e5c0;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 rgba(0,229,192,0.6);
+  animation: navPulseAnim 2s ease-in-out infinite;
+}
+@keyframes navPulseAnim {
+  0% { box-shadow: 0 0 0 0 rgba(0,229,192,0.8); }
+  70% { box-shadow: 0 0 0 10px rgba(0,229,192,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,229,192,0); }
+}
+
 @keyframes ctaNavPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(26,140,255,0), inset 0 0 0 rgba(26,140,255,0); }
-  50%       { box-shadow: 0 0 14px rgba(26,140,255,0.2), inset 0 0 12px rgba(26,140,255,0.05); }
+  50%       { box-shadow: 0 0 16px rgba(26,140,255,0.25), inset 0 0 12px rgba(26,140,255,0.08); }
 }
 .nav-cta:hover {
   background: linear-gradient(135deg, #1a8cff 0%, #00d4aa 100%);
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 0 28px rgba(26,140,255,0.5), 0 4px 16px rgba(0,0,0,0.3);
-  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(26,140,255,0.6), 0 6px 20px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
   animation: none;
+}
+.nav-cta:hover .nav-pulse {
+  animation: none;
+  box-shadow: 0 0 12px rgba(0,229,192,0.8);
 }
 
 /* ===========================================
