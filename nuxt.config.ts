@@ -3,9 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-04-17',
   devtools: { enabled: true },
 
-  modules: ['@nuxtjs/seo'],
+  modules: ['@nuxtjs/sitemap', '@nuxtjs/robots'],
 
-  // === SITE CONFIG — dùng bởi @nuxtjs/seo ===
+  // === SITE CONFIG — giữ nguyên ===
   site: {
     url: 'https://xkproduction.com',
     name: 'XKStudio — Phòng Thu Âm Chuyên Nghiệp',
@@ -16,12 +16,9 @@ export default defineNuxtConfig({
   },
 
   // === SEO MODULE CONFIG ===
-  ogImage: { enabled: true },
-  robots: {
-    disallow: ['/cdn-cgi/'],
-  },
   sitemap: {
     strictNuxtContentPaths: false,
+    zeroRuntime: true,
     urls: [
       { loc: '/',          priority: 1,    changefreq: 'weekly'  },
       { loc: '/services',  priority: 0.9,  changefreq: 'weekly'  },
@@ -35,8 +32,11 @@ export default defineNuxtConfig({
       { loc: '/privacy',   priority: 0.3,  changefreq: 'yearly'  },
     ],
   },
+  robots: {
+    disallow: ['/cdn-cgi/'],
+  },
 
-  // === APP HEAD — Global Meta Tags ===
+  // === APP HEAD — giữ nguyên ===
   app: {
     head: {
       charset: 'utf-8',

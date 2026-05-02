@@ -81,5 +81,3 @@ test-results/
 *.bak
 *.tmp
 *.temp
-.nitro/
-package-lock.json
