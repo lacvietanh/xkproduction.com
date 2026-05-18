@@ -54,7 +54,7 @@
       <div class="url-label">Preview URL:</div>
       <div class="url-display">{{ url }}</div>
       <button class="copy-btn" @click="copyToClipboard(url)">
-        {{ copied ? 'Copied!' : 'Copy' }}
+        {{ copied ? 'Copied!' : copyError ? 'Failed!' : 'Copy' }}
       </button>
     </div>
   </div>
@@ -77,6 +77,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const activePlatform = ref<'facebook' | 'twitter' | 'linkedin'>('facebook')
 const copied = ref(false)
+const copyError = ref(false)
 
 const title = computed(() => props.title)
 const description = computed(() => props.description)
@@ -108,11 +109,16 @@ const copyToClipboard = async (text: string) => {
   try {
     await navigator.clipboard.writeText(text)
     copied.value = true
+    copyError.value = false
     setTimeout(() => {
       copied.value = false
     }, 2000)
   } catch (err) {
     console.error('Failed to copy:', err)
+    copyError.value = true
+    setTimeout(() => {
+      copyError.value = false
+    }, 2000)
   }
 }
 </script>

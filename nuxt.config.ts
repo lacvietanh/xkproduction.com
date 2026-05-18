@@ -202,4 +202,11 @@ export default defineNuxtConfig({
 
   // === TYPESCRIPT ===
   typescript: { strict: true },
+
+  // === RUNTIME CONFIG ===
+  runtimeConfig: {
+    public: {
+      formspreeEndpoint: 'https://formspree.io/f/mojybjvk',
+    }
+  },
 })

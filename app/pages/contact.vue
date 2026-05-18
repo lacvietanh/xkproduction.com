@@ -199,10 +199,11 @@ useSchemaOrg([
 /* === FORMSPREE INTEGRATION ===
  * Bước 1: Đăng ký tại https://formspree.io (miễn phí)
  * Bước 2: Tạo New Form, lấy Form ID (dạng: xyzabcde)
- * Bước 3: Thay 'YOUR_FORM_ID' bên dưới bằng ID của bạn
+ * Bước 3: Thay endpoint trong nuxt.config.ts
  * Bước 4: Trong Formspree dashboard, thêm email nhận thông báo
  */
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mojybjvk'
+const config = useRuntimeConfig()
+const FORMSPREE_ENDPOINT = config.public.formspreeEndpoint
 
 const form = reactive({ name: '', phone: '', email: '', service: '', message: '' })
 const formErrors = reactive({ name: '', phone: '', service: '', message: '' })

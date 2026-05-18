@@ -76,14 +76,19 @@ export const useOpenGraph = (options: OpenGraphOptions = {}) => {
 
   // Set canonical URL and alternate links
   useHead(() => {
-    const head: any = {
+    interface HeadConfig {
+      link: Array<Record<string, string>>;
+      meta?: Array<Record<string, string>>;
+    }
+    
+    const head: HeadConfig = {
       link: [
         { rel: 'canonical', href: config.url },
         { rel: 'alternate', hreflang: 'vi-VN', href: config.url },
         { rel: 'alternate', hreflang: 'x-default', href: config.url },
         {
           rel: 'image_src',
-          href: config.image,
+          href: config.image as string,
         },
       ],
     };
@@ -135,8 +140,8 @@ export const useOpenGraph = (options: OpenGraphOptions = {}) => {
 /**
  * Generate JSON-LD structured data for social sharing and SEO
  */
-function generateJsonLd(config: any) {
-  const jsonLd: any = {
+function generateJsonLd(config: OpenGraphOptions & { siteName?: string }): Record<string, any> {
+  const jsonLd: Record<string, any> = {
     '@context': 'https://schema.org',
   };
 

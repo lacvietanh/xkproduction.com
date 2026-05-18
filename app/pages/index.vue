@@ -38,7 +38,7 @@
         <h2 class="section-heading neon-accent">DỰ ÁN CHẠM ĐẾN KHÁN GIẢ</h2>
         <div class="projects-grid">
           <div
-            v-for="(w, i) in works" :key="i"
+            v-for="w in works" :key="`${w.title}-${w.artist}`"
             class="project-card glass-card"
             @click="openLightbox(w)"
             role="button" tabindex="0"
@@ -147,9 +147,10 @@
           <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-comment"></i></span><span>Zalo: 0355.356.294</span></a>
         </div>
         <Transition name="toast">
-          <div v-if="formToast" class="form-toast" role="alert">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Đã gửi thành công! Chúng tôi sẽ liên hệ bạn sớm.</span>
+          <div v-if="formToast !== 'idle'" class="form-toast" :class="`form-toast-${formToast}`" role="alert">
+            <i v-if="formToast === 'success'" class="fa-solid fa-circle-check"></i>
+            <i v-else class="fa-solid fa-circle-exclamation"></i>
+            <span>{{ formToast === 'success' ? 'Đã gửi thành công! Chúng tôi sẽ liên hệ bạn sớm.' : formErrorMessage }}</span>
           </div>
         </Transition>
         <form class="contact-form glass-card" @submit.prevent="submitForm" novalidate>
@@ -196,7 +197,7 @@
     <p class="testimonials-subtitle">Hơn 2000+ nghệ sĩ đã tin tưởng XKProduction cho dự án âm nhạc của mình</p>
     <div class="testimonials-grid">
       <div
-        v-for="(t, i) in testimonials.slice(0, 4)" :key="i"
+        v-for="t in testimonials.slice(0, 4)" :key="t.name"
         class="testimonial-card glass-card"
       >
         <div class="tcard-header">
@@ -207,7 +208,7 @@
             <strong class="tcard-name">{{ t.name }}</strong>
             <span class="tcard-role">{{ t.role }}</span>
             <div class="tcard-stars">
-              <i v-for="n in 5" :key="n" class="fa-solid fa-star"></i>
+              <i v-for="n in 5" :key="`star-${n}`" class="fa-solid fa-star"></i>
             </div>
           </div>
           <span class="tcard-quote-icon"><i class="fa-solid fa-quote-right"></i></span>
@@ -465,7 +466,8 @@ if (import.meta.client) {
 /* === FORM STATE === */
 const form = reactive({ name: '', phone: '', type: '', message: '' })
 const formErrors = reactive({ name: '', phone: '' })
-const formToast = ref(false)
+const formToast = ref<'idle' | 'success' | 'error'>('idle')
+const formErrorMessage = ref('')
 const formSubmitting = ref(false)
 
 function validateField(field: 'name' | 'phone') {
@@ -483,8 +485,10 @@ async function submitForm() {
   validateField('phone')
   if (formErrors.name || formErrors.phone) return
   formSubmitting.value = true
+  formToast.value = 'idle'
+  const config = useRuntimeConfig()
   try {
-    const res = await fetch('https://formspree.io/f/mojybjvk', {
+    const res = await fetch(config.public.formspreeEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
@@ -496,15 +500,19 @@ async function submitForm() {
       })
     })
     formSubmitting.value = false
-    formToast.value = true
     if (res.ok) {
+      formToast.value = 'success'
       Object.assign(form, { name: '', phone: '', type: '', message: '' })
+    } else {
+      formToast.value = 'error'
+      formErrorMessage.value = 'Gửi thất bại. Vui lòng thử lại sau.'
     }
-  } catch {
+  } catch (error) {
     formSubmitting.value = false
-    formToast.value = true
+    formToast.value = 'error'
+    formErrorMessage.value = 'Lỗi kết nối. Vui lòng kiểm tra internet và thử lại.'
   }
-  setTimeout(() => { formToast.value = false }, 4000)
+  setTimeout(() => { formToast.value = 'idle' }, 4000)
 }
 
 /* === AVATAR GRADIENTS === */
