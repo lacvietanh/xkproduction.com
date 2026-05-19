@@ -3,6 +3,9 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "paths": {
+      "wavesurfer.js": ["./node_modules/wavesurfer.js/dist/wavesurfer.d.ts"]
+    }
   }
 }
