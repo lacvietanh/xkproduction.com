@@ -22,7 +22,7 @@ const BASE_URL = 'https://xkproduction.com'
 // Initialize global Open Graph configuration
 useOpenGraph({
   title: 'XKProduction - Phòng Thu Âm Chuyên Nghiệp Bình Phước | Hoà Âm Phối Khí | Mix Master',
-  description: 'Phòng thu âm chuyên nghiệp XKProduction tại Bình Phước: Thu âm bài hát từ 350.000₫, hoà âm phối khí, mix & master chuẩn Spotify, quay MV/TVC, cho thuê âm thanh ánh sáng sân khấu sự kiện. 2000+ dự án thành công.',
+  description: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án. Bắt đầu tư vấn miễn phí.',
   image: 'https://xkproduction.com/images/xk-studio-production.jpg',
   type: 'business.business',
   locale: 'vi_VN',
@@ -34,7 +34,7 @@ useSeoMeta({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk}` : 'XKProduction - Phòng Thu Âm Chuyên Nghiệp | Mixing | Mastering | Quay MV/TVC | Sản Xuất Âm Nhạc';
   },
-  description: 'XKProduction — Phòng thu âm chuyên nghiệp tại Bình Phước. Thu âm bài hát giá rẻ từ 350.000₫, hoà âm phối khí online, mix master chuẩn Spotify, quay MV/TVC, sân khấu sự kiện & âm thanh ánh sáng trọn gói. Hotline: 0355.356.294',
+  description: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. Hoà âm phối khí, mix & master chuẩn Spotify, thu âm chuyên nghiệp. 2000+ dự án. Hotline: 0355.356.294',
   keywords: 'XKProduction, xkproduction.com, phòng thu âm, phòng thu âm chuyên nghiệp, phòng thu âm Bình Phước, thu âm bài hát, thu âm bài hát giá bao nhiêu, hoà âm phối khí, hoà âm phối khí online, mix master, mix master giá rẻ, mixing mastering, sản xuất âm nhạc, quay mv, quay tvc, sân khấu sự kiện, âm thanh ánh sáng, cho thuê âm thanh, cho thuê ánh sáng, live band, sound light, studio bình phước, phòng thu uy tín, bảng giá thu âm, nhạc sĩ, music producer',
   author: 'XKProduction - Nguyễn Xuân Kiệt',
 })

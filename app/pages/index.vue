@@ -33,6 +33,30 @@
         </div>
       </section>
 
+      <!-- 3 ENTRY POINTS — B2C / B2B / EDUCATION -->
+      <section class="entry-points-section">
+        <div class="entry-points-grid">
+          <NuxtLink to="/services" class="entry-point-card glass-card">
+            <div class="entry-icon"><i class="fa-solid fa-microphone"></i></div>
+            <h3>Tôi là Nghệ Sĩ / Ca Sĩ</h3>
+            <p>Nâng tầm bản nhạc với mix, master, hoà âm chuyên nghiệp</p>
+            <span class="entry-cta">Vào luồng B2C →</span>
+          </NuxtLink>
+          <NuxtLink to="/live-band" class="entry-point-card glass-card">
+            <div class="entry-icon"><i class="fa-solid fa-headphones"></i></div>
+            <h3>Tôi Cần Âm Thanh Sự Kiện</h3>
+            <p>Setup âm thanh chuyên nghiệp cho sân khấu, sự kiện, livestream</p>
+            <span class="entry-cta">Vào luồng B2B →</span>
+          </NuxtLink>
+          <NuxtLink to="/courses" class="entry-point-card glass-card">
+            <div class="entry-icon"><i class="fa-solid fa-book"></i></div>
+            <h3>Tôi Muốn Học Sản Xuất</h3>
+            <p>Khóa học từ cơ bản đến nâng cao — từ mentor có 7 năm kinh nghiệm</p>
+            <span class="entry-cta">Vào luồng Education →</span>
+          </NuxtLink>
+        </div>
+      </section>
+
       <!-- DỰ ÁN TIÊU BIỂU -->
       <section class="featured-section">
         <h2 class="section-heading neon-accent">DỰ ÁN CHẠM ĐẾN KHÁN GIẢ</h2>
@@ -123,11 +147,10 @@
               <strong class="founder-name">Nguyễn Xuân Kiệt</strong>
               <span class="founder-title-badge">Music Producer &amp; Founder</span>
             </div>
+            <p class="founder-story">Kiệt bắt đầu làm nhạc từ năm 2017 với một laptop và phòng ngủ cách âm bằng chăn. 7 năm sau, XKProduction đã đồng hành cùng hơn 2000 dự án — từ demo đầu tay của ca sĩ mới tới bản phối phát hành chính thức trên Spotify. Điều không thay đổi: mỗi bản nhạc được nghe đủ lần trước khi ra ngoài.</p>
             <blockquote class="founder-quote">"Âm nhạc không chỉ để nghe, mà là để cảm nhận.<br/>Tạo ra âm thanh là kỹ thuật, chạm đến trái tim mới là nghệ thuật."</blockquote>
-            <div class="founder-credentials">
-              <span><i class="fa-solid fa-award"></i> 7+ năm kinh nghiệm</span>
-              <span><i class="fa-solid fa-compact-disc"></i> 2000+ dự án</span>
-              <span><i class="fa-solid fa-graduation-cap"></i> 50+ học viên</span>
+            <div class="founder-cta">
+              <NuxtLink to="/contact" class="btn-founder-cta">Đặt lịch tư vấn miễn phí →</NuxtLink>
             </div>
             <div class="founder-socials">
               <a href="https://www.youtube.com/@Xkstudio29" target="_blank" rel="noopener" aria-label="YouTube XKProduction"><i class="fa-brands fa-youtube"></i></a>
@@ -235,9 +258,9 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'XKproduction - Phòng Thu Âm Chuyên Nghiệp | Mixing | Mastering | Mv Tvc | Sản Xuất Âm Nhạc',
-  description: 'XKProduction — Phòng thu âm chuyên nghiệp tại Bình Phước: Thu âm bài hát từ 350.000₫, hoà âm phối khí, mix & master chuẩn Spotify, quay MV/TVC, cho thuê âm thanh ánh sáng sân khấu sự kiện trọn gói. Hơn 2000 dự án hoàn thiện. Hotline: 0355.356.294',
+  description: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án. Bắt đầu tư vấn miễn phí.',
   ogTitle: 'XKProduction — Phòng Thu Âm Chuyên Nghiệp | Mix Master | Hoà Âm | Sân Khấu',
-  ogDescription: 'Phòng thu âm chuyên nghiệp XKProduction: Thu âm bài hát, hoà âm phối khí, mix & master chuẩn quốc tế, quay MV/TVC & cho thuê âm thanh ánh sáng sự kiện. 2000+ dự án thành công. Hotline: 0355.356.294.',
+  ogDescription: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án thành công. Hotline: 0355.356.294.',
   ogImage: 'https://xkproduction.com/images/Xkpreviewnew.png',
   ogImageWidth: '1200',
   ogImageHeight: '630',
@@ -246,7 +269,7 @@ useSeoMeta({
   ogUrl: 'https://xkproduction.com',
   twitterCard: 'summary_large_image',
   twitterTitle: 'XKProduction — Phòng Thu Âm & Mix Master Chuyên Nghiệp',
-  twitterDescription: 'Thu âm bài hát từ 350k, hoà âm phối khí, mix master chuẩn Spotify tại XKProduction. Hotline: 0355.356.294',
+  twitterDescription: 'Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án. Hotline: 0355.356.294',
   twitterImage: 'https://xkproduction.com/images/Xkpreviewnew.png',
   keywords: 'XKProduction, xkproduction.com, phòng thu âm, phòng thu âm chuyên nghiệp, thu âm bài hát, hoà âm phối khí, mix master, mixing mastering, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc, phòng thu âm bình phước, phòng thu âm uy tín, bảng giá thu âm, studio bình phước, nhạc sĩ, sản xuất âm nhạc',
   author: 'Nguyễn Xuân Kiệt - XKProduction',
@@ -407,7 +430,7 @@ const works = [
   },
   {
     title: 'Kiếp Sau',
-    artist: 'Phương Thanh Tuyển (Cover)',
+    artist: 'Phương Thanh Tuyền (Cover)',
     url: 'https://www.youtube.com/watch?v=z4GB-X1OiPg',
     thumb: `https://img.youtube.com/vi/z4GB-X1OiPg/hqdefault.jpg`,
     embedId: 'z4GB-X1OiPg'
@@ -794,6 +817,86 @@ const testimonials = [
 .stat-label {
   font-size: 0.6rem; font-weight: 700; letter-spacing: 1px;
   color: rgba(156,175,207,0.7); text-transform: uppercase; margin-top: 0.25rem;
+}
+
+/* === 3 ENTRY POINTS === */
+.entry-points-section {
+  position: relative; z-index: 1;
+}
+.entry-points-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 0;
+}
+.entry-point-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+.entry-point-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(26, 140, 255, 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.42s;
+  pointer-events: none;
+}
+.entry-point-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 35px rgba(26, 140, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(26, 140, 255, 0.35);
+}
+.entry-point-card:hover::before {
+  opacity: 1;
+}
+.entry-icon {
+  font-size: 2.4rem;
+  color: #5bbfff;
+  filter: drop-shadow(0 0 16px rgba(26, 140, 255, 0.65));
+  transition: all 0.35s;
+  margin-bottom: 0.2rem;
+}
+.entry-point-card:hover .entry-icon {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 24px rgba(26, 140, 255, 0.85));
+}
+.entry-point-card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #e6edf3;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.entry-point-card p {
+  font-size: 0.75rem;
+  color: rgba(156, 175, 207, 0.8);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+.entry-cta {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #5bbfff;
+  text-shadow: 0 0 12px rgba(26, 140, 255, 0.4);
+  transition: all 0.25s;
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+.entry-point-card:hover .entry-cta {
+  text-shadow: 0 0 20px rgba(26, 140, 255, 0.85);
+  color: #fff;
 }
 
 /* === PROJECTS === */
@@ -1185,20 +1288,33 @@ a.contact-item:hover { color: rgba(230,237,243,0.95); transform: translateX(4px)
   background: rgba(26,140,255,0.15); border: 1px solid rgba(26,140,255,0.28);
   color: #5bbfff; text-transform: uppercase;
 }
+.founder-story {
+  font-size: 0.8rem; font-weight: 500;
+  color: rgba(230, 237, 243, 0.85); line-height: 1.75;
+  margin: 0.6rem 0; padding: 0;
+}
 .founder-quote {
   font-size: 0.85rem; font-weight: 500; font-style: italic;
   color: rgba(230,237,243,0.9); line-height: 1.7;
-  margin: 0; padding: 0; border: none;
+  margin: 0.8rem 0 0; padding: 0; border: none;
 }
-.founder-credentials {
-  display: flex; gap: 1rem; flex-wrap: wrap;
+.founder-cta {
+  margin-top: 1rem;
+  display: flex;
 }
-.founder-credentials span {
-  font-size: 0.72rem; font-weight: 600;
-  color: rgba(156,175,207,0.8); display: flex; align-items: center; gap: 0.35rem;
+.btn-founder-cta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #5bbfff;
+  text-decoration: none;
+  transition: all 0.3s;
+  letter-spacing: 0.5px;
 }
-.founder-credentials i { color: #5bbfff; font-size: 0.8rem; }
-.founder-socials { display: flex; gap: 0.6rem; }
+.btn-founder-cta:hover {
+  color: #fff;
+  text-shadow: 0 0 16px rgba(26, 140, 255, 0.7);
+}
+.founder-socials { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
 .founder-socials a {
   width: 32px; height: 32px; border-radius: 8px;
   background: rgba(255,255,255,0.06); border: 1px solid rgba(26,140,255,0.15);

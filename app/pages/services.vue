@@ -113,6 +113,24 @@
           </div>
         </div>
 
+        <!-- Kí âm sheet nhạc -->
+        <div class="pricing-section">
+          <h3 class="pricing-cat"><i class="fa-solid fa-file-audio"></i> Kí âm sheet nhạc</h3>
+          <div class="pricing-table">
+            <div class="pricing-card">
+              <h4 class="pricing-name">Kí âm chuyên nghiệp</h4>
+              <div class="pricing-price">Liên hệ báo giá</div>
+              <p class="pricing-desc">Kí âm các bản nhạc, tạo sheet nhạc chuyên nghiệp cho ca sĩ, nhạc công, hoặc đăng ký bản quyền.</p>
+              <ul class="pricing-features">
+                <li>Nghe và chép lại thành bản nhạc (Sheet nhạc)</li>
+                <li>Chép hợp âm, giai điệu, lời bài hát chuẩn xác</li>
+                <li>Xuất file PDF, MIDI, MusicXML</li>
+              </ul>
+              <NuxtLink to="/contact" class="btn btn-primary pricing-cta">Tư vấn ngay</NuxtLink>
+            </div>
+          </div>
+        </div>
+
         <!-- Live Band & Âm thanh Sự kiện -->
         <div class="pricing-section">
           <h3 class="pricing-cat"><i class="fa-solid fa-guitar"></i> Live Band &amp; Âm thanh Sự kiện</h3>
@@ -197,7 +215,7 @@ useSchemaOrg([
     provider: { name: 'XKProduction', url: 'https://xkproduction.com' },
     offers: [
       { name: 'Hoà âm Cơ bản', price: '1500000', priceCurrency: 'VND', description: 'Phối khí 1 thể loại, MIDI programming cơ bản, stem xuất riêng' },
-      { name: 'Hoà âm Chuyên nghiệp', price: '3500000', priceCurrency: 'VND', description: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn' }
+      { name: 'Hoà âm Cao Cấp', price: '2500000', priceCurrency: 'VND', description: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn' }
     ]
   })
 ])
@@ -211,7 +229,8 @@ const packages = [
   { faIcon: 'fa-solid fa-trophy', title: 'Gói Chuyên Sâu (Pro)', category: 'THU ÂM', desc: 'Phù hợp với ca sĩ chuyên nghiệp, phát hành thương mại, MV, Spotify, Apple Music...', price: 'TỪ 1.000.000₫', isPopular: true, color: 'green' },
   { faIcon: 'fa-solid fa-star', title: 'Gói Cao cấp (Ultimated)', category: 'THU ÂM', desc: 'Dành cho nghệ sĩ thực thụ và dự án đòi hỏi sự chỉn chu tuyệt đối về kỹ thuật lẫn tư duy nghệ thuật.', price: 'TỪ 1.800.000₫', isPopular: true, color: 'green' },
   { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cơ bản', category: 'HÒA ÂM', desc: 'Demo, bài hát acoustic đơn giản, nhạc trẻ, pop-ballad cơ bản.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' },
-  { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Chuyên nghiệp', category: 'HÒA ÂM', desc: 'Dự án chuyên nghiệp, MV ca nhạc, nhạc TVC doanh nghiệp hoặc phối khí phức tạp.', price: 'TỪ 3.500.000₫', isPopular: false, color: 'orange' },
+  { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cao cấp', category: 'HÒA ÂM', desc: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn.', price: 'TỪ 2.500.000₫', isPopular: true, color: 'orange' },
+  { faIcon: 'fa-solid fa-file-audio', title: 'Kí âm sheet nhạc', category: 'KÍ ÂM', desc: 'Kí âm các bản nhạc, tạo sheet nhạc chuyên nghiệp cho ca sĩ và nhạc công.', price: 'LIÊN HỆ', isPopular: false, color: 'blue' },
   { faIcon: 'fa-solid fa-sliders', title: 'Mix & Mastering Chuyên nghiệp', category: 'MIX & MASTER', desc: 'Xử lý multi-track, EQ, Compressor, Reverb, Delay, chuẩn phát hành Spotify, Apple Music...', price: 'TỪ 500.000₫', isPopular: false, color: 'blue' },
   { faIcon: 'fa-solid fa-film', title: 'Quay MV chuyên nghiệp', category: 'VIDEO', desc: 'Quay MV 5 góc máy, bao gồm Studio và Ngoại cảnh, ekip đầy đủ.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' },
   { faIcon: 'fa-solid fa-guitar', title: 'Gói Tiệc & Đám cưới', category: 'LIVE BAND', desc: '50–300 khách. Loa active, ánh sáng LED, acoustic duo hoặc DJ chuyên nghiệp.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: false, color: 'orange' },
@@ -292,9 +311,9 @@ const hoaAmPlans = [
     featured: false, badge: ''
   },
   {
-    name: 'Hòa âm Chuyên nghiệp',
-    price: 'Từ 3.500.000₫',
-    desc: 'Dự án MV, TVC, nhạc phim hoặc phối khí phức tạp nhiều lớp.',
+    name: 'Hòa âm Cao Cấp',
+    price: 'Từ 2.500.000₫',
+    desc: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn.',
     features: ['Phối khí đa thể loại, đa lớp', 'Nhạc cụ thật (nếu cần)', 'Orchestration nếu yêu cầu', 'Full stem delivery', 'Unlimited revision', 'Hỗ trợ phát hành'],
     featured: true, badge: 'Chuyên nghiệp'
   }
@@ -322,6 +341,11 @@ const liveBandPlans = [
     features: ['Line array đôi + delay tower', 'Light show + laser chuyên nghiệp', 'Sân khấu modular lớn + truss', 'Multiple band & DJ set', 'Đội kỹ thuật đầy đủ (FOH, monitor, light)', 'Stage manager + giám sát toàn chương trình'],
     featured: false, badge: ''
   }
+]
+
+const services = [
+  { name: 'Hoà âm Cơ bản', price: '1500000', priceCurrency: 'VND', description: 'Phối khí 1 thể loại, MIDI programming cơ bản, stem xuất riêng' },
+  { name: 'Hoà âm Cao Cấp', price: '2500000', priceCurrency: 'VND', description: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn' }
 ]
 </script>
 

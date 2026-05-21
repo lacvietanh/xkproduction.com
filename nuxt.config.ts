@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://xkproduction.com',
     name: 'XKProduction — Phòng Thu Âm Chuyên Nghiệp',
-    description: 'XKProduction — Phòng thu âm chuyên nghiệp tại Bình Phước & Đồng Nai. Hoà âm phối khí chuẩn quốc tế, Mix & Master Spotify-compliant, Thu âm chuyên nghiệp từ 350K, Quay MV/TVC, Cho thuê Sound & Lighting sự kiện. 7+ năm kinh nghiệm, 2000+ dự án thành công.',
+    description: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. Hoà âm phối khí, Mix & Master chuẩn Spotify, thu âm chuyên nghiệp. 7+ năm kinh nghiệm, 2000+ dự án thành công.',
     defaultLocale: 'vi',
     trailingSlash: false,
     indexable: true,

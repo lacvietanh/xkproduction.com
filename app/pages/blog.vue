@@ -21,13 +21,10 @@
 
         <!-- Blog Grid -->
         <div class="blog-grid">
-          <article
+          <div
             v-for="(post, i) in filteredPosts" :key="i"
             class="blog-card"
             @click="togglePost(i)"
-            role="button"
-            tabindex="0"
-            @keydown.enter="togglePost(i)"
           >
             <div class="blog-card-thumb">
               <img :src="post.thumb" :alt="post.title" loading="lazy" />
@@ -38,7 +35,7 @@
             </div>
             <div class="blog-card-body">
               <h2 class="blog-card-title">{{ post.title }}</h2>
-              <p class="blog-card-excerpt">{{ post.excerpt }}</p>
+              <p class="blog-card-excerpt" v-show="expandedPost !== i">{{ post.excerpt }}</p>
               <div class="blog-card-meta">
                 <span><i class="fa-solid fa-user"></i> {{ post.author }}</span>
                 <span><i class="fa-solid fa-calendar"></i> {{ post.date }}</span>
@@ -46,17 +43,15 @@
               </div>
             </div>
 
-            <!-- Expandable Content -->
-            <Transition name="expand">
-              <div v-if="expandedPost === i" class="blog-card-content" @click.stop>
-                <div class="content-divider"></div>
-                <div class="blog-full-content" v-html="post.content"></div>
-                <div class="content-cta">
-                  <NuxtLink to="/contact" class="btn btn-primary">Liên hệ tư vấn</NuxtLink>
-                </div>
+            <!-- Expanded Content -->
+            <div class="blog-card-content" v-show="expandedPost === i">
+              <div class="content-divider"></div>
+              <div class="blog-full-content" v-html="post.content"></div>
+              <div class="content-cta">
+                <NuxtLink to="/contact" class="btn btn-primary" style="width: 100%; text-align: center;">Tư vấn dịch vụ</NuxtLink>
               </div>
-            </Transition>
-          </article>
+            </div>
+          </div>
         </div>
 
         <!-- CTA -->
@@ -177,6 +172,7 @@ function togglePost(index: number) {
 
 const blogPosts = [
   {
+    slug: 'thu-am-gia-2026',
     title: 'Thu Âm Bài Hát Giá Bao Nhiêu? Bảng Giá Chi Tiết 2026',
     excerpt: 'Tổng hợp bảng giá thu âm bài hát mới nhất tại các phòng thu chuyên nghiệp. So sánh giá và chất lượng để lựa chọn phù hợp nhất.',
     content: `<h3>Giá thu âm bài hát phụ thuộc vào những yếu tố nào?</h3>
@@ -199,6 +195,7 @@ const blogPosts = [
     tags: ['Bảng Giá', 'Thu Âm']
   },
   {
+    slug: 'phong-thu-am-binh-phuoc',
     title: 'Phòng Thu Âm Bình Phước — Tại Sao Chọn XKProduction?',
     excerpt: 'Khám phá lý do XKProduction trở thành phòng thu âm được nhiều nghệ sĩ tin tưởng nhất tại Bình Phước với chất lượng chuẩn quốc tế.',
     content: `<h3>XKProduction — Phòng thu âm chuyên nghiệp tại Bình Phước</h3>
@@ -221,6 +218,7 @@ const blogPosts = [
     tags: ['Giới Thiệu', 'Thu Âm']
   },
   {
+    slug: 'mix-master-huong-dan',
     title: 'Mix Master Là Gì? Hướng Dẫn Từ A-Z Cho Người Mới',
     excerpt: 'Hiểu rõ quy trình mixing và mastering — hai bước quan trọng nhất quyết định chất lượng bản nhạc của bạn.',
     content: `<h3>Mixing là gì?</h3>
@@ -241,6 +239,7 @@ const blogPosts = [
     tags: ['Kiến Thức', 'Mix & Master']
   },
   {
+    slug: 'hoa-am-phoi-khi-online',
     title: 'Hoà Âm Phối Khí Online — Quy Trình & Chi Phí',
     excerpt: 'Tìm hiểu quy trình hoà âm phối khí online chuyên nghiệp và bảng giá chi tiết tại XKProduction.',
     content: `<h3>Hoà âm phối khí là gì?</h3>

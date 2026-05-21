@@ -131,10 +131,9 @@ type AudioState = {
   error: string | null
 }
 
-const audioDemoSources = import.meta.glob('../../public/product-audio-demo/*.mp3', {
-  eager: true,
-  import: 'default'
-}) as Record<string, string>
+const audioDemoSources: Record<string, string> = {
+  '../../public/product-audio-demo/pop-rnb-1-Gm.102.mp3': '/product-audio-demo/pop-rnb-1-Gm.102.mp3'
+}
 
 useSeoMeta({
   title: 'Sản phẩm Âm nhạc tiêu biểu - XKProduction',
