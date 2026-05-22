@@ -77,94 +77,56 @@ useSeoMeta({
   keywords: 'blog âm nhạc, kiến thức thu âm, hướng dẫn mix master, cách hoà âm phối khí, phòng thu âm Bình Phước, thu âm bài hát giá bao nhiêu, mix master giá rẻ, hòa âm phối khí online, XKProduction blog'
 })
 
-useSchemaOrg([
+const { allBlogPosts: blogPosts } = useBlog()
+
+useSchemaOrg(() => [
   defineWebPage({
     name: 'Blog & Kiến Thức Âm Nhạc - XKProduction',
     description: 'Blog chia sẻ kiến thức về thu âm, mixing, mastering và sản xuất âm nhạc từ đội ngũ XKProduction.'
   }),
   {
     '@type': 'BreadcrumbList',
-    'itemListElement': [
-      { '@type': 'ListItem', 'position': 1, 'name': 'Trang chủ', 'item': 'https://xkproduction.com' },
-      { '@type': 'ListItem', 'position': 2, 'name': 'Blog & Kiến Thức Âm Nhạc', 'item': 'https://xkproduction.com/blog' }
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: 'https://xkproduction.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog & Kiến Thức Âm Nhạc', item: 'https://xkproduction.com/blog' }
     ]
   },
-  // BlogPosting schema cho từng bài viết (boost SEO mạnh)
   {
-    '@type': 'BlogPosting',
-    'headline': 'Thu Âm Bài Hát Giá Bao Nhiêu? Bảng Giá Chi Tiết 2026',
-    'description': 'Tổng hợp bảng giá thu âm bài hát mới nhất. Thu âm từ 350.000₫ tại XKProduction Bình Phước.',
-    'image': 'https://xkproduction.com/images/blog-thu-am-gia.jpg',
-    'author': { '@type': 'Organization', 'name': 'XKProduction', 'url': 'https://xkproduction.com' },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'XKProduction',
-      'logo': { '@type': 'ImageObject', 'url': 'https://xkproduction.com/images/Logoxkfix.png' }
-    },
-    'datePublished': '2026-04-28',
-    'dateModified': '2026-04-28',
-    'url': 'https://xkproduction.com/blog',
-    'keywords': 'thu âm bài hát, giá thu âm, bảng giá thu âm, XKProduction Bình Phước'
+    '@type': 'ItemList',
+    itemListElement: blogPosts.map((post: BlogPost, index: number) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `https://xkproduction.com/blog/${post.slug}`,
+      name: post.title
+    }))
   },
-  {
+  ...blogPosts.map((post: BlogPost) => ({
     '@type': 'BlogPosting',
-    'headline': 'Mix Master Là Gì? Hướng Dẫn Từ A-Z Cho Người Mới',
-    'description': 'Hiểu rõ quy trình mixing và mastering — hai bước quan trọng nhất quyết định chất lượng bản nhạc.',
-    'image': 'https://xkproduction.com/images/blog-mix-master.jpg',
-    'author': { '@type': 'Person', 'name': 'Nguyễn Xuân Kiệt', 'url': 'https://xkproduction.com/about' },
-    'publisher': {
+    headline: post.title,
+    description: post.excerpt,
+    image: `https://xkproduction.com${post.cover || post.thumb}`,
+    author: { '@type': 'Person', name: post.author, url: 'https://xkproduction.com/about' },
+    publisher: {
       '@type': 'Organization',
-      'name': 'XKProduction',
-      'logo': { '@type': 'ImageObject', 'url': 'https://xkproduction.com/images/Logoxkfix.png' }
+      name: 'XKProduction',
+      logo: { '@type': 'ImageObject', url: 'https://xkproduction.com/images/Logoxkfix.png' }
     },
-    'datePublished': '2026-04-20',
-    'dateModified': '2026-04-20',
-    'url': 'https://xkproduction.com/blog',
-    'keywords': 'mix master, mixing mastering, mix master giá rẻ, mixing mastering online'
-  },
-  {
-    '@type': 'BlogPosting',
-    'headline': 'Hoà Âm Phối Khí Online — Quy Trình & Chi Phí',
-    'description': 'Tìm hiểu quy trình hoà âm phối khí online chuyên nghiệp và bảng giá chi tiết tại XKProduction.',
-    'image': 'https://xkproduction.com/images/blog-hoa-am.jpg',
-    'author': { '@type': 'Organization', 'name': 'XKProduction', 'url': 'https://xkproduction.com' },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'XKProduction',
-      'logo': { '@type': 'ImageObject', 'url': 'https://xkproduction.com/images/Logoxkfix.png' }
-    },
-    'datePublished': '2026-04-15',
-    'dateModified': '2026-04-15',
-    'url': 'https://xkproduction.com/blog',
-    'keywords': 'hoà âm phối khí, hoà âm phối khí online, phối nhạc online, nhạc nền bài hát'
-  },
-  {
-    '@type': 'BlogPosting',
-    'headline': 'Phòng Thu Âm Bình Phước — Tại Sao Chọn XKProduction?',
-    'description': 'Khám phá lý do XKProduction trở thành phòng thu âm được nhiều nghệ sĩ tin tưởng nhất tại Bình Phước.',
-    'image': 'https://xkproduction.com/images/blog-phong-thu.jpg',
-    'author': { '@type': 'Person', 'name': 'Nguyễn Xuân Kiệt', 'url': 'https://xkproduction.com/about' },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'XKProduction',
-      'logo': { '@type': 'ImageObject', 'url': 'https://xkproduction.com/images/Logoxkfix.png' }
-    },
-    'datePublished': '2026-04-25',
-    'dateModified': '2026-04-25',
-    'url': 'https://xkproduction.com/blog',
-    'keywords': 'phòng thu âm Bình Phước, studio Bình Phước, thu âm Bình Phước'
-  }
+    datePublished: post.isoDate,
+    dateModified: post.isoDate,
+    url: `https://xkproduction.com/blog/${post.slug}`,
+    keywords: post.tags?.join(', ')
+  }))
 ])
 
 const activeTag = ref('Tất cả')
 
-const { allBlogPosts: blogPosts } = useBlog()
+const blogPostsSorted = computed(() => [...blogPosts].sort((a, b) => b.isoDate.localeCompare(a.isoDate)))
 
-const tags = computed(() => ['Tất cả', ...new Set(blogPosts.flatMap((p: BlogPost) => p.tags || []))])
+const tags = computed(() => ['Tất cả', ...new Set(blogPostsSorted.value.flatMap((p: BlogPost) => p.tags || []))])
 
 const filteredPosts = computed(() => {
-  if (activeTag.value === 'Tất cả') return blogPosts
-  return blogPosts.filter((p: BlogPost) => p.tags && p.tags.includes(activeTag.value))
+  if (activeTag.value === 'Tất cả') return blogPostsSorted.value
+  return blogPostsSorted.value.filter((p: BlogPost) => p.tags && p.tags.includes(activeTag.value))
 })
 </script>
 

@@ -423,3 +423,16 @@ h1, h2, h3, h4 { letter-spacing: -0.015em; }
   .hover-lift:hover { transform: none; box-shadow: none; }
   .card:hover { transform: none; }
 }
+
+/* ==========================================
+   PAGE TRANSITION
+   ========================================== */
+.article-transition-enter-active,
+.article-transition-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.article-transition-enter-from,
+.article-transition-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}

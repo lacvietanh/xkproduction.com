@@ -14,18 +14,19 @@
         <!-- Main Info -->
         <div class="main-content-area">
           <h2>Bảng giá dịch vụ Hoà âm Phối khí</h2>
-          <p>Mỗi bản phối tại XKProduction đều được thực hiện bởi Producer chuyên môn cao, sử dụng hệ thống thư viện âm thanh (Vst) và nhạc cụ thật chọn lọc.</p>
+          <p>Mỗi gói được thiết kế theo mức độ hoàn thiện của sản phẩm: từ demo gọn gàng, bản phát hành chỉn chu đến arrangement riêng cho dự án thương mại.</p>
 
           <div class="pricing-grid-detail">
-            <div v-for="p in hoaAmPlans" :key="p.name" class="pricing-card-detail" :class="{ featured: p.featured }">
+            <div v-for="p in hoaAmPlans" :key="p.name" class="pricing-card-detail" :class="{ featured: p.featured, premium: p.premium }">
               <div v-if="p.badge" class="pricing-badge-detail">{{ p.badge }}</div>
+              <div class="plan-level">{{ p.level }}</div>
               <h3>{{ p.name }}</h3>
-              <div class="price-tag">{{ p.price }}</div>
+              <div class="price-tag" :class="{ consult: p.premium }">{{ p.price }}</div>
               <p class="desc">{{ p.desc }}</p>
               <ul class="features-list">
-                <li v-for="f in p.features" :key="f"><i class="fa-solid fa-check text-green"></i> {{ f }}</li>
+                <li v-for="f in p.features" :key="f"><i class="fa-solid fa-check"></i> {{ f }}</li>
               </ul>
-              <NuxtLink to="/contact" class="btn-order">Đặt làm bản phối ngay <i class="fa-solid fa-arrow-right"></i></NuxtLink>
+              <button type="button" class="btn-order" @click="goToContact(p.premium)">{{ p.cta }} <i class="fa-solid fa-arrow-right"></i></button>
             </div>
           </div>
 
@@ -65,9 +66,9 @@
           </div>
 
           <div class="sidebar-card">
-            <h3>Gói Combo Tiết Kiệm</h3>
-            <p>Sở hữu trọn gói từ <strong>Hoà âm → Thu âm → Mix & Master</strong> với chi phí ưu đãi hơn khi đặt riêng lẻ từng dịch vụ.</p>
-            <NuxtLink to="/services" class="btn-sidebar-link">Xem bảng giá hub</NuxtLink>
+            <h3>Lộ trình sản xuất đồng bộ</h3>
+            <p>Kết hợp <strong>Hòa âm → Thu âm → Mix & Master</strong> để giữ màu âm nhất quán từ bản phối đến bản phát hành cuối.</p>
+            <NuxtLink to="/services" class="btn-sidebar-link">Xem dịch vụ liên quan</NuxtLink>
           </div>
         </aside>
       </div>
@@ -76,6 +77,10 @@
 </template>
 
 <script setup lang="ts">
+const goToContact = (isPremium = false) => {
+  navigateTo(isPremium ? '/contact?service=hoa-am-cao-cap' : '/contact?service=hoa-am')
+}
+
 useSeoMeta({
   title: 'Dịch vụ Hoà Âm Phối Khí Online Chuyên Nghiệp | XKProduction',
   description: 'Nhận hoà âm phối khí chuyên nghiệp cho ca khúc mới, cover, remake. Đa dạng thể loại: Pop, R&B, Rap, Acoustic. Bảng giá từ 1.5tr. Nhận file Stem đầy đủ. Tư vấn ngay.',
@@ -90,33 +95,67 @@ useSeoMeta({
 useSchemaOrg([
   defineWebPage({
     name: 'Dịch vụ Hoà Âm Phối Khí - XKProduction',
-    description: 'Bảng giá dịch vụ hoà âm phối khí mới nhất từ 1.500.000₫ đến 2.500.000₫ tại XKProduction.'
+    description: 'Ba gói hòa âm phối khí từ cơ bản đến cao cấp cho demo, phát hành và dự án thương mại chuyên nghiệp.'
   }),
   defineProduct({
     name: 'Dịch vụ Hoà Âm Phối Khí XKProduction',
-    description: 'Sản xuất âm nhạc, làm phối khí chuyên nghiệp đa thể loại cho nghệ sĩ.',
+    description: 'Sản xuất âm nhạc, hòa âm phối khí theo định hướng nghệ thuật riêng cho từng dự án.',
     image: 'https://xkproduction.com/images/Logoxkfix.png',
     offers: [
-      { name: 'Hoà Âm Cơ Bản', price: '1500000', priceCurrency: 'VND' },
-      { name: 'Hoà Âm Nâng cao', price: '2500000', priceCurrency: 'VND' }
+      { name: 'Hoà Âm Phối Khí Cơ Bản', price: '1500000', priceCurrency: 'VND' },
+      { name: 'Hoà Âm Phối Khí Nâng Cao', price: '3000000', priceCurrency: 'VND' }
     ]
   })
 ])
 
 const hoaAmPlans = [
   {
-    name: 'Hoà âm Cơ bản',
-    price: 'Từ 1.500.000₫',
-    desc: 'Phù hợp làm demo, bài hát acoustic đơn giản, nhạc trẻ, pop-ballad nhẹ nhàng.',
-    features: ['Phối khí 1 thể loại chủ đạo', 'Sử dụng thư viện MIDI cao cấp', 'Xuất file Stem tổng', '1 lần revision'],
-    featured: false, badge: ''
+    level: '01',
+    name: 'Hòa âm phối khí Cơ Bản',
+    price: '1.500.000đ',
+    desc: 'Dành cho demo, vocal cover, acoustic hoặc pop-ballad đơn giản cần cảm xúc rõ ràng và bố cục gọn.',
+    features: [
+      'Arrangement gọn gàng, dễ nghe',
+      'Tối ưu cảm xúc nền tảng của ca khúc',
+      'Phù hợp người mới hoặc dự án nhỏ',
+      '1 lần revision theo brief ban đầu'
+    ],
+    featured: false,
+    premium: false,
+    badge: '',
+    cta: 'Bắt đầu gói Cơ Bản'
   },
   {
-    name: 'Hoà âm Nâng cao',
-    price: 'Từ 2.500.000₫',
-    desc: 'Bản phối đa tầng, đa lớp nhạc cụ, phù hợp phát hành thương mại chuyên nghiệp.',
-    features: ['Phối khí đa thể loại, layering phức tạp', 'Nhạc cụ thật (Guitar/Violin nếu cần)', 'Orchestration chuyên sâu', 'Full stem delivery', 'Unlimited revision', 'Hỗ trợ phát hành'],
-    featured: true, badge: 'Đẳng cấp'
+    level: '02',
+    name: 'Hòa âm phối khí Nâng Cao',
+    price: '3.000.000đ',
+    desc: 'Phối khí nhiều layer hơn, xử lý cảm xúc chắc tay hơn cho sản phẩm phát hành nghiêm túc.',
+    features: [
+      'Layering và build arrangement chuyên sâu hơn',
+      'Có sound design và kiểm soát dynamics',
+      'Phù hợp YouTube, Spotify, MV hoặc single phát hành',
+      'Revision linh hoạt hơn gói cơ bản'
+    ],
+    featured: true,
+    premium: false,
+    badge: 'Recommended',
+    cta: 'Chọn gói Nâng Cao'
+  },
+  {
+    level: '03',
+    name: 'Hòa âm phối khí Cao Cấp',
+    price: 'Liên hệ tư vấn',
+    desc: 'Dành cho nghệ sĩ chuyên nghiệp hoặc dự án thương mại lớn cần workflow sản xuất chuyên sâu theo định hướng riêng.',
+    features: [
+      'Custom arrangement theo định hướng nghệ thuật',
+      'Live instruments, orchestral, cinematic hoặc yêu cầu đặc biệt',
+      'Tối ưu cho dự án thương mại quy mô lớn',
+      'Producer workflow chuyên sâu theo từng giai đoạn'
+    ],
+    featured: false,
+    premium: true,
+    badge: '',
+    cta: 'Liên hệ tư vấn'
   }
 ]
 </script>
@@ -166,63 +205,107 @@ const hoaAmPlans = [
 
 .pricing-grid-detail {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
   margin-bottom: 4rem;
 }
 
 .pricing-card-detail {
-  background: var(--bg-surface);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 2.2rem;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(26, 140, 255, 0.1), transparent 34%),
+    var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all 0.3s ease;
+  overflow: hidden;
+  min-height: 520px;
+  transition: transform 0.34s var(--ease-out-expo), border-color 0.34s var(--ease-out-expo), box-shadow 0.34s var(--ease-out-expo), background 0.34s var(--ease-out-expo);
+}
+.pricing-card-detail::after {
+  content: '';
+  position: absolute;
+  inset: auto -30% -45% 20%;
+  height: 190px;
+  background: radial-gradient(circle, rgba(26,140,255,0.16), transparent 68%);
+  opacity: 0;
+  transition: opacity 0.34s ease;
+  pointer-events: none;
 }
 .pricing-card-detail:hover {
-  transform: translateY(-4px);
-  border-color: rgba(26, 140, 255, 0.2);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-6px);
+  border-color: rgba(26, 140, 255, 0.32);
+  box-shadow: 0 22px 58px rgba(0, 0, 0, 0.36), 0 0 34px rgba(26, 140, 255, 0.08);
 }
+.pricing-card-detail:hover::after { opacity: 1; }
 .pricing-card-detail.featured {
-  border-color: var(--primary);
-  background: rgba(26, 140, 255, 0.03);
-  box-shadow: 0 0 30px rgba(26, 140, 255, 0.1);
+  border-color: rgba(26, 140, 255, 0.55);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(26, 140, 255, 0.2), transparent 36%),
+    rgba(26, 140, 255, 0.045);
+  box-shadow: 0 0 34px rgba(26, 140, 255, 0.13);
+}
+.pricing-card-detail.premium {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(0, 212, 170, 0.14), transparent 34%),
+    var(--bg-surface);
 }
 
 .pricing-badge-detail {
   position: absolute;
-  top: -12px;
-  left: 2.2rem;
-  background: var(--primary);
+  top: 1.1rem;
+  right: 1.1rem;
+  background: linear-gradient(135deg, #1a8cff, #00d4aa);
   color: #fff;
-  padding: 0.3rem 1rem;
+  padding: 0.34rem 0.82rem;
   border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.plan-level {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: rgba(185, 204, 224, 0.78);
+  font-weight: 850;
+  font-size: 0.75rem;
+  margin-bottom: 1.3rem;
 }
 
 .pricing-card-detail h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.22rem;
+  line-height: 1.32;
+  font-weight: 800;
   color: var(--text-main);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.85rem;
 }
 
 .price-tag {
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-size: clamp(1.55rem, 2.5vw, 2rem);
+  line-height: 1.1;
+  font-weight: 850;
   color: var(--primary);
   margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+.price-tag.consult {
+  color: #9ff3df;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
 }
 
 .desc {
-  font-size: 0.88rem;
-  color: var(--text-light);
-  line-height: 1.6;
-  margin-bottom: 1.5rem !important;
+  font-size: 0.9rem;
+  color: rgba(206, 220, 238, 0.78);
+  line-height: 1.72;
+  margin-bottom: 1.4rem !important;
 }
 
 .features-list {
@@ -233,13 +316,19 @@ const hoaAmPlans = [
 }
 
 .features-list li {
-  padding: 0.5rem 0;
-  font-size: 0.85rem;
-  color: var(--text-light);
+  padding: 0.64rem 0;
+  font-size: 0.84rem;
+  color: rgba(211, 225, 240, 0.82);
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  align-items: flex-start;
+  gap: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  line-height: 1.55;
+}
+.features-list li i {
+  margin-top: 0.24rem;
+  color: #74d7bd;
+  font-size: 0.78rem;
 }
 
 .btn-order {
@@ -247,15 +336,24 @@ const hoaAmPlans = [
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   color: var(--text-main);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.86rem;
+  cursor: pointer;
   transition: all 0.3s ease;
+}
+.btn-order i {
+  transition: transform 0.25s ease;
+}
+.pricing-card-detail:hover .btn-order i {
+  transform: translateX(4px);
 }
 
 .pricing-card-detail:hover .btn-order,
@@ -263,7 +361,10 @@ const hoaAmPlans = [
   background: linear-gradient(135deg, #1a8cff 0%, #0066cc 100%);
   color: #fff;
   border-color: var(--primary);
-  box-shadow: 0 0 15px rgba(26, 140, 255, 0.3);
+  box-shadow: 0 0 18px rgba(26, 140, 255, 0.28);
+}
+.pricing-card-detail.premium:hover .btn-order {
+  background: linear-gradient(135deg, #0fbf9d 0%, #1a8cff 100%);
 }
 
 .details-rich-text h3 {
@@ -398,9 +499,19 @@ const hoaAmPlans = [
   }
 }
 
+@media (max-width: 1120px) {
+  .pricing-grid-detail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .pricing-grid-detail {
     grid-template-columns: 1fr;
+  }
+  .pricing-card-detail {
+    min-height: unset;
+    padding: 1.5rem;
   }
 }
 </style>
