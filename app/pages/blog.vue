@@ -19,40 +19,32 @@
           >{{ tag }}</button>
         </div>
 
-        <!-- Blog Grid -->
-        <div class="blog-grid">
-          <div
-            v-for="(post, i) in filteredPosts" :key="i"
-            class="blog-card"
-            @click="togglePost(i)"
-          >
-            <div class="blog-card-thumb">
-              <img :src="post.thumb" :alt="post.title" loading="lazy" />
-              <div class="blog-card-category">
-                <i :class="post.icon"></i>
-                <span>{{ post.category }}</span>
-              </div>
-            </div>
-            <div class="blog-card-body">
-              <h2 class="blog-card-title">{{ post.title }}</h2>
-              <p class="blog-card-excerpt" v-show="expandedPost !== i">{{ post.excerpt }}</p>
-              <div class="blog-card-meta">
-                <span><i class="fa-solid fa-user"></i> {{ post.author }}</span>
-                <span><i class="fa-solid fa-calendar"></i> {{ post.date }}</span>
-                <span><i class="fa-solid fa-clock"></i> {{ post.readTime }}</span>
-              </div>
-            </div>
-
-            <!-- Expanded Content -->
-            <div class="blog-card-content" v-show="expandedPost === i">
-              <div class="content-divider"></div>
-              <div class="blog-full-content" v-html="post.content"></div>
-              <div class="content-cta">
-                <NuxtLink to="/contact" class="btn btn-primary" style="width: 100%; text-align: center;">Tư vấn dịch vụ</NuxtLink>
-              </div>
+      <!-- Blog Grid -->
+      <div class="blog-grid">
+        <NuxtLink
+          v-for="(post, i) in filteredPosts" :key="i"
+          :to="'/blog/' + post.slug"
+          target="_blank"
+          class="blog-card"
+        >
+          <div class="blog-card-thumb">
+            <img :src="post.thumb" :alt="post.title" loading="lazy" />
+            <div class="blog-card-category">
+              <i :class="post.icon"></i>
+              <span>{{ post.category }}</span>
             </div>
           </div>
-        </div>
+          <div class="blog-card-body">
+            <h2 class="blog-card-title">{{ post.title }}</h2>
+            <p class="blog-card-excerpt">{{ post.excerpt }}</p>
+            <div class="blog-card-meta">
+              <span><i class="fa-solid fa-user"></i> {{ post.author }}</span>
+              <span><i class="fa-solid fa-calendar"></i> {{ post.date }}</span>
+              <span><i class="fa-solid fa-clock"></i> {{ post.readTime }}</span>
+            </div>
+          </div>
+        </NuxtLink>
+      </div>
 
         <!-- CTA -->
         <div class="blog-cta-section">
@@ -166,11 +158,6 @@ useSchemaOrg([
 ])
 
 const activeTag = ref('Tất cả')
-const expandedPost = ref<number | null>(null)
-
-function togglePost(index: number) {
-  expandedPost.value = expandedPost.value === index ? null : index
-}
 
 const { allBlogPosts: blogPosts } = useBlog()
 
@@ -305,64 +292,6 @@ const filteredPosts = computed(() => {
 .blog-card-meta i {
   color: var(--primary);
   font-size: 0.7rem;
-}
-
-/* Expandable Content */
-.blog-card-content {
-  padding: 0 1.5rem 1.5rem;
-}
-.content-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(26,140,255,0.25), transparent);
-  margin-bottom: 1.5rem;
-}
-.blog-full-content {
-  color: var(--text-light);
-  font-size: 0.92rem;
-  line-height: 1.8;
-}
-.blog-full-content h3 {
-  color: var(--text-main);
-  font-size: 1.05rem;
-  margin: 1.5rem 0 0.75rem;
-  font-weight: 700;
-}
-.blog-full-content h3:first-child {
-  margin-top: 0;
-}
-.blog-full-content p {
-  margin-bottom: 0.8rem;
-}
-.blog-full-content ul,
-.blog-full-content ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-.blog-full-content li {
-  margin-bottom: 0.4rem;
-  line-height: 1.7;
-}
-.blog-full-content strong {
-  color: var(--text-main);
-}
-.content-cta {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-/* Expand Transition */
-.expand-enter-active,
-.expand-leave-active {
-  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
-  overflow: hidden;
-}
-.expand-enter-from,
-.expand-leave-to {
-  opacity: 0;
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 /* CTA Section */

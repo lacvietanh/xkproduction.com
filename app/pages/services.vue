@@ -3,7 +3,7 @@
     <section class="page-hero">
       <div class="max-width">
         <h1>Dịch vụ & Bảng giá</h1>
-        <p class="page-hero-sub">Khám phá các gói dịch vụ đa dạng phù hợp với mọi nhu cầu — minh bạch, không phát sinh.</p>
+        <p class="page-hero-sub">Tổng hợp các giải pháp âm nhạc chuyên nghiệp. Mỗi dịch vụ có trang landing page riêng giúp bạn tìm hiểu chi tiết quy trình và kết quả.</p>
       </div>
     </section>
 
@@ -27,11 +27,10 @@
         </div>
 
         <div class="packages-grid">
-          <a
+          <NuxtLink
             v-for="pkg in filteredPackages" :key="pkg.title"
-            href="#pricing-section"
+            :to="pkg.link"
             class="package-card"
-            @click.prevent="scrollToPricing"
           >
             <div class="package-card-header">
               <div class="package-icon"><i :class="pkg.faIcon"></i></div>
@@ -45,9 +44,9 @@
             <div class="package-footer">
               <div class="package-price-bar" :class="'bar-' + pkg.color"></div>
               <span class="package-price" :class="'text-' + pkg.color">{{ pkg.price }}</span>
-              <span class="package-arrow"><i class="fa-solid fa-arrow-down"></i></span>
+              <span class="package-arrow"><i class="fa-solid fa-arrow-right"></i></span>
             </div>
-          </a>
+          </NuxtLink>
         </div>
 
         <div v-if="filteredPackages.length === 0" class="empty-state">
@@ -119,7 +118,7 @@
           <div class="pricing-table">
             <div class="pricing-card">
               <h4 class="pricing-name">Kí âm chuyên nghiệp</h4>
-              <div class="pricing-price">Liên hệ báo giá</div>
+              <div class="pricing-price">200.000₫ – 500.000₫</div>
               <p class="pricing-desc">Kí âm các bản nhạc, tạo sheet nhạc chuyên nghiệp cho ca sĩ, nhạc công, hoặc đăng ký bản quyền.</p>
               <ul class="pricing-features">
                 <li>Nghe và chép lại thành bản nhạc (Sheet nhạc)</li>
@@ -224,18 +223,18 @@ const search = ref('')
 const activeCategory = ref('Tất cả')
 
 const packages = [
-  { faIcon: 'fa-solid fa-microphone', title: 'Gói Cơ Bản (Basic)', category: 'THU ÂM', desc: 'Phù hợp với người mới bắt đầu, thu demo, cover, học viên thanh nhạc.', price: 'TỪ 350.000₫', isPopular: false, color: 'blue' },
-  { faIcon: 'fa-solid fa-music', title: 'Gói Nâng Cao (Advanced)', category: 'THU ÂM', desc: 'Phù hợp với ca sĩ bán chuyên, dự án cá nhân, phát hành trên YouTube hoặc các nền tảng số.', price: 'TỪ 550.000₫', isPopular: false, color: 'blue' },
-  { faIcon: 'fa-solid fa-trophy', title: 'Gói Chuyên Sâu (Pro)', category: 'THU ÂM', desc: 'Phù hợp với ca sĩ chuyên nghiệp, phát hành thương mại, MV, Spotify, Apple Music...', price: 'TỪ 1.000.000₫', isPopular: true, color: 'green' },
-  { faIcon: 'fa-solid fa-star', title: 'Gói Cao cấp (Ultimate)', category: 'THU ÂM', desc: 'Dành cho nghệ sĩ thực thụ và dự án đòi hỏi sự chỉn chu tuyệt đối về kỹ thuật lẫn tư duy nghệ thuật.', price: 'TỪ 1.800.000₫', isPopular: true, color: 'green' },
-  { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cơ bản', category: 'HÒA ÂM', desc: 'Demo, bài hát acoustic đơn giản, nhạc trẻ, pop-ballad cơ bản.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' },
-  { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cao cấp', category: 'HÒA ÂM', desc: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn.', price: 'TỪ 2.500.000₫', isPopular: true, color: 'orange' },
-  { faIcon: 'fa-solid fa-file-audio', title: 'Kí âm sheet nhạc', category: 'KÍ ÂM', desc: 'Kí âm các bản nhạc, tạo sheet nhạc chuyên nghiệp cho ca sĩ và nhạc công.', price: 'LIÊN HỆ', isPopular: false, color: 'blue' },
-  { faIcon: 'fa-solid fa-sliders', title: 'Mix & Mastering Chuyên nghiệp', category: 'MIX & MASTER', desc: 'Xử lý multi-track, EQ, Compressor, Reverb, Delay, chuẩn phát hành Spotify, Apple Music...', price: 'TỪ 500.000₫', isPopular: false, color: 'blue' },
-  { faIcon: 'fa-solid fa-film', title: 'Quay MV chuyên nghiệp', category: 'VIDEO', desc: 'Quay MV 5 góc máy, bao gồm Studio và Ngoại cảnh, ekip đầy đủ.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' },
-  { faIcon: 'fa-solid fa-guitar', title: 'Gói Tiệc & Đám cưới', category: 'LIVE BAND', desc: '50–300 khách. Loa active, ánh sáng LED, acoustic duo hoặc DJ chuyên nghiệp.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: false, color: 'orange' },
-  { faIcon: 'fa-solid fa-volume-high', title: 'Gói Gala & Doanh nghiệp', category: 'LIVE BAND', desc: '300–1000 khách. Line array + full light show + full band 5–7 thành viên.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: true, color: 'green' },
-  { faIcon: 'fa-solid fa-tower-broadcast', title: 'Gói Festival & Ngoài trời', category: 'LIVE BAND', desc: '1000–5000+ khách. Line array đôi, laser show, sân khấu modular, đội kỹ thuật đầy đủ.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: false, color: 'blue' }
+  { faIcon: 'fa-solid fa-microphone', title: 'Gói Cơ Bản (Basic)', category: 'THU ÂM', desc: 'Phù hợp với người mới bắt đầu, thu demo, cover, học viên thanh nhạc.', price: 'TỪ 350.000₫', isPopular: false, color: 'blue', link: '/thu-am' },
+  { faIcon: 'fa-solid fa-music', title: 'Gói Nâng Cao (Advanced)', category: 'THU ÂM', desc: 'Phù hợp với ca sĩ bán chuyên, dự án cá nhân, phát hành trên YouTube hoặc các nền tảng số.', price: 'TỪ 550.000₫', isPopular: false, color: 'blue', link: '/thu-am' },
+  { faIcon: 'fa-solid fa-trophy', title: 'Gói Chuyên Sâu (Pro)', category: 'THU ÂM', desc: 'Phù hợp với ca sĩ chuyên nghiệp, phát hành thương mại, MV, Spotify, Apple Music...', price: 'TỪ 1.000.000₫', isPopular: true, color: 'green', link: '/thu-am' },
+  { faIcon: 'fa-solid fa-star', title: 'Gói Cao cấp (Ultimate)', category: 'THU ÂM', desc: 'Dành cho nghệ sĩ thực thụ và dự án đòi hỏi sự chỉn chu tuyệt đối về kỹ thuật lẫn tư duy nghệ thuật.', price: 'TỪ 1.800.000₫', isPopular: true, color: 'green', link: '/thu-am' },
+  { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cơ bản', category: 'HÒA ÂM', desc: 'Demo, bài hát acoustic đơn giản, nhạc trẻ, pop-ballad cơ bản.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green', link: '/hoa-am-phoi-khi' },
+  { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cao cấp', category: 'HÒA ÂM', desc: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn.', price: 'TỪ 2.500.000₫', isPopular: true, color: 'orange', link: '/hoa-am-phoi-khi' },
+  { faIcon: 'fa-solid fa-file-audio', title: 'Kí âm sheet nhạc', category: 'KÍ ÂM', desc: 'Kí âm các bản nhạc, tạo sheet nhạc chuyên nghiệp cho ca sĩ và nhạc công.', price: '200.000₫ – 500.000₫', isPopular: false, color: 'blue', link: '#pricing-section' },
+  { faIcon: 'fa-solid fa-sliders', title: 'Mix & Mastering Chuyên nghiệp', category: 'MIX & MASTER', desc: 'Xử lý multi-track, EQ, Compressor, Reverb, Delay, chuẩn phát hành Spotify, Apple Music...', price: 'TỪ 500.000₫', isPopular: false, color: 'blue', link: '/mix-master' },
+  { faIcon: 'fa-solid fa-film', title: 'Quay MV chuyên nghiệp', category: 'VIDEO', desc: 'Quay MV 5 góc máy, bao gồm Studio và Ngoại cảnh, ekip đầy đủ.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green', link: '/contact' },
+  { faIcon: 'fa-solid fa-guitar', title: 'Gói Tiệc & Đám cưới', category: 'LIVE BAND', desc: '50–300 khách. Loa active, ánh sáng LED, acoustic duo hoặc DJ chuyên nghiệp.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: false, color: 'orange', link: '/live-band' },
+  { faIcon: 'fa-solid fa-volume-high', title: 'Gói Gala & Doanh nghiệp', category: 'LIVE BAND', desc: '300–1000 khách. Line array + full light show + full band 5–7 thành viên.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: true, color: 'green', link: '/live-band' },
+  { faIcon: 'fa-solid fa-tower-broadcast', title: 'Gói Festival & Ngoài trời', category: 'LIVE BAND', desc: '1000–5000+ khách. Line array đôi, laser show, sân khấu modular, đội kỹ thuật đầy đủ.', price: 'LIÊN HỆ BÁO GIÁ', isPopular: false, color: 'blue', link: '/live-band' }
 ]
 
 const categories = computed(() => ['Tất cả', ...new Set(packages.map(p => p.category))])

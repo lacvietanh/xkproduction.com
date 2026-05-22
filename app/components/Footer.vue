@@ -22,9 +22,9 @@
         <div class="footer-column">
           <h4><i class="fa-solid fa-layer-group"></i> Dịch vụ</h4>
           <ul>
-            <li><NuxtLink to="/services#thu-am">Thu âm &amp; Vocal Production</NuxtLink></li>
-            <li><NuxtLink to="/services#mix-master">Mixing &amp; Mastering</NuxtLink></li>
-            <li><NuxtLink to="/services#hoa-am">Hòa âm phối khí</NuxtLink></li>
+            <li><NuxtLink to="/thu-am">Thu âm &amp; Vocal Production</NuxtLink></li>
+            <li><NuxtLink to="/mix-master">Mixing &amp; Mastering</NuxtLink></li>
+            <li><NuxtLink to="/hoa-am-phoi-khi">Hòa âm phối khí</NuxtLink></li>
             <li><NuxtLink to="/services">Quay MV &amp; TVC</NuxtLink></li>
             <li><NuxtLink to="/live-band">Live Band &amp; Sự kiện</NuxtLink></li>
             <li><NuxtLink to="/courses">Khoá học Music Producer</NuxtLink></li>

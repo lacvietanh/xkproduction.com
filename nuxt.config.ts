@@ -32,10 +32,31 @@ export default defineNuxtConfig({
       },
       {
         loc: '/services',
-        priority: 0.9,
+        priority: 0.8,
         changefreq: 'weekly',
         lastmod: new Date().toISOString().split('T')[0],
         images: [{ loc: 'https://xkproduction.com/images/Logoxkfix.png', title: 'Bảng giá dịch vụ thu âm XKProduction', caption: 'Bảng giá thu âm, mix master, hoà âm phối khí' }]
+      },
+      {
+        loc: '/thu-am',
+        priority: 0.9,
+        changefreq: 'weekly',
+        lastmod: new Date().toISOString().split('T')[0],
+        images: [{ loc: 'https://xkproduction.com/images/Xkpreviewnew.png', title: 'Dịch vụ thu âm bài hát chuyên nghiệp', caption: 'Phòng thu âm chuyên nghiệp Bình Phước' }]
+      },
+      {
+        loc: '/mix-master',
+        priority: 0.9,
+        changefreq: 'weekly',
+        lastmod: new Date().toISOString().split('T')[0],
+        images: [{ loc: 'https://xkproduction.com/images/Xkpreviewnew.png', title: 'Dịch vụ Mixing & Mastering', caption: 'Mixing và Mastering chuyên nghiệp chuẩn Spotify' }]
+      },
+      {
+        loc: '/hoa-am-phoi-khi',
+        priority: 0.9,
+        changefreq: 'weekly',
+        lastmod: new Date().toISOString().split('T')[0],
+        images: [{ loc: 'https://xkproduction.com/images/Xkpreviewnew.png', title: 'Dịch vụ Hoà âm phối khí', caption: 'Hoà âm phối khí online chuyên nghiệp' }]
       },
       {
         loc: '/courses',
@@ -179,7 +200,7 @@ export default defineNuxtConfig({
     preset: 'cloudflare-pages',
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/about', '/services', '/products', '/live-band', '/courses', '/contact', '/faq', '/blog', '/privacy', '/sitemap.xml', '/robots.txt'],
+      routes: ['/', '/about', '/services', '/products', '/live-band', '/courses', '/contact', '/faq', '/blog', '/privacy', '/sitemap.xml', '/robots.txt', '/thu-am', '/mix-master', '/hoa-am-phoi-khi'],
     },
     routeRules: {
       '/**': {
