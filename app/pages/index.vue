@@ -10,7 +10,7 @@
       <!-- HERO -->
       <section class="hero-section">
         <div class="hero-text">
-          <h1>Crafting sound &amp;<br/>atmosphere for<br/>modern artists</h1>
+          <h1> Recording &amp Production Sound;<br> Sound &ampLight Chuyên Nghiệp<br/></h1>
           <p class="hero-desc">Sản xuất âm nhạc cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ nét và có cá tính riêng. Chuyên Hoà âm phối khí & Mix Master chuẩn Spotify.</p>
           <div class="hero-actions">
             <NuxtLink to="/contact" class="btn-neon">BẮT ĐẦU DỰ ÁN</NuxtLink>
@@ -40,19 +40,19 @@
             <div class="entry-icon"><i class="fa-solid fa-microphone"></i></div>
             <h3>Tôi là Nghệ Sĩ / Ca Sĩ</h3>
             <p>Nâng tầm bản nhạc với mix, master, hoà âm chuyên nghiệp</p>
-            <span class="entry-cta">Vào luồng B2C →</span>
+            <span class="entry-cta">Trải nghiệm ngay →</span>
           </NuxtLink>
           <NuxtLink to="/live-band" class="entry-point-card glass-card">
             <div class="entry-icon"><i class="fa-solid fa-headphones"></i></div>
             <h3>Tôi Cần Âm Thanh Sự Kiện</h3>
             <p>Setup âm thanh chuyên nghiệp cho sân khấu, sự kiện, livestream</p>
-            <span class="entry-cta">Vào luồng B2B →</span>
+            <span class="entry-cta">Trải nghiệm ngay →</span>
           </NuxtLink>
           <NuxtLink to="/courses" class="entry-point-card glass-card">
             <div class="entry-icon"><i class="fa-solid fa-book"></i></div>
             <h3>Tôi Muốn Học Sản Xuất</h3>
             <p>Khóa học từ cơ bản đến nâng cao — từ mentor có 7 năm kinh nghiệm</p>
-            <span class="entry-cta">Vào luồng Education →</span>
+            <span class="entry-cta">Trải nghiệm ngay →</span>
           </NuxtLink>
         </div>
       </section>

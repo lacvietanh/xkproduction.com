@@ -17,30 +17,30 @@
 
   /* Brand Colors */
   --primary:      #1a8cff;
-  --primary-dark: #0066cc;
-  --primary-glow: rgba(26, 140, 255, 0.15);
+  --primary-dark: #0056b3;
+  --primary-glow: rgba(26, 140, 255, 0.08);
   --accent:       #00d4aa;
-  --accent-glow:  rgba(0, 212, 170, 0.1);
+  --accent-glow:  rgba(0, 212, 170, 0.05);
 
   /* Typography */
-  --text-main:  #f3f4f6;
+  --text-main:  #f9fafb;
   --text-light: #9ca3af;
-  --text-muted: #4b5563;
+  --text-muted: #6b7280;
 
   /* Borders / Surfaces */
-  --border-color:   rgba(255, 255, 255, 0.05);
-  --glass-bg:       rgba(255, 255, 255, 0.02);
-  --glass-border:   rgba(255, 255, 255, 0.04);
-  --glass-hover-bg: rgba(255, 255, 255, 0.05);
+  --border-color:   rgba(255, 255, 255, 0.06);
+  --glass-bg:       rgba(255, 255, 255, 0.015);
+  --glass-border:   rgba(255, 255, 255, 0.05);
+  --glass-hover-bg: rgba(255, 255, 255, 0.025);
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #1a8cff 0%, #00d4aa 100%);
-  --gradient-surface: linear-gradient(135deg, rgba(26, 140, 255, 0.02) 0%, rgba(0, 212, 170, 0.02) 100%);
+  --gradient-surface: linear-gradient(135deg, rgba(26, 140, 255, 0.01) 0%, rgba(0, 212, 170, 0.01) 100%);
 
   /* Shadows */
-  --shadow-card: 0 4px 20px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.03) inset;
-  --shadow-hover: 0 12px 36px rgba(0,0,0,0.5), 0 0 12px rgba(26,140,255,0.04);
-  --shadow-glow:  0 0 20px rgba(26, 140, 255, 0.2), 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.02) inset;
+  --shadow-hover: 0 16px 48px rgba(0,0,0,0.5), 0 0 20px rgba(26,140,255,0.03);
+  --shadow-glow:  0 0 15px rgba(26, 140, 255, 0.15), 0 4px 12px rgba(0,0,0,0.5);
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.23, 1, 0.32, 1);
@@ -142,12 +142,12 @@ img {
 .btn-primary {
   background: var(--primary);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(26,140,255,0.15);
+  box-shadow: 0 4px 12px rgba(26,140,255,0.1);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
   background: var(--primary-dark);
-  box-shadow: 0 6px 20px rgba(26,140,255,0.25);
+  box-shadow: 0 6px 20px rgba(26,140,255,0.2);
   color: #fff;
 }
 .btn-primary:active { transform: translateY(0); }
@@ -360,10 +360,10 @@ img {
    GLOW BORDER
    ========================================== */
 @keyframes glowBorder {
-  0%, 100% { box-shadow: 0 0 8px rgba(26,140,255,0.2); }
-  50%       { box-shadow: 0 0 22px rgba(26,140,255,0.5); }
+  0%, 100% { box-shadow: 0 0 8px rgba(26,140,255,0.15); }
+  50%       { box-shadow: 0 0 16px rgba(26,140,255,0.35); }
 }
-.glow-border { animation: glowBorder 3s ease-in-out infinite; }
+.glow-border { animation: glowBorder 4s ease-in-out infinite; }
 
 /* ==========================================
    BADGE / PILL UTILITIES

@@ -98,7 +98,7 @@ useSchemaOrg([
     image: 'https://xkproduction.com/images/Logoxkfix.png',
     offers: [
       { name: 'Hoà Âm Cơ Bản', price: '1500000', priceCurrency: 'VND' },
-      { name: 'Hoà Âm Cao Cấp', price: '2500000', priceCurrency: 'VND' }
+      { name: 'Hoà Âm Nâng cao', price: '2500000', priceCurrency: 'VND' }
     ]
   })
 ])
@@ -112,7 +112,7 @@ const hoaAmPlans = [
     featured: false, badge: ''
   },
   {
-    name: 'Hoà âm Cao Cấp',
+    name: 'Hoà âm Nâng cao',
     price: 'Từ 2.500.000₫',
     desc: 'Bản phối đa tầng, đa lớp nhạc cụ, phù hợp phát hành thương mại chuyên nghiệp.',
     features: ['Phối khí đa thể loại, layering phức tạp', 'Nhạc cụ thật (Guitar/Violin nếu cần)', 'Orchestration chuyên sâu', 'Full stem delivery', 'Unlimited revision', 'Hỗ trợ phát hành'],
