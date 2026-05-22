@@ -145,9 +145,9 @@
           <div class="founder-info">
             <div class="founder-name-row">
               <strong class="founder-name">Nguyễn Xuân Kiệt</strong>
-              <span class="founder-title-badge">Music Producer &amp; Founder</span>
+              <span class="founder-title-badge">Music Producer &amp Founder</span>
             </div>
-            <p class="founder-story">Kiệt bắt đầu làm nhạc từ 2017 chỉ với một chiếc laptop cũ và phòng ngủ cách âm tạm bợ bằng chăn. Sau 7 năm miệt mài, XKProduction giờ đây đã là người bạn đồng hành của hơn 2000 dự án — từ những bản demo đầu tay đến các sản phẩm chính thức trên Spotify. Với Kiệt, mỗi bản nhạc đều phải được nghe đi nghe lại hàng trăm lần cho đến khi đạt độ "chín" mới được phép ra lò.</p>
+            <p class="founder-story">Xuất thân từ môi trường âm thanh sân khấu và live performance, Kiệt mang tư duy cảm xúc, không gian và năng lượng thật vào từng sản phẩm phòng thu.Sau nhiều năm đồng hành cùng nghệ sĩ và hàng ngàn dự án âm nhạc,XKProduction được xây dựng với một định hướng rõ ràng:âm nhạc không chỉ cần hay — mà cần có bản sắc.</p>
             <blockquote class="founder-quote">"Âm nhạc không chỉ để nghe, mà là để cảm nhận.<br/>Tạo ra âm thanh là kỹ thuật, chạm đến trái tim mới là nghệ thuật."</blockquote>
             <div class="founder-cta">
               <NuxtLink to="/contact" class="btn-founder-cta">Đặt lịch tư vấn miễn phí →</NuxtLink>
