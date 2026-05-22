@@ -245,6 +245,10 @@
     </div>
     <!-- Google Reviews CTA -->
     <div class="reviews-cta">
+      <div class="reviews-summary">
+        <div class="reviews-summary-score">4.9/5</div>
+        <div class="reviews-summary-meta">2000+ đánh giá • từ nghệ sĩ và khách hàng</div>
+      </div>
       <a href="https://g.page/r/xkstudio/review" target="_blank" rel="noopener" class="btn-review">
         <i class="fa-brands fa-google"></i>
         <span>Đánh giá chúng tôi trên Google</span>
@@ -257,9 +261,9 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'XKproduction - Phòng Thu Âm Chuyên Nghiệp | Mixing | Mastering | Mv Tvc | Sản Xuất Âm Nhạc',
+  title: 'XKProduction — Music Production & Live Band Chuyên Nghiệp',
   description: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án. Bắt đầu tư vấn miễn phí.',
-  ogTitle: 'XKProduction — Phòng Thu Âm Chuyên Nghiệp | Mix Master | Hoà Âm | Sân Khấu',
+  ogTitle: 'XKProduction — Music Production & Live Band Chuyên Nghiệp',
   ogDescription: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án thành công. Hotline: 0355.356.294.',
   ogImage: 'https://xkproduction.com/images/Xkpreviewnew.png',
   ogImageWidth: '1200',
@@ -268,7 +272,7 @@ useSeoMeta({
   ogType: 'website',
   ogUrl: 'https://xkproduction.com',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'XKProduction — Phòng Thu Âm & Mix Master Chuyên Nghiệp',
+  twitterTitle: 'XKProduction — Music Production & Live Band Chuyên Nghiệp',
   twitterDescription: 'Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án. Hotline: 0355.356.294',
   twitterImage: 'https://xkproduction.com/images/Xkpreviewnew.png',
   keywords: 'XKProduction, xkproduction.com, phòng thu âm, phòng thu âm chuyên nghiệp, thu âm bài hát, hoà âm phối khí, mix master, mixing mastering, sân khấu sự kiện, âm thanh ánh sáng, quay mv, quay tvc, phòng thu âm bình phước, phòng thu âm uy tín, bảng giá thu âm, studio bình phước, nhạc sĩ, sản xuất âm nhạc',
@@ -1122,6 +1126,26 @@ const testimonials = [
 .reviews-cta {
   text-align: center;
   margin-top: 2rem;
+}
+.reviews-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid rgba(245,197,66,0.18);
+  border-radius: 999px;
+  background: rgba(245,197,66,0.07);
+}
+.reviews-summary-score {
+  color: #f5c542;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.reviews-summary-meta {
+  color: rgba(230,237,243,0.82);
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 .btn-review {
   display: inline-flex; align-items: center; gap: 0.55rem;

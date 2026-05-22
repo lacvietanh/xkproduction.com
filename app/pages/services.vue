@@ -227,7 +227,7 @@ const packages = [
   { faIcon: 'fa-solid fa-microphone', title: 'Gói Cơ Bản (Basic)', category: 'THU ÂM', desc: 'Phù hợp với người mới bắt đầu, thu demo, cover, học viên thanh nhạc.', price: 'TỪ 350.000₫', isPopular: false, color: 'blue' },
   { faIcon: 'fa-solid fa-music', title: 'Gói Nâng Cao (Advanced)', category: 'THU ÂM', desc: 'Phù hợp với ca sĩ bán chuyên, dự án cá nhân, phát hành trên YouTube hoặc các nền tảng số.', price: 'TỪ 550.000₫', isPopular: false, color: 'blue' },
   { faIcon: 'fa-solid fa-trophy', title: 'Gói Chuyên Sâu (Pro)', category: 'THU ÂM', desc: 'Phù hợp với ca sĩ chuyên nghiệp, phát hành thương mại, MV, Spotify, Apple Music...', price: 'TỪ 1.000.000₫', isPopular: true, color: 'green' },
-  { faIcon: 'fa-solid fa-star', title: 'Gói Cao cấp (Ultimated)', category: 'THU ÂM', desc: 'Dành cho nghệ sĩ thực thụ và dự án đòi hỏi sự chỉn chu tuyệt đối về kỹ thuật lẫn tư duy nghệ thuật.', price: 'TỪ 1.800.000₫', isPopular: true, color: 'green' },
+  { faIcon: 'fa-solid fa-star', title: 'Gói Cao cấp (Ultimate)', category: 'THU ÂM', desc: 'Dành cho nghệ sĩ thực thụ và dự án đòi hỏi sự chỉn chu tuyệt đối về kỹ thuật lẫn tư duy nghệ thuật.', price: 'TỪ 1.800.000₫', isPopular: true, color: 'green' },
   { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cơ bản', category: 'HÒA ÂM', desc: 'Demo, bài hát acoustic đơn giản, nhạc trẻ, pop-ballad cơ bản.', price: 'TỪ 1.500.000₫', isPopular: false, color: 'green' },
   { faIcon: 'fa-solid fa-keyboard', title: 'Hoà âm Cao cấp', category: 'HÒA ÂM', desc: 'Phối khí đa thể loại, nhạc cụ thật, revision không giới hạn.', price: 'TỪ 2.500.000₫', isPopular: true, color: 'orange' },
   { faIcon: 'fa-solid fa-file-audio', title: 'Kí âm sheet nhạc', category: 'KÍ ÂM', desc: 'Kí âm các bản nhạc, tạo sheet nhạc chuyên nghiệp cho ca sĩ và nhạc công.', price: 'LIÊN HỆ', isPopular: false, color: 'blue' },
@@ -277,7 +277,7 @@ const thuAmPlans = [
     featured: true, badge: 'Phổ biến nhất'
   },
   {
-    name: 'Gói Cao Cấp (Ultimated)',
+    name: 'Gói Cao Cấp (Ultimate)',
     price: 'Từ 1.800.000₫',
     desc: 'Nghệ sĩ thực thụ, dự án đòi hỏi sự chỉn chu tuyệt đối về kỹ thuật lẫn nghệ thuật.',
     features: ['Thu âm không giới hạn', 'Storytelling & emotional coaching', 'Xử lý âm thanh cao cấp', 'Revision không giới hạn', 'Chiến lược phát hành', 'Priority booking'],

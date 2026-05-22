@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { useBlog } from '~/composables/useBlog'
+import type { BlogPost } from '../composables/useBlog'
 
 useSeoMeta({
   title: 'Blog & Kiến Thức Âm Nhạc - Mẹo Thu Âm, Mix Master | XKProduction',
@@ -174,11 +174,11 @@ function togglePost(index: number) {
 
 const { allBlogPosts: blogPosts } = useBlog()
 
-const tags = computed(() => ['Tất cả', ...new Set(blogPosts.flatMap(p => p.tags || []))])
+const tags = computed(() => ['Tất cả', ...new Set(blogPosts.flatMap((p: BlogPost) => p.tags || []))])
 
 const filteredPosts = computed(() => {
   if (activeTag.value === 'Tất cả') return blogPosts
-  return blogPosts.filter(p => p.tags && p.tags.includes(activeTag.value))
+  return blogPosts.filter((p: BlogPost) => p.tags && p.tags.includes(activeTag.value))
 })
 </script>
 

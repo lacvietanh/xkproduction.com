@@ -49,7 +49,7 @@ export default defineNuxtConfig({
         priority: 0.8,
         changefreq: 'monthly',
         lastmod: new Date().toISOString().split('T')[0],
-        images: [{ loc: 'https://xkproduction.com/images/quocchi-2.jpg', title: 'Âm thanh ánh sáng sự kiện XKStudio', caption: 'Cho thuê âm thanh ánh sáng sân khấu chuyên nghiệp' }]
+        images: [{ loc: 'https://xkproduction.com/images/quocchi-2.jpg', title: 'Âm thanh ánh sáng sự kiện XKProduction', caption: 'Cho thuê âm thanh ánh sáng sân khấu chuyên nghiệp' }]
       },
       {
         loc: '/products',
@@ -57,8 +57,8 @@ export default defineNuxtConfig({
         changefreq: 'weekly',
         lastmod: new Date().toISOString().split('T')[0],
         images: [
-          { loc: 'https://xkproduction.com/images/revan.jpg', title: 'Revan - Tác phẩm XKStudio', caption: 'Sản phẩm âm nhạc tiêu biểu của XKStudio' },
-          { loc: 'https://xkproduction.com/images/howl.jpg', title: 'Howl - Tác phẩm XKStudio', caption: 'Portfolio sản phẩm âm nhạc XKStudio' }
+          { loc: 'https://xkproduction.com/images/revan.jpg', title: 'Revan - Tác phẩm XKProduction', caption: 'Sản phẩm âm nhạc tiêu biểu của XKProduction' },
+          { loc: 'https://xkproduction.com/images/howl.jpg', title: 'Howl - Tác phẩm XKProduction', caption: 'Portfolio sản phẩm âm nhạc XKProduction' }
         ]
       },
       {
@@ -66,7 +66,7 @@ export default defineNuxtConfig({
         priority: 0.7,
         changefreq: 'monthly',
         lastmod: new Date().toISOString().split('T')[0],
-        images: [{ loc: 'https://xkproduction.com/images/founder-kiet.jpg', title: 'Nguyễn Xuân Kiệt - Founder XKStudio', caption: 'Founder & Music Producer XKStudio' }]
+        images: [{ loc: 'https://xkproduction.com/images/founder-kiet.jpg', title: 'Nguyễn Xuân Kiệt - Founder XKProduction', caption: 'Founder & Music Producer XKProduction' }]
       },
       {
         loc: '/contact',

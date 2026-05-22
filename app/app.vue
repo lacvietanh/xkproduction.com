@@ -11,8 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { useOpenGraph } from '~/composables/useOpenGraph'
-
 // Global styles are loaded via nuxt.config.ts css array
 
 // Global Default SEO Configuration with Open Graph, Twitter Cards & Social Previews
@@ -96,7 +94,6 @@ useHead(() => {
     ],
     meta: [
       // Social meta tags for better sharing
-      { property: 'og:app_id', content: '123456789' },
       { name: 'msvalidate.01', content: 'F3F91F78FD04BB3AA39A2E05D8E3A6A3' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },

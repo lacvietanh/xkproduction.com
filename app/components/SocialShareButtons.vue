@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { generateShareLinks } from '~/composables/useOpenGraph'
-
 interface Props {
   title?: string
   description?: string

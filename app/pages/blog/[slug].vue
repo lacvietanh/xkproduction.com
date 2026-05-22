@@ -71,8 +71,6 @@
 </template>
 
 <script setup lang="ts">
-import { useBlog } from '~/composables/useBlog'
-
 const route = useRoute()
 const slug = route.params.slug as string
 const BASE_URL = 'https://xkproduction.com'

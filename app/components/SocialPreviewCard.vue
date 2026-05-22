@@ -2,7 +2,7 @@
   <div class="social-preview-container">
     <div class="preview-tabs">
       <button
-        v-for="platform in ['facebook', 'twitter', 'linkedin']"
+        v-for="platform in platforms"
         :key="platform"
         :class="['preview-tab', { active: activePlatform === platform }]"
         @click="activePlatform = platform"
@@ -75,6 +75,7 @@ const props = withDefaults(defineProps<Props>(), {
   image: 'https://xkproduction.com/images/Xkpreviewnew.png',
 })
 
+const platforms: ('facebook' | 'twitter' | 'linkedin')[] = ['facebook', 'twitter', 'linkedin']
 const activePlatform = ref<'facebook' | 'twitter' | 'linkedin'>('facebook')
 const copied = ref(false)
 const copyError = ref(false)

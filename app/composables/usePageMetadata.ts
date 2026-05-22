@@ -38,7 +38,7 @@ export const usePageMetadata = (options: PageMetadataOptions) => {
     ogImageWidth: '1200',
     ogImageHeight: '630',
     ogImageAlt: finalOptions.imageAlt,
-    ogType: options.type || 'website',
+    ogType: (options.type || 'website') as any,
     ogUrl: finalOptions.canonicalUrl,
     twitterCard: 'summary_large_image',
     twitterImage: finalOptions.image,
@@ -55,37 +55,38 @@ export const usePageMetadata = (options: PageMetadataOptions) => {
     };
 
     if (options.type === 'article') {
-      head.meta = head.meta || [];
-      
+      const metaTags: any[] = [];
+
       if (options.publishedTime) {
-        head.meta.push({
+        metaTags.push({
           property: 'article:published_time',
           content: options.publishedTime,
         });
       }
-      
+
       if (options.modifiedTime) {
-        head.meta.push({
+        metaTags.push({
           property: 'article:modified_time',
           content: options.modifiedTime,
         });
       }
-      
+
       if (options.section) {
-        head.meta.push({
+        metaTags.push({
           property: 'article:section',
           content: options.section,
         });
       }
-      
+
       if (options.keywords) {
         options.keywords.forEach((keyword) => {
-          head.meta.push({
+          metaTags.push({
             property: 'article:tag',
             content: keyword,
           });
         });
       }
+      head.meta = metaTags;
     }
 
     return head;

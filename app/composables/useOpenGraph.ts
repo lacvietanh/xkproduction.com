@@ -62,9 +62,9 @@ export const useOpenGraph = (options: OpenGraphOptions = {}) => {
     ogImageWidth: String(config.imageWidth),
     ogImageHeight: String(config.imageHeight),
     ogImageAlt: config.imageAlt,
-    ogImageType: config.imageType,
+    ogImageType: config.imageType as any,
     ogUrl: config.url,
-    ogType: config.type,
+    ogType: config.type as any,
     ogSiteName: config.siteName,
     ogLocale: config.locale,
     twitterCard: 'summary_large_image',
@@ -95,36 +95,34 @@ export const useOpenGraph = (options: OpenGraphOptions = {}) => {
 
     // Add article-specific metadata
     if (config.type === 'article') {
+      const metaTags: Array<Record<string, string>> = [];
       if (config.publishedTime) {
-        head.meta = head.meta || [];
-        head.meta.push({
+        metaTags.push({
           property: 'article:published_time',
           content: config.publishedTime,
         });
       }
       if (config.modifiedTime) {
-        head.meta = head.meta || [];
-        head.meta.push({
+        metaTags.push({
           property: 'article:modified_time',
           content: config.modifiedTime,
         });
       }
       if (config.section) {
-        head.meta = head.meta || [];
-        head.meta.push({
+        metaTags.push({
           property: 'article:section',
           content: config.section,
         });
       }
       if (config.tags && config.tags.length > 0) {
-        head.meta = head.meta || [];
         config.tags.forEach((tag) => {
-          head.meta.push({
+          metaTags.push({
             property: 'article:tag',
             content: tag,
           });
         });
       }
+      head.meta = metaTags;
     }
 
     return head;
