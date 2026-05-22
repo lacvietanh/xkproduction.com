@@ -10,8 +10,8 @@
       <!-- HERO -->
       <section class="hero-section">
         <div class="hero-text">
-          <h1> Recording &amp Production Sound;<br> Sound &ampLight Chuyên Nghiệp<br/></h1>
-          <p class="hero-desc">Sản xuất âm nhạc cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ nét và có cá tính riêng. Chuyên Hoà âm phối khí & Mix Master chuẩn Spotify.</p>
+          <h1> Recording &amp Production<br> Sound &ampLight Chuyên Nghiệp<br/></h1>
+          <p class="hero-desc">Âm nhạc bắt đầu bằng cảm xúc...<br>Nhưng dấu ấn được tạo nên bởi chất lượng.</br></p>
           <div class="hero-actions">
             <NuxtLink to="/contact" class="btn-neon">BẮT ĐẦU DỰ ÁN</NuxtLink>
             <NuxtLink to="/products" class="btn-ghost">SẢN PHẨM NỔI BẬT</NuxtLink>
