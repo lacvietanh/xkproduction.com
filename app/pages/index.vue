@@ -11,7 +11,7 @@
       <section class="hero-section">
         <div class="hero-text">
           <h1>Crafting sound &amp;<br/>atmosphere for<br/>modern artists</h1>
-          <p class="hero-desc">Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. Hoà âm phối khí, Mix & Master chuẩn Spotify.</p>
+          <p class="hero-desc">Sản xuất âm nhạc cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ nét và có cá tính riêng. Chuyên Hoà âm phối khí & Mix Master chuẩn Spotify.</p>
           <div class="hero-actions">
             <NuxtLink to="/contact" class="btn-neon">BẮT ĐẦU DỰ ÁN</NuxtLink>
             <NuxtLink to="/products" class="btn-ghost">SẢN PHẨM NỔI BẬT</NuxtLink>
@@ -147,7 +147,7 @@
               <strong class="founder-name">Nguyễn Xuân Kiệt</strong>
               <span class="founder-title-badge">Music Producer &amp; Founder</span>
             </div>
-            <p class="founder-story">Kiệt bắt đầu làm nhạc từ năm 2017 với một laptop và phòng ngủ cách âm bằng chăn. 7 năm sau, XKProduction đã đồng hành cùng hơn 2000 dự án — từ demo đầu tay của ca sĩ mới tới bản phối phát hành chính thức trên Spotify. Điều không thay đổi: mỗi bản nhạc được nghe đủ lần trước khi ra ngoài.</p>
+            <p class="founder-story">Kiệt bắt đầu làm nhạc từ 2017 chỉ với một chiếc laptop cũ và phòng ngủ cách âm tạm bợ bằng chăn. Sau 7 năm miệt mài, XKProduction giờ đây đã là người bạn đồng hành của hơn 2000 dự án — từ những bản demo đầu tay đến các sản phẩm chính thức trên Spotify. Với Kiệt, mỗi bản nhạc đều phải được nghe đi nghe lại hàng trăm lần cho đến khi đạt độ "chín" mới được phép ra lò.</p>
             <blockquote class="founder-quote">"Âm nhạc không chỉ để nghe, mà là để cảm nhận.<br/>Tạo ra âm thanh là kỹ thuật, chạm đến trái tim mới là nghệ thuật."</blockquote>
             <div class="founder-cta">
               <NuxtLink to="/contact" class="btn-founder-cta">Đặt lịch tư vấn miễn phí →</NuxtLink>

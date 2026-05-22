@@ -24,7 +24,6 @@
         <NuxtLink
           v-for="(post, i) in filteredPosts" :key="i"
           :to="'/blog/' + post.slug"
-          target="_blank"
           class="blog-card"
         >
           <div class="blog-card-thumb">
