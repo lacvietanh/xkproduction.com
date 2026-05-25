@@ -85,8 +85,6 @@ useHead(() => {
       { rel: 'canonical', href: currentUrl },
       { rel: 'alternate', hreflang: 'vi-VN', href: currentUrl },
       { rel: 'alternate', hreflang: 'x-default', href: currentUrl },
-      // Preload critical social images
-      { rel: 'preload', as: 'image', href: 'https://xkproduction.com/images/Xkpreviewnew.png' },
       // Twitter / X Card Verification
       { rel: 'me', href: 'https://twitter.com/xkproduction' },
       // Facebook Domain Verification
