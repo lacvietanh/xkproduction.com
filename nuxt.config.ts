@@ -200,7 +200,22 @@ export default defineNuxtConfig({
     preset: 'cloudflare-pages',
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/about', '/services', '/products', '/live-band', '/courses', '/contact', '/faq', '/blog', '/privacy', '/sitemap.xml', '/robots.txt', '/thu-am', '/mix-master', '/hoa-am-phoi-khi'],
+      routes: [
+        '/', '/about', '/services', '/products', '/live-band', '/courses',
+        '/contact', '/faq', '/blog', '/privacy', '/sitemap.xml', '/robots.txt',
+        '/thu-am', '/mix-master', '/hoa-am-phoi-khi',
+        // Blog detail pages — must be explicit for SSG (crawlLinks can't follow Vue client-side links)
+        '/blog/thu-am-gia-2026',
+        '/blog/phong-thu-am-binh-phuoc',
+        '/blog/mix-master-huong-dan',
+        '/blog/hoa-am-phoi-khi-online',
+        '/blog/vocal-tuning-va-vocal-production-la-gi',
+        '/blog/chuan-bi-truoc-khi-den-phong-thu-am',
+        '/blog/thu-am-binh-phuoc-dia-chi-uy-tin',
+        '/blog/ky-am-bai-hat-va-soan-sheet-nhac-chuyen-nghiep',
+        '/blog/mix-vocal-cover-nghe-sang-hon',
+        '/blog/live-sound-cho-su-kien-nho',
+      ],
     },
     routeRules: {
       '/**': {

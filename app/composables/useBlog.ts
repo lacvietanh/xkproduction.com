@@ -126,7 +126,7 @@ export const useBlog = () => {
             'Một buổi thu tốt cần sự riêng tư. Người hát cần cảm giác an toàn để thử, sai, hát lại và tìm ra cách thể hiện đúng nhất. Studio không nên tạo áp lực như một nơi kiểm tra giọng hát, mà nên là nơi bài hát được bình tĩnh hoàn thiện.',
             'Tại XKProduction, workflow được thiết kế để nghệ sĩ nghe lại nhanh, trao đổi trực tiếp và điều chỉnh ngay trong phiên. Những quyết định nhỏ như giảm một nửa tone, đổi cách vào câu, hay giữ lại một hơi thở tự nhiên đều có thể làm bài hát thuyết phục hơn.'
           ],
-          image: '/images/founder-kiet.jpg'
+          image: '/images/blog-phong-thu.jpg'
         },
         {
           id: 'tu-demo-den-phat-hanh',
@@ -404,8 +404,8 @@ export const useBlog = () => {
       date: '16/05/2026',
       isoDate: '2026-05-16',
       readTime: '8 phút đọc',
-      thumb: '/images/founder-kiet.jpg',
-      cover: '/images/founder-kiet.jpg',
+      thumb: '/images/blog-studio-binh-phuoc.jpg',
+      cover: '/images/blog-studio-binh-phuoc.jpg',
       tags: ['Bình Phước', 'Thu Âm', 'Giới Thiệu'],
       sections: [
         {
@@ -462,8 +462,8 @@ export const useBlog = () => {
       date: '20/05/2026',
       isoDate: '2026-05-20',
       readTime: '7 phút đọc',
-      thumb: '/images/Xkpreviewnew.png',
-      cover: '/images/Xkpreviewnew.png',
+      thumb: '/images/blog-sheet-nhac.jpg',
+      cover: '/images/blog-sheet-nhac.jpg',
       tags: ['Ký Âm', 'Sheet Nhạc', 'Kiến Thức'],
       sections: [
         {
@@ -520,8 +520,8 @@ export const useBlog = () => {
       date: '27/05/2026',
       isoDate: '2026-05-27',
       readTime: '8 phút đọc',
-      thumb: '/images/quocchi-2.jpg',
-      cover: '/images/quocchi-2.jpg',
+      thumb: '/images/blog-mix-cover.jpg',
+      cover: '/images/blog-mix-cover.jpg',
       tags: ['Mix & Master', 'Vocal Production', 'Thu Âm'],
       sections: [
         {
@@ -578,8 +578,8 @@ export const useBlog = () => {
       date: '30/05/2026',
       isoDate: '2026-05-30',
       readTime: '8 phút đọc',
-      thumb: '/images/fesu.jpg',
-      cover: '/images/fesu.jpg',
+      thumb: '/images/blog-live-sound.jpg',
+      cover: '/images/blog-live-sound.jpg',
       tags: ['Live Sound', 'Sự Kiện', 'Âm Thanh'],
       sections: [
         {

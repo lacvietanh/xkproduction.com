@@ -130,8 +130,8 @@ defineEmits<{
 h1 {
   max-width: 980px;
   font-size: clamp(2.5rem, 7vw, 6.8rem);
-  line-height: 0.98;
-  letter-spacing: -0.07em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #fff;
   margin-bottom: 1.5rem;
 }

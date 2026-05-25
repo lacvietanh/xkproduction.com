@@ -16,9 +16,12 @@
             <AuthorCard :post="post" />
 
             <section class="article-soft-cta">
-              <p class="cta-kicker">XKProduction Studio</p>
-              <h2>Cần biến ý tưởng thành một sản phẩm âm nhạc chỉn chu?</h2>
-              <p>Gửi demo hoặc bản thu thô, đội ngũ XKProduction sẽ nghe định hướng và tư vấn bước tiếp theo: thu âm, hòa âm phối khí, vocal production hoặc mix/master.</p>
+              <div class="cta-header">
+                <i class="fa-solid fa-lightbulb"></i>
+                <p class="cta-kicker">Bạn muốn được tư vấn miễn phí?</p>
+              </div>
+              <h2>Biến ý tưởng âm nhạc của bạn thành sản phẩm chuyên nghiệp</h2>
+              <p>Gửi demo hoặc bản thu thô, đội ngũ XKProduction sẽ nghe xét duyệt, định hướng và tư vấn bước tiếp theo: thu âm, hòa âm phối khí, vocal production hoặc mix/master chuẩn quốc tế.</p>
               <div class="cta-actions">
                 <NuxtLink to="/contact" class="btn btn-primary">Liên hệ tư vấn <i class="fa-solid fa-arrow-right"></i></NuxtLink>
                 <NuxtLink to="/services" class="btn btn-secondary">Xem dịch vụ</NuxtLink>
@@ -114,6 +117,18 @@ watch(post, value => {
   activeSectionId.value = value?.sections[0]?.id || ''
 })
 
+const getCategoryKey = (category: string) => {
+  const categoryMap: Record<string, string> = {
+    'Bảng Giá': 'amber',
+    'Kiến Thức': 'blue',
+    'Mẹo Hay': 'green',
+    'Before & After': 'purple',
+    'Giới Thiệu': 'teal',
+    'Mix & Master': 'red'
+  }
+  return categoryMap[category] || 'blue'
+}
+
 useSeoMeta({
   title: () => post.value ? `${post.value.title} | XKProduction` : 'Không tìm thấy bài viết | XKProduction',
   description: () => post.value?.excerpt || 'Bài viết không tồn tại trên XKProduction Blog.',
@@ -200,6 +215,29 @@ useSchemaOrg(() => [
     rgba(255,255,255,0.03);
   border: 1px solid rgba(26,140,255,0.22);
   box-shadow: 0 24px 60px rgba(0,0,0,0.24);
+  position: relative;
+  overflow: hidden;
+}
+.article-soft-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(26,140,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+.cta-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.cta-header i {
+  font-size: 1.5rem;
+  color: var(--primary);
+  filter: drop-shadow(0 0 8px rgba(26,140,255,0.4));
 }
 .cta-kicker {
   color: #8fd0ff;
@@ -207,25 +245,30 @@ useSchemaOrg(() => [
   letter-spacing: 0.12em;
   font-size: 0.76rem;
   font-weight: 850;
-  margin-bottom: 0.7rem;
+  margin: 0;
 }
 .article-soft-cta h2 {
   color: #f5f9ff;
   max-width: 620px;
   font-size: clamp(1.45rem, 3vw, 2.35rem);
   line-height: 1.18;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
 }
 .article-soft-cta > p:not(.cta-kicker) {
   max-width: 650px;
   color: rgba(212,226,241,0.84);
   line-height: 1.8;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.6rem;
+  position: relative;
+  z-index: 1;
 }
 .cta-actions {
   display: flex;
   gap: 0.8rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 .not-found-article {
   min-height: 78vh;
