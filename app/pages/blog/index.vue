@@ -71,8 +71,8 @@
         <!-- Blog Grid -->
         <div class="blog-grid">
           <NuxtLink
-            v-for="(post, i) in regularPosts"
-            :key="i"
+            v-for="post in regularPosts"
+            :key="post.slug"
             :to="'/blog/' + post.slug"
             class="blog-card"
           >
