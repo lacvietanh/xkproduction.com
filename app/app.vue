@@ -96,6 +96,7 @@ useHead(() => {
       // Social meta tags for better sharing
       { name: 'msvalidate.01', content: 'F3F91F78FD04BB3AA39A2E05D8E3A6A3' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       { name: 'apple-mobile-web-app-title', content: 'XKProduction' },
       { name: 'application-name', content: 'XKProduction' },
