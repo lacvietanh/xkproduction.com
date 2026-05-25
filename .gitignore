@@ -80,4 +80,5 @@ test-results/
 *.local
 *.bak
 *.tmp
-*.temp.claude/
+*.temp
+.claude//
