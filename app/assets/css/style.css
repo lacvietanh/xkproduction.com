@@ -1,5 +1,5 @@
 /* ==========================================
-   XKSTUDIO — Global Design System v2
+   XKPRODUCTION — Global Design System v2
    Premium Glassmorphism · SEO-Optimized
    ========================================== */
 
@@ -10,41 +10,41 @@
 }
 
 :root {
-  /* Core Palette */
-  --bg-dark:    #06080f;
-  --bg-surface: #0d1117;
-  --bg-light:   #161b22;
+  /* Core Premium Palette */
+  --bg-dark:    #030508; /* Deepest luxurious slate-charcoal */
+  --bg-surface: #070a0f; /* Refined elevation surface */
+  --bg-light:   #0d1117; /* High-contrast subtle layer */
 
-  /* Brand Colors */
-  --primary:      #1a8cff;
-  --primary-dark: #0056b3;
-  --primary-glow: rgba(26, 140, 255, 0.08);
-  --accent:       #00d4aa;
-  --accent-glow:  rgba(0, 212, 170, 0.05);
+  /* Refined Brand Accents — Luxury Tone */
+  --primary:      #2b7fff; /* Sophisticated metallic blue */
+  --primary-dark: #125cdb; /* Deep sapphire blue */
+  --primary-glow: rgba(43, 127, 255, 0.04);
+  --accent:       #00d4aa; /* Refined turquoise accent (kept for brand identity, used sparingly) */
+  --accent-glow:  rgba(0, 212, 170, 0.02);
 
-  /* Typography */
-  --text-main:  #f9fafb;
-  --text-light: #9ca3af;
-  --text-muted: #6b7280;
+  /* Premium Typography — Warm & Legible */
+  --text-main:  #f8fafc; /* Crisp warm off-white */
+  --text-light: #94a3b8; /* Refined cool gray */
+  --text-muted: #64748b; /* Subtle structural gray */
 
-  /* Borders / Surfaces */
-  --border-color:   rgba(255, 255, 255, 0.06);
-  --glass-bg:       rgba(255, 255, 255, 0.015);
-  --glass-border:   rgba(255, 255, 255, 0.05);
-  --glass-hover-bg: rgba(255, 255, 255, 0.025);
+  /* Borders & Glassmorphism — Invisible Structure */
+  --border-color:   rgba(255, 255, 255, 0.035);
+  --glass-bg:       rgba(255, 255, 255, 0.01);
+  --glass-border:   rgba(255, 255, 255, 0.03);
+  --glass-hover-bg: rgba(255, 255, 255, 0.02);
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #1a8cff 0%, #00d4aa 100%);
-  --gradient-surface: linear-gradient(135deg, rgba(26, 140, 255, 0.01) 0%, rgba(0, 212, 170, 0.01) 100%);
+  /* Elegant Gradients — Cinematic Layering */
+  --gradient-primary: linear-gradient(135deg, #2b7fff 0%, #00e5c0 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0) 100%);
 
-  /* Shadows */
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.02) inset;
-  --shadow-hover: 0 16px 48px rgba(0,0,0,0.5), 0 0 20px rgba(26,140,255,0.03);
-  --shadow-glow:  0 0 15px rgba(26, 140, 255, 0.15), 0 4px 12px rgba(0,0,0,0.5);
+  /* Softer, Luxurious Shadows */
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.015);
+  --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(43, 127, 255, 0.02);
+  --shadow-glow:  0 0 12px rgba(43, 127, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.6);
 
-  /* Motion */
-  --ease-out-expo: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Elite Motions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:   cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* === HTML BASE === */

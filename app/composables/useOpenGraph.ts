@@ -39,7 +39,7 @@ export const useOpenGraph = (options: OpenGraphOptions = {}) => {
     imageHeight: options.imageHeight || '630',
     imageAlt: options.imageAlt || 'XKProduction - Phòng Thu Âm Chuyên Nghiệp',
     imageType: options.imageType || 'image/png',
-    url: options.url || `${BASE_URL}${route.path}`,
+    url: options.url || `${BASE_URL}${route.path.replace(/\/$/, '')}`,
     type: options.type || 'website',
     siteName: options.siteName || 'XKProduction',
     locale: options.locale || 'vi_VN',

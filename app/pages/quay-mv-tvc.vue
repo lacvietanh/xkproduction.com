@@ -2,9 +2,9 @@
   <div>
     <section class="page-hero">
       <div class="max-width">
-        <div class="hero-badge"><i class="fa-solid fa-microphone"></i> DỊCH VỤ PHÒNG THU</div>
-        <h1>Dịch Vụ Thu Âm Chuyên Nghiệp</h1>
-        <p class="page-hero-sub">Phòng thu âm tiêu chuẩn tại Bình Phước — Nơi thăng hoa giọng hát của bạn với thiết bị chuẩn quốc tế và sự hỗ trợ tận tâm từ kỹ sư âm thanh.</p>
+        <div class="hero-badge"><i class="fa-solid fa-film"></i> VIDEO &amp; MEDIA</div>
+        <h1>Quay MV &amp; TVC Chuyên Nghiệp</h1>
+        <p class="page-hero-sub">Sản xuất hình ảnh chất lượng cao — Phục vụ nghệ sĩ quay MV ca nhạc chuyên nghiệp, studio session, live session và doanh nghiệp sản xuất TVC quảng cáo tại Bình Phước.</p>
       </div>
     </section>
 
@@ -13,11 +13,11 @@
       <div class="max-width grid-layout">
         <!-- Main Info -->
         <div class="main-content-area">
-          <h2>Bảng giá gói thu âm tại XKProduction</h2>
-          <p>Mỗi gói thu âm đều được thiết kế tối ưu cho từng nhu cầu cụ thể, đảm bảo sự minh bạch tuyệt đối, không phát sinh chi phí ẩn.</p>
+          <h2>Dịch vụ sản xuất Video tại XKProduction</h2>
+          <p>Chúng tôi sở hữu ekip media chuyên nghiệp, thiết bị hiện đại cùng quy trình sản xuất trọn gói giúp sản phẩm của bạn thu hút người xem từ những giây đầu tiên.</p>
 
           <div class="pricing-grid-detail">
-            <div v-for="p in thuAmPlans" :key="p.name" class="pricing-card-detail" :class="{ featured: p.featured }">
+            <div v-for="p in videoPlans" :key="p.name" class="pricing-card-detail" :class="{ featured: p.featured }">
               <div v-if="p.badge" class="pricing-badge-detail">{{ p.badge }}</div>
               <h3>{{ p.name }}</h3>
               <div class="price-tag">{{ p.price }}</div>
@@ -25,60 +25,62 @@
               <ul class="features-list">
                 <li v-for="f in p.features" :key="f"><i class="fa-solid fa-check text-green"></i> {{ f }}</li>
               </ul>
-              <NuxtLink to="/contact" class="btn-order">Đặt lịch thu ngay <i class="fa-solid fa-arrow-right"></i></NuxtLink>
+              <NuxtLink to="/contact" class="btn-order">Liên hệ tư vấn ngay <i class="fa-solid fa-arrow-right"></i></NuxtLink>
             </div>
           </div>
 
           <div class="details-rich-text">
-            <h3>Quy trình làm việc tại phòng thu</h3>
-            <ol class="workflow-steps">
-              <li>
-                <strong>Đặt lịch &amp; Chuẩn bị:</strong> Đăng ký lịch thu trước tối thiểu 24h. Bạn sẽ nhận được checklist chuẩn bị giọng hát và lời bài hát.
-              </li>
-              <li>
-                <strong>Vocal Direction &amp; Coaching:</strong> Trong suốt buổi thu, producer của XKProduction sẽ đồng hành hướng dẫn bạn cách lấy hơi, nhả chữ và truyền tải cảm xúc tốt nhất.
-              </li>
-              <li>
-                <strong>Vocal Editing:</strong> Kỹ sư âm thanh tiến hành chỉnh phô (vocal tuning) và sửa nhịp (vocal timing) chuẩn xác bằng phần mềm chuyên nghiệp.
-              </li>
-              <li>
-                <strong>Bàn giao sản phẩm:</strong> Bạn nhận bản demo để nghe thử, yêu cầu chỉnh sửa và nhận file master WAV/MP3 chất lượng cao sau khi hoàn thiện.
-              </li>
-            </ol>
+            <h3>Quy trình sản xuất Video trọn gói</h3>
+            <p>Từ ý tưởng thô sơ đến sản phẩm hoàn thiện sẵn sàng phát hành trên YouTube, TikTok, Facebook hoặc truyền hình:</p>
+
+            <div class="text-block-group">
+              <div class="sub-text-block">
+                <h4>1. Kịch bản &amp; Storyboard</h4>
+                <p>Lên ý tưởng, viết kịch bản chi tiết, lựa chọn địa điểm quay, lên moodboard hình ảnh và xây dựng storyboard góc máy phù hợp với nội dung bài hát hoặc thương hiệu.</p>
+              </div>
+              <div class="sub-text-block">
+                <h4>2. Tiền kỳ &amp; Quay phim</h4>
+                <p>Ekip bấm máy chuyên nghiệp sử dụng hệ thống máy quay chất lượng cao (Sony/Blackmagic), hệ thống gimbal, slider, flycam, đèn studio và setup bối cảnh tỉ mỉ.</p>
+              </div>
+              <div class="sub-text-block">
+                <h4>3. Hậu kỳ &amp; Phân màu</h4>
+                <p>Dựng phim, cắt ghép nhịp nhàng theo giai điệu, hiệu ứng hình ảnh (VFX), chỉnh màu điện ảnh chuyên nghiệp (color grading) giúp hình ảnh sang trọng, bắt mắt.</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Sidebar Details -->
         <aside class="sidebar-area">
           <div class="sidebar-card">
-            <h3>Tại sao chọn XKProduction?</h3>
+            <h3>Tại sao nên làm việc với chúng tôi?</h3>
             <ul class="why-us-list">
               <li>
                 <i class="fa-solid fa-circle-check"></i>
                 <div>
-                  <strong>Thiết bị cao cấp:</strong> Sử dụng microphone condenser Neumann, preamp SSL và soundcard đạt chuẩn studio chuyên nghiệp.
+                  <strong>Ekip đồng bộ:</strong> Sự kết hợp chặt chẽ giữa phòng thu âm và ekip quay phim giúp âm thanh và hình ảnh của MV đạt độ ăn khớp tối đa.
                 </div>
               </li>
               <li>
                 <i class="fa-solid fa-circle-check"></i>
                 <div>
-                  <strong>7+ năm kinh nghiệm:</strong> Kỹ sư âm thanh Nguyễn Xuân Kiệt đã đồng hành cùng hơn 2000+ dự án của nhiều nghệ sĩ.
+                  <strong>Thiết bị hiện đại:</strong> Máy quay chuẩn 4K/6K, hệ thống ánh sáng chuyên dụng, flycam thế hệ mới ghi lại mọi khoảnh khắc đắt giá.
                 </div>
               </li>
               <li>
                 <i class="fa-solid fa-circle-check"></i>
                 <div>
-                  <strong>Hỗ trợ tận tình:</strong> Không chỉ bấm nút thu, chúng tôi hỗ trợ bè phối, hướng dẫn xử lý bài hát từ đầu đến cuối.
+                  <strong>Tối ưu chi phí:</strong> Quy trình sản xuất khép kín từ thu âm, mix master đến quay dựng giúp tiết kiệm tối đa ngân sách của bạn.
                 </div>
               </li>
             </ul>
           </div>
 
           <div class="sidebar-card">
-            <h3>Bạn cần tư vấn trực tiếp?</h3>
-            <p>Hãy nhắn tin qua Zalo hoặc liên hệ Hotline để được tư vấn gói thu âm phù hợp nhất với giọng hát của bạn.</p>
+            <h3>Cần báo giá chi tiết?</h3>
+            <p>Hãy chia sẻ ý tưởng của bạn, ekip media của XKProduction sẽ liên hệ tư vấn bối cảnh, trang phục và lập bảng chi phí chi tiết.</p>
             <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="btn-sidebar-contact Zalo-color">
-              <i class="fa-solid fa-comment"></i> Nhắn Zalo ngay
+              <i class="fa-solid fa-comment"></i> Nhận tư vấn trực tiếp
             </a>
           </div>
         </aside>
@@ -89,14 +91,14 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Dịch vụ Thu Âm Bài Hát Chuyên Nghiệp Bình Phước | XKProduction',
-  description: 'Bảng giá dịch vụ thu âm bài hát chuyên nghiệp từ 350k tại Bình Phước. Phòng thu âm đạt chuẩn cách âm, microphone Neumann, preamp SSL cao cấp. Đặt lịch thu âm ngay.',
-  ogTitle: 'Dịch Vụ Thu Âm Bài Hát Chuyên Nghiệp - XKProduction',
-  ogDescription: 'Thu âm bài hát chất lượng cao từ 350k tại Bình Phước. Đội ngũ kỹ sư âm thanh 7 năm kinh nghiệm hỗ trợ bè phối, vocal coaching tận tình.',
+  title: 'Quay MV & TVC Chuyên Nghiệp tại Bình Phước — XKProduction',
+  description: 'Dịch vụ sản xuất MV ca nhạc, quay Live Session, TVC quảng cáo doanh nghiệp trọn gói tại Bình Phước. Ekip chuyên nghiệp, 5 góc máy, màu điện ảnh. Tư vấn miễn phí.',
+  ogTitle: 'Quay MV & TVC Chuyên Nghiệp tại Bình Phước - XKProduction',
+  ogDescription: 'Sản xuất hình ảnh chất lượng cao chuẩn điện ảnh. Quay phim ca nhạc, TVC quảng cáo, live session trọn gói tại Bình Phước với ekip media chuyên nghiệp.',
   ogImage: 'https://xkproduction.com/images/Xkpreviewnew.png',
-  ogUrl: 'https://xkproduction.com/thu-am',
+  ogUrl: 'https://xkproduction.com/quay-mv-tvc',
   twitterCard: 'summary_large_image',
-  keywords: 'thu âm bài hát, dịch vụ thu âm, phòng thu âm Bình Phước, giá thu âm bao nhiêu, studio thu âm uy tín, thu âm bài hát giá bao nhiêu, phòng thu âm chuyên nghiệp'
+  keywords: 'quay mv, quay tvc, quay mv binh phuoc, quay phim ca nhac, san xuat video, live session, video podcast, xkproduction'
 })
 
 useHead({
@@ -106,20 +108,18 @@ useHead({
       innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Service",
-        "serviceType": "Thu âm bài hát",
+        "serviceType": "Quay MV & TVC",
         "provider": {
           "@type": "MusicStore",
           "name": "XKProduction",
           "url": "https://xkproduction.com"
         },
-        "name": "Dịch vụ Thu âm chuyên nghiệp",
-        "description": "Thu âm vocal chuyên nghiệp tại phòng thu chuẩn quốc tế. Phù hợp ca sĩ, nghệ sĩ, học viên thanh nhạc.",
+        "name": "Dịch vụ Quay MV & TVC chuyên nghiệp",
+        "description": "Quay MV 5 góc máy, bao gồm Studio và Ngoại cảnh, ekip media chuyên nghiệp đầy đủ trọn gói.",
         "offers": {
-          "@type": "AggregateOffer",
-          "lowPrice": "350000",
-          "highPrice": "1800000",
-          "priceCurrency": "VND",
-          "offerCount": "4"
+          "@type": "Offer",
+          "price": "1500000",
+          "priceCurrency": "VND"
         }
       })
     }
@@ -128,56 +128,30 @@ useHead({
 
 useSchemaOrg([
   defineWebPage({
-    name: 'Dịch vụ Thu Âm Bài Hát Chuyên Nghiệp - XKProduction',
-    description: 'Bảng giá dịch vụ thu âm bài hát chuyên nghiệp mới nhất từ 350.000₫ đến 1.800.000₫ tại XKProduction.'
-  }),
-  defineProduct({
-    name: 'Dịch vụ Thu Âm Bài Hát Chuyên Nghiệp XKProduction',
-    description: 'Thu âm bài hát chuyên nghiệp với trang thiết bị chuẩn quốc tế và hỗ trợ vocal coaching tận tình.',
-    image: 'https://xkproduction.com/images/logo-xkproduction.png',
-    offers: [
-      { name: 'Gói Thu Âm Cơ Bản', price: '350000', priceCurrency: 'VND' },
-      { name: 'Gói Thu Âm Nâng Cao', price: '550000', priceCurrency: 'VND' },
-      { name: 'Gói Thu Âm Pro', price: '1000000', priceCurrency: 'VND' },
-      { name: 'Gói Thu Âm Cao Cấp', price: '1800000', priceCurrency: 'VND' }
-    ]
+    name: 'Quay MV & TVC Chuyên Nghiệp tại Bình Phước — XKProduction',
+    description: 'Chi tiết dịch vụ sản xuất MV ca nhạc, TVC quảng cáo doanh nghiệp chuyên nghiệp trọn gói.'
   })
 ])
 
-const thuAmPlans = [
+const videoPlans = [
   {
-    name: 'Gói Cơ Bản',
-    price: 'Từ 350.000₫',
-    desc: 'Phù hợp với người mới bắt đầu, thu demo, cover, học viên thanh nhạc.',
-    features: ['Thu âm 1-2 tiếng', 'Chỉnh sửa cơ bản (tuning, timing)', 'Xuất file WAV/MP3', '1 lần revision'],
-    featured: false, badge: ''
+    name: 'Quay MV chuyên nghiệp',
+    price: 'Từ 1.500.000₫',
+    desc: 'Phù hợp làm MV cover, MV phòng thu, live studio session của ca sĩ.',
+    features: ['Quay phim tại studio hoặc 1 ngoại cảnh', 'Setup ánh sáng chuyên nghiệp', 'Quay 5 góc máy đa dạng', 'Dựng hậu kỳ & Phân màu', 'Hỗ trợ lên kịch bản cơ bản'],
+    featured: true, badge: 'Phổ biến nhất'
   },
   {
-    name: 'Gói Nâng Cao',
-    price: 'Từ 550.000₫',
-    desc: 'Dành cho ca sĩ bán chuyên, dự án cá nhân, phát hành YouTube hoặc mạng xã hội.',
-    features: ['Thu âm 2-3 tiếng', 'Vocal production đầy đủ', 'Xuất file đa định dạng', '2 lần revision', 'Tư vấn kỹ thuật'],
-    featured: false, badge: ''
-  },
-  {
-    name: 'Gói Chuyên Sâu (Pro)',
-    price: 'Từ 1.000.000₫',
-    desc: 'Ca sĩ chuyên nghiệp, phát hành thương mại lên Spotify, Apple Music.',
-    features: ['Thu âm không giới hạn session', 'Vocal coaching & direction', 'Vocal production nâng cao', 'Xuất multi-track', '3 lần revision', 'Hỗ trợ phát hành'],
-    featured: true, badge: 'Khuyên dùng'
-  },
-  {
-    name: 'Gói Cao Cấp (Ultimate)',
-    price: 'Từ 1.800.000₫',
-    desc: 'Nghệ sĩ thực thụ, dự án đòi hỏi sự chỉn chu tuyệt đối về cả kỹ thuật lẫn nghệ thuật.',
-    features: ['Thu âm không giới hạn', 'Storytelling & emotional coaching', 'Xử lý âm thanh cao cấp', 'Revision không giới hạn', 'Chiến lược phát hành', 'Priority booking'],
+    name: 'Sản xuất TVC & Quảng cáo',
+    price: 'Liên hệ báo giá',
+    desc: 'Phù hợp quảng bá thương hiệu, TVC doanh nghiệp, giới thiệu cửa hàng, sản phẩm.',
+    features: ['Biên kịch & Lên ý tưởng kịch bản', 'Flycam chất lượng cao', 'Kỹ thuật viên ánh sáng chuyên dụng', 'Thu âm voice-over chuyên nghiệp', 'Dựng phim, kỹ xảo, phân màu', 'Bàn giao video chuẩn phát sóng'],
     featured: false, badge: ''
   }
 ]
 </script>
 
 <style scoped>
-/* Page Layout styles */
 .page-hero {
   padding-top: 140px;
   padding-bottom: 4rem;
@@ -326,53 +300,33 @@ const thuAmPlans = [
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-main);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.workflow-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.text-block-group {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-.workflow-steps li {
-  position: relative;
-  padding-left: 3rem;
-  font-size: 0.95rem;
-  color: var(--text-light);
-  line-height: 1.7;
+.sub-text-block {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--primary);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 12px 12px 0;
 }
 
-.workflow-steps li::before {
-  content: counter(step-counter, decimal);
-  counter-increment: step-counter;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 36px;
-  height: 36px;
-  background: rgba(26, 140, 255, 0.1);
-  border: 1px solid rgba(26, 140, 255, 0.25);
-  color: var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.sub-text-block h4 {
+  font-size: 1.1rem;
   font-weight: 700;
-}
-
-.workflow-steps {
-  counter-reset: step-counter;
-}
-
-.workflow-steps li strong {
-  display: block;
   color: var(--text-main);
-  margin-bottom: 0.25rem;
-  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sub-text-block p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
 }
 
 /* Sidebar styles */

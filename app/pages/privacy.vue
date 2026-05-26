@@ -61,7 +61,7 @@
             <li>Rút lại sự đồng ý bất cứ lúc nào</li>
             <li>Yêu cầu không được liên hệ thêm</li>
           </ul>
-          <p>Để thực hiện các quyền này, vui lòng liên hệ: <a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a></p>
+          <p>Để thực hiện các quyền này, vui lòng liên hệ: <a href="mailto:contact@xkproduction.com">contact@xkproduction.com</a></p>
         </div>
 
         <div class="policy-card">
@@ -73,7 +73,7 @@
           <h2><i class="fa-solid fa-headset"></i> 9. Liên hệ</h2>
           <p>Nếu bạn có bất kỳ câu hỏi nào về chính sách bảo mật, vui lòng liên hệ:</p>
           <div class="contact-row">
-            <a href="mailto:xkstudio29@gmail.com" class="contact-link"><i class="fa-solid fa-envelope"></i> xkstudio29@gmail.com</a>
+            <a href="mailto:contact@xkproduction.com" class="contact-link"><i class="fa-solid fa-envelope"></i> contact@xkproduction.com</a>
             <a href="tel:0355356294" class="contact-link"><i class="fa-solid fa-phone"></i> 0355.356.294</a>
             <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="contact-link"><i class="fa-solid fa-comment"></i> Zalo</a>
           </div>

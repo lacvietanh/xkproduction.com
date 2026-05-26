@@ -22,7 +22,7 @@ useOpenGraph({
   title: 'XKProduction - Phòng Thu Âm Chuyên Nghiệp Bình Phước | Hoà Âm Phối Khí | Mix Master',
   description: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án. Bắt đầu tư vấn miễn phí.',
   image: 'https://xkproduction.com/images/xk-studio-production.jpg',
-  type: 'business.business',
+  type: 'website',
   locale: 'vi_VN',
   twitterHandle: '@xkproduction',
 })
@@ -39,7 +39,8 @@ useSeoMeta({
 
 // Add JSON-LD Structured Data for better social sharing & search results
 useHead(() => {
-  const currentUrl = `${BASE_URL}${route.path}`
+  const cleanPath = route.path.replace(/\/$/, '')
+  const currentUrl = `${BASE_URL}${cleanPath}`
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -115,7 +116,7 @@ useSchemaOrg([
     image: 'https://xkproduction.com/images/Logoxkfix.png',
     description: 'Phòng thu âm & media production chuyên nghiệp tại Bình Phước | Sound & Light | Đào tạo Music Producer.',
     telephone: '+84355356294',
-    email: 'xkstudio29@gmail.com',
+    email: 'contact@xkproduction.com',
     foundingDate: '2018',
     legalName: 'XKProduction - Nguyễn Xuân Kiệt',
     address: {

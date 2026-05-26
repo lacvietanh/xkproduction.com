@@ -59,6 +59,13 @@ export default defineNuxtConfig({
         images: [{ loc: 'https://xkproduction.com/images/Xkpreviewnew.png', title: 'Dịch vụ Hoà âm phối khí', caption: 'Hoà âm phối khí online chuyên nghiệp' }]
       },
       {
+        loc: '/quay-mv-tvc',
+        priority: 0.9,
+        changefreq: 'weekly',
+        lastmod: new Date().toISOString().split('T')[0],
+        images: [{ loc: 'https://xkproduction.com/images/Xkpreviewnew.png', title: 'Dịch vụ Quay MV & TVC Chuyên Nghiệp', caption: 'Sản xuất MV và TVC quảng cáo trọn gói tại Bình Phước' }]
+      },
+      {
         loc: '/courses',
         priority: 0.9,
         changefreq: 'monthly',
@@ -134,8 +141,8 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'XKProduction' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@xkstudio29' },
-        { name: 'twitter:creator', content: '@xkstudio29' },
+        { name: 'twitter:site', content: '@xkproduction' },
+        { name: 'twitter:creator', content: '@xkproduction' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
@@ -204,7 +211,7 @@ export default defineNuxtConfig({
       routes: [
         '/', '/about', '/services', '/products', '/live-band', '/courses',
         '/contact', '/faq', '/blog', '/privacy', '/sitemap.xml', '/robots.txt',
-        '/thu-am', '/mix-master', '/hoa-am-phoi-khi',
+        '/thu-am', '/mix-master', '/hoa-am-phoi-khi', '/quay-mv-tvc',
         // Blog detail pages — must be explicit for SSG (crawlLinks can't follow Vue client-side links)
         '/blog/thu-am-gia-2026',
         '/blog/phong-thu-am-binh-phuoc',
