@@ -166,7 +166,7 @@
         <h2 class="section-heading">LIÊN HỆ & TƯ VẤN</h2>
         <div class="contact-info">
           <a href="tel:0355356294" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-phone"></i></span><span>Hotline: 0355.356.294</span></a>
-          <a href="mailto:contact@xkproduction.com" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-envelope"></i></span><span>Email: contact@xkproduction.com</span></a>
+          <a href="mailto:xkstudio29@gmail.com" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-envelope"></i></span><span>Email: xkstudio29@gmail.com</span></a>
           <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="contact-item"><span class="ci-icon"><i class="fa-solid fa-comment"></i></span><span>Zalo: 0355.356.294</span></a>
         </div>
         <Transition name="toast">
@@ -294,7 +294,7 @@ useHead({
         "image": "https://xkproduction.com/images/Xkpreviewnew.png",
         "description": "Phòng thu âm chuyên nghiệp — Hoà âm phối khí — Mix & Master chuẩn quốc tế — Sân khấu sự kiện & Âm thanh ánh sáng trọn gói tại Bình Phước.",
         "telephone": "+84355356294",
-        "email": "contact@xkproduction.com",
+        "email": "xkstudio29@gmail.com",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "QL14 km25, Nghĩa Trung",
@@ -354,7 +354,7 @@ useSchemaOrg([
     image: 'https://xkproduction.com/images/Xkpreviewnew.png',
     logo: 'https://xkproduction.com/images/logo-xkproduction.png',
     telephone: '+84355356294',
-    email: 'contact@xkproduction.com',
+    email: 'xkstudio29@gmail.com',
     url: 'https://xkproduction.com',
     description: 'Phòng thu âm chuyên nghiệp — Hoà âm phối khí — Mix & Master chuẩn quốc tế — Sân khấu sự kiện & Âm thanh ánh sáng trọn gói tại Bình Phước.',
     address: {

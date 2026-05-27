@@ -56,9 +56,9 @@
               </a>
             </li>
             <li>
-              <a href="mailto:contact@xkproduction.com" itemprop="email" title="Email XKProduction">
+              <a href="mailto:xkstudio29@gmail.com" itemprop="email" title="Email XKProduction">
                 <i class="fa-solid fa-envelope"></i>
-                <span>contact@xkproduction.com</span>
+                <span>xkstudio29@gmail.com</span>
               </a>
             </li>
             <li>

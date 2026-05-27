@@ -146,7 +146,7 @@
 
         <div class="cta-footer">
           <p><i class="fa-solid fa-phone"></i> Hotline: <a href="tel:0355356294">0355.356.294</a></p>
-          <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:contact@xkproduction.com">contact@xkproduction.com</a></p>
+          <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a></p>
           <p><i class="fa-solid fa-comment"></i> Zalo: <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a></p>
         </div>
       </div>

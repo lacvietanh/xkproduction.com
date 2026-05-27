@@ -1,6 +1,6 @@
 <template>
   <div class="site-wrapper">
-    <Navbar />
+    <Navbar />nm 
     <main class="main-content">
       <NuxtPage />
     </main>
@@ -51,7 +51,7 @@ useHead(() => {
     logo: 'https://xkproduction.com/images/Logoxkfix.png',
     image: 'https://xkproduction.com/images/Xkpreviewnew.png',
     telephone: '+84355356294',
-    email: 'contact@xkproduction.com',
+    email: 'xkstudio29@gmail.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Bình Phước, Đồng Nai',
@@ -116,7 +116,7 @@ useSchemaOrg([
     image: 'https://xkproduction.com/images/Logoxkfix.png',
     description: 'Phòng thu âm & media production chuyên nghiệp tại Bình Phước | Sound & Light | Đào tạo Music Producer.',
     telephone: '+84355356294',
-    email: 'contact@xkproduction.com',
+    email: 'xkstudio29@gmail.com',
     foundingDate: '2018',
     legalName: 'XKProduction - Nguyễn Xuân Kiệt',
     address: {
