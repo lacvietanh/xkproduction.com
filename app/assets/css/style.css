@@ -163,6 +163,7 @@ img {
   color: var(--text-main);
   border: 1px solid rgba(255,255,255,0.14);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .btn-secondary:hover {
   background: rgba(255,255,255,0.09);

@@ -484,6 +484,7 @@ const resetSearch = () => {
   gap: 0.4rem;
   padding: 0.4rem 0.9rem;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 20px;
   font-size: 0.7rem;
   font-weight: 700;

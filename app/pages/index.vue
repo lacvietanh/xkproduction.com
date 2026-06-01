@@ -2632,6 +2632,7 @@ onMounted(() => {
   z-index: 9000;
   background: rgba(7, 16, 24, 0.96);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
