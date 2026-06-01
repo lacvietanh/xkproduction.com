@@ -1,125 +1,159 @@
 <template>
-  <div>
+  <div class="contact-page-wrap">
+    <!-- INTERACTIVE AMBIENT GLOW BACKDROP -->
+    <div class="immersive-ambient-bg" aria-hidden="true">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
     <section class="page-hero">
       <div class="max-width">
-        <h1>Liên hệ &amp; Đặt lịch</h1>
-        <p class="page-hero-sub">Chia sẻ dự án của bạn — chúng tôi sẽ tư vấn giải pháp phù hợp nhất trong 24 giờ</p>
+        <span class="hero-badge"><i class="fa-solid fa-phone"></i> KẾT NỐI</span>
+        <h1 class="page-hero-title">Liên Hệ &amp; <span class="text-gradient-animated">Đặt Lịch</span></h1>
+        <p class="page-hero-sub">Chia sẻ dự án của bạn — chúng tôi sẽ tư vấn giải pháp âm nhạc phù hợp nhất trong vòng 24 giờ làm việc.</p>
       </div>
     </section>
 
-    <section style="padding: 5rem 0;">
+    <!-- ===== CONTACT DETAILS & FORM ===== -->
+    <section class="contact-form-section">
       <div class="max-width contact-grid">
+        <!-- Left Column: Information checklists -->
+        <div class="contact-info-panel">
+          <span class="header-tag">THÔNG TIN LIÊN HỆ</span>
+          <h2 class="contact-headline">Hãy để lại lời nhắn cho chúng tôi</h2>
+          <p class="contact-subheadline">Chúng tôi luôn sẵn sàng lắng nghe mọi dự án, từ thu âm đơn giản đến album phối hợp quy mô thương mại.</p>
 
-        <!-- Thông tin liên hệ -->
-        <div class="contact-info">
-          <h2>Thông tin liên hệ</h2>
-          <div v-for="info in contactInfo" :key="info.title" class="contact-item">
-            <span class="contact-icon"><i :class="info.faIcon"></i></span>
-            <div>
-              <strong>{{ info.title }}</strong>
-              <div v-html="info.content" class="contact-content"></div>
+          <div class="contact-methods-grid">
+            <div v-for="info in contactInfo" :key="info.title" class="contact-method-card glass-card">
+              <span class="method-icon"><i :class="info.faIcon"></i></span>
+              <div class="method-content">
+                <strong>{{ info.title }}</strong>
+                <div v-html="info.content" class="method-val"></div>
+              </div>
             </div>
           </div>
 
-          <div class="contact-hours">
-            <h3>Giờ làm việc</h3>
-            <p>Thứ 2 – Thứ 6: 7:00 – 22:00</p>
-            <p>Thứ 7 – Chủ nhật: 8:00 – 20:00</p>
+          <div class="working-hours-card glass-card">
+            <h3><i class="fa-solid fa-clock"></i> Giờ làm việc</h3>
+            <p><strong>Thứ 2 – Thứ 6:</strong> 07:00 – 22:00</p>
+            <p><strong>Thứ 7 – Chủ nhật:</strong> 08:00 – 20:00</p>
           </div>
         </div>
 
-        <!-- Form liên hệ -->
-        <div class="contact-form-wrap">
-          <h2>Gửi yêu cầu tư vấn</h2>
+        <!-- Right Column: Glass Form -->
+        <div class="contact-form-panel">
+          <div class="form-container-glass glass-card">
+            <h3 class="form-headline">Gửi nhanh yêu cầu</h3>
+            <p class="form-subheadline">Điền thông tin chi tiết dưới đây, chúng tôi sẽ chủ động liên hệ sớm.</p>
 
-          <!-- SUCCESS STATE -->
-          <div v-if="submitState === 'success'" class="form-success">
-            <i class="fa-solid fa-circle-check"></i>
-            <h3>Đã gửi thành công!</h3>
-            <p>Chúng tôi đã nhận yêu cầu và sẽ liên hệ lại trong vòng <strong>24 giờ</strong>.<br/>Trong thời gian đó, bạn có thể nhắn qua <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">Zalo</a> để được hỗ trợ nhanh hơn.</p>
-            <button class="btn btn-primary" style="margin-top:1.25rem;" @click="submitState = 'idle'">Gửi yêu cầu khác</button>
+            <!-- SUCCESS STATE -->
+            <Transition name="fade">
+              <div v-if="submitState === 'success'" class="form-success-overlay text-center">
+                <i class="fa-solid fa-circle-check fa-3x success-icon"></i>
+                <h3>Gửi yêu cầu thành công!</h3>
+                <p>Cảm ơn bạn đã tin tưởng XKProduction. Chúng tôi đã nhận được tin nhắn của bạn và sẽ chủ động liên hệ lại trong vòng <strong>24 giờ</strong>.</p>
+                <p class="zalo-notice">Nếu cần hỗ trợ gấp, vui lòng nhắn qua Zalo <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a> để được xử lý ngay lập tức.</p>
+                <button class="btn btn-secondary" style="margin-top: 1.5rem;" @click="submitState = 'idle'">Gửi yêu cầu khác</button>
+              </div>
+            </Transition>
+
+            <form v-if="submitState !== 'success'" class="luxury-form" @submit.prevent="handleSubmit" novalidate>
+              <!-- ERROR BANNER -->
+              <Transition name="toast">
+                <div v-if="submitState === 'error'" class="form-error-banner" role="alert">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span>Gửi thất bại. Vui lòng thử lại hoặc nhắn Zalo <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a>.</span>
+                </div>
+              </Transition>
+
+              <div class="form-row-premium">
+                <div class="form-group-premium">
+                  <label for="cf-name">Họ và tên <span class="req">*</span></label>
+                  <input 
+                    type="text" 
+                    id="cf-name" 
+                    v-model="form.name"
+                    placeholder="Nguyễn Văn A"
+                    :class="{ error: formErrors.name }"
+                    @blur="validateForm" 
+                  />
+                  <span v-if="formErrors.name" class="field-error-text"><i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.name }}</span>
+                </div>
+
+                <div class="form-group-premium">
+                  <label for="cf-phone">Số điện thoại <span class="req">*</span></label>
+                  <input 
+                    type="tel" 
+                    id="cf-phone" 
+                    v-model="form.phone"
+                    placeholder="03xx.xxx.xxx"
+                    :class="{ error: formErrors.phone }"
+                    @blur="validateForm" 
+                  />
+                  <span v-if="formErrors.phone" class="field-error-text"><i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.phone }}</span>
+                </div>
+              </div>
+
+              <div class="form-group-premium">
+                <label for="cf-email">Email <span class="optional">(không bắt buộc)</span></label>
+                <input type="email" id="cf-email" v-model="form.email" placeholder="email@example.com" />
+              </div>
+
+              <div class="form-group-premium">
+                <label for="cf-service">Dịch vụ bạn quan tâm <span class="req">*</span></label>
+                <div class="custom-select-wrap">
+                  <select 
+                    id="cf-service" 
+                    v-model="form.service"
+                    :class="{ error: formErrors.service }"
+                    @change="validateForm"
+                  >
+                    <option value="">Chọn dịch vụ...</option>
+                    <option value="thu-am">Thu âm bài hát</option>
+                    <option value="mixing-mastering">Mixing &amp; Mastering</option>
+                    <option value="hoa-am">Hòa âm phối khí</option>
+                    <option value="mv-tvc">Sản xuất MV / TVC</option>
+                    <option value="live-band">Âm thanh - Live Band sự kiện</option>
+                    <option value="khoa-hoc">Khoá học âm nhạc</option>
+                    <option value="other">Yêu cầu khác</option>
+                  </select>
+                </div>
+                <span v-if="formErrors.service" class="field-error-text"><i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.service }}</span>
+              </div>
+
+              <div class="form-group-premium">
+                <label for="cf-message">Mô tả chi tiết yêu cầu <span class="req">*</span></label>
+                <textarea 
+                  id="cf-message" 
+                  v-model="form.message"
+                  placeholder="Ý tưởng hoặc thể loại bài hát? Tiến độ dự kiến? Ngân sách dự chi?..." 
+                  rows="4"
+                  :class="{ error: formErrors.message }"
+                  @blur="validateForm"
+                ></textarea>
+                <span v-if="formErrors.message" class="field-error-text"><i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.message }}</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full-width" :disabled="submitState === 'loading'">
+                <i v-if="submitState === 'loading'" class="fa-solid fa-spinner fa-spin" style="margin-right: 0.5rem"></i>
+                <span>{{ submitState === 'loading' ? 'ĐANG GỬI...' : 'GỬI YÊU CẦU ĐĂNG KÝ' }}</span>
+              </button>
+            </form>
           </div>
-
-          <form v-else class="contact-form" @submit.prevent="handleSubmit" novalidate>
-            <!-- ERROR BANNER -->
-            <div v-if="submitState === 'error'" class="form-error-banner" role="alert">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-              Gửi thất bại. Vui lòng thử lại hoặc liên hệ qua <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">Zalo 0355.356.294</a>.
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="cf-name">Họ tên <span class="req">*</span></label>
-                <input type="text" id="cf-name" v-model="form.name"
-                  placeholder="Nguyễn Văn A"
-                  :class="{ 'input-error': formErrors.name }"
-                  @blur="validateForm" />
-                <span v-if="formErrors.name" class="field-error">
-                  <i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.name }}
-                </span>
-              </div>
-              <div class="form-group">
-                <label for="cf-phone">Số điện thoại <span class="req">*</span></label>
-                <input type="tel" id="cf-phone" v-model="form.phone"
-                  placeholder="0355 356 294"
-                  :class="{ 'input-error': formErrors.phone }"
-                  @blur="validateForm" />
-                <span v-if="formErrors.phone" class="field-error">
-                  <i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.phone }}
-                </span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="cf-email">Email <span class="optional">(không bắt buộc)</span></label>
-              <input type="email" id="cf-email" v-model="form.email" placeholder="email@example.com" />
-            </div>
-
-            <div class="form-group">
-              <label for="cf-service">Dịch vụ quan tâm <span class="req">*</span></label>
-              <select id="cf-service" v-model="form.service"
-                :class="{ 'input-error': formErrors.service }"
-                @change="validateForm">
-                <option value="">Chọn dịch vụ...</option>
-                <option value="thu-am">Thu âm bài hát</option>
-                <option value="mixing-mastering">Mixing &amp; Mastering</option>
-                <option value="hoa-am">Hòa âm phối khí</option>
-                <option value="mv-tvc">Sản xuất MV / TVC</option>
-                <option value="live-band">Âm thanh - Live Band sự kiện</option>
-                <option value="khoa-hoc">Khoá học âm nhạc</option>
-                <option value="other">Khác</option>
-              </select>
-              <span v-if="formErrors.service" class="field-error">
-                <i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.service }}
-              </span>
-            </div>
-
-            <div class="form-group">
-              <label for="cf-message">Mô tả dự án <span class="req">*</span></label>
-              <textarea id="cf-message" v-model="form.message"
-                placeholder="Bài hát thể loại gì? Timeline dự kiến? Ngân sách tham khảo?..."
-                :class="{ 'input-error': formErrors.message }"
-                @blur="validateForm"></textarea>
-              <span v-if="formErrors.message" class="field-error">
-                <i class="fa-solid fa-circle-exclamation"></i> {{ formErrors.message }}
-              </span>
-            </div>
-
-            <button type="submit" class="btn btn-primary form-submit" :disabled="submitState === 'loading'">
-              <i v-if="submitState === 'loading'" class="fa-solid fa-spinner fa-spin"></i>
-              <span>{{ submitState === 'loading' ? 'Đang gửi...' : 'Gửi yêu cầu tư vấn' }}</span>
-            </button>
-          </form>
         </div>
-
       </div>
     </section>
 
-    <!-- Google Maps Embed -->
+    <!-- ===== GOOGLE MAPS BLOCK ===== -->
     <section class="map-section">
       <div class="max-width">
-        <h2 class="map-heading"><i class="fa-solid fa-map-location-dot"></i> Vị trí XKProduction</h2>
-        <div class="map-container">
+        <div class="section-header-minimal" style="margin-bottom: 2rem;">
+          <span class="header-tag"><i class="fa-solid fa-map-location-dot"></i> VỊ TRÍ BẢN ĐỒ</span>
+          <h2 class="section-heading-heavy">Studio XKProduction</h2>
+        </div>
+        
+        <div class="map-container-glass glass-card">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.123!2d107.11719352335317!3d11.71792651529057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDQzJzA0LjUiTiAxMDfCsDA3JzAyLjAiRQ!5e0!3m2!1svi!2svn!4v1714500000000!5m2!1svi!2svn"
             width="100%"
@@ -136,7 +170,7 @@
             class="map-directions-link"
           >
             <i class="fa-solid fa-diamond-turn-right"></i>
-            Chỉ đường đến XKProduction
+            <span>Chỉ đường đến phòng thu XKProduction trên Google Maps</span>
             <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i>
           </a>
         </div>
@@ -146,6 +180,8 @@
 </template>
 
 <script setup lang="ts">
+import { reactive, ref } from 'vue'
+
 useSeoMeta({
   title: 'Liên hệ & Đặt lịch Thu âm, Mix Master - XKProduction',
   description: 'Liên hệ XKProduction để đặt lịch thu âm bài hát, tư vấn mixing/mastering, hoà âm phối khí. Hotline: 0355.356.294. Phản hồi trong 24 giờ.',
@@ -196,12 +232,6 @@ useSchemaOrg([
   })
 ])
 
-/* === FORMSPREE INTEGRATION ===
- * Bước 1: Đăng ký tại https://formspree.io (miễn phí)
- * Bước 2: Tạo New Form, lấy Form ID (dạng: xyzabcde)
- * Bước 3: Thay endpoint trong nuxt.config.ts
- * Bước 4: Trong Formspree dashboard, thêm email nhận thông báo
- */
 const config = useRuntimeConfig()
 const FORMSPREE_ENDPOINT = config.public.formspreeEndpoint
 
@@ -251,169 +281,479 @@ async function handleSubmit() {
 const contactInfo = [
   { faIcon: 'fa-solid fa-phone', title: 'Hotline / Zalo', content: '<a href="tel:0355356294">0355.356.294</a>' },
   { faIcon: 'fa-solid fa-envelope', title: 'Email', content: '<a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a>' },
-  { faIcon: 'fa-solid fa-comment', title: 'Zalo', content: '<a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a>' },
-  { faIcon: 'fa-brands fa-facebook-f', title: 'Facebook', content: '<a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener">facebook.com/ngxkiet</a>' },
-  { faIcon: 'fa-solid fa-location-dot', title: 'Địa chỉ', content: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng, Bình Phước' }
+  { faIcon: 'fa-solid fa-comment', title: 'Zalo Chat', content: '<a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a>' },
+  { faIcon: 'fa-brands fa-facebook-f', title: 'Facebook Cá Nhân', content: '<a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener">facebook.com/ngxkiet</a>' },
+  { faIcon: 'fa-solid fa-location-dot', title: 'Địa chỉ Studio', content: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng, Bình Phước' }
 ]
 </script>
 
 <style scoped>
-.page-hero {
-  padding-top: 140px;
-  padding-bottom: 4rem;
-  background: linear-gradient(135deg, #06080f 0%, #0d1117 100%);
-  text-align: center;
+.contact-page-wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-dark);
 }
-.page-hero h1 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; }
-.page-hero-sub { font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+/* ==============================================
+   INTERACTIVE AMBIENT GLOW BACKDROP
+   ============================================== */
+.immersive-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+}
+
+.glow-spot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.16;
+}
+
+.spotlight-1 {
+  width: 550px;
+  height: 550px;
+  top: -12%;
+  left: -12%;
+  background: rgba(125, 211, 252, 0.35);
+}
+
+.spotlight-2 {
+  width: 650px;
+  height: 650px;
+  bottom: -12%;
+  right: -12%;
+  background: rgba(56, 189, 248, 0.22);
+}
+
+/* ==============================================
+   PAGE HERO
+   ============================================== */
+.page-hero {
+  padding-top: 190px;
+  padding-bottom: 5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.page-hero-title {
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
+}
+
+.page-hero-sub {
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  color: var(--text-light);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ==============================================
+   CONTACT GRID
+   ============================================== */
+.contact-form-section {
+  padding: 60px 0 140px;
+  position: relative;
+  z-index: 1;
+}
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 4rem;
   align-items: start;
 }
 
-.contact-info h2, .contact-form-wrap h2 {
-  font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.5rem;
+/* Left Panel Info */
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
 }
 
-.contact-item {
-  display: flex; gap: 1rem; align-items: flex-start;
-  padding: 1rem; background: var(--bg-surface); border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem;
-}
-.contact-icon { font-size: 1.4rem; flex-shrink: 0; }
-.contact-content { color: var(--text-light); font-size: 0.95rem; margin-top: 0.25rem; }
-.contact-content a { color: var(--primary); text-decoration: none; }
-.contact-content a:hover { text-decoration: underline; }
-.contact-item strong { color: var(--text-main); font-size: 0.85rem; display: block; }
-
-.contact-hours {
-  margin-top: 2rem; padding: 1.5rem; background: var(--bg-surface);
-  border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
-}
-.contact-hours h3 { color: var(--text-main); margin-bottom: 0.75rem; font-size: 1rem; }
-.contact-hours p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.3rem; }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-.form-group { margin-bottom: 1.1rem; }
-.form-group label {
-  display: block; color: var(--text-light); margin-bottom: 0.4rem;
-  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.3px;
-}
-.req { color: #ff6b6b; }
-.optional { color: rgba(156,175,207,0.5); font-weight: 400; font-size: 0.78rem; }
-.field-error {
-  display: flex; align-items: center; gap: 0.35rem;
-  font-size: 0.75rem; color: #ff6b6b; margin-top: 0.3rem;
-}
-
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%; padding: 0.85rem 1rem;
-  background: rgba(20,24,45,0.6); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px; color: var(--text-main); font-family: inherit; font-size: 0.95rem;
-  transition: border-color 0.25s, box-shadow 0.25s;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-  outline: none; border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(26,140,255,0.12);
-}
-.form-group input.input-error,
-.form-group select.input-error,
-.form-group textarea.input-error {
-  border-color: rgba(255,107,107,0.6);
-  background: rgba(255,107,107,0.05);
-}
-.form-group textarea { min-height: 140px; resize: vertical; }
-.form-group select { cursor: pointer; }
-.form-group select option { background: #11142b; }
-
-/* SUCCESS STATE */
-.form-success {
-  text-align: center; padding: 3rem 2rem;
-  background: rgba(0,229,192,0.06);
-  border: 1.5px solid rgba(0,229,192,0.25);
-  border-radius: 14px;
-}
-.form-success i { font-size: 3rem; color: #00e5c0; margin-bottom: 1rem; display: block; }
-.form-success h3 { font-size: 1.4rem; color: var(--text-main); margin-bottom: 0.6rem; }
-.form-success p { color: var(--text-light); line-height: 1.7; }
-.form-success a { color: var(--primary); }
-
-/* ERROR BANNER */
-.form-error-banner {
-  display: flex; align-items: center; gap: 0.65rem;
-  padding: 0.9rem 1.1rem; border-radius: 10px; margin-bottom: 1rem;
-  background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.3);
-  color: #ff9090; font-size: 0.85rem;
-}
-.form-error-banner a { color: var(--primary); }
-.form-error-banner i { flex-shrink: 0; }
-
-.form-submit { width: 100%; padding: 1rem; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-.form-submit:disabled { opacity: 0.65; cursor: not-allowed; }
-
-/* === MAP SECTION === */
-.map-section {
-  padding: 0 0 5rem;
-}
-.map-heading {
-  font-size: 1.5rem;
-  font-weight: 700;
+.contact-headline {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
   color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.contact-subheadline {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.header-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.contact-methods-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+.contact-method-card {
+  padding: 1.2rem 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.method-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.method-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.method-content strong {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.method-val {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.method-val a {
+  color: var(--text-main);
+  transition: color 0.25s ease;
+}
+
+.method-val a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.working-hours-card {
+  padding: 1.8rem;
+}
+
+.working-hours-card h3 {
+  font-size: 1rem;
+  font-weight: 850;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.working-hours-card h3 i {
+  color: var(--accent);
+}
+
+.working-hours-card p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.working-hours-card p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Right Panel Formspree Luxury Glass Form */
+.contact-form-panel {
+  position: relative;
+}
+
+.form-container-glass {
+  padding: 3rem 2.5rem;
+}
+
+.form-headline {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+
+.form-subheadline {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  margin-bottom: 2.2rem;
+}
+
+/* LUXURY FORM ELEMENTS */
+.luxury-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.form-row-premium {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group-premium {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group-premium label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.3px;
+}
+
+.req {
+  color: #ef4444;
+}
+
+.optional {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.72rem;
+}
+
+.form-group-premium input,
+.form-group-premium textarea,
+.form-group-premium select {
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s var(--ease-out-expo);
+  backdrop-filter: blur(8px);
+}
+
+.form-group-premium input:focus,
+.form-group-premium textarea:focus,
+.form-group-premium select:focus {
+  outline: none;
+  border-color: rgba(125, 211, 252, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 4px 20px rgba(125, 211, 252, 0.06);
+}
+
+.form-group-premium input.error,
+.form-group-premium textarea.error,
+.form-group-premium select.error {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.form-group-premium textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.custom-select-wrap {
+  position: relative;
+}
+
+.custom-select-wrap select {
+  cursor: pointer;
+}
+
+.custom-select-wrap select option {
+  background: var(--bg-surface);
+  color: var(--text-main);
+}
+
+.field-error-text {
+  font-size: 0.74rem;
+  color: #fca5a5;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-full-width {
+  width: 100%;
+  padding: 0.95rem 1.5rem;
+  font-size: 0.88rem;
+  font-weight: 750;
+  border-radius: 10px;
+  letter-spacing: 1px;
+}
+
+.btn-full-width:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* SUCCESS BANNER OVERLAY */
+.form-success-overlay {
+  padding: 2rem 1rem;
+}
+
+.success-icon {
+  color: #34d399;
   margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.35));
+}
+
+.form-success-overlay h3 {
+  font-size: 1.4rem;
+  font-weight: 850;
+  color: var(--text-main);
+  margin-bottom: 0.65rem;
+}
+
+.form-success-overlay p {
+  color: var(--text-light);
+  line-height: 1.65;
+  font-size: 0.92rem;
+  margin-bottom: 1.2rem;
+}
+
+.zalo-notice {
+  font-size: 0.84rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.2rem;
+}
+
+.zalo-notice a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* FORM ERROR BANNER */
+.form-error-banner {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.05);
+  color: #fca5a5;
+  font-size: 0.84rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
 }
-.map-heading i {
-  color: var(--primary);
+
+.form-error-banner i {
+  font-size: 1.1rem;
+  color: #ef4444;
 }
-.map-container {
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(26,140,255,0.12);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  position: relative;
+
+.form-error-banner a {
+  color: var(--accent);
+  font-weight: 700;
 }
-.map-container iframe {
+
+/* ==============================================
+   MAP SECTION
+   ============================================== */
+.map-section {
+  padding: 0 0 140px;
+}
+
+.map-container-glass {
+  padding: 0.6rem;
+  border-radius: 20px;
+}
+
+.map-container-glass iframe {
   display: block;
-  width: 100%;
-  min-height: 420px;
-  border: none;
-  filter: brightness(0.85) contrast(1.1) saturate(0.9);
+  border-radius: 14px;
+  filter: brightness(0.8) contrast(1.15) saturate(0.9);
   transition: filter 0.35s ease;
 }
-.map-container:hover iframe {
-  filter: brightness(0.95) contrast(1.05) saturate(1);
+
+.map-container-glass:hover iframe {
+  filter: brightness(0.92) contrast(1.05) saturate(1);
 }
+
 .map-directions-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  padding: 1rem;
-  background: rgba(20,24,45,0.9);
-  color: var(--primary);
+  gap: 0.5rem;
+  padding: 1.1rem;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--accent);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-decoration: none;
-  border-top: 1px solid rgba(26,140,255,0.12);
-  transition: all 0.28s ease;
-}
-.map-directions-link:hover {
-  background: rgba(26,140,255,0.08);
-  color: #5bbfff;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  border-radius: 0 0 14px 14px;
 }
 
-@media (max-width: 992px) {
-  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+.map-directions-link:hover {
+  background: rgba(125, 211, 252, 0.06);
+  color: #38bdf8;
 }
-@media (max-width: 576px) {
-  .form-row { grid-template-columns: 1fr; }
-  .page-hero h1 { font-size: 1.9rem; }
-  .map-container iframe { min-height: 280px; }
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
+@media (max-width: 992px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+  .page-hero { padding-top: 150px; padding-bottom: 3.5rem; }
+  .contact-form-section { padding: 40px 0 80px; }
+  .form-container-glass { padding: 2.2rem 1.5rem; }
+  .form-row-premium { grid-template-columns: 1fr; gap: 1.4rem; }
+  .map-section { padding-bottom: 80px; }
+  .map-container-glass iframe { height: 280px; }
 }
 </style>

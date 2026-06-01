@@ -26,7 +26,7 @@ export default defineNuxtConfig({
         changefreq: 'weekly',
         lastmod: new Date().toISOString().split('T')[0],
         images: [
-          { loc: 'https://xkproduction.com/images/Logoxkfix.png', title: 'XKProduction - Phòng Thu Âm Chuyên Nghiệp Bình Phước', caption: 'Logo phòng thu âm chuyên nghiệp XKProduction' },
+          { loc: 'https://xkproduction.com/images/logo-xkproduction.png', title: 'XKProduction - Phòng Thu Âm Chuyên Nghiệp Bình Phước', caption: 'Logo phòng thu âm chuyên nghiệp XKProduction' },
           { loc: 'https://xkproduction.com/images/founder-kiet.jpg', title: 'Nguyễn Xuân Kiệt - Founder XKProduction', caption: 'Founder & Music Producer XKProduction' }
         ]
       },
@@ -35,7 +35,7 @@ export default defineNuxtConfig({
         priority: 0.8,
         changefreq: 'weekly',
         lastmod: new Date().toISOString().split('T')[0],
-        images: [{ loc: 'https://xkproduction.com/images/Logoxkfix.png', title: 'Bảng giá dịch vụ thu âm XKProduction', caption: 'Bảng giá thu âm, mix master, hoà âm phối khí' }]
+        images: [{ loc: 'https://xkproduction.com/images/logo-xkproduction.png', title: 'Bảng giá dịch vụ thu âm XKProduction', caption: 'Bảng giá thu âm, mix master, hoà âm phối khí' }]
       },
       {
         loc: '/thu-am',
@@ -70,7 +70,7 @@ export default defineNuxtConfig({
         priority: 0.9,
         changefreq: 'monthly',
         lastmod: new Date().toISOString().split('T')[0],
-        images: [{ loc: 'https://xkproduction.com/images/Logoxkfix.png', title: 'Khoá học Music Producer tại XKProduction', caption: 'Đào tạo Music Producer, Mixing & Mastering' }]
+        images: [{ loc: 'https://xkproduction.com/images/logo-xkproduction.png', title: 'Khoá học Music Producer tại XKProduction', caption: 'Đào tạo Music Producer, Mixing & Mastering' }]
       },
       {
         loc: '/live-band',
@@ -120,10 +120,6 @@ export default defineNuxtConfig({
       },
       { loc: '/privacy', priority: 0.3, changefreq: 'yearly', lastmod: '2025-01-01' },
     ],
-  },
-  robots: {
-    disallow: ['/cdn-cgi/', '/_nuxt/'],
-    allow: ['/$', '/*.html$', 'facebookexternalhit'],
   },
 
   // === APP HEAD — giữ nguyên ===

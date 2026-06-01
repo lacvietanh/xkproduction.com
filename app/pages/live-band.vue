@@ -1,153 +1,174 @@
 <template>
-  <div>
-    <!-- HERO -->
+  <div class="live-band-page-wrap">
+    <!-- INTERACTIVE AMBIENT GLOW BACKDROP -->
+    <div class="immersive-ambient-bg" aria-hidden="true">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
     <section class="page-hero">
       <div class="max-width">
-        <div class="hero-tag">SOUND & LIGHT · LIVE BAND · SỰ KIỆN</div>
-        <h1>Quốc Chí Sound & Lighting</h1>
-        <p class="hero-subtitle">Giải pháp Âm thanh, Ánh sáng & Ban nhạc chuyên nghiệp cho mọi sự kiện.<br/>Đối tác chiến lược của XKProduction trong lĩnh vực event & biểu diễn trực tiếp.</p>
+        <span class="hero-badge"><i class="fa-solid fa-guitar"></i> SOUND &amp; LIGHT · LIVE BAND</span>
+        <h1 class="page-hero-title">Quốc Chí <span class="text-gradient-animated">Sound &amp; Lighting</span></h1>
+        <p class="page-hero-sub">Giải pháp Âm thanh, Ánh sáng &amp; Ban nhạc chuyên nghiệp cho mọi sự kiện lớn nhỏ. Đối tác chiến lược của XKProduction trong event &amp; biểu diễn trực tiếp.</p>
       </div>
     </section>
 
-    <!-- INTRO -->
-    <section class="lb-intro">
+    <!-- ===== INTRO SECTION ===== -->
+    <section class="section-block lb-intro">
       <div class="max-width lb-intro-grid">
         <div class="lb-intro-text">
-          <h2>Đồng hành cùng mọi sân khấu</h2>
+          <span class="header-tag">ĐỒNG HÀNH CÙNG MỌI SÂN KHẤU</span>
+          <h2>Trải Nghiệm Sân Khấu Hoàn Hảo</h2>
           <p>
-            Quốc Chí Sound & Lighting là đơn vị chuyên cung cấp dịch vụ âm thanh, ánh sáng và ban nhạc live cho các sự kiện từ quy mô nhỏ đến lớn: đám cưới, tiệc doanh nghiệp, gala dinner, lễ hội âm nhạc, hội nghị, ra mắt sản phẩm và các chương trình truyền hình.
+            Quốc Chí Sound &amp; Lighting chuyên cung cấp hệ thống âm thanh, ánh sáng và ban nhạc live cho các sự kiện: đám cưới cao cấp, tiệc doanh nghiệp, gala dinner, lễ hội âm nhạc ngoài trời, hội nghị và các chương trình truyền hình.
           </p>
           <p>
-            Với đội ngũ kỹ thuật viên dày dặn kinh nghiệm, thiết bị hiện đại và quy trình vận hành chuyên nghiệp, chúng tôi cam kết mang đến trải nghiệm âm thanh - ánh sáng hoàn hảo cho mọi không gian.
+            Với đội ngũ kỹ thuật viên dày dặn kinh nghiệm, thiết bị hiện đại cùng quy trình vận hành khắt khe, chúng tôi cam kết mang đến trải nghiệm nghe - nhìn tuyệt vời nhất cho khán giả.
           </p>
         </div>
+
         <div class="lb-intro-highlights">
-          <div class="highlight-item">
+          <div class="highlight-item glass-card hover-lift">
             <span class="highlight-icon"><i class="fa-solid fa-volume-high"></i></span>
-            <div>
+            <div class="highlight-content">
               <strong>Hệ thống Line Array</strong>
-              <p>Loa array công suất lớn, phủ đều mọi không gian từ 50 đến 5000 khách.</p>
+              <p>Loa array công suất lớn, phủ đều dải tần mọi không gian từ 50 đến 5000+ khách.</p>
             </div>
           </div>
-          <div class="highlight-item">
+          <div class="highlight-item glass-card hover-lift">
             <span class="highlight-icon"><i class="fa-solid fa-lightbulb"></i></span>
-            <div>
+            <div class="highlight-content">
               <strong>Ánh sáng chuyên nghiệp</strong>
-              <p>Moving head, LED par, laser, màn hình LED – thiết kế sáng tạo theo concept.</p>
+              <p>Moving head, LED par, laser show, màn hình LED thiết kế sáng tạo theo concept.</p>
             </div>
           </div>
-          <div class="highlight-item">
+          <div class="highlight-item glass-card hover-lift">
             <span class="highlight-icon"><i class="fa-solid fa-guitar"></i></span>
-            <div>
-              <strong>Ban nhạc Live</strong>
-              <p>Acoustic duo, full band, DJ – biểu diễn đa phong cách, chuyên nghiệp.</p>
+            <div class="highlight-content">
+              <strong>Ban nhạc Live chuyên nghiệp</strong>
+              <p>Acoustic duo, full band, DJ biểu diễn đa phong cách, khuấy động không khí.</p>
             </div>
           </div>
-          <div class="highlight-item">
+          <div class="highlight-item glass-card hover-lift">
             <span class="highlight-icon"><i class="fa-solid fa-sliders"></i></span>
-            <div>
-              <strong>Kỹ thuật viên FOH/Monitor</strong>
-              <p>Đội ngũ engineer kinh nghiệm thực chiến, đảm bảo chất lượng tuyệt đối.</p>
+            <div class="highlight-content">
+              <strong>Kỹ thuật viên FOH / Monitor</strong>
+              <p>Đội ngũ sound engineer thực chiến lâu năm, đảm bảo chất lượng tuyệt đối.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section class="lb-gallery">
+    <!-- ===== GALLERY SECTION ===== -->
+    <section class="section-block-narrow lb-gallery">
       <div class="max-width">
-        <h2 class="lb-gallery-title">Hình ảnh thực tế</h2>
+        <div class="section-header-center text-center">
+          <span class="header-tag">KHOẢNH KHẮC THỰC TẾ</span>
+          <h2 class="section-heading-heavy text-center">Hình Ảnh Sân Khấu</h2>
+        </div>
+
         <div class="lb-gallery-grid">
-          <div class="lb-gallery-item">
-            <img src="/images/quocchi-2.jpg" alt="Hệ thống âm thanh ánh sáng sân khấu sự kiện XKProduction - Quốc Chí Sound & Lighting" />
+          <div class="lb-gallery-item glass-card">
+            <img src="/images/quocchi-2.jpg" alt="Hệ thống âm thanh ánh sáng sân khấu sự kiện XKProduction - Quốc Chí Sound & Lighting" loading="lazy" />
           </div>
-          <div class="lb-gallery-item">
-            <img src="/images/quocchi-3.jpg" alt="Ban nhạc live biểu chuyên nghiệp tại sự kiện - XKProduction" />
+          <div class="lb-gallery-item glass-card">
+            <img src="/images/quocchi-3.jpg" alt="Ban nhạc live biểu chuyên nghiệp tại sự kiện - XKProduction" loading="lazy" />
           </div>
-          <div class="lb-gallery-item">
-            <img src="/images/quocchi-3.jpg" alt="Thiết kế sân khấu và lắp đặt âm thanh ánh sáng chuyên nghiệp" />
+          <div class="lb-gallery-item glass-card">
+            <img src="/images/quocchi-3.jpg" alt="Thiết kế sân khấu và lắp đặt âm thanh ánh sáng chuyên nghiệp" loading="lazy" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="lb-services">
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="section-block lb-services">
       <div class="max-width">
-        <h2>Dịch vụ cung cấp</h2>
-        <p class="section-subtitle">Giải pháp trọn gói hoặc riêng lẻ cho mọi nhu cầu sự kiện</p>
+        <div class="section-header-center text-center">
+          <span class="header-tag">HẠNG MỤC DỊCH VỤ</span>
+          <h2 class="section-heading-heavy text-center">Giải Pháp Trọn Gói</h2>
+          <p class="section-subtitle">Hỗ trợ riêng lẻ từng phần hoặc thiết lập trọn gói theo yêu cầu của dự án</p>
+        </div>
 
         <div class="lb-services-grid">
-          <div v-for="s in services" :key="s.title" class="lb-service-card">
+          <div v-for="s in services" :key="s.title" class="lb-service-card glass-card hover-lift">
             <div class="lb-service-icon"><i :class="s.faIcon"></i></div>
             <h3>{{ s.title }}</h3>
             <p>{{ s.desc }}</p>
-            <ul>
-              <li v-for="f in s.features" :key="f">{{ f }}</li>
+            <ul class="bullet-check-list">
+              <li v-for="f in s.features" :key="f"><i class="fa-solid fa-check"></i> {{ f }}</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PACKAGES -->
-    <section class="lb-packages">
+    <!-- ===== PACKAGES SECTION ===== -->
+    <section class="section-block lb-packages">
       <div class="max-width">
-        <h2>Gói dịch vụ tiêu biểu</h2>
-        <p class="section-subtitle">Linh hoạt theo quy mô & ngân sách sự kiện</p>
+        <div class="section-header-center text-center">
+          <span class="header-tag">BÁO GIÁ ĐỀ XUẤT</span>
+          <h2 class="section-heading-heavy text-center">Gói Dịch Vụ Tiêu Biểu</h2>
+          <p class="section-subtitle">Linh hoạt cân chỉnh theo quy mô số lượng khách và ngân sách của bạn</p>
+        </div>
 
         <div class="lb-packages-grid">
-          <div v-for="pkg in packages" :key="pkg.name" class="lb-package-card" :class="{ featured: pkg.featured }">
+          <div v-for="pkg in packages" :key="pkg.name" class="lb-package-card glass-card hover-lift" :class="{ featured: pkg.featured }">
             <span v-if="pkg.featured" class="badge">Phổ biến nhất</span>
             <h3>{{ pkg.name }}</h3>
-            <p class="pkg-scale">{{ pkg.scale }}</p>
-            <ul>
-              <li v-for="item in pkg.includes" :key="item"><i class="fa-solid fa-check"></i> {{ item }}</li>
+            <p class="pkg-scale"><i class="fa-solid fa-users"></i> Quy mô: {{ pkg.scale }}</p>
+            <ul class="bullet-pkg-list">
+              <li v-for="item in pkg.includes" :key="item"><i class="fa-solid fa-circle-check"></i> {{ item }}</li>
             </ul>
-            <NuxtLink to="/contact" class="btn btn-primary pkg-cta">Nhận báo giá</NuxtLink>
+            <NuxtLink to="/contact?service=live-band" class="btn btn-primary pkg-cta">Nhận báo giá</NuxtLink>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="lb-stats">
-      <div class="max-width lb-stats-grid">
+    <!-- ===== STATS SECTION ===== -->
+    <section class="section-block-narrow lb-stats">
+      <div class="max-width lb-stats-grid glass-card">
         <div class="lb-stat">
-          <div class="lb-stat-number">500+</div>
-          <p>Sự kiện đã triển khai thành công</p>
+          <div class="lb-stat-number text-gradient-animated">500+</div>
+          <p>Sự kiện đã triển khai</p>
         </div>
         <div class="lb-stat">
-          <div class="lb-stat-number">10 năm</div>
-          <p>Kinh nghiệm trong lĩnh vực event</p>
+          <div class="lb-stat-number text-gradient-animated">10 Năm</div>
+          <p>Kinh nghiệm thực tế</p>
         </div>
         <div class="lb-stat">
-          <div class="lb-stat-number">50+</div>
-          <p>Đối tác doanh nghiệp & agency</p>
+          <div class="lb-stat-number text-gradient-animated">50+</div>
+          <p>Đối tác doanh nghiệp</p>
         </div>
         <div class="lb-stat">
-          <div class="lb-stat-number">100%</div>
-          <p>Khách hàng hài lòng & quay lại</p>
+          <div class="lb-stat-number text-gradient-animated">100%</div>
+          <p>Nghệ sĩ hài lòng</p>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="final-cta">
-      <div class="max-width">
-        <h2>Bạn đang chuẩn bị cho sự kiện tiếp theo?</h2>
-        <p>Hãy chia sẻ quy mô, địa điểm và timeline – chúng tôi sẽ tư vấn giải pháp âm thanh, ánh sáng & ban nhạc phù hợp nhất.</p>
+    <!-- ===== CALL TO ACTION SECTION ===== -->
+    <section class="section-block final-cta">
+      <div class="max-width text-center">
+        <div class="cta-box glass-card">
+          <div class="cta-glow-spot"></div>
+          <h2>Bạn đang chuẩn bị cho sự kiện tiếp theo?</h2>
+          <p>Hãy chia sẻ quy mô, địa điểm và timeline dự kiến — chúng tôi sẽ chủ động liên hệ tư vấn giải pháp và lập bảng chi phí tối ưu nhất.</p>
 
-        <div class="cta-buttons">
-          <NuxtLink to="/contact" class="btn btn-primary">Nhận báo giá sự kiện</NuxtLink>
-          <NuxtLink to="/services" class="btn btn-secondary">Xem thêm dịch vụ Studio</NuxtLink>
-        </div>
+          <div class="cta-buttons">
+            <NuxtLink to="/contact?service=live-band" class="btn btn-primary btn-pulse btn-large">Nhận báo giá ngay</NuxtLink>
+            <NuxtLink to="/services" class="btn btn-secondary btn-large">Xem thêm dịch vụ phòng thu</NuxtLink>
+          </div>
 
-        <div class="cta-footer">
-          <p><i class="fa-solid fa-phone"></i> Hotline: <a href="tel:0355356294">0355.356.294</a></p>
-          <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a></p>
-          <p><i class="fa-solid fa-comment"></i> Zalo: <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a></p>
+          <div class="cta-footer-methods">
+            <p><i class="fa-solid fa-phone"></i> Hotline: <a href="tel:0355356294">0355.356.294</a></p>
+            <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a></p>
+            <p><i class="fa-solid fa-comment"></i> Zalo Chat: <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a></p>
+          </div>
         </div>
       </div>
     </section>
@@ -168,6 +189,31 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterImage: 'https://xkproduction.com/images/Xkpreviewnew.png',
   keywords: 'cho thuê âm thanh, cho thuê ánh sáng, sân khấu sự kiện, âm thanh ánh sáng, ban nhạc live, band nhạc sự kiện, sound light, âm thanh ánh sáng đám cưới, XKProduction'
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Cho thuê âm thanh ánh sáng & Ban nhạc",
+        "provider": {
+          "@type": "MusicStore",
+          "name": "XKProduction",
+          "url": "https://xkproduction.com"
+        },
+        "name": "Live Band & Âm thanh Sự kiện",
+        "description": "Cung cấp hệ thống âm thanh, ánh sáng chuyên nghiệp và ban nhạc live cho sự kiện đám cưới, gala dinner, lễ hội ngoài trời tại Bình Phước.",
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "VND",
+          "price": "Liên hệ báo giá"
+        }
+      })
+    }
+  ]
 })
 
 useSchemaOrg([
@@ -203,25 +249,25 @@ useScrollAnimation()
 
 const services = [
   {
-    faIcon: 'fa-solid fa-volume-high fa-2x',
+    faIcon: 'fa-solid fa-volume-high text-gradient-animated',
     title: 'Cho thuê Âm thanh',
     desc: 'Hệ thống loa line array, sub, monitor chuyên nghiệp cho mọi không gian.',
     features: ['Loa line array JBL / RCF / QSC', 'Mixer digital Allen & Heath / Yamaha', 'Micro không dây Shure / Sennheiser', 'Kỹ thuật viên FOH & Monitor']
   },
   {
-    faIcon: 'fa-solid fa-lightbulb fa-2x',
+    faIcon: 'fa-solid fa-lightbulb text-gradient-animated',
     title: 'Cho thuê Ánh sáng',
     desc: 'Thiết kế ánh sáng sân khấu từ cổ điển đến hiện đại, theo concept riêng.',
     features: ['Moving head beam / wash / spot', 'LED par, LED bar, strobe', 'Máy khói, laser show', 'Màn hình LED indoor / outdoor']
   },
   {
-    faIcon: 'fa-solid fa-guitar fa-2x',
+    faIcon: 'fa-solid fa-guitar text-gradient-animated',
     title: 'Ban nhạc Live',
     desc: 'Cung cấp ban nhạc chuyên nghiệp, biểu diễn đa phong cách cho sự kiện.',
     features: ['Acoustic duo / trio', 'Full band (5-7 thành viên)', 'DJ & MC chuyên nghiệp', 'Ca sĩ khách mời theo yêu cầu']
   },
   {
-    faIcon: 'fa-solid fa-star fa-2x',
+    faIcon: 'fa-solid fa-star text-gradient-animated',
     title: 'Setup Sân khấu trọn gói',
     desc: 'Thiết kế, dựng sân khấu và vận hành kỹ thuật toàn bộ chương trình.',
     features: ['Sân khấu modular linh hoạt', 'Backdrop & truss chuyên dụng', 'Hệ thống rigging an toàn', 'Đội ngũ stage manager']
@@ -251,147 +297,103 @@ const packages = [
 </script>
 
 <style scoped>
-.page-hero {
-  padding-top: 140px;
-  padding-bottom: 4rem;
-  background: linear-gradient(135deg, #06080f 0%, #0d1117 100%);
-  text-align: center;
+.live-band-page-wrap {
   position: relative;
   overflow: hidden;
+  background-color: var(--bg-dark);
 }
 
-.page-hero::before {
-  content: '';
+/* ==============================================
+   INTERACTIVE AMBIENT GLOW BACKDROP
+   ============================================== */
+.immersive-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+}
+
+.glow-spot {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(26, 140, 255, 0.06) 0%, transparent 70%);
-  top: 30%;
-  left: -10%;
-  animation: float 8s ease-in-out infinite;
-}
-
-.page-hero::after {
-  content: '';
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0, 212, 170, 0.04) 0%, transparent 70%);
-  bottom: -15%;
-  right: -5%;
-  animation: float 10s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(20px); }
-}
-
-.hero-tag {
-  display: inline-block;
-  padding: 0.4rem 1.2rem;
-  border: 1px solid rgba(26, 140, 255, 0.3);
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: var(--primary);
-  margin-bottom: 2rem;
-  background: rgba(26, 140, 255, 0.06);
-}
-
-/* QC Logo */
-.qc-logo-wrap {
-  margin: 0 auto 2rem;
-  display: flex;
-  justify-content: center;
-}
-.qc-logo {
-  width: 220px;
-  height: 220px;
-  object-fit: contain;
   border-radius: 50%;
-  box-shadow: 0 0 60px rgba(255, 165, 0, 0.3), 0 0 120px rgba(255, 165, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: logoFloat 4s ease-in-out infinite;
-}
-.qc-logo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 80px rgba(255, 165, 0, 0.5), 0 0 160px rgba(255, 165, 0, 0.2);
-}
-@keyframes logoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  filter: blur(150px);
+  opacity: 0.16;
 }
 
-.page-hero h1 {
-  font-size: 2.8rem;
+.spotlight-1 {
+  width: 550px;
+  height: 550px;
+  top: -10%;
+  left: -10%;
+  background: rgba(125, 211, 252, 0.35);
+}
+
+.spotlight-2 {
+  width: 650px;
+  height: 650px;
+  bottom: -10%;
+  right: -10%;
+  background: rgba(56, 189, 248, 0.22);
+}
+
+/* ==============================================
+   PAGE HERO
+   ============================================== */
+.page-hero {
+  padding-top: 190px;
+  padding-bottom: 5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.page-hero-title {
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
   font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text-main);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
 }
 
-.hero-subtitle {
-  font-size: 1.05rem;
+.page-hero-sub {
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
   color: var(--text-light);
-  max-width: 650px;
+  max-width: 680px;
   margin: 0 auto;
   line-height: 1.7;
 }
 
-/* GALLERY */
-.lb-gallery {
-  max-width: 1200px;
-  margin: 2rem auto 4rem;
-  padding: 0 2rem;
+/* ==============================================
+   INTRO SECTION
+   ============================================== */
+.section-block {
+  padding: 140px 0;
+  position: relative;
+  z-index: 1;
 }
 
-.lb-gallery-title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.lb-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-}
-
-.lb-gallery-item {
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 162, 255, 0.2);
-  aspect-ratio: 4/3;
-  transition: all 0.4s ease;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-.lb-gallery-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0,162,255,0.55);
-  box-shadow: 0 0 20px rgba(0,162,255,0.2), 0 12px 35px rgba(0,0,0,0.45);
-}
-
-.lb-gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.lb-gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-/* INTRO */
-.lb-intro {
-  max-width: 1200px;
-  margin: 4rem auto;
-  padding: 0 2rem;
+.section-block-narrow {
+  padding: 60px 0 80px;
+  position: relative;
+  z-index: 1;
 }
 
 .lb-intro-grid {
@@ -401,224 +403,246 @@ const packages = [
   align-items: start;
 }
 
+.header-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
 .lb-intro-text h2 {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
   color: var(--text-main);
   margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
 }
 
 .lb-intro-text p {
   color: var(--text-light);
-  line-height: 1.8;
-  margin-bottom: 1rem;
   font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
 }
 
 .lb-intro-highlights {
-  display: grid;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .highlight-item {
+  padding: 1.6rem;
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: flex-start;
-  padding: 1.25rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.highlight-item:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(26, 140, 255, 0.08);
 }
 
 .highlight-icon {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  color: var(--accent);
   flex-shrink: 0;
-  margin-top: 0.1rem;
 }
 
-.highlight-item strong {
+.highlight-content strong {
+  font-size: 0.96rem;
   color: var(--text-main);
-  font-size: 0.95rem;
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
 }
 
-.highlight-item p {
+.highlight-content p {
   color: var(--text-light);
   font-size: 0.85rem;
-  line-height: 1.5;
-  margin: 0;
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 
-/* SERVICES */
-.lb-services {
-  max-width: 1200px;
-  margin: 4rem auto;
-  padding: 0 2rem;
+/* ==============================================
+   GALLERY
+   ============================================== */
+.lb-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-.lb-services h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  color: var(--text-main);
-  margin-bottom: 0.5rem;
+.lb-gallery-item {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  padding: 0.4rem;
 }
 
+.lb-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.lb-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ==============================================
+   SERVICES GRID
+   ============================================== */
 .lb-services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .lb-service-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-}
-
-.lb-service-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(26, 140, 255, 0.1);
+  padding: 2.5rem 2rem;
 }
 
 .lb-service-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.25rem;
 }
 
 .lb-service-card h3 {
+  font-size: 1.2rem;
+  font-weight: 750;
   color: var(--text-main);
-  font-size: 1.15rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.8rem;
 }
 
 .lb-service-card > p {
+  font-size: 0.88rem;
   color: var(--text-light);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
 }
 
-.lb-service-card ul {
+.bullet-check-list {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
 }
 
-.lb-service-card ul li {
+.bullet-check-list li {
+  font-size: 0.82rem;
   color: var(--text-light);
-  font-size: 0.85rem;
-  padding-left: 1.2rem;
-  margin-bottom: 0.4rem;
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
 }
 
-.lb-service-card ul li::before {
-  font-family: 'Font Awesome 6 Free';
-  content: '\f00c';
-  font-weight: 900;
-  position: absolute;
-  left: 0;
+.bullet-check-list li i {
   color: var(--accent);
+  font-size: 0.78rem;
+  margin-top: 0.2rem;
 }
 
-/* PACKAGES */
+/* ==============================================
+   PACKAGES
+   ============================================== */
 .lb-packages {
-  max-width: 1200px;
-  margin: 4rem auto;
-  padding: 3rem 2rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-}
-
-.lb-packages h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  color: var(--text-main);
-  margin-bottom: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .lb-packages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .lb-package-card {
-  background: var(--bg-light);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   position: relative;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .lb-package-card.featured {
-  border-color: var(--primary);
-  box-shadow: 0 16px 40px rgba(26, 140, 255, 0.1);
+  border-color: rgba(125, 211, 252, 0.25);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.lb-package-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary);
+.lb-package-card .badge {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  background: var(--gradient-primary);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .lb-package-card h3 {
-  color: var(--primary);
-  font-size: 1.15rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
 }
 
 .pkg-scale {
-  color: var(--text-muted);
   font-size: 0.85rem;
-  margin-bottom: 1.25rem;
-  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1.8rem;
+  font-weight: 650;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.lb-package-card ul {
+.bullet-pkg-list {
   list-style: none;
   padding: 0;
-  margin-bottom: 1.5rem;
+  margin: 0 0 2.2rem 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-.lb-package-card ul li {
+.bullet-pkg-list li {
+  font-size: 0.84rem;
   color: var(--text-light);
-  font-size: 0.88rem;
-  padding: 0.35rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 0.4rem 0;
+  line-height: 1.5;
+}
+
+.bullet-pkg-list li i {
+  color: #34d399;
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
 }
 
 .pkg-cta {
-  display: block;
+  width: 100%;
   text-align: center;
-  padding: 0.7rem 1.5rem;
-  font-size: 0.9rem;
-  border-radius: 6px;
 }
 
-/* STATS */
-.lb-stats {
-  max-width: 1200px;
-  margin: 4rem auto;
-  padding: 3rem 2rem;
-  background: linear-gradient(135deg, rgba(26, 140, 255, 0.04) 0%, rgba(0, 212, 170, 0.04) 100%);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-}
-
+/* ==============================================
+   STATS
+   ============================================== */
 .lb-stats-grid {
+  padding: 3rem 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
@@ -630,48 +654,116 @@ const packages = [
 
 .lb-stat-number {
   font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
+  font-weight: 850;
+  color: var(--text-main);
+  margin-bottom: 0.35rem;
 }
 
 .lb-stat p {
   color: var(--text-light);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   margin: 0;
 }
 
-/* RESPONSIVE */
+/* ==============================================
+   CTA
+   ============================================== */
+.final-cta {
+  padding-bottom: 140px;
+}
+
+.cta-box {
+  padding: 5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  background: radial-gradient(circle at top left, rgba(125, 211, 252, 0.05), transparent 30%),
+              var(--glass-bg);
+}
+
+.cta-box h2 {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cta-box p {
+  color: var(--text-light);
+  margin-bottom: 2.2rem;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.btn-large {
+  padding: 0.95rem 2.2rem;
+  font-size: 0.92rem;
+  border-radius: 12px;
+}
+
+.cta-footer-methods {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 2rem;
+}
+
+.cta-footer-methods p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.cta-footer-methods i {
+  color: var(--accent);
+}
+
+.cta-footer-methods a {
+  color: var(--text-main);
+  font-weight: 700;
+  transition: color 0.25s ease;
+}
+
+.cta-footer-methods a:hover {
+  color: var(--accent);
+}
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
 @media (max-width: 992px) {
-  .lb-intro-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+  .lb-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .lb-gallery-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
-  .page-hero h1 {
-    font-size: 2rem;
-  }
-
-  .lb-services-grid,
-  .lb-packages-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .lb-stats-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .page-hero { padding-top: 150px; padding-bottom: 3.5rem; }
+  .section-block { padding: 80px 0; }
+  .lb-services-grid, .lb-packages-grid { grid-template-columns: 1fr; }
+  .lb-stats-grid { grid-template-columns: 1fr 1fr; padding: 2rem 1rem; gap: 1.5rem; }
+  .final-cta { padding-bottom: 80px; }
+  .cta-box { padding: 3.5rem 1.5rem; }
+  .cta-footer-methods { flex-direction: column; align-items: center; gap: 1rem; }
 }
 
 @media (max-width: 480px) {
-  .lb-stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .lb-stat-number {
-    font-size: 1.6rem;
-  }
+  .lb-gallery-grid { grid-template-columns: 1fr; }
+  .lb-stats-grid { grid-template-columns: 1fr; }
 }
 </style>

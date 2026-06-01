@@ -1,83 +1,101 @@
 <template>
-  <div>
+  <div class="blog-landing-wrap">
+    <!-- INTERACTIVE AMBIENT GLOW BACKDROP -->
+    <div class="immersive-ambient-bg" aria-hidden="true">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
     <section class="page-hero">
       <div class="max-width">
-        <h1>Blog & Kiến Thức Âm Nhạc</h1>
-        <p class="page-hero-sub">Chia sẻ kinh nghiệm, mẹo thu âm, mix master và kiến thức sản xuất âm nhạc từ đội ngũ XKProduction</p>
+        <span class="hero-badge"><i class="fa-solid fa-feather-pointed"></i> KIẾN THỨC</span>
+        <h1 class="page-hero-title">Blog & <span class="text-gradient-animated">Ấn Phẩm</span></h1>
+        <p class="page-hero-sub">Chia sẻ kinh nghiệm sản xuất, mẹo phòng thu và kiến thức âm nhạc chuyên sâu từ đội ngũ XKProduction.</p>
       </div>
     </section>
 
+    <!-- ===== EDITORIAL CONTENT SECTION ===== -->
     <section class="blog-section">
       <div class="max-width">
-        <!-- Search Bar -->
-        <div class="blog-search-bar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input
-            v-model="searchQuery"
-            type="text"
-            placeholder="Tìm kiếm bài viết..."
-            class="search-input"
-            aria-label="Tìm kiếm bài viết"
-          />
-          <button
-            v-if="searchQuery"
-            class="search-clear"
-            @click="searchQuery = ''"
-            aria-label="Xóa tìm kiếm"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+        <!-- Search & Filter Controls -->
+        <div class="editorial-controls glass-card">
+          <div class="blog-search-bar">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="Tìm kiếm bài viết..."
+              class="search-input"
+              aria-label="Tìm kiếm bài viết"
+            />
+            <button
+              v-if="searchQuery"
+              class="search-clear"
+              @click="searchQuery = ''"
+              aria-label="Xóa tìm kiếm"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="blog-filters">
+            <button
+              v-for="tag in tags" :key="tag"
+              class="filter-tag"
+              :class="{ active: activeTag === tag }"
+              @click="activeTag = tag"
+            >{{ tag }}</button>
+          </div>
         </div>
 
-        <!-- Filter Tags -->
-        <div class="blog-filters">
-          <button
-            v-for="tag in tags" :key="tag"
-            class="filter-tag"
-            :class="{ active: activeTag === tag }"
-            @click="activeTag = tag"
-          >{{ tag }}</button>
-        </div>
-
-        <!-- Featured Post Hero -->
+        <!-- Featured Post Hero (Editorial Split Card) -->
         <NuxtLink
           v-if="featuredPost && searchedAndFilteredPosts.length > 0"
           :to="'/blog/' + featuredPost.slug"
-          class="featured-post-hero"
+          class="featured-post-hero glass-card hover-lift"
         >
           <div class="featured-post-image">
-            <img :src="featuredPost.cover || featuredPost.thumb" :alt="featuredPost.title" />
+            <img :src="featuredPost.cover || featuredPost.thumb" :alt="featuredPost.title" loading="lazy" />
             <div class="featured-post-overlay"></div>
           </div>
+          
           <div class="featured-post-content">
-            <div class="featured-badge">
-              <i :class="featuredPost.icon"></i>
-              <span :class="`category-${getCategoryKey(featuredPost.category)}`">{{ featuredPost.category }}</span>
+            <div>
+              <div class="featured-badge" :class="`category-${getCategoryKey(featuredPost.category)}`">
+                <i :class="featuredPost.icon"></i>
+                <span>{{ featuredPost.category }}</span>
+              </div>
+              
+              <h2 class="featured-title">{{ featuredPost.title }}</h2>
+              <p class="featured-subtitle">{{ featuredPost.subtitle }}</p>
+              <p class="featured-excerpt">{{ featuredPost.excerpt }}</p>
             </div>
-            <h2>{{ featuredPost.title }}</h2>
-            <p class="featured-post-subtitle">{{ featuredPost.subtitle }}</p>
-            <p class="featured-post-excerpt">{{ featuredPost.excerpt }}</p>
-            <div class="featured-post-meta">
-              <span><i class="fa-solid fa-user"></i> {{ featuredPost.author }}</span>
-              <span><i class="fa-solid fa-calendar"></i> {{ featuredPost.date }}</span>
-              <span><i class="fa-solid fa-clock"></i> {{ featuredPost.readTime }}</span>
-            </div>
-            <div class="featured-post-arrow">
-              <i class="fa-solid fa-arrow-right"></i>
+            
+            <div class="featured-meta-footer">
+              <div class="featured-post-meta">
+                <span><i class="fa-solid fa-user"></i> {{ featuredPost.author }}</span>
+                <span><i class="fa-solid fa-calendar"></i> {{ featuredPost.date }}</span>
+                <span><i class="fa-solid fa-clock"></i> {{ featuredPost.readTime }}</span>
+              </div>
+              
+              <div class="featured-post-arrow">
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </div>
             </div>
           </div>
         </NuxtLink>
 
-        <!-- Blog Grid -->
+        <!-- Regular Blog Grid -->
         <div class="blog-grid">
           <NuxtLink
             v-for="post in regularPosts"
             :key="post.slug"
             :to="'/blog/' + post.slug"
-            class="blog-card"
+            class="blog-card glass-card hover-lift"
           >
             <div class="blog-card-thumb">
-              <img :src="post.thumb" :alt="post.title" loading="lazy" width="360" height="203" />
+              <img :src="post.thumb" :alt="post.title" loading="lazy" />
               <div class="blog-card-category" :class="`category-${getCategoryKey(post.category)}`">
                 <i :class="post.icon"></i>
                 <span>{{ post.category }}</span>
@@ -95,21 +113,22 @@
           </NuxtLink>
         </div>
 
-        <!-- No Results -->
-        <div v-if="searchedAndFilteredPosts.length === 0" class="no-results">
-          <i class="fa-solid fa-magnifying-glass"></i>
+        <!-- No Results Empty State -->
+        <div v-if="searchedAndFilteredPosts.length === 0" class="no-results glass-card">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
           <h3>Không tìm thấy bài viết</h3>
           <p>Thử tìm kiếm với từ khóa khác hoặc chọn danh mục khác.</p>
           <button @click="resetSearch" class="btn btn-secondary">Xóa bộ lọc</button>
         </div>
 
-        <!-- CTA -->
-        <div class="blog-cta-section">
-          <div class="blog-cta-card">
-            <i class="fa-solid fa-lightbulb"></i>
-            <h3>Bạn muốn biết thêm về dịch vụ?</h3>
-            <p>Liên hệ ngay để được tư vấn miễn phí về thu âm, mix master, hoà âm phối khí và các dịch vụ khác.</p>
-            <NuxtLink to="/contact" class="btn btn-primary">Liên hệ tư vấn miễn phí</NuxtLink>
+        <!-- CTA SECTION -->
+        <div class="blog-cta-section text-center">
+          <div class="blog-cta-card glass-card">
+            <div class="cta-glow-spot"></div>
+            <i class="fa-solid fa-lightbulb cta-icon"></i>
+            <h2>Bạn muốn tìm hiểu thêm về quy trình sản xuất?</h2>
+            <p>Liên hệ ngay để được tư vấn miễn phí về thu âm, mix master, hoà âm phối khí và các giải pháp đào tạo tại XKProduction.</p>
+            <NuxtLink to="/contact" class="btn btn-primary btn-pulse btn-large">Tư vấn miễn phí</NuxtLink>
           </div>
         </div>
       </div>
@@ -118,6 +137,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import type { BlogPost } from '../../composables/useBlog'
 
 useSeoMeta({
@@ -167,7 +187,7 @@ useSchemaOrg(() => [
     publisher: {
       '@type': 'Organization',
       name: 'XKProduction',
-      logo: { '@type': 'ImageObject', url: 'https://xkproduction.com/images/Logoxkfix.png' }
+      logo: { '@type': 'ImageObject', url: 'https://xkproduction.com/images/logo-xkproduction.png' }
     },
     datePublished: post.isoDate,
     dateModified: post.isoDate,
@@ -183,13 +203,11 @@ const blogPostsSorted = computed(() => [...blogPosts].sort((a, b) => b.isoDate.l
 
 const tags = computed(() => ['Tất cả', ...new Set(blogPostsSorted.value.flatMap((p: BlogPost) => p.tags || []))])
 
-// Filter by tag
 const tagFilteredPosts = computed(() => {
   if (activeTag.value === 'Tất cả') return blogPostsSorted.value
   return blogPostsSorted.value.filter((p: BlogPost) => p.tags && p.tags.includes(activeTag.value))
 })
 
-// Filter by search
 const searchedAndFilteredPosts = computed(() => {
   if (!searchQuery.value.trim()) return tagFilteredPosts.value
   const q = searchQuery.value.toLowerCase()
@@ -201,13 +219,9 @@ const searchedAndFilteredPosts = computed(() => {
   )
 })
 
-// Featured post is the first one
 const featuredPost = computed(() => searchedAndFilteredPosts.value[0] || null)
-
-// Regular posts exclude the featured
 const regularPosts = computed(() => searchedAndFilteredPosts.value.slice(1))
 
-// Utility: Get category key for color coding
 const getCategoryKey = (category: string) => {
   const categoryMap: Record<string, string> = {
     'Bảng Giá': 'amber',
@@ -227,61 +241,150 @@ const resetSearch = () => {
 </script>
 
 <style scoped>
-/* ===== PAGE HERO ===== */
-.page-hero {
-  padding-top: 140px;
-  padding-bottom: 4rem;
-  background: linear-gradient(135deg, #06080f 0%, #0d1117 100%);
-  text-align: center;
+.blog-landing-wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-dark);
 }
-.page-hero h1 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; }
-.page-hero-sub { font-size: 1.05rem; color: var(--text-light); max-width: 680px; margin: 0 auto; line-height: 1.7; }
 
-/* ===== BLOG SECTION ===== */
-.blog-section { padding: 4rem 0 5rem; }
+/* ==============================================
+   INTERACTIVE AMBIENT GLOW BACKDROP
+   ============================================== */
+.immersive-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+}
 
-/* Search Bar */
+.glow-spot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(155px);
+  opacity: 0.16;
+}
+
+.spotlight-1 {
+  width: 550px;
+  height: 550px;
+  top: -15%;
+  left: -15%;
+  background: rgba(125, 211, 252, 0.35);
+}
+
+.spotlight-2 {
+  width: 650px;
+  height: 650px;
+  bottom: -15%;
+  right: -15%;
+  background: rgba(56, 189, 248, 0.22);
+}
+
+/* ==============================================
+   PAGE HERO
+   ============================================== */
+.page-hero {
+  padding-top: 190px;
+  padding-bottom: 4.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.page-hero-title {
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
+}
+
+.page-hero-sub {
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  color: var(--text-light);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ==============================================
+   BLOG CONTROLS & CONTENT
+   ============================================== */
+.blog-section {
+  padding: 60px 0 140px;
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-controls {
+  padding: 1.5rem 2rem;
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .blog-search-bar {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 2.5rem;
-  transition: all 0.25s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s var(--ease-out-expo);
+  max-width: 480px;
 }
+
 .blog-search-bar:focus-within {
-  background: rgba(26,140,255,0.04);
-  border-color: var(--primary);
-  box-shadow: 0 0 16px rgba(26,140,255,0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(125, 211, 252, 0.4);
+  box-shadow: 0 4px 20px rgba(125, 211, 252, 0.05);
 }
-.blog-search-bar i {
+
+.search-icon {
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+
 .search-input {
   flex: 1;
   background: transparent;
   border: none;
   color: var(--text-main);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   outline: none;
 }
-.search-input::placeholder {
-  color: var(--text-muted);
-}
+
 .search-clear {
   background: transparent;
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem;
   transition: color 0.2s ease;
 }
+
 .search-clear:hover {
-  color: var(--primary);
+  color: var(--accent);
 }
 
 /* Filters */
@@ -289,65 +392,68 @@ const resetSearch = () => {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-  justify-content: center;
 }
+
 .filter-tag {
   padding: 0.5rem 1.1rem;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
   color: var(--text-light);
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
-}
-.filter-tag:hover,
-.filter-tag.active {
-  background: var(--primary);
-  color: var(--bg-dark);
-  border-color: var(--primary);
-  box-shadow: 0 0 18px rgba(26,140,255,0.25);
+  letter-spacing: 0.5px;
+  transition: all 0.3s var(--ease-out-expo);
 }
 
-/* ===== FEATURED POST HERO ===== */
+.filter-tag:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filter-tag.active {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
+}
+
+/* ==============================================
+   FEATURED POST HERO — Editorial Split
+   ============================================== */
 .featured-post-hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
   margin-bottom: 4rem;
-  border-radius: 20px;
-  overflow: hidden;
   text-decoration: none;
-  border: 1px solid rgba(26,140,255,0.15);
-  background: var(--bg-surface);
-  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
-}
-.featured-post-hero:hover {
-  border-color: rgba(26,140,255,0.4);
-  box-shadow: 0 16px 48px rgba(26,140,255,0.1), 0 0 30px rgba(0,212,170,0.05);
-  transform: translateY(-3px);
+  overflow: hidden;
 }
 
 .featured-post-image {
   position: relative;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/10;
   overflow: hidden;
+  background: #000;
 }
+
 .featured-post-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+  transition: transform 0.6s var(--ease-out-expo);
 }
+
 .featured-post-hero:hover .featured-post-image img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
+
 .featured-post-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(26,140,255,0.1), rgba(0,212,170,0.05));
+  background: linear-gradient(90deg, transparent 60%, rgba(7, 16, 24, 0.4) 100%);
   pointer-events: none;
 }
 
@@ -355,311 +461,328 @@ const resetSearch = () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
-  position: relative;
-}
-.featured-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  width: fit-content;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  background: rgba(26,140,255,0.1);
-  margin-bottom: 1rem;
-}
-.featured-badge i {
-  font-size: 0.9rem;
-}
-.featured-badge span {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  padding: 3rem 2.5rem;
 }
 
-.featured-post-hero h2 {
-  font-size: 1.8rem;
+.featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.68rem;
   font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.featured-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-weight: 850;
   color: var(--text-main);
-  line-height: 1.3;
-  margin-bottom: 0.75rem;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.02em;
 }
-.featured-post-subtitle {
+
+.featured-subtitle {
   font-size: 0.95rem;
-  color: var(--text-light);
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  color: var(--accent);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
 }
-.featured-post-excerpt {
+
+.featured-excerpt {
   font-size: 0.9rem;
   color: var(--text-light);
   line-height: 1.7;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
+
+.featured-meta-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+}
+
 .featured-post-meta {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
-  margin-bottom: 0;
 }
+
 .featured-post-meta span {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   font-weight: 600;
 }
+
 .featured-post-meta i {
-  color: var(--primary);
-  font-size: 0.75rem;
+  color: var(--accent);
+  font-size: 0.72rem;
 }
 
 .featured-post-arrow {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  width: 36px;
-  height: 36px;
-  background: var(--primary);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--bg-dark);
+  color: var(--text-main);
   font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-.featured-post-hero:hover .featured-post-arrow {
-  transform: translateX(6px);
+  transition: all 0.4s var(--ease-out-expo);
 }
 
-/* Blog Grid */
+.featured-post-hero:hover .featured-post-arrow {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
+  transform: translateX(4px);
+}
+
+/* ==============================================
+   REGULAR BLOG GRID
+   ============================================== */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
-/* Blog Card */
 .blog-card {
-  background: var(--bg-surface);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
-  text-decoration: none;
   display: flex;
   flex-direction: column;
-}
-.blog-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(26,140,255,0.2);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 20px rgba(26,140,255,0.1);
+  height: 100%;
+  text-decoration: none;
 }
 
 .blog-card-thumb {
   position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
+  background: #000;
+  border-radius: 16px 16px 0 0;
 }
+
 .blog-card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+  transition: transform 0.6s var(--ease-out-expo);
 }
+
 .blog-card:hover .blog-card-thumb img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .blog-card-category {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: flex;
+  top: 1.25rem;
+  left: 1.25rem;
+  display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  padding: 0.35rem 0.85rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
   letter-spacing: 0.5px;
-  border: 1px solid rgba(255,255,255,0.15);
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Category Colors */
 .category-amber {
-  background: rgba(217, 119, 6, 0.6);
-  color: #fcd34d;
-  border-color: rgba(217, 119, 6, 0.5);
+  background: rgba(217, 119, 6, 0.5);
+  color: #fde68a;
 }
 .category-blue {
-  background: rgba(37, 99, 235, 0.6);
-  color: #93c5fd;
-  border-color: rgba(37, 99, 235, 0.5);
+  background: rgba(3, 105, 161, 0.5);
+  color: #bae6fd;
 }
 .category-green {
-  background: rgba(34, 197, 94, 0.6);
-  color: #86efac;
-  border-color: rgba(34, 197, 94, 0.5);
+  background: rgba(4, 120, 87, 0.5);
+  color: #a7f3d0;
 }
 .category-purple {
-  background: rgba(147, 51, 234, 0.6);
-  color: #d8b4fe;
-  border-color: rgba(147, 51, 234, 0.5);
+  background: rgba(109, 40, 217, 0.5);
+  color: #ddd6fe;
 }
 .category-teal {
-  background: rgba(20, 184, 166, 0.6);
-  color: #7ee8c0;
-  border-color: rgba(20, 184, 166, 0.5);
+  background: rgba(15, 118, 110, 0.5);
+  color: #99f6e4;
 }
 .category-red {
-  background: rgba(239, 68, 68, 0.6);
-  color: #fca5a5;
-  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(185, 28, 28, 0.5);
+  color: #fecaca;
 }
 
-.featured-badge.category-amber { background: rgba(217, 119, 6, 0.15); color: #fcd34d; }
-.featured-badge.category-blue { background: rgba(37, 99, 235, 0.15); color: #93c5fd; }
-.featured-badge.category-green { background: rgba(34, 197, 94, 0.15); color: #86efac; }
-.featured-badge.category-purple { background: rgba(147, 51, 234, 0.15); color: #d8b4fe; }
-.featured-badge.category-teal { background: rgba(20, 184, 166, 0.15); color: #7ee8c0; }
-.featured-badge.category-red { background: rgba(239, 68, 68, 0.15); color: #fca5a5; }
-
 .blog-card-body {
-  padding: 1.5rem;
-  flex: 1;
+  padding: 2rem;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
+
 .blog-card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 750;
   color: var(--text-main);
-  margin-bottom: 0.65rem;
-  line-height: 1.4;
-  transition: color 0.25s;
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+  transition: color 0.3s ease;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .blog-card:hover .blog-card-title {
-  color: var(--primary);
+  color: var(--accent);
 }
+
 .blog-card-excerpt {
   font-size: 0.85rem;
   color: var(--text-light);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  flex: 1;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .blog-card-meta {
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
   margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.1rem;
 }
+
 .blog-card-meta span {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   font-weight: 600;
 }
+
 .blog-card-meta i {
-  color: var(--primary);
-  font-size: 0.65rem;
+  color: var(--accent);
+  font-size: 0.68rem;
 }
 
-/* No Results */
+/* No Results Empty View */
 .no-results {
   text-align: center;
-  padding: 4rem 2rem;
-  background: var(--bg-surface);
-  border: 1px solid rgba(26,140,255,0.1);
-  border-radius: 16px;
-  margin: 2rem 0;
-}
-.no-results i {
-  font-size: 3rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
-.no-results h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 0.5rem;
-}
-.no-results p {
-  color: var(--text-light);
-  margin-bottom: 1.5rem;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
 }
 
-/* CTA Section */
-.blog-cta-section {
-  margin-top: 4rem;
-}
-.blog-cta-card {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: var(--bg-surface);
-  border: 1px solid rgba(26,140,255,0.1);
-  border-radius: 16px;
-}
-.blog-cta-card i {
+.no-results i {
   font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 1.25rem;
-  display: block;
-  filter: drop-shadow(0 0 16px rgba(26,140,255,0.5));
+  color: var(--accent);
+  opacity: 0.6;
 }
-.blog-cta-card h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
+
+.no-results h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
   color: var(--text-main);
+  margin: 0;
+}
+
+.no-results p {
+  color: var(--text-light);
   margin-bottom: 1rem;
 }
+
+/* ==============================================
+   CTA SECTION
+   ============================================== */
+.blog-cta-section {
+  position: relative;
+}
+
+.blog-cta-card {
+  padding: 5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  background: radial-gradient(circle at top left, rgba(125, 211, 252, 0.05), transparent 30%),
+              var(--glass-bg);
+}
+
+.cta-icon {
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.35));
+  display: inline-block;
+}
+
+.blog-cta-card h2 {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
 .blog-cta-card p {
   color: var(--text-light);
-  max-width: 520px;
-  margin: 0 auto 2rem;
+  margin-bottom: 2.2rem;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.7;
 }
 
-/* ===== RESPONSIVE ===== */
+.btn-large {
+  padding: 0.95rem 2.2rem;
+  font-size: 0.92rem;
+  border-radius: 12px;
+}
+
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
 @media (max-width: 1024px) {
-  .featured-post-hero {
-    grid-template-columns: 1fr;
-  }
-  .featured-post-arrow {
-    display: none;
-  }
+  .featured-post-hero { grid-template-columns: 1fr; }
+  .featured-post-overlay { display: none; }
 }
 
 @media (max-width: 768px) {
-  .page-hero h1 { font-size: 1.9rem; }
+  .page-hero { padding-top: 150px; padding-bottom: 3.5rem; }
+  .editorial-controls { padding: 1.25rem; }
+  .blog-search-bar { max-width: 100%; }
   .blog-grid { grid-template-columns: 1fr; }
-  .blog-cta-card h3 { font-size: 1.4rem; }
-  .featured-post-content {
-    padding: 1.5rem;
-  }
-  .featured-post-hero h2 {
-    font-size: 1.3rem;
-  }
+  .featured-post-content { padding: 2rem 1.5rem; }
+  .blog-card-body { padding: 1.5rem; }
+  .blog-cta-card { padding: 3.5rem 1.5rem; }
 }
 </style>

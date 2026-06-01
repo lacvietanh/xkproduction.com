@@ -1,6 +1,6 @@
 <template>
   <div class="site-wrapper">
-    <Navbar />nm 
+    <Navbar />
     <main class="main-content">
       <NuxtPage />
     </main>
@@ -48,7 +48,7 @@ useHead(() => {
     name: 'XKProduction',
     description: 'Phòng thu âm chuyên nghiệp, hoà âm phối khí, mix & master, quay MV/TVC, cho thuê âm thanh ánh sáng sự kiện',
     url: 'https://xkproduction.com',
-    logo: 'https://xkproduction.com/images/Logoxkfix.png',
+    logo: 'https://xkproduction.com/images/logo-xkproduction.png',
     image: 'https://xkproduction.com/images/Xkpreviewnew.png',
     telephone: '+84355356294',
     email: 'xkstudio29@gmail.com',
@@ -112,11 +112,11 @@ useSchemaOrg([
   defineOrganization({
     name: 'XKProduction',
     url: 'https://xkproduction.com',
-    logo: 'https://xkproduction.com/images/Logoxkfix.png',
-    image: 'https://xkproduction.com/images/Logoxkfix.png',
+    logo: 'https://xkproduction.com/images/logo-xkproduction.png',
+    image: 'https://xkproduction.com/images/logo-xkproduction.png',
     description: 'Phòng thu âm & media production chuyên nghiệp tại Bình Phước | Sound & Light | Đào tạo Music Producer.',
     telephone: '+84355356294',
-    email: 'xkstudio29@gmail.com',
+    email: 'contact@xkproduction.com',
     foundingDate: '2018',
     legalName: 'XKProduction - Nguyễn Xuân Kiệt',
     address: {

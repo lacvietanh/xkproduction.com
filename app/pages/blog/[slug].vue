@@ -168,7 +168,7 @@ useSchemaOrg(() => [
     publisher: {
       '@type': 'Organization',
       name: 'XKProduction',
-      logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/Logoxkfix.png` }
+      logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/logo-xkproduction.png` }
     },
     datePublished: post.value.isoDate,
     dateModified: post.value.isoDate,

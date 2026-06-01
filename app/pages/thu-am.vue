@@ -1,83 +1,108 @@
 <template>
-  <div>
+  <div class="service-detail-wrap">
+    <!-- INTERACTIVE AMBIENT GLOW BACKDROP -->
+    <div class="immersive-ambient-bg" aria-hidden="true">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
     <section class="page-hero">
       <div class="max-width">
-        <div class="hero-badge"><i class="fa-solid fa-microphone"></i> DỊCH VỤ PHÒNG THU</div>
-        <h1>Dịch Vụ Thu Âm Chuyên Nghiệp</h1>
-        <p class="page-hero-sub">Phòng thu âm tiêu chuẩn tại Bình Phước — Nơi thăng hoa giọng hát của bạn với thiết bị chuẩn quốc tế và sự hỗ trợ tận tâm từ kỹ sư âm thanh.</p>
+        <span class="hero-badge"><i class="fa-solid fa-microphone"></i> DỊCH VỤ PHÒNG THU</span>
+        <h1 class="page-hero-title">Dịch Vụ <span class="text-gradient-animated">Thu Âm</span> Chuyên Nghiệp</h1>
+        <p class="page-hero-sub">Phòng thu tiêu chuẩn cao tại Bình Phước — Nơi thăng hoa giọng hát của bạn với trang thiết bị chuẩn quốc tế và hỗ trợ vocal coaching tận tình.</p>
       </div>
     </section>
 
-    <!-- Content & Pricing Section -->
+    <!-- ===== CONTENT & PRICING SECTION ===== -->
     <section class="section-block">
       <div class="max-width grid-layout">
-        <!-- Main Info -->
+        <!-- Main Info Content -->
         <div class="main-content-area">
-          <h2>Bảng giá gói thu âm tại XKProduction</h2>
-          <p>Mỗi gói thu âm đều được thiết kế tối ưu cho từng nhu cầu cụ thể, đảm bảo sự minh bạch tuyệt đối, không phát sinh chi phí ẩn.</p>
+          <div class="content-header-area">
+            <span class="header-tag">BÁO GIÁ DỊCH VỤ</span>
+            <h2>Các Gói Thu Âm Bài Hát</h2>
+            <p>Mỗi gói thu âm được thiết kế tối ưu, minh bạch tuyệt đối, cam kết không có chi phí ẩn.</p>
+          </div>
 
           <div class="pricing-grid-detail">
-            <div v-for="p in thuAmPlans" :key="p.name" class="pricing-card-detail" :class="{ featured: p.featured }">
+            <div 
+              v-for="p in thuAmPlans" 
+              :key="p.name" 
+              class="pricing-card-detail glass-card hover-lift" 
+              :class="{ featured: p.featured }"
+            >
               <div v-if="p.badge" class="pricing-badge-detail">{{ p.badge }}</div>
               <h3>{{ p.name }}</h3>
               <div class="price-tag">{{ p.price }}</div>
               <p class="desc">{{ p.desc }}</p>
               <ul class="features-list">
-                <li v-for="f in p.features" :key="f"><i class="fa-solid fa-check text-green"></i> {{ f }}</li>
+                <li v-for="f in p.features" :key="f"><i class="fa-solid fa-check"></i> {{ f }}</li>
               </ul>
-              <NuxtLink to="/contact" class="btn-order">Đặt lịch thu ngay <i class="fa-solid fa-arrow-right"></i></NuxtLink>
+              <NuxtLink to="/contact?service=thu-am" class="btn btn-primary btn-order">
+                <span>Đặt lịch thu ngay</span> <i class="fa-solid fa-arrow-right-long"></i>
+              </NuxtLink>
             </div>
           </div>
 
+          <!-- Story Workflow Steps -->
           <div class="details-rich-text">
-            <h3>Quy trình làm việc tại phòng thu</h3>
+            <span class="header-tag">QUY TRÌNH THU ÂM</span>
+            <h3>Quy Trình Hoạt Động Tại Phòng Thu</h3>
+            <p>XKProduction hỗ trợ coaching chuyên sâu, giúp bạn gỡ bỏ sự tự ti và đạt cảm xúc trọn vẹn nhất:</p>
+
             <ol class="workflow-steps">
               <li>
-                <strong>Đặt lịch &amp; Chuẩn bị:</strong> Đăng ký lịch thu trước tối thiểu 24h. Bạn sẽ nhận được checklist chuẩn bị giọng hát và lời bài hát.
+                <strong>Đặt lịch &amp; Chuẩn bị:</strong>
+                <span>Đăng ký lịch thu trước tối thiểu 24 giờ. Chúng tôi gửi bạn checklist chuẩn bị giọng hát và lời bài hát.</span>
               </li>
               <li>
-                <strong>Vocal Direction &amp; Coaching:</strong> Trong suốt buổi thu, producer của XKProduction sẽ đồng hành hướng dẫn bạn cách lấy hơi, nhả chữ và truyền tải cảm xúc tốt nhất.
+                <strong>Vocal Direction &amp; Coaching:</strong>
+                <span>Trong suốt buổi thu, Xuân Kiệt trực tiếp đồng hành hướng dẫn bạn cách lấy hơi, nhả chữ và truyền tải cảm xúc tốt nhất.</span>
               </li>
               <li>
-                <strong>Vocal Editing:</strong> Kỹ sư âm thanh tiến hành chỉnh phô (vocal tuning) và sửa nhịp (vocal timing) chuẩn xác bằng phần mềm chuyên nghiệp.
+                <strong>Hậu kỳ Vocal Editing:</strong>
+                <span>Kỹ sư âm thanh tiến hành làm sạch dải tần, chỉnh phô (Vocal Tuning) và sửa nhịp (Vocal Timing) thủ công tỉ mỉ.</span>
               </li>
               <li>
-                <strong>Bàn giao sản phẩm:</strong> Bạn nhận bản demo để nghe thử, yêu cầu chỉnh sửa và nhận file master WAV/MP3 chất lượng cao sau khi hoàn thiện.
+                <strong>Bàn giao master thương mại:</strong>
+                <span>Nghệ sĩ nghe thử bản demo, gửi phản hồi chỉnh sửa và nhận file master WAV/MP3 chất lượng cao hoàn thiện.</span>
               </li>
             </ol>
           </div>
         </div>
 
-        <!-- Sidebar Details -->
+        <!-- Sidebar Area -->
         <aside class="sidebar-area">
-          <div class="sidebar-card">
+          <div class="sidebar-card glass-card">
             <h3>Tại sao chọn XKProduction?</h3>
             <ul class="why-us-list">
               <li>
                 <i class="fa-solid fa-circle-check"></i>
                 <div>
-                  <strong>Thiết bị cao cấp:</strong> Sử dụng microphone condenser Neumann, preamp SSL và soundcard đạt chuẩn studio chuyên nghiệp.
+                  <strong>Trang thiết bị chuyên sâu:</strong> Sử dụng microphone condenser Neumann, preamp SSL phần cứng cao cấp đạt chuẩn studio.
                 </div>
               </li>
               <li>
                 <i class="fa-solid fa-circle-check"></i>
                 <div>
-                  <strong>7+ năm kinh nghiệm:</strong> Kỹ sư âm thanh Nguyễn Xuân Kiệt đã đồng hành cùng hơn 2000+ dự án của nhiều nghệ sĩ.
+                  <strong>7+ năm thực chiến:</strong> Sound Engineer Nguyễn Xuân Kiệt đã đồng hành cùng 2000+ dự án đa dạng của nghệ sĩ.
                 </div>
               </li>
               <li>
                 <i class="fa-solid fa-circle-check"></i>
                 <div>
-                  <strong>Hỗ trợ tận tình:</strong> Không chỉ bấm nút thu, chúng tôi hỗ trợ bè phối, hướng dẫn xử lý bài hát từ đầu đến cuối.
+                  <strong>Hỗ trợ bè phối tận tâm:</strong> Không chỉ bấm nút ghi âm, chúng tôi hỗ trợ bè phối, dựng câu từ đầu đến cuối bài hát.
                 </div>
               </li>
             </ul>
           </div>
 
-          <div class="sidebar-card">
-            <h3>Bạn cần tư vấn trực tiếp?</h3>
-            <p>Hãy nhắn tin qua Zalo hoặc liên hệ Hotline để được tư vấn gói thu âm phù hợp nhất với giọng hát của bạn.</p>
-            <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="btn-sidebar-contact Zalo-color">
+          <div class="sidebar-card glass-card">
+            <h3>Cần tư vấn trực tiếp gói thu?</h3>
+            <p>Liên hệ Hotline hoặc nhắn tin trực tiếp qua Zalo để chúng tôi đề xuất gói thu âm tối ưu nhất cho chất giọng của bạn.</p>
+            <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="btn btn-primary btn-sidebar-contact">
               <i class="fa-solid fa-comment"></i> Nhắn Zalo ngay
             </a>
           </div>
@@ -148,200 +173,269 @@ const thuAmPlans = [
   {
     name: 'Gói Cơ Bản',
     price: 'Từ 350.000₫',
-    desc: 'Phù hợp với người mới bắt đầu, thu demo, cover, học viên thanh nhạc.',
-    features: ['Thu âm 1-2 tiếng', 'Chỉnh sửa cơ bản (tuning, timing)', 'Xuất file WAV/MP3', '1 lần revision'],
+    desc: 'Phù hợp với người mới bắt đầu thu âm, thu âm bài hát cover hoặc học viên thanh nhạc.',
+    features: ['Thu âm trong 1-2 tiếng', 'Chỉnh sửa vocal cơ bản (tuning, timing)', 'Xuất file WAV + MP3 chất lượng tốt', '1 lần chỉnh sửa chi tiết'],
     featured: false, badge: ''
   },
   {
     name: 'Gói Nâng Cao',
     price: 'Từ 550.000₫',
-    desc: 'Dành cho ca sĩ bán chuyên, dự án cá nhân, phát hành YouTube hoặc mạng xã hội.',
-    features: ['Thu âm 2-3 tiếng', 'Vocal production đầy đủ', 'Xuất file đa định dạng', '2 lần revision', 'Tư vấn kỹ thuật'],
+    desc: 'Dành cho ca sĩ bán chuyên, làm sản phẩm phát hành YouTube, TikTok cá nhân chỉn chu.',
+    features: ['Thu âm trong 2-3 tiếng', 'Vocal production chi tiết chuyên nghiệp', 'Xuất file đa định dạng stems', '2 lần chỉnh sửa chi tiết', 'Tư vấn kỹ thuật thu'],
     featured: false, badge: ''
   },
   {
     name: 'Gói Chuyên Sâu (Pro)',
     price: 'Từ 1.000.000₫',
-    desc: 'Ca sĩ chuyên nghiệp, phát hành thương mại lên Spotify, Apple Music.',
-    features: ['Thu âm không giới hạn session', 'Vocal coaching & direction', 'Vocal production nâng cao', 'Xuất multi-track', '3 lần revision', 'Hỗ trợ phát hành'],
-    featured: true, badge: 'Khuyên dùng'
+    desc: 'Dành cho ca sĩ chuyên nghiệp, phát hành thương mại số Spotify, Apple Music.',
+    features: ['Thu âm không giới hạn buổi', 'Vocal direction & coaching trực tiếp', 'Vocal production nâng cao đa lớp bè', 'Xuất stems multi-tracks', '3 lần revision', 'Hỗ trợ chiến lược phát hành'],
+    featured: true, badge: 'Phổ biến'
   },
   {
     name: 'Gói Cao Cấp (Ultimate)',
     price: 'Từ 1.800.000₫',
-    desc: 'Nghệ sĩ thực thụ, dự án đòi hỏi sự chỉn chu tuyệt đối về cả kỹ thuật lẫn nghệ thuật.',
-    features: ['Thu âm không giới hạn', 'Storytelling & emotional coaching', 'Xử lý âm thanh cao cấp', 'Revision không giới hạn', 'Chiến lược phát hành', 'Priority booking'],
+    desc: 'Dành cho dự án nghệ thuật chuyên sâu đòi hỏi độ chỉn chu và cảm xúc hoàn hảo nhất.',
+    features: ['Thu âm không giới hạn', 'Coaching cảm xúc và cách kể chuyện', 'Xử lý âm thanh cao cấp analog', 'Revision không giới hạn', 'Priority booking lịch thu'],
     featured: false, badge: ''
   }
 ]
 </script>
 
 <style scoped>
-/* Page Layout styles */
-.page-hero {
-  padding-top: 140px;
-  padding-bottom: 4rem;
-  background: linear-gradient(135deg, #06080f 0%, #0d1117 100%);
-  text-align: center;
+.service-detail-wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-dark);
 }
+
+/* ==============================================
+   INTERACTIVE AMBIENT GLOW BACKDROP
+   ============================================== */
+.immersive-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+}
+
+.glow-spot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.16;
+}
+
+.spotlight-1 {
+  width: 550px;
+  height: 550px;
+  top: -10%;
+  left: -10%;
+  background: rgba(125, 211, 252, 0.35);
+}
+
+.spotlight-2 {
+  width: 650px;
+  height: 650px;
+  bottom: -10%;
+  right: -10%;
+  background: rgba(56, 189, 248, 0.22);
+}
+
+/* ==============================================
+   PAGE HERO
+   ============================================== */
+.page-hero {
+  padding-top: 190px;
+  padding-bottom: 5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 1.2rem;
-  border: 1px solid rgba(26, 140, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 20px;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  background: rgba(26, 140, 255, 0.06);
+  color: var(--accent);
+  margin-bottom: 1.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
-.page-hero h1 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; }
-.page-hero-sub { font-size: 1.05rem; color: var(--text-light); max-width: 640px; margin: 0 auto; line-height: 1.7; }
 
-.section-block { padding: 4rem 0 5rem; }
+.page-hero-title {
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
+}
+
+.page-hero-sub {
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  color: var(--text-light);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ==============================================
+   CONTENT & PRICING
+   ============================================== */
+.section-block {
+  padding: 80px 0 140px;
+  position: relative;
+  z-index: 1;
+}
+
 .grid-layout {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 3rem;
+  grid-template-columns: 1fr 340px;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.content-header-area {
+  margin-bottom: 3.5rem;
+}
+
+.header-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .main-content-area h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 800;
   color: var(--text-main);
   margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
 }
 
 .main-content-area p {
   color: var(--text-light);
+  font-size: 0.95rem;
   line-height: 1.7;
-  margin-bottom: 2.5rem;
 }
 
 .pricing-grid-detail {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 5rem;
 }
 
+/* Pricing Card style */
 .pricing-card-detail {
-  background: var(--bg-surface);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 2.2rem;
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  position: relative;
-  transition: all 0.3s ease;
+  height: 100%;
 }
-.pricing-card-detail:hover {
-  transform: translateY(-4px);
-  border-color: rgba(26, 140, 255, 0.2);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
+
 .pricing-card-detail.featured {
-  border-color: var(--primary);
-  background: rgba(26, 140, 255, 0.03);
-  box-shadow: 0 0 30px rgba(26, 140, 255, 0.1);
+  border-color: rgba(125, 211, 252, 0.25);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .pricing-badge-detail {
   position: absolute;
-  top: -12px;
-  left: 2.2rem;
-  background: var(--primary);
+  top: 1.1rem;
+  right: 1.1rem;
+  background: var(--gradient-primary);
   color: #fff;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .pricing-card-detail h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 750;
   color: var(--text-main);
   margin-bottom: 0.5rem;
+  line-height: 1.35;
 }
 
 .price-tag {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--primary);
+  font-size: 1.7rem;
+  font-weight: 850;
+  color: var(--accent);
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 .desc {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--text-light);
   line-height: 1.6;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 1.8rem;
 }
 
 .features-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem 0;
+  margin: 0 0 2.2rem 0;
   flex-grow: 1;
 }
 
 .features-list li {
-  padding: 0.5rem 0;
-  font-size: 0.85rem;
+  padding: 0.55rem 0;
+  font-size: 0.82rem;
   color: var(--text-light);
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: flex-start;
+  gap: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  line-height: 1.5;
+}
+
+.features-list li i {
+  color: #34d399;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
 }
 
 .btn-order {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  color: var(--text-main);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
+  width: 100%;
 }
 
-.pricing-card-detail:hover .btn-order,
-.pricing-card-detail.featured .btn-order {
-  background: linear-gradient(135deg, #1a8cff 0%, #0066cc 100%);
-  color: #fff;
-  border-color: var(--primary);
-  box-shadow: 0 0 15px rgba(26, 140, 255, 0.3);
-}
-
+/* Workflow Steps */
 .details-rich-text h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--text-main);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .workflow-steps {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2.2rem 0 0 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .workflow-steps li {
   position: relative;
   padding-left: 3rem;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--text-light);
   line-height: 1.7;
 }
@@ -352,16 +446,17 @@ const thuAmPlans = [
   position: absolute;
   left: 0;
   top: 0;
-  width: 36px;
-  height: 36px;
-  background: rgba(26, 140, 255, 0.1);
-  border: 1px solid rgba(26, 140, 255, 0.25);
-  color: var(--primary);
+  width: 32px;
+  height: 32px;
+  background: rgba(125, 211, 252, 0.08);
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  color: var(--accent);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 0.8rem;
 }
 
 .workflow-steps {
@@ -372,7 +467,8 @@ const thuAmPlans = [
   display: block;
   color: var(--text-main);
   margin-bottom: 0.25rem;
-  font-size: 1rem;
+  font-size: 0.98rem;
+  font-weight: 750;
 }
 
 /* Sidebar styles */
@@ -383,14 +479,11 @@ const thuAmPlans = [
 }
 
 .sidebar-card {
-  background: var(--bg-surface);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 1.8rem;
+  padding: 2rem 1.8rem;
 }
 
 .sidebar-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: var(--text-main);
   margin-bottom: 1.25rem;
@@ -409,14 +502,14 @@ const thuAmPlans = [
   display: flex;
   gap: 0.8rem;
   align-items: flex-start;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-light);
   line-height: 1.6;
 }
 
 .why-us-list li i {
-  color: var(--primary);
-  font-size: 1.1rem;
+  color: var(--accent);
+  font-size: 1rem;
   margin-top: 0.15rem;
 }
 
@@ -428,46 +521,25 @@ const thuAmPlans = [
 
 .sidebar-card p {
   color: var(--text-light);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
 .btn-sidebar-contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.Zalo-color {
-  background: #0068ff;
-  box-shadow: 0 4px 15px rgba(0, 104, 255, 0.25);
-}
-.Zalo-color:hover {
-  background: #0056d6;
-  box-shadow: 0 6px 20px rgba(0, 104, 255, 0.35);
-  transform: translateY(-2px);
+  width: 100%;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .grid-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
+  .grid-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .sidebar-area { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 }
 
 @media (max-width: 768px) {
-  .pricing-grid-detail {
-    grid-template-columns: 1fr;
-  }
+  .page-hero { padding-top: 150px; padding-bottom: 3.5rem; }
+  .section-block { padding: 40px 0 80px; }
+  .pricing-grid-detail { grid-template-columns: 1fr; }
+  .sidebar-area { grid-template-columns: 1fr; }
 }
 </style>

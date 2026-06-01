@@ -1,25 +1,42 @@
 <template>
-  <div>
+  <div class="faq-page-wrap">
+    <!-- INTERACTIVE AMBIENT GLOW BACKDROP -->
+    <div class="immersive-ambient-bg" aria-hidden="true">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
     <section class="page-hero">
       <div class="max-width">
-        <div class="hero-badge"><i class="fa-solid fa-circle-question"></i> HỎI &amp; ĐÁP</div>
-        <h1>Câu hỏi thường gặp</h1>
-        <p class="page-hero-sub">Giải đáp nhanh về dịch vụ, quy trình và bảng giá tại XKProduction</p>
+        <span class="hero-badge"><i class="fa-solid fa-circle-question"></i> HỎI &amp; ĐÁP</span>
+        <h1 class="page-hero-title">Giải Đáp <span class="text-gradient-animated">Thắc Mắc</span></h1>
+        <p class="page-hero-sub">Tổng hợp câu hỏi thường gặp về dịch vụ thu âm, hoà âm phối khí, mix &amp; master và chính sách tại XKProduction.</p>
       </div>
     </section>
 
-    <section class="faq-section">
+    <!-- ===== FAQ CONTENT ACCORDION ===== -->
+    <section class="section-block faq-section">
       <div class="max-width faq-container">
         <FaqItem v-for="faq in faqs" :key="faq.question" :question="faq.question" :answer="faq.answer" />
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="cta-inner">
-        <div class="cta-icon"><i class="fa-solid fa-headset"></i></div>
-        <h2>Vẫn còn câu hỏi?</h2>
-        <p>Hãy liên hệ trực tiếp — chúng tôi sẽ tư vấn trong vòng 24 giờ.</p>
-        <NuxtLink to="/contact" class="cta-btn">Liên hệ ngay <i class="fa-solid fa-arrow-right"></i></NuxtLink>
+    <!-- ===== FINAL CALL TO ACTION ===== -->
+    <section class="section-block final-cta">
+      <div class="max-width text-center">
+        <div class="cta-box glass-card">
+          <div class="cta-glow-spot"></div>
+          <div class="cta-icon"><i class="fa-solid fa-headset"></i></div>
+          <h2>Vẫn còn những câu hỏi khác?</h2>
+          <p>Đừng ngần ngại liên hệ trực tiếp với chúng tôi. Đội ngũ tiếp nhận của XKProduction sẽ hỗ trợ giải đáp nhanh nhất trong vòng 24 giờ.</p>
+          <div class="cta-actions">
+            <NuxtLink to="/contact" class="btn btn-primary btn-pulse btn-large">Liên hệ tư vấn ngay</NuxtLink>
+            <a href="https://zalo.me/0355356294" target="_blank" rel="noopener" class="btn btn-secondary btn-large">
+              <i class="fa-solid fa-comment"></i> Nhắn qua Zalo
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -105,31 +122,61 @@ const faqs = [
   },
   {
     question: 'Sau khi thu âm tôi nhận được những file gì?',
-    answer: 'Sau khi hoàn thành dự án, bạn sẽ nhận được các file xuất chất lượng cao bao gồm: Bản Master hoàn chỉnh dạng WAV (24-bit/48kHz chuẩn phát hành) & MP3 (320kbps), bản Beat đã mix lại khớp with Vocal (nếu hát karaoke/cover) và các file Multi-track/Stems lẻ nếu gói dịch vụ của bạn có hỗ trợ.'
+    answer: 'Sau khi hoàn thành dự án, bạn sẽ nhận được các file xuất chất lượng cao bao gồm: Bản Master hoàn chỉnh dạng WAV (24-bit/48kHz chuẩn phát hành) & MP3 (320kbps), bản Beat đã mix lại khớp với Vocal (nếu hát karaoke/cover) và các file Multi-track/Stems lẻ nếu gói dịch vụ của bạn có hỗ trợ.'
   }
 ]
 </script>
 
 <style scoped>
-.page-hero {
-  padding-top: 140px;
-  padding-bottom: 5rem;
-  background: linear-gradient(160deg, #06080f 0%, #0d1117 60%, rgba(26, 140, 255, 0.04) 100%);
-  text-align: center;
+.faq-page-wrap {
   position: relative;
   overflow: hidden;
+  background-color: var(--bg-dark);
 }
 
-.page-hero::before {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(26, 140, 255, 0.05) 0%, transparent 65%);
-  top: -10%;
-  left: 50%;
-  transform: translateX(-50%);
+/* ==============================================
+   INTERACTIVE AMBIENT GLOW BACKDROP
+   ============================================== */
+.immersive-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
+  background-color: var(--bg-dark);
+}
+
+.glow-spot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.16;
+}
+
+.spotlight-1 {
+  width: 550px;
+  height: 550px;
+  top: -10%;
+  left: -10%;
+  background: rgba(125, 211, 252, 0.35);
+}
+
+.spotlight-2 {
+  width: 650px;
+  height: 650px;
+  bottom: -10%;
+  right: -10%;
+  background: rgba(56, 189, 248, 0.22);
+}
+
+/* ==============================================
+   PAGE HERO
+   ============================================== */
+.page-hero {
+  padding-top: 190px;
+  padding-bottom: 5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-badge {
@@ -137,128 +184,114 @@ const faqs = [
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 1.2rem;
-  border: 1px solid rgba(26, 140, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 20px;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  background: rgba(26, 140, 255, 0.06);
+  color: var(--accent);
+  margin-bottom: 1.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
-.page-hero h1 {
-  font-size: 2.8rem;
+.page-hero-title {
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
   font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--text-main);
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #e6edf3 30%, #1a8cff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
 }
 
 .page-hero-sub {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
   color: var(--text-light);
-  max-width: 580px;
+  max-width: 680px;
   margin: 0 auto;
   line-height: 1.7;
 }
 
-/* FAQ SECTION */
+/* ==============================================
+   FAQ ACCORDION LIST
+   ============================================== */
 .faq-section {
-  padding: 5rem 0;
+  padding: 60px 0 100px;
   position: relative;
+  z-index: 1;
 }
 
 .faq-container {
-  max-width: 780px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.8rem;
 }
 
-/* CTA SECTION */
-.cta-section {
-  padding: 5rem 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(13, 17, 23, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+/* ==============================================
+   FINAL CALL TO ACTION
+   ============================================== */
+.final-cta {
+  padding-bottom: 140px;
+  position: relative;
+  z-index: 1;
 }
 
-.cta-inner {
-  text-align: center;
-  max-width: 520px;
-  padding: 3.5rem 3rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(26, 140, 255, 0.15);
-  border-radius: 20px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 0 60px rgba(26, 140, 255, 0.06), 0 20px 60px rgba(0, 0, 0, 0.3);
+.cta-box {
+  padding: 5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.12);
+  background: radial-gradient(circle at top left, rgba(125, 211, 252, 0.05), transparent 30%),
+              var(--glass-bg);
 }
 
 .cta-icon {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 1.25rem;
-  filter: drop-shadow(0 0 12px rgba(26, 140, 255, 0.4));
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.35));
+  display: inline-block;
 }
 
-.cta-inner h2 {
-  font-size: 1.9rem;
-  font-weight: 800;
+.cta-box h2 {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
   color: var(--text-main);
-  margin-bottom: 0.85rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-.cta-inner p {
+.cta-box p {
   color: var(--text-light);
-  font-size: 0.95rem;
+  margin-bottom: 2.2rem;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.7;
-  margin-bottom: 2rem;
 }
 
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 2rem;
-  background: linear-gradient(135deg, #1a8cff 0%, #0066cc 100%);
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border-radius: 10px;
-  text-decoration: none;
-  box-shadow: 0 0 25px rgba(26, 140, 255, 0.35);
-  transition: all 0.3s ease;
-  letter-spacing: 0.3px;
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(26, 140, 255, 0.5), 0 8px 25px rgba(0, 0, 0, 0.3);
+.btn-large {
+  padding: 0.95rem 2.2rem;
+  font-size: 0.92rem;
+  border-radius: 12px;
 }
 
-.cta-btn i {
-  transition: transform 0.3s ease;
-}
-
-.cta-btn:hover i {
-  transform: translateX(3px);
-}
-
-/* RESPONSIVE */
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
 @media (max-width: 768px) {
-  .page-hero h1 { font-size: 2rem; }
-  .cta-inner { padding: 2.5rem 1.5rem; }
-  .cta-inner h2 { font-size: 1.5rem; }
-}
-
-@media (max-width: 480px) {
-  .page-hero h1 { font-size: 1.7rem; }
+  .page-hero { padding-top: 150px; padding-bottom: 3.5rem; }
+  .faq-section { padding: 40px 0 80px; }
+  .final-cta { padding-bottom: 80px; }
+  .cta-box { padding: 3.5rem 1.5rem; }
 }
 </style>
