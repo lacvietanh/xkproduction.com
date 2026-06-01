@@ -1,7 +1,7 @@
 <template>
 <div class="home-page">
   <!-- INTERACTIVE AMBIENT GLOW BACKDROP -->
-  <div class="immersive-ambient-bg" :class="`theme-${works[activeProjectIdx]?.theme || 'blue'}`" aria-hidden="true">
+  <div class="immersive-ambient-bg" :class="`theme-${activeProject.theme}`" aria-hidden="true">
     <div class="glow-spot spotlight-1"></div>
     <div class="glow-spot spotlight-2"></div>
   </div>
@@ -67,7 +67,7 @@
       </div>
 
       <div class="showcase-container">
-        <!-- Vertical project selector (Shows all 7 items) -->
+        <!-- Vertical project selector -->
         <div class="project-selector-list">
           <button 
             v-for="(w, idx) in works" 
@@ -84,13 +84,13 @@
         </div>
 
         <!-- Dynamic project visual display -->
-        <div class="project-display-box glass-card" :class="`theme-${works[activeProjectIdx]?.theme}`">
+        <div class="project-display-box glass-card" :class="`theme-${activeProject.theme}`">
           <div class="display-glow"></div>
           
           <div class="project-image-wrap">
             <Transition name="fade-scale" mode="out-in">
               <!-- Custom Interactive Audio Visualizer Screen -->
-              <div v-if="works[activeProjectIdx].isAudio" class="audio-player-container-display" :key="'audio-display'">
+              <div v-if="activeProject.isAudio" class="audio-player-container-display" :key="'audio-display'">
                 <div class="audio-waves" :class="{ playing: isAudioPlaying }">
                   <span 
                     v-for="n in 28" 
@@ -107,27 +107,27 @@
               <!-- Standard Video Thumbnail -->
               <img 
                 v-else
-                :key="works[activeProjectIdx].title" 
-                :src="works[activeProjectIdx].thumb" 
-                :alt="works[activeProjectIdx].title"
+                :key="activeProject.title" 
+                :src="activeProject.thumb" 
+                :alt="activeProject.title"
                 class="project-cover-img"
               />
             </Transition>
             
-            <button v-if="!works[activeProjectIdx].isAudio" class="play-btn-circle" @click="openLightbox(works[activeProjectIdx])" aria-label="Phát Demo">
+            <button v-if="!activeProject.isAudio" class="play-btn-circle" @click="openLightbox(activeProject)" aria-label="Phát Demo">
               <i class="fa-solid fa-play"></i>
             </button>
           </div>
 
           <div class="project-meta-details">
             <Transition name="fade" mode="out-in">
-              <div :key="works[activeProjectIdx].title" class="meta-inner">
-                <span class="project-tag">{{ works[activeProjectIdx].category }}</span>
-                <h3 class="project-title">{{ works[activeProjectIdx].title }}</h3>
-                <p class="project-story">{{ works[activeProjectIdx].story }}</p>
+              <div :key="activeProject.title" class="meta-inner">
+                <span class="project-tag">{{ activeProject.category }}</span>
+                <h3 class="project-title">{{ activeProject.title }}</h3>
+                <p class="project-story">{{ activeProject.story }}</p>
                 
                 <!-- Custom Premium Glass Seek bar for Audio -->
-                <div v-if="works[activeProjectIdx].isAudio" class="audio-seek-wrapper">
+                <div v-if="activeProject.isAudio" class="audio-seek-wrapper">
                   <div class="audio-progress-track" @click="seekAudio" title="Tua nhạc">
                     <div class="audio-progress-fill" :style="{ width: audioProgress + '%' }"></div>
                   </div>
@@ -137,7 +137,7 @@
                   </div>
                 </div>
 
-                <button v-else class="btn btn-link-premium" @click="openLightbox(works[activeProjectIdx])">
+                <button v-else class="btn btn-link-premium" @click="openLightbox(activeProject)">
                   <span>Nghe thử bản phối</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -179,9 +179,9 @@
             <div class="preview-img-wrap">
               <Transition name="fade" mode="out-in">
                 <img 
-                  :key="premiumServices[activeServiceIdx].title"
-                  :src="premiumServices[activeServiceIdx].thumb" 
-                  :alt="premiumServices[activeServiceIdx].title" 
+                  :key="activeService.title"
+                  :src="activeService.thumb" 
+                  :alt="activeService.title" 
                   class="preview-img"
                 />
               </Transition>
@@ -189,11 +189,11 @@
             </div>
             <div class="preview-content">
               <Transition name="fade" mode="out-in">
-                <div :key="premiumServices[activeServiceIdx].title">
-                  <h3 class="preview-title">{{ premiumServices[activeServiceIdx].title.toUpperCase() }}</h3>
-                  <p class="preview-desc">{{ premiumServices[activeServiceIdx].desc }}</p>
-                  <NuxtLink :to="premiumServices[activeServiceIdx].link" class="btn btn-primary">
-                    <span>{{ premiumServices[activeServiceIdx].ctaText }}</span>
+                <div :key="activeService.title">
+                  <h3 class="preview-title">{{ activeService.title.toUpperCase() }}</h3>
+                  <p class="preview-desc">{{ activeService.desc }}</p>
+                  <NuxtLink :to="activeService.link" class="btn btn-primary">
+                    <span>{{ activeService.ctaText }}</span>
                     <i class="fa-solid fa-arrow-right-long" style="margin-left: 0.5rem"></i>
                   </NuxtLink>
                 </div>
@@ -265,8 +265,10 @@
       </div>
       <div class="founder-editorial-content">
         <span class="header-tag">FOUNDER / MUSIC PRODUCER</span>
-        <h2 class="founder-main-name">Nguyễn Xuân Kiệt</h2>
-        <span class="founder-badge">Stage Performance Mindset</span>
+        <div class="founder-name-row">
+          <h2 class="founder-main-name">Nguyễn Xuân Kiệt</h2>
+          <span class="founder-badge">Stage Performance Mindset</span>
+        </div>
         <p class="founder-philosophy">
           Xuất thân từ môi trường âm thanh sân khấu và live performance, Kiệt mang tư duy cảm xúc, không gian và năng lượng thật vào từng sản phẩm phòng thu. Mỗi bản nhạc được xây dựng tại XKProduction đều hướng đến một định hướng duy nhất: âm nhạc không chỉ cần nghe hay — mà cần có bản sắc riêng.
         </p>
@@ -307,16 +309,16 @@
           <Transition name="fade" mode="out-in">
             <div :key="activeTestimonialIdx" class="testimonial-slide">
               <p class="testimonial-quote-text">
-                "{{ testimonials[activeTestimonialIdx].body }}"
+                "{{ activeTestimonial.body }}"
               </p>
               
               <div class="testimonial-author-meta">
                 <div class="author-avatar-wrap">
-                  <img :src="testimonials[activeTestimonialIdx].avatar" :alt="testimonials[activeTestimonialIdx].name" class="author-avatar-img" />
+                  <img :src="activeTestimonial.avatar" :alt="activeTestimonial.name" class="author-avatar-img" />
                 </div>
                 <div class="author-info">
-                  <strong class="author-name">{{ testimonials[activeTestimonialIdx].name }}</strong>
-                  <span class="author-role">{{ testimonials[activeTestimonialIdx].role }}</span>
+                  <strong class="author-name">{{ activeTestimonial.name }}</strong>
+                  <span class="author-role">{{ activeTestimonial.role }}</span>
                 </div>
               </div>
             </div>
@@ -513,7 +515,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted, onUnmounted } from 'vue'
+import { reactive, ref, computed, onMounted, onUnmounted } from 'vue'
 
 useSeoMeta({
   title: 'XKProduction — Music Production & Live Band Chuyên Nghiệp',
@@ -780,6 +782,11 @@ const works = [
   }
 ]
 
+/* === COMPUTED DEFINITIONS FOR IDE CONCISENESS & TS COMPILER LINT COMPLIANCE === */
+const activeProject = computed(() => (works[activeProjectIdx.value] ?? works[0])!)
+const activeService = computed(() => (premiumServices[activeServiceIdx.value] ?? premiumServices[0])!)
+const activeTestimonial = computed(() => (testimonials[activeTestimonialIdx.value] ?? testimonials[0])!)
+
 /* === PREMIUM AUDIO PLAYER STATE & ACTIONS === */
 const audioUrl = '/product-audio-demo/pop-rnb-1-Gm.102.mp3'
 const isAudioPlaying = ref(false)
@@ -797,7 +804,7 @@ function formatTime(secs: number) {
 function selectProject(idx: number) {
   activeProjectIdx.value = idx
   // Auto pause audio if user hovers to a non-audio project
-  if (works[idx].isAudio !== true && audioInstance && isAudioPlaying.value) {
+  if (works[idx] && works[idx].isAudio !== true && audioInstance && isAudioPlaying.value) {
     audioInstance.pause()
     isAudioPlaying.value = false
   }
@@ -883,7 +890,7 @@ const whyChooseUs = [
   {
     icon: 'fa-solid fa-signature',
     title: 'Không sản xuất đại trà',
-    desc: 'Mỗi bài hát là một thực thể độc bản. Chúng tôi đầu tư thời gian tối đa để nghiên cứu cá tính âm nhạc riêng của bạn.'
+    desc: 'Mỗi bài hát là một thực thể độc bản. Chúng tôi đầu vt thời gian tối đa để nghiên cứu cá tính âm nhạc riêng của bạn.'
   },
   {
     icon: 'fa-solid fa-wand-magic-sparkles',
@@ -960,11 +967,11 @@ const lightbox = reactive({
   embedId: ''
 })
 
-function openLightbox(w: { title: string; artist: string; url: string; embedId: string }) {
+function openLightbox(w: any) {
   lightbox.title = w.title
   lightbox.artist = w.artist
-  lightbox.url = w.url
-  lightbox.embedId = w.embedId
+  lightbox.url = w.url || ''
+  lightbox.embedId = w.embedId || ''
   lightbox.open = true
   document.body.style.overflow = 'hidden'
 }
