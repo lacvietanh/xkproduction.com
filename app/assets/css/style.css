@@ -10,37 +10,43 @@
 }
 
 :root {
-  /* Core Premium Palette */
-  --bg-dark:    #030508; /* Deepest luxurious slate-charcoal */
-  --bg-surface: #070a0f; /* Refined elevation surface */
-  --bg-light:   #0d1117; /* High-contrast subtle layer */
+  /* Core Premium Palette - Redesigned v4 */
+  --bg-dark:    #071018; /* Luxury Deep Space Navy */
+  --bg-surface: #0d1724; /* Refined dark slate surface */
+  --bg-light:   #122030; /* High-contrast subtle elevated layer */
 
   /* Refined Brand Accents — Luxury Tone */
-  --primary:      #2b7fff; /* Sophisticated metallic blue */
-  --primary-dark: #125cdb; /* Deep sapphire blue */
-  --primary-glow: rgba(43, 127, 255, 0.04);
-  --accent:       #00d4aa; /* Refined turquoise accent (kept for brand identity, used sparingly) */
-  --accent-glow:  rgba(0, 212, 170, 0.02);
+  --primary:      #7dd3fc; /* Premium sky blue accent */
+  --primary-dark: #38bdf8; /* Deep accent sky blue */
+  --primary-glow: rgba(125, 211, 252, 0.04);
+  --accent:       #7dd3fc; /* Premium Sky Blue Accent */
+  --accent-glow:  rgba(125, 211, 252, 0.02);
 
   /* Premium Typography — Warm & Legible */
   --text-main:  #f8fafc; /* Crisp warm off-white */
-  --text-light: #94a3b8; /* Refined cool gray */
+  --text-light: #94a3b8; /* Refined cool slate secondary text */
   --text-muted: #64748b; /* Subtle structural gray */
 
   /* Borders & Glassmorphism — Invisible Structure */
-  --border-color:   rgba(255, 255, 255, 0.035);
-  --glass-bg:       rgba(255, 255, 255, 0.01);
-  --glass-border:   rgba(255, 255, 255, 0.03);
-  --glass-hover-bg: rgba(255, 255, 255, 0.02);
+  --border-color:   rgba(255, 255, 255, 0.08); /* Premium V4 border */
+  --glass-bg:       rgba(255, 255, 255, 0.04); /* Premium V4 card bg */
+  --glass-border:   rgba(255, 255, 255, 0.08);
+  --glass-hover-bg: rgba(255, 255, 255, 0.06);
 
   /* Elegant Gradients — Cinematic Layering */
-  --gradient-primary: linear-gradient(135deg, #2b7fff 0%, #00e5c0 100%);
-  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0) 100%);
+  --gradient-primary: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
 
-  /* Softer, Luxurious Shadows */
-  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.015);
-  --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(43, 127, 255, 0.02);
-  --shadow-glow:  0 0 12px rgba(43, 127, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.6);
+  /* Premium Layered Depth System - Redesigned v4 */
+  --shadow-card: 
+    0 4px 8px rgba(0, 0, 0, 0.12),
+    0 20px 60px rgba(0, 0, 0, 0.18),
+    0 40px 120px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 
+    0 8px 16px rgba(0, 0, 0, 0.16),
+    0 30px 80px rgba(0, 0, 0, 0.25),
+    0 50px 150px rgba(125, 211, 252, 0.03);
+  --shadow-glow:  0 0 20px rgba(125, 211, 252, 0.08), 0 8px 24px rgba(0, 0, 0, 0.6);
 
   /* Elite Motions */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -180,24 +186,21 @@ img {
    CARDS & GLASS MORPHISM — Enhanced
    ========================================== */
 .glass-card {
-  background: rgba(255, 255, 255, 0.015);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.4),
-    0 1px 0 rgba(255,255,255,0.02) inset;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
   transition: all 0.4s var(--ease-out-expo);
   position: relative;
+  overflow: hidden;
 }
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.025);
-  border-color: rgba(26,140,255,0.2);
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.5),
-    0 0 20px rgba(26,140,255,0.05);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-6px);
 }
 
 /* Glare sweep on hover */
@@ -435,4 +438,19 @@ h1, h2, h3, h4 { letter-spacing: -0.015em; }
 .article-transition-leave-to {
   opacity: 0;
   transform: translateY(8px);
+}
+
+/* ==========================================
+   SCROLL SNAP SYSTEM — Premium V4
+   ========================================== */
+@media (min-width: 1025px) {
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px; /* Sticky Navbar offset */
+  }
+  .home-page section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
