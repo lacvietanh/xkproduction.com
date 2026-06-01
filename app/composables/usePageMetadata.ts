@@ -17,13 +17,37 @@ export interface PageMetadataOptions {
   canonicalUrl?: string;
 }
 
+interface HeadConfig {
+  link: Array<Record<string, string>>;
+  meta?: Array<Record<string, string>>;
+}
+
+interface MetaTag {
+  property: string;
+  content: string;
+}
+
+interface JsonLdSchema {
+  '@context': string;
+  '@type': string;
+  '@id'?: string;
+  url?: string;
+  name?: string;
+  description?: string;
+  image?: string;
+  headline?: string;
+  author?: Record<string, string>;
+  datePublished?: string;
+  dateModified?: string;
+}
+
 export const usePageMetadata = (options: PageMetadataOptions) => {
   const route = useRoute();
   const BASE_URL = 'https://xkproduction.com';
   
   const finalOptions = {
     ...options,
-    canonicalUrl: options.canonicalUrl || `${BASE_URL}${route.path}`,
+    canonicalUrl: options.canonicalUrl || `${BASE_URL}${route.path.replace(/\/$/, '')}`,
     image: options.image || 'https://xkproduction.com/images/Xkpreviewnew.png',
     imageAlt: options.imageAlt || options.title,
   };
@@ -38,7 +62,7 @@ export const usePageMetadata = (options: PageMetadataOptions) => {
     ogImageWidth: '1200',
     ogImageHeight: '630',
     ogImageAlt: finalOptions.imageAlt,
-    ogType: (options.type || 'website') as any,
+    ogType: options.type || 'website',
     ogUrl: finalOptions.canonicalUrl,
     twitterCard: 'summary_large_image',
     twitterImage: finalOptions.image,
@@ -48,14 +72,14 @@ export const usePageMetadata = (options: PageMetadataOptions) => {
 
   // Set canonical and article metadata
   useHead(() => {
-    const head: any = {
+    const head: HeadConfig = {
       link: [
         { rel: 'canonical', href: finalOptions.canonicalUrl },
       ],
     };
 
     if (options.type === 'article') {
-      const metaTags: any[] = [];
+      const metaTags: MetaTag[] = [];
 
       if (options.publishedTime) {
         metaTags.push({
@@ -86,19 +110,20 @@ export const usePageMetadata = (options: PageMetadataOptions) => {
           });
         });
       }
-      head.meta = metaTags;
+      head.meta = metaTags as Array<Record<string, string>>;
     }
 
     return head;
   });
 
   // Generate JSON-LD structured data
-  const generateJsonLd = () => {
+  const generateJsonLd = (): JsonLdSchema => {
     const baseUrl = 'https://xkproduction.com';
-    const path = route.path;
+    const path = route.path.replace(/\/$/, '');
 
-    const jsonLd: any = {
+    const jsonLd: JsonLdSchema = {
       '@context': 'https://schema.org',
+      '@type': 'WebPage',
       '@id': `${baseUrl}${path}`,
       url: finalOptions.canonicalUrl,
       name: options.title,

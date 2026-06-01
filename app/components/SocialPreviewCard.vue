@@ -115,7 +115,6 @@ const copyToClipboard = async (text: string) => {
       copied.value = false
     }, 2000)
   } catch (err) {
-    console.error('Failed to copy:', err)
     copyError.value = true
     setTimeout(() => {
       copyError.value = false
