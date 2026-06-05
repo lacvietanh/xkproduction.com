@@ -85,17 +85,24 @@ const copyLink = async () => {
   }
 }
 
+let ticking = false
 const updateReadingProgress = () => {
   if (!import.meta.client) return
-  const scrollTop = window.scrollY
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight
-  readingProgress.value = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      readingProgress.value = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
 
-  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section-id]'))
-  const current = sections
-    .filter(section => section.getBoundingClientRect().top <= 160)
-    .at(-1)
-  if (current?.id) activeSectionId.value = current.id
+      const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section-id]'))
+      const current = sections
+        .filter(section => section.getBoundingClientRect().top <= 160)
+        .at(-1)
+      if (current?.id) activeSectionId.value = current.id
+      ticking = false
+    })
+    ticking = true
+  }
 }
 
 const setActiveSection = (id: string) => {
@@ -104,7 +111,16 @@ const setActiveSection = (id: string) => {
 
 onMounted(() => {
   activeSectionId.value = post.value?.sections[0]?.id || ''
-  updateReadingProgress()
+  // Initial check without throttle delay
+  const scrollTop = window.scrollY
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  readingProgress.value = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section-id]'))
+  const current = sections
+    .filter(section => section.getBoundingClientRect().top <= 160)
+    .at(-1)
+  if (current?.id) activeSectionId.value = current.id
+
   window.addEventListener('scroll', updateReadingProgress, { passive: true })
 })
 

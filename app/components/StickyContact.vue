@@ -33,7 +33,16 @@
 const isVisible = ref(false)
 
 onMounted(() => {
-  const toggle = () => { isVisible.value = window.scrollY > 300 }
+  let ticking = false
+  const toggle = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        isVisible.value = window.scrollY > 300
+        ticking = false
+      })
+      ticking = true
+    }
+  }
   window.addEventListener('scroll', toggle, { passive: true })
   onUnmounted(() => window.removeEventListener('scroll', toggle))
 })

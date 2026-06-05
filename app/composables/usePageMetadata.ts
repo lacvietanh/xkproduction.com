@@ -19,7 +19,7 @@ export interface PageMetadataOptions {
 
 interface HeadConfig {
   link: Array<Record<string, string>>;
-  meta?: Array<Record<string, string>>;
+  meta?: MetaTag[];
 }
 
 interface MetaTag {
@@ -62,7 +62,7 @@ export const usePageMetadata = (options: PageMetadataOptions) => {
     ogImageWidth: '1200',
     ogImageHeight: '630',
     ogImageAlt: finalOptions.imageAlt,
-    ogType: options.type || 'website',
+    ogType: (options.type === 'product' ? 'website' : options.type) as any,
     ogUrl: finalOptions.canonicalUrl,
     twitterCard: 'summary_large_image',
     twitterImage: finalOptions.image,
@@ -110,10 +110,9 @@ export const usePageMetadata = (options: PageMetadataOptions) => {
           });
         });
       }
-      head.meta = metaTags as Array<Record<string, string>>;
+      head.meta = metaTags as any;
     }
-
-    return head;
+    return head as any;
   });
 
   // Generate JSON-LD structured data

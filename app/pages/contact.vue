@@ -186,7 +186,7 @@ useSeoMeta({
   title: 'Liên hệ & Đặt lịch Thu âm, Mix Master - XKProduction',
   description: 'Liên hệ XKProduction để đặt lịch thu âm bài hát, tư vấn mixing/mastering, hoà âm phối khí. Hotline: 0355.356.294. Phản hồi trong 24 giờ.',
   ogTitle: 'Liên hệ Đặt lịch Thu âm & Tư vấn Dịch vụ - XKProduction',
-  ogDescription: 'Hotline: 0355.356.294 | Zalo: 0355.356.294 | Email: xkstudio29@gmail.com. Đặt lịch thu âm, tư vấn mix master & hoà âm phối khí chuyên nghiệp.',
+  ogDescription: 'Hotline: 0355.356.294 | Zalo: 0355.356.294 | Email: nguyenxuankiet294@gmail.com. Đặt lịch thu âm, tư vấn mix master & hoà âm phối khí chuyên nghiệp.',
   ogImage: 'https://xkproduction.com/images/Xkpreviewnew.png',
   ogImageWidth: '1200',
   ogImageHeight: '630',
@@ -206,7 +206,7 @@ useSchemaOrg([
     '@id': 'https://xkproduction.com/#localbusiness',
     name: 'XKProduction',
     telephone: '+84355356294',
-    email: 'xkstudio29@gmail.com',
+    email: 'nguyenxuankiet294@gmail.com',
     url: 'https://xkproduction.com',
     image: 'https://xkproduction.com/images/Xkpreviewnew.png',
     address: {
@@ -280,7 +280,7 @@ async function handleSubmit() {
 
 const contactInfo = [
   { faIcon: 'fa-solid fa-phone', title: 'Hotline / Zalo', content: '<a href="tel:0355356294">0355.356.294</a>' },
-  { faIcon: 'fa-solid fa-envelope', title: 'Email', content: '<a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a>' },
+  { faIcon: 'fa-solid fa-envelope', title: 'Email', content: '<a href="mailto:nguyenxuankiet294@gmail.com">nguyenxuankiet294@gmail.com</a>' },
   { faIcon: 'fa-solid fa-comment', title: 'Zalo Chat', content: '<a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a>' },
   { faIcon: 'fa-brands fa-facebook-f', title: 'Facebook Cá Nhân', content: '<a href="https://www.facebook.com/ngxkiet" target="_blank" rel="noopener">facebook.com/ngxkiet</a>' },
   { faIcon: 'fa-solid fa-location-dot', title: 'Địa chỉ Studio', content: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng, Bình Phước' }

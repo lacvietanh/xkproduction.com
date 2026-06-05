@@ -166,7 +166,7 @@
 
           <div class="cta-footer-methods">
             <p><i class="fa-solid fa-phone"></i> Hotline: <a href="tel:0355356294">0355.356.294</a></p>
-            <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:xkstudio29@gmail.com">xkstudio29@gmail.com</a></p>
+            <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:nguyenxuankiet294@gmail.com">nguyenxuankiet294@gmail.com</a></p>
             <p><i class="fa-solid fa-comment"></i> Zalo Chat: <a href="https://zalo.me/0355356294" target="_blank" rel="noopener">0355.356.294</a></p>
           </div>
         </div>
@@ -245,7 +245,7 @@ useSchemaOrg([
   })
 ])
 
-useScrollAnimation()
+// Scroll animations removed due to performance concerns
 
 const services = [
   {

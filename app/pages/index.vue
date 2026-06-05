@@ -1046,6 +1046,18 @@ onMounted(() => {
   
   document.querySelectorAll('.stat-number[data-target]').forEach(el => statsObserver.observe(el))
   
+  /* --- SCROLL REVEAL FADE ANIMATION --- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return
+      const el = e.target as HTMLElement
+      el.classList.add('revealed')
+      revealObserver.unobserve(el)
+    })
+  }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' })
+
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el))
+
 })
 </script>
 
@@ -2548,6 +2560,21 @@ onMounted(() => {
   font-size: 0.85rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
+}
+
+
+/* ==============================================
+   REVEAL ON SCROLL MOTIONS
+   ============================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 

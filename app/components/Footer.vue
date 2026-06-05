@@ -56,13 +56,13 @@
               </a>
             </li>
             <li>
-              <a href="mailto:xkstudio29@gmail.com" itemprop="email" title="Email XKProduction">
+              <a href="mailto:nguyenxuankiet294@gmail.com" itemprop="email" title="Email Nguyễn Xuân Kiệt">
                 <i class="fa-solid fa-envelope"></i>
-                <span>xkstudio29@gmail.com</span>
+                <span>nguyenxuankiet294@gmail.com</span>
               </a>
             </li>
             <li>
-              <a href="https://zalo.me/0355356294" target="_blank" rel="noopener noreferrer" title="Zalo XKProduction">
+              <a href="https://zalo.me/0355356294" target="_blank" rel="noopener noreferrer" title="Zalo Nguyễn Xuân Kiệt">
                 <i class="fa-solid fa-comment"></i>
                 <span>Zalo: 0355.356.294</span>
               </a>
@@ -89,7 +89,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© {{ new Date().getFullYear() }} <strong>XKProduction</strong> — <a href="https://xkproduction.com">xkproduction.com</a>. Tất cả quyền được bảo lưu.</p>
+        <p>© {{ new Date().getFullYear() }} <strong>Nguyễn Xuân Kiệt</strong> — <a href="https://xkproduction.com">xkproduction.com</a>. Tất cả quyền được bảo lưu.</p>
         <p class="footer-tagline">Chạm đến trái tim bằng âm thanh 🎵</p>
       </div>
     </div>
@@ -101,7 +101,7 @@
   background: #030508;
   border-top: 1px solid rgba(255, 255, 255, 0.035);
   margin-top: 0;
-  padding: 5rem 2rem 0;
+  padding: 3.5rem 2rem 0;
   position: relative;
   z-index: 1;
 }
@@ -111,8 +111,8 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
-  gap: 3rem;
-  margin-bottom: 4rem;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .footer-logo-wrap {

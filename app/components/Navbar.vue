@@ -1,8 +1,5 @@
 <template>
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" :style="{ width: scrollProgress + '%' }" aria-hidden="true"></div>
-
-  <nav class="navbar" :class="{ scrolled: isScrolled }" role="navigation" aria-label="Điều hướng chính XKProduction">
+  <nav class="navbar" role="navigation" aria-label="Điều hướng chính XKProduction">
     <div class="nav-container">
       <!-- LEFT: Quảng bá -->
       <ul class="nav-group nav-left" role="list">
@@ -71,20 +68,7 @@
   </nav>
 </template>
 
-<script setup lang="ts">
-const { isScrolled } = useStickyHeader()
-
-// Scroll progress
-const scrollProgress = ref(0)
-onMounted(() => {
-  const update = () => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement
-    scrollProgress.value = Math.round((scrollTop / (scrollHeight - clientHeight)) * 100)
-  }
-  window.addEventListener('scroll', update, { passive: true })
-  onUnmounted(() => window.removeEventListener('scroll', update))
-})
-</script>
+<!-- No JS: remove scroll listeners to avoid performance issues -->
 
 <style scoped>
 /* ===========================================
@@ -144,8 +128,8 @@ onMounted(() => {
   margin: 0;
   padding: 0;
 }
-.nav-left  { justify-self: start; }
-.nav-right { justify-self: end; }
+.nav-left  { justify-self: end; margin-right: 3rem; }
+.nav-right { justify-self: start; margin-left: 3rem; }
 
 /* --- LOGO (center) --- */
 .logo {
@@ -275,6 +259,8 @@ onMounted(() => {
   .navbar { padding: 0 1rem; }
   .nav-container { height: 60px; }
   .nav-group { gap: 0.1rem; }
+  .nav-left { margin-right: 0; }
+  .nav-right { margin-left: 0; }
   .nav-text, .logo-text, .nav-separator { display: none; }
   .nav-link { padding: 0.5rem; }
   .nav-icon { font-size: 1rem; }
