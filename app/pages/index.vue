@@ -45,19 +45,6 @@
     </div>
   </section>
 
-  <!-- SECTION 03 — TRUST BAR (Floating glass cards) -->
-  <section class="stats-bar-premium reveal-on-scroll">
-    <div class="max-width stats-grid">
-      <div v-for="s in stats" :key="s.label" class="stat-premium-card glass-card">
-        <div class="stat-glow"></div>
-        <span class="stat-number-wrap">
-          <span class="stat-number" :data-target="s.target">{{ s.value }}</span>
-        </span>
-        <span class="stat-label">{{ s.label }}</span>
-      </div>
-    </div>
-  </section>
-
   <!-- SECTION 04 — FEATURED WORK (Immersive Switcher with Audio Player) -->
   <section id="featured-showcase" class="featured-work-section reveal-on-scroll">
     <div class="max-width">
@@ -111,6 +98,7 @@
                 :src="activeProject.thumb" 
                 :alt="activeProject.title"
                 class="project-cover-img"
+                loading="lazy"
               />
             </Transition>
             
@@ -183,6 +171,7 @@
                   :src="activeService.thumb" 
                   :alt="activeService.title" 
                   class="preview-img"
+                  loading="lazy"
                 />
               </Transition>
               <div class="preview-overlay"></div>
@@ -259,7 +248,7 @@
     <div class="max-width founder-grid-premium">
       <div class="founder-portrait-wrap">
         <div class="portrait-card glass-card">
-          <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKProduction" class="founder-portrait-img" />
+          <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKProduction" class="founder-portrait-img" loading="lazy" />
           <div class="portrait-overlay"></div>
         </div>
       </div>
@@ -314,7 +303,7 @@
               
               <div class="testimonial-author-meta">
                 <div class="author-avatar-wrap">
-                  <img :src="activeTestimonial.avatar" :alt="activeTestimonial.name" class="author-avatar-img" />
+                  <img :src="activeTestimonial.avatar" :alt="activeTestimonial.name" class="author-avatar-img" loading="lazy" />
                 </div>
                 <div class="author-info">
                   <strong class="author-name">{{ activeTestimonial.name }}</strong>
@@ -552,7 +541,7 @@ useHead({
         "image": "https://xkproduction.com/images/Xkpreviewnew.png",
         "description": "Phòng thu âm chuyên nghiệp — Hoà âm phối khí — Mix & Master chuẩn quốc tế — Sân khấu sự kiện & Âm thanh ánh sáng trọn gói tại Bình Phước.",
         "telephone": "+84355356294",
-        "email": "xkstudio29@gmail.com",
+        "email": "nguyenxuankiet294@gmail.com",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "QL14 km25, Nghĩa Trung",
@@ -612,7 +601,7 @@ useSchemaOrg([
     image: 'https://xkproduction.com/images/Xkpreviewnew.png',
     logo: 'https://xkproduction.com/images/logo-xkproduction.png',
     telephone: '+84355356294',
-    email: 'xkstudio29@gmail.com',
+    email: 'nguyenxuankiet294@gmail.com',
     url: 'https://xkproduction.com',
     description: 'Phòng thu âm chuyên nghiệp — Hoà âm phối khí — Mix & Master chuẩn quốc tế — Sân khấu sự kiện & Âm thanh ánh sáng trọn gói tại Bình Phước.',
     address: {
@@ -699,13 +688,7 @@ function resetHeroParallax() {
   heroVisualRef.value.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`
 }
 
-/* === STATS DATA === */
-const stats = [
-  { value: '2000+', target: 2000, label: 'Dự án hoàn thiện' },
-  { value: '7+', target: 7, label: 'Năm kinh nghiệm' },
-  { value: '50+', target: 50, label: 'Học viên đào tạo' },
-  { value: '30+', target: 30, label: 'Đối tác tin tưởng' }
-]
+
 
 /* === ALL FEATURED PROJECTS DATA (6 Videos + 1 Audio Demo) === */
 const works = [
@@ -1063,17 +1046,6 @@ onMounted(() => {
   
   document.querySelectorAll('.stat-number[data-target]').forEach(el => statsObserver.observe(el))
   
-  /* --- SCROLL REVEAL FADE ANIMATION --- */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return
-      const el = e.target as HTMLElement
-      el.classList.add('revealed')
-      revealObserver.unobserve(el)
-    })
-  }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' })
-  
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el))
 })
 </script>
 
@@ -2576,21 +2548,6 @@ onMounted(() => {
   font-size: 0.85rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-}
-
-
-/* ==============================================
-   REVEAL ON SCROLL MOTIONS (Smoother curves)
-   ============================================== */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
-}
-
-.reveal-on-scroll.revealed {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 
