@@ -1072,6 +1072,7 @@ onMounted(() => {
   background-color: var(--bg-dark);
   color: var(--text-main);
   overflow-x: hidden;
+  scroll-behavior: auto !important;
 }
 
 /* Vertical Spacing System */
@@ -1103,20 +1104,21 @@ onMounted(() => {
    INTERACTIVE AMBIENT GLOW BACKDROP
    ============================================== */
 .immersive-ambient-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-color: var(--bg-dark);
+  background: radial-gradient(circle at 15% 15%, rgba(15, 50, 120, 0.18), transparent 28%),
+              radial-gradient(circle at 85% 20%, rgba(0, 180, 255, 0.14), transparent 26%),
+              var(--bg-dark);
   transition: background 1.2s var(--ease-out-expo);
 }
 
 .glow-spot {
   position: absolute;
   border-radius: 50%;
-  filter: blur(140px);
-  opacity: 0.22;
-  transition: all 1.2s var(--ease-out-expo);
+  opacity: 0.18;
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
 }
 
 .spotlight-1 {
@@ -1435,8 +1437,7 @@ onMounted(() => {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.15;
+  opacity: 0.12;
   top: -50px;
   right: -50px;
   pointer-events: none;
@@ -2065,8 +2066,7 @@ onMounted(() => {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  filter: blur(80px);
-  background: rgba(125, 211, 252, 0.05);
+  background: rgba(125, 211, 252, 0.06);
   inset: 0;
   margin: auto;
   pointer-events: none;
@@ -2533,7 +2533,6 @@ onMounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: blur(80px);
   pointer-events: none;
 }
 
@@ -2622,8 +2621,8 @@ onMounted(() => {
   inset: 0;
   z-index: 9000;
   background: rgba(7, 16, 24, 0.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;

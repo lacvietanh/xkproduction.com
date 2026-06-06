@@ -93,9 +93,9 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(3, 5, 8, 0.75);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  background: rgba(3, 5, 8, 0.85);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   transition: background 0.4s var(--ease-out-expo),
               box-shadow 0.4s var(--ease-out-expo),
