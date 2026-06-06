@@ -85,7 +85,10 @@ const copyLink = async () => {
   }
 }
 
+const sectionElements = ref<HTMLElement[]>([])
+let sectionObserver: IntersectionObserver | null = null
 let ticking = false
+
 const updateReadingProgress = () => {
   if (!import.meta.client) return
   if (!ticking) {
@@ -93,16 +96,32 @@ const updateReadingProgress = () => {
       const scrollTop = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       readingProgress.value = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
-
-      const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section-id]'))
-      const current = sections
-        .filter(section => section.getBoundingClientRect().top <= 160)
-        .at(-1)
-      if (current?.id) activeSectionId.value = current.id
       ticking = false
     })
     ticking = true
   }
+}
+
+const initSectionObserver = () => {
+  if (!import.meta.client) return
+  sectionObserver?.disconnect()
+  sectionElements.value = Array.from(document.querySelectorAll<HTMLElement>('[data-section-id]'))
+
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.target.id) {
+          activeSectionId.value = entry.target.id
+        }
+      })
+    },
+    {
+      rootMargin: '-40% 0px -55% 0px',
+      threshold: 0
+    }
+  )
+
+  sectionElements.value.forEach(section => sectionObserver?.observe(section))
 }
 
 const setActiveSection = (id: string) => {
@@ -110,22 +129,20 @@ const setActiveSection = (id: string) => {
 }
 
 onMounted(() => {
+  initSectionObserver()
   activeSectionId.value = post.value?.sections[0]?.id || ''
-  // Initial check without throttle delay
+
+  // Initial progress check without repeating DOM queries
   const scrollTop = window.scrollY
   const docHeight = document.documentElement.scrollHeight - window.innerHeight
   readingProgress.value = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
-  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section-id]'))
-  const current = sections
-    .filter(section => section.getBoundingClientRect().top <= 160)
-    .at(-1)
-  if (current?.id) activeSectionId.value = current.id
 
   window.addEventListener('scroll', updateReadingProgress, { passive: true })
 })
 
 onBeforeUnmount(() => {
   if (import.meta.client) window.removeEventListener('scroll', updateReadingProgress)
+  sectionObserver?.disconnect()
   if (copiedTimer) clearTimeout(copiedTimer)
 })
 
