@@ -116,7 +116,7 @@
               <i class="fa-solid fa-microphone-lines advisory-icon"></i>
               <h3>Khởi động dự án của riêng bạn</h3>
               <p>Bạn đang ấp ủ một giai điệu hay muốn hoàn thiện bản phối? Hãy liên hệ ngay với chúng tôi.</p>
-              <NuxtLink to="/contact" class="btn btn-primary btn-full">Tư vấn miễn phí</NuxtLink>
+              <NuxtLink :to="getContactLink(project.category)" class="btn btn-primary btn-full">Tư vấn miễn phí</NuxtLink>
             </div>
           </aside>
         </div>
@@ -282,6 +282,21 @@ const projectsData: Record<string, any> = {
 
 const project = computed(() => projectsData[id.value] || null)
 
+const getContactLink = (category: string) => {
+  const map: Record<string, string> = {
+    'Hoà âm phối khí': 'hoa-am',
+    'Mix & Master': 'mixing-mastering',
+    'Mixing & Mastering': 'mixing-mastering',
+    'Thu âm & Vocal Production': 'thu-am',
+    'Thu âm': 'thu-am',
+    'Video & TVC': 'mv-tvc',
+    'Live Band & Sự kiện': 'live-band',
+    'Khoá học': 'khoa-hoc'
+  }
+  const param = map[category]
+  return param ? `/contact?service=${param}` : '/contact'
+}
+
 useSeoMeta({
   title: () => project.value ? `${project.value.title} — Chi Tiết Dự Án | XKProduction` : 'Không tìm thấy dự án | XKProduction',
   description: () => project.value ? `Khám phá câu chuyện sản xuất đằng sau tác phẩm ${project.value.title} cùng nghệ sĩ ${project.value.artist} thực hiện tại XKProduction.` : 'Dự án không tồn tại trên XKProduction.',
@@ -291,6 +306,30 @@ useSeoMeta({
   ogType: 'video.other',
   ogUrl: () => `https://xkproduction.com/products/${id.value}`
 })
+
+useSchemaOrg([
+  project.value ? {
+    '@type': 'CreativeWork',
+    'name': project.value.title,
+    'headline': project.value.title,
+    'description': project.value.storyDetails?.context,
+    'creator': {
+      '@type': 'Person',
+      'name': 'Nguyễn Xuân Kiệt',
+      'jobTitle': 'Music Producer'
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'XKProduction',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://xkproduction.com/images/logo-xkproduction.png'
+      }
+    },
+    'datePublished': project.value.year ? `${project.value.year}-01-01` : undefined,
+    'image': project.value.thumb
+  } : undefined
+].filter(Boolean))
 </script>
 
 <style scoped>

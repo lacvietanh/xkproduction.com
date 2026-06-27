@@ -1068,7 +1068,14 @@ onMounted(() => {
   }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' })
 
   document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el))
+})
 
+onUnmounted(() => {
+  if (audioInstance) {
+    audioInstance.pause()
+    audioInstance.src = ''
+    audioInstance = null
+  }
 })
 </script>
 

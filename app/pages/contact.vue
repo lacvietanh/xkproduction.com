@@ -222,7 +222,10 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 useSeoMeta({
   title: 'Liên hệ & Đặt lịch Thu âm, Mix Master - XKProduction',
@@ -280,6 +283,15 @@ const FORMSPREE_ENDPOINT = config.public.formspreeEndpoint
 const form = reactive({ name: '', phone: '', email: '', service: '', message: '' })
 const formErrors = reactive({ name: '', phone: '', service: '', message: '' })
 const submitState = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+onMounted(() => {
+  if (route.query.service) {
+    const validServices = ['thu-am', 'mixing-mastering', 'hoa-am', 'mv-tvc', 'live-band', 'khoa-hoc', 'other']
+    if (validServices.includes(route.query.service as string)) {
+      form.service = route.query.service as string
+    }
+  }
+})
 
 function validateForm(): boolean {
   let valid = true
