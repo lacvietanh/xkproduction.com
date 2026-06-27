@@ -15,6 +15,48 @@
       </div>
     </section>
 
+    <!-- ===== QUICK PRICING HINTS ===== -->
+    <section class="quick-price-bar">
+      <div class="max-width">
+        <div class="price-bar-grid">
+          <div class="price-bar-item">
+            <i class="fa-solid fa-microphone"></i>
+            <div>
+              <span class="price-bar-service">Thu âm bài hát</span>
+              <span class="price-bar-from">Từ <strong>350.000₫</strong>/buổi</span>
+            </div>
+          </div>
+          <div class="price-bar-divider" aria-hidden="true"></div>
+          <div class="price-bar-item">
+            <i class="fa-solid fa-sliders"></i>
+            <div>
+              <span class="price-bar-service">Mix & Master</span>
+              <span class="price-bar-from">Từ <strong>600.000₫</strong>/bài</span>
+            </div>
+          </div>
+          <div class="price-bar-divider" aria-hidden="true"></div>
+          <div class="price-bar-item">
+            <i class="fa-solid fa-music"></i>
+            <div>
+              <span class="price-bar-service">Hoà âm phối khí</span>
+              <span class="price-bar-from">Từ <strong>1.500.000₫</strong>/bài</span>
+            </div>
+          </div>
+          <div class="price-bar-divider" aria-hidden="true"></div>
+          <div class="price-bar-item">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div>
+              <span class="price-bar-service">Khoá học</span>
+              <span class="price-bar-from">Từ <strong>3.000.000₫</strong>/khoá</span>
+            </div>
+          </div>
+          <NuxtLink to="/services" class="price-bar-cta">
+            Xem bảng giá đầy đủ <i class="fa-solid fa-arrow-right"></i>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== CONTACT DETAILS & FORM ===== -->
     <section class="contact-form-section">
       <div class="max-width contact-grid">
@@ -756,4 +798,94 @@ const contactInfo = [
   .map-section { padding-bottom: 80px; }
   .map-container-glass iframe { height: 280px; }
 }
+
+/* ============ PRICING HINTS BAR ============ */
+.quick-price-bar {
+  padding: 0 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+.price-bar-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.price-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  flex: 1;
+  min-width: 150px;
+}
+.price-bar-item > i {
+  font-size: 1.1rem;
+  color: var(--accent);
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(125,211,252,0.08);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.price-bar-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.price-bar-service {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.price-bar-from {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+.price-bar-from strong {
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+.price-bar-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.07);
+  flex-shrink: 0;
+}
+.price-bar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(26,140,255,0.1);
+  border: 1px solid rgba(26,140,255,0.25);
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+.price-bar-cta:hover {
+  background: rgba(26,140,255,0.18);
+  border-color: rgba(26,140,255,0.4);
+  color: #fff;
+  gap: 0.7rem;
+}
+@media (max-width: 768px) {
+  .price-bar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 1rem; }
+  .price-bar-divider { display: none; }
+  .price-bar-item { padding: 0.5rem 0.75rem; min-width: unset; }
+  .price-bar-cta { grid-column: 1 / -1; justify-content: center; }
+}
 </style>
+

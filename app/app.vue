@@ -36,64 +36,18 @@ useSeoMeta({
   author: 'XKProduction - Nguyễn Xuân Kiệt',
 })
 
-// Add JSON-LD Structured Data for better social sharing & search results
+// Add canonical URL + hreflang per page (page-level JSON-LD handled by each page)
 useHead(() => {
   const cleanPath = route.path.replace(/\/$/, '')
   const currentUrl = `${BASE_URL}${cleanPath}`
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': 'https://xkproduction.com',
-    name: 'XKProduction',
-    description: 'Phòng thu âm chuyên nghiệp, hoà âm phối khí, mix & master, quay MV/TVC, cho thuê âm thanh ánh sáng sự kiện',
-    url: 'https://xkproduction.com',
-    logo: 'https://xkproduction.com/images/logo-xkproduction.png',
-    image: 'https://xkproduction.com/images/Xkpreviewnew.png',
-    telephone: '+84355356294',
-    email: 'nguyenxuankiet294@gmail.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Bình Phước, Đồng Nai',
-      addressCountry: 'VN',
-    },
-    sameAs: [
-      'https://www.facebook.com/xkproduction',
-      'https://www.youtube.com/@xkproduction',
-      'https://www.instagram.com/xkproduction',
-    ],
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '08:00',
-      closes: '22:00',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '150+',
-    },
-  }
 
   return {
-    script: [
-      {
-        type: 'application/ld+json',
-        children: JSON.stringify(jsonLd),
-      },
-    ],
     link: [
       { rel: 'canonical', href: currentUrl },
       { rel: 'alternate', hreflang: 'vi-VN', href: currentUrl },
       { rel: 'alternate', hreflang: 'x-default', href: currentUrl },
-      // Preload critical social images
-      { rel: 'preload', as: 'image', href: 'https://xkproduction.com/images/Xkpreviewnew.png' },
-      // Twitter / X Card Verification
-      { rel: 'me', href: 'https://twitter.com/xkproduction' },
-      // Facebook Domain Verification
-      { rel: 'me', href: 'https://www.facebook.com/xkproduction' },
     ],
     meta: [
-      // Social meta tags for better sharing
       { name: 'msvalidate.01', content: 'F3F91F78FD04BB3AA39A2E05D8E3A6A3' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'mobile-web-app-capable', content: 'yes' },
@@ -101,26 +55,26 @@ useHead(() => {
       { name: 'apple-mobile-web-app-title', content: 'XKProduction' },
       { name: 'application-name', content: 'XKProduction' },
       { name: 'msapplication-config', content: '/favicon/browserconfig.xml' },
-      { name: 'theme-color', content: '#000000' },
+      { name: 'theme-color', content: '#06080f' },
     ],
   }
 })
 
-// Global Default JSON-LD Schema
+// Global JSON-LD Schema — Organization + Website (LocalBusiness schema managed by individual pages)
 useSchemaOrg([
   defineOrganization({
     name: 'XKProduction',
     url: 'https://xkproduction.com',
     logo: 'https://xkproduction.com/images/logo-xkproduction.png',
-    image: 'https://xkproduction.com/images/logo-xkproduction.png',
-    description: 'Phòng thu âm & media production chuyên nghiệp tại Bình Phước | Sound & Light | Đào tạo Music Producer.',
+    image: 'https://xkproduction.com/images/Xkpreviewnew.png',
+    description: 'Phòng thu âm & media production chuyên nghiệp tại Bình Phước | Hoà âm phối khí | Mix & Master | Sound & Light | Đào tạo Music Producer.',
     telephone: '+84355356294',
     email: 'nguyenxuankiet294@gmail.com',
     foundingDate: '2018',
     legalName: 'XKProduction - Nguyễn Xuân Kiệt',
     address: {
       streetAddress: 'QL14 km25 xã Nghĩa Trung, Huyện Bù Đăng',
-      addressLocality: 'Bình Phước',
+      addressLocality: 'Bù Đăng',
       addressRegion: 'Bình Phước',
       postalCode: '830000',
       addressCountry: 'VN'
@@ -132,10 +86,11 @@ useSchemaOrg([
       availableLanguage: 'Vietnamese',
       areaServed: 'VN'
     },
+    // Consistent social links across all schemas
     sameAs: [
+      'https://www.facebook.com/ngxkiet',
       'https://www.youtube.com/@Xkstudio29',
       'https://www.tiktok.com/@xkstudio',
-      'https://www.facebook.com/ngxkiet',
       'https://zalo.me/0355356294'
     ]
   }),

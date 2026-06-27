@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   modules: ['@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-schema-org'],
 
-  // === SITE CONFIG — giữ nguyên ===
+
   site: {
     url: 'https://xkproduction.com',
     name: 'XKProduction — Phòng Thu Âm Chuyên Nghiệp',
@@ -188,6 +188,21 @@ export default defineNuxtConfig({
           href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css',
           crossorigin: 'anonymous',
           integrity: 'sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=='
+        },
+        // Preload GA4 connection early
+        { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+        { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
+      ],
+      // === TRACKING: Google Analytics 4 ===
+      // TODO: Replace G-XXXXXXXXXX with your real GA4 Measurement ID (analytics.google.com)
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX',
+          async: true,
+        },
+        {
+          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX',{send_page_view:true});`,
+          type: 'text/javascript',
         },
       ]
     }

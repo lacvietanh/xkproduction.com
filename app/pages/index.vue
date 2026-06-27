@@ -334,7 +334,7 @@
       <div class="google-reviews-badge">
         <div class="reviews-score">4.9 / 5</div>
         <div class="reviews-label-tag">2000+ đánh giá thực tế từ nghệ sĩ</div>
-        <a href="https://g.page/r/xkproduction/review" target="_blank" rel="noopener" class="btn btn-link-google">
+        <a href="https://search.google.com/local/reviews?placeid=ChIJxkproduction" target="_blank" rel="noopener" class="btn btn-link-google">
           <i class="fa-brands fa-google"></i>
           <span>Xem tất cả đánh giá trên Google</span>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -423,6 +423,12 @@
               <span v-if="formErrors.name" class="field-error-text">{{ formErrors.name }}</span>
             </div>
             
+            <div class="form-group-premium">
+              <label for="home-email">Email <span style="opacity:0.5;font-size:0.8em">(tùy chọn — để nhận báo giá chi tiết qua email)</span></label>
+              <input id="home-email" v-model="form.email" type="email" placeholder="email@example.com" :class="{ error: formErrors.email }" @blur="validateField('email')" />
+              <span v-if="formErrors.email" class="field-error-text">{{ formErrors.email }}</span>
+            </div>
+
             <div class="form-row-premium">
               <div class="form-group-premium">
                 <label for="phone">Số điện thoại <span class="req">*</span></label>
@@ -572,7 +578,7 @@ useHead({
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
-          "reviewCount": "2000",
+          "reviewCount": 2000,
           "bestRating": "5"
         },
         "sameAs": [
@@ -873,7 +879,7 @@ const whyChooseUs = [
   {
     icon: 'fa-solid fa-signature',
     title: 'Không sản xuất đại trà',
-    desc: 'Mỗi bài hát là một thực thể độc bản. Chúng tôi đầu vt thời gian tối đa để nghiên cứu cá tính âm nhạc riêng của bạn.'
+    desc: 'Mỗi bài hát là một thực thể độc bản. Chúng tôi đầu tư thời gian tối đa để nghiên cứu cá tính âm nhạc riêng của bạn.'
   },
   {
     icon: 'fa-solid fa-wand-magic-sparkles',
@@ -971,15 +977,19 @@ if (import.meta.client) {
 }
 
 /* === CONTACT FORM STATE & SUBMIT === */
-const form = reactive({ name: '', phone: '', type: '', message: '' })
-const formErrors = reactive({ name: '', phone: '' })
+const form = reactive({ name: '', email: '', phone: '', type: '', message: '' })
+const formErrors = reactive({ name: '', email: '', phone: '' })
 const formToast = ref<'idle' | 'success' | 'error'>('idle')
 const formErrorMessage = ref('')
 const formSubmitting = ref(false)
 
-function validateField(field: 'name' | 'phone') {
+function validateField(field: 'name' | 'email' | 'phone') {
   if (field === 'name') {
     formErrors.name = form.name.trim().length < 2 ? 'Vui lòng nhập họ và tên của bạn' : ''
+  }
+  if (field === 'email') {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    formErrors.email = form.email.trim() && !emailRegex.test(form.email.trim()) ? 'Email không hợp lệ' : ''
   }
   if (field === 'phone') {
     const p = form.phone.replace(/[.\s-]/g, '')
@@ -1000,6 +1010,7 @@ async function submitForm() {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         name: form.name,
+        email: form.email || '(không cung cấp)',
         phone: form.phone,
         type: form.type || 'Không chọn',
         message: form.message || '(không có lời nhắn)',
@@ -1009,7 +1020,7 @@ async function submitForm() {
     formSubmitting.value = false
     if (res.ok) {
       formToast.value = 'success'
-      Object.assign(form, { name: '', phone: '', type: '', message: '' })
+      Object.assign(form, { name: '', email: '', phone: '', type: '', message: '' })
     } else {
       formToast.value = 'error'
       formErrorMessage.value = 'Gửi thông tin thất bại. Vui lòng thử lại sau.'
