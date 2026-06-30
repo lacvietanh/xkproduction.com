@@ -531,14 +531,55 @@ watch(mobileOpen, (open) => {
 }
 
 /* Drawer transition */
-.mobile-nav-enter-active { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
-.mobile-nav-leave-active { transition: transform 0.28s ease-in; }
+.mobile-nav-enter-active { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.mobile-nav-leave-active { transition: transform 0.3s ease-in; }
 .mobile-nav-enter-from  { transform: translateX(100%); }
 .mobile-nav-leave-to    { transform: translateX(100%); }
 
-.fade-enter-active { transition: opacity 0.3s ease; }
-.fade-leave-active { transition: opacity 0.25s ease; }
+.fade-enter-active { transition: opacity 0.4s ease; }
+.fade-leave-active { transition: opacity 0.3s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
+
+/* Stagger entrance for menu items */
+@keyframes slideUpStagger {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-drawer .mobile-group-label,
+.mobile-nav-drawer .mobile-nav-item,
+.mobile-nav-drawer .mobile-nav-cta {
+  opacity: 1;
+}
+
+.mobile-nav-enter-active .mobile-group-label,
+.mobile-nav-enter-active .mobile-nav-item,
+.mobile-nav-enter-active .mobile-nav-cta {
+  opacity: 0;
+  animation: slideUpStagger 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger delays */
+.mobile-nav-enter-active .mobile-nav-group:nth-child(1) .mobile-group-label { animation-delay: 0.1s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(1) .mobile-nav-item:nth-child(2) { animation-delay: 0.14s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(1) .mobile-nav-item:nth-child(3) { animation-delay: 0.18s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(1) .mobile-nav-item:nth-child(4) { animation-delay: 0.22s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(1) .mobile-nav-item:nth-child(5) { animation-delay: 0.26s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(1) .mobile-nav-item:nth-child(6) { animation-delay: 0.30s; }
+
+.mobile-nav-enter-active .mobile-nav-group:nth-child(2) .mobile-group-label { animation-delay: 0.34s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(2) .mobile-nav-item:nth-child(2) { animation-delay: 0.38s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(2) .mobile-nav-item:nth-child(3) { animation-delay: 0.42s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(2) .mobile-nav-item:nth-child(4) { animation-delay: 0.46s; }
+.mobile-nav-enter-active .mobile-nav-group:nth-child(2) .mobile-nav-item:nth-child(5) { animation-delay: 0.50s; }
+
+.mobile-nav-enter-active .mobile-nav-cta { animation-delay: 0.54s; }
 
 /* ===========================================
    RESPONSIVE — Mobile ≤ 900px

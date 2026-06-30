@@ -136,7 +136,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, computed, reactive, onMounted, onBeforeUnmount, nextTick, watch } from 'vue'
 
 type ProductCredit = {
   role: string
@@ -398,18 +398,32 @@ const toggleAudio = (id: string) => {
   }
 }
 
-onMounted(async () => {
+const initWaveSurfers = async () => {
+  if (!import.meta.client) return
   if (audioProducts.value.length === 0) return
 
-  const { default: WaveSurfer } = await import('wavesurfer.js')
+  audioWaveSurfers.forEach((waveSurfer) => {
+    try {
+      waveSurfer.destroy()
+    } catch (e) {
+      console.warn('[WaveSurfer] Error destroying instance:', e)
+    }
+  })
+  audioWaveSurfers.clear()
 
+  const { default: WaveSurfer } = await import('wavesurfer.js')
   await nextTick()
 
-  audioProducts.value.forEach((item: AudioProduct) => {
+  filteredProducts.value.forEach((item: ProductItem) => {
+    if (item.kind !== 'audio') return
     const container = audioWaveformContainers[item.id]
     if (!container) return
 
     const state = ensureAudioState(item.id)
+    state.loading = true
+    state.ready = false
+    state.playing = false
+    state.error = null
 
     const waveSurfer = WaveSurfer.create({
       container,
@@ -450,10 +464,22 @@ onMounted(async () => {
 
     audioWaveSurfers.set(item.id, waveSurfer)
   })
+}
+
+onMounted(async () => {
+  await initWaveSurfers()
+})
+
+watch(filteredProducts, async () => {
+  await initWaveSurfers()
 })
 
 onBeforeUnmount(() => {
-  audioWaveSurfers.forEach(waveSurfer => waveSurfer.destroy())
+  audioWaveSurfers.forEach(waveSurfer => {
+    try {
+      waveSurfer.destroy()
+    } catch (e) {}
+  })
   audioWaveSurfers.clear()
 })
 </script>

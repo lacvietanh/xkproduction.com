@@ -19,27 +19,80 @@
   <!-- SECTION 01 — HERO (Full Viewport Split) -->
   <section class="hero-section">
     <div class="max-width hero-container">
+
+      <!-- LEFT: CONTENT -->
       <div class="hero-content">
-        <span class="hero-label">XKPRODUCTION</span>
-        <h1 class="hero-title">
-          Âm nhạc không chỉ cần nghe hay.<br />
-          <span class="text-glow-gradient">Nó cần được cảm nhận.</span>
-        </h1>
-        <p class="hero-desc">
-          Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ ràng và mang đậm bản sắc. Hãy để tác phẩm của bạn vượt qua giới hạn của âm thanh thông thường.
-        </p>
-        <div class="hero-actions">
-          <NuxtLink to="/contact" class="btn btn-primary btn-pulse">Bắt đầu dự án</NuxtLink>
-          <a href="#featured-showcase" class="btn btn-secondary">Xem dự án</a>
+
+        <!-- Trust Kicker Badge -->
+        <div class="hero-trust-badge">
+          <span class="trust-badge-dot"></span>
+          <span>Phòng thu âm chuyên nghiệp tại Bình Phước</span>
         </div>
+
+        <!-- Main H1 -->
+        <h1 class="hero-title">
+          Âm nhạc không chỉ<br />
+          cần <em class="hero-title-em">nghe hay</em> —<br />
+          <span class="hero-title-line2">nó cần được <span class="text-glow-gradient">cảm nhận.</span></span>
+        </h1>
+
+        <!-- Subline / Value Prop -->
+        <p class="hero-desc">
+          Thu âm · Hoà âm phối khí · Mix &amp; Master chuẩn Spotify / Apple Music.<br/>
+          Chúng tôi biến ý tưởng thô thành sản phẩm âm nhạc đắt tiền, rõ ràng và giàu cảm xúc.
+        </p>
+
+        <!-- CTA Row -->
+        <div class="hero-actions">
+          <NuxtLink to="/contact" class="btn btn-primary btn-pulse hero-cta-primary">
+            <i class="fa-solid fa-phone"></i>
+            Tư vấn miễn phí
+          </NuxtLink>
+          <a href="#featured-showcase" class="btn btn-secondary hero-cta-secondary">
+            <i class="fa-solid fa-play"></i>
+            Nghe tác phẩm
+          </a>
+        </div>
+
+        <!-- Social Proof Row -->
+        <div class="hero-social-proof">
+          <div class="hero-proof-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span class="hero-proof-label">5.0 · Google Reviews</span>
+          </div>
+          <div class="hero-proof-divider"></div>
+          <div class="hero-proof-stats">
+            <span class="hero-proof-stat"><strong>2000+</strong> dự án</span>
+            <span class="hero-proof-stat"><strong>200+</strong> nghệ sĩ</span>
+            <span class="hero-proof-stat"><strong>8+</strong> năm kinh nghiệm</span>
+          </div>
+        </div>
+
       </div>
+
+      <!-- RIGHT: VISUAL -->
       <div class="hero-visual-wrapper">
         <div class="hero-visual glass-card">
           <img src="/images/hero_studio_cinematic.png" alt="Phòng thu âm chuyên nghiệp XKProduction" class="hero-studio-img" width="600" height="600" fetchpriority="high" />
           <div class="glass-reflection-overlay"></div>
           <div class="hero-glow-border"></div>
+
+          <!-- Floating badges on the image -->
+          <div class="hero-float-badge hero-float-badge--top">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Chuẩn phát hành số</span>
+          </div>
+          <div class="hero-float-badge hero-float-badge--bottom">
+            <i class="fa-solid fa-headphones-simple"></i>
+            <span>Mix &amp; Master Dolby</span>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -66,14 +119,14 @@
 
       <div class="showcase-container">
         <!-- Vertical project selector -->
-        <div class="project-selector-list">
+        <div class="project-selector-list" @mouseleave="handleLeaveProject">
           <button 
             v-for="(w, idx) in works" 
             :key="w.title" 
             class="selector-item"
             :class="{ active: activeProjectIdx === idx }"
-            @mouseenter="selectProject(idx)"
-            @click="selectProject(idx)"
+            @mouseenter="handleHoverProject(idx)"
+            @click="handleClickProject(idx)"
           >
             <span class="selector-num-wrap">
               <span class="selector-num">0{{ idx + 1 }}</span>
@@ -133,7 +186,22 @@
                 
                 <!-- Custom Premium Glass Seek bar for Audio -->
                 <div v-if="activeProject.isAudio" class="audio-seek-wrapper">
-                  <div class="audio-progress-track" @click="seekAudio" title="Tua nhạc">
+                  <div 
+                    class="audio-progress-track" 
+                    @click="seekAudio" 
+                    title="Tua nhạc"
+                    role="slider"
+                    tabindex="0"
+                    aria-label="Tiến trình phát nhạc"
+                    :aria-valuenow="Math.round(audioProgress)"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    :aria-valuetext="`${audioCurrentTime} trên ${audioDuration}`"
+                    @keydown.left.prevent="seekAudioOffset(-5)"
+                    @keydown.right.prevent="seekAudioOffset(5)"
+                    @keydown.home.prevent="seekAudioOffset(-Infinity)"
+                    @keydown.end.prevent="seekAudioOffset(Infinity)"
+                  >
                     <div class="audio-progress-fill" :style="{ width: audioProgress + '%' }"></div>
                   </div>
                   <div class="audio-time-row">
@@ -497,33 +565,35 @@
 
   <!-- LIGHTBOX MODAL -->
   <Teleport to="body">
-    <div v-if="lightbox.open" class="lightbox-backdrop" @click.self="closeLightbox" aria-modal="true" role="dialog">
-      <div class="lightbox-inner">
-        <button class="lightbox-close" @click="closeLightbox" aria-label="Đóng">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <template v-if="lightbox.embedId">
-          <iframe
-            :src="'https://www.youtube.com/embed/' + lightbox.embedId + '?autoplay=1&rel=0'"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            class="lightbox-iframe"
-            loading="lazy"
-          ></iframe>
-        </template>
-        <template v-else>
-          <a :href="lightbox.url" target="_blank" rel="noopener noreferrer" class="lightbox-tiktok-link">
-            <i class="fa-brands fa-tiktok"></i>
-            <span>Xem trên TikTok</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-        </template>
-        <div class="lightbox-info">
-          <strong>{{ lightbox.title }}</strong>
-          <span>{{ lightbox.artist }}</span>
+    <Transition name="lightbox-fade">
+      <div v-if="lightbox.open" class="lightbox-backdrop" @click.self="closeLightbox" aria-modal="true" role="dialog">
+        <div class="lightbox-inner">
+          <button class="lightbox-close" @click="closeLightbox" aria-label="Đóng">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <template v-if="lightbox.embedId">
+            <iframe
+              :src="'https://www.youtube.com/embed/' + lightbox.embedId + '?autoplay=1&rel=0'"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              class="lightbox-iframe"
+              loading="lazy"
+            ></iframe>
+          </template>
+          <template v-else>
+            <a :href="lightbox.url" target="_blank" rel="noopener noreferrer" class="lightbox-tiktok-link">
+              <i class="fa-brands fa-tiktok"></i>
+              <span>Xem trên TikTok</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </template>
+          <div class="lightbox-info">
+            <strong>{{ lightbox.title }}</strong>
+            <span>{{ lightbox.artist }}</span>
+          </div>
         </div>
       </div>
-    </div>
+    </Transition>
   </Teleport>
 </div>
 </template>
@@ -795,6 +865,8 @@ function formatTime(secs: number) {
   return `${m}:${s < 10 ? '0' : ''}${s}`
 }
 
+let hoverTimer: ReturnType<typeof setTimeout> | null = null
+
 function selectProject(idx: number) {
   activeProjectIdx.value = idx
   // Auto pause audio if user hovers to a non-audio project
@@ -802,6 +874,22 @@ function selectProject(idx: number) {
     audioInstance.pause()
     isAudioPlaying.value = false
   }
+}
+
+function handleHoverProject(idx: number) {
+  if (hoverTimer) clearTimeout(hoverTimer)
+  hoverTimer = setTimeout(() => {
+    selectProject(idx)
+  }, 120)
+}
+
+function handleLeaveProject() {
+  if (hoverTimer) clearTimeout(hoverTimer)
+}
+
+function handleClickProject(idx: number) {
+  if (hoverTimer) clearTimeout(hoverTimer)
+  selectProject(idx)
 }
 
 function toggleAudio() {
@@ -841,6 +929,23 @@ function seekAudio(e: MouseEvent) {
   const width = rect.width
   const percentage = clickX / width
   audioInstance.currentTime = percentage * audioInstance.duration
+}
+
+function seekAudioOffset(seconds: number) {
+  if (!import.meta.client) return
+  if (!audioInstance) {
+    toggleAudio()
+  }
+  if (audioInstance) {
+    if (!audioInstance.duration) return
+    if (seconds === -Infinity) {
+      audioInstance.currentTime = 0
+    } else if (seconds === Infinity) {
+      audioInstance.currentTime = audioInstance.duration
+    } else {
+      audioInstance.currentTime = Math.max(0, Math.min(audioInstance.duration, audioInstance.currentTime + seconds))
+    }
+  }
 }
 
 /* === PREMIUM SERVICES DATA === */
@@ -1087,13 +1192,7 @@ onUnmounted(() => {
   scroll-behavior: auto !important;
 }
 
-/* Vertical Spacing System */
-.hero-section {
-  padding: 120px 0 160px;
-  min-height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
-}
+/* Hero section spacing is defined in SECTION 01 HERO SCOPED below */
 
 .statement-section,
 .stats-bar-premium,
@@ -1222,67 +1321,201 @@ onUnmounted(() => {
 /* ==============================================
    SECTION 01 — HERO SCOPED
    ============================================== */
+.hero-section {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+}
+
 .hero-container {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
   align-items: center;
+  padding: 5rem 2rem;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 0;
 }
 
-.hero-label {
+/* === Trust Kicker Badge === */
+.hero-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: rgba(26, 140, 255, 0.08);
+  border: 1px solid rgba(26, 140, 255, 0.25);
+  color: #7dd3fc !important;
   font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 6px;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-
-.hero-title {
-  font-size: 3.6rem;
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   margin-bottom: 1.8rem;
 }
 
-.hero-desc {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--text-light);
-  margin-bottom: 2.8rem;
-  max-width: 520px;
+.trust-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00d4aa;
+  box-shadow: 0 0 8px #00d4aa;
+  animation: pulse-dot 2s infinite;
 }
 
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.4); }
+}
+
+/* === Hero Title === */
+.hero-title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: #ffffff !important;
+  margin-bottom: 1.6rem;
+}
+
+.hero-title-em {
+  font-style: normal;
+  background: linear-gradient(120deg, #f8fafc 20%, #7dd3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title-line2 {
+  display: block;
+  color: #94a3b8 !important;
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+/* === Hero Desc === */
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #94a3b8 !important;
+  margin-bottom: 2.4rem;
+  max-width: 500px;
+}
+
+/* === Hero Actions / Buttons === */
 .hero-actions {
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2.4rem;
 }
 
+.hero-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* === Social Proof Row === */
+.hero-social-proof {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero-proof-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: #f59e0b;
+  font-size: 0.8rem;
+}
+
+.hero-proof-label {
+  color: #94a3b8 !important;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-left: 0.35rem;
+}
+
+.hero-proof-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero-proof-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-proof-stat {
+  font-size: 0.8rem;
+  color: #94a3b8 !important;
+}
+
+.hero-proof-stat strong {
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+/* === Visual Side === */
 .hero-visual-wrapper {
-  perspective: 1000px;
+  perspective: 1200px;
+  position: relative;
+}
+
+@keyframes hero-breathe {
+  0%, 100% {
+    transform: rotateX(2deg) rotateY(-8deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(1.5deg) rotateY(-6deg) translateY(-8px);
+  }
 }
 
 .hero-visual {
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 24px;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-  transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
-  box-shadow: var(--shadow-card);
-  transform: rotateX(3deg) rotateY(-6deg);
+  transition: transform 0.7s var(--ease-out-expo), box-shadow 0.7s var(--ease-out-expo);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6), 0 8px 32px rgba(26, 140, 255, 0.15);
+  transform: rotateX(2deg) rotateY(-8deg);
+  animation: hero-breathe 8s ease-in-out infinite;
+}
+
+.hero-visual > img {
+  border-radius: 24px;
+  overflow: hidden;
 }
 
 .hero-visual:hover {
-  transform: rotateX(0deg) rotateY(0deg) translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(26, 140, 255, 0.25), 0 0 30px rgba(26, 140, 255, 0.1);
+  animation: none;
+  transform: rotateX(0deg) rotateY(0deg) translateY(-10px) scale(1.02);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 0 60px rgba(26, 140, 255, 0.2);
 }
 
 .hero-glow-border {
@@ -1290,7 +1523,7 @@ onUnmounted(() => {
   inset: 0;
   border-radius: 24px;
   border: 2px solid transparent;
-  background: linear-gradient(135deg, rgba(26, 140, 255, 0.4), rgba(0, 212, 170, 0.4)) border-box;
+  background: linear-gradient(135deg, rgba(26, 140, 255, 0.5), rgba(0, 212, 170, 0.5)) border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -1307,6 +1540,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 24px;
   transform: scale(1.01);
   transition: transform 1.2s var(--ease-out-expo);
 }
@@ -1318,8 +1552,52 @@ onUnmounted(() => {
 .glass-reflection-overlay {
   position: absolute;
   inset: 0;
+  border-radius: 24px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 60%, rgba(255, 255, 255, 0.02) 100%);
   pointer-events: none;
+}
+
+/* Floating Badges on the visual card */
+.hero-float-badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: rgba(7, 16, 24, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-float-badge i {
+  color: #00d4aa;
+  font-size: 0.9rem;
+}
+
+.hero-float-badge--top {
+  top: -12px;
+  right: -16px;
+  animation: float-badge 4s ease-in-out infinite;
+}
+
+.hero-float-badge--bottom {
+  bottom: -12px;
+  left: -16px;
+  animation: float-badge 4s ease-in-out infinite 2s;
+}
+
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 
@@ -2786,18 +3064,12 @@ onUnmounted(() => {
   inset: 0;
   z-index: 9000;
   background: rgba(7, 16, 24, 0.96);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  animation: fadeIn 0.25s ease forwards;
-}
-
-@keyframes fadeIn { 
-  from { opacity: 0 } 
-  to { opacity: 1 } 
 }
 
 .lightbox-inner {
@@ -2809,12 +3081,26 @@ onUnmounted(() => {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
-  animation: slideUp 0.35s var(--ease-out-expo) forwards;
 }
 
-@keyframes slideUp { 
-  from { transform: translateY(30px); opacity: 0 } 
-  to { transform: translateY(0); opacity: 1 } 
+/* Lightbox transition classes */
+.lightbox-fade-enter-active,
+.lightbox-fade-leave-active {
+  transition: opacity 0.3s var(--ease-out-expo);
+}
+.lightbox-fade-enter-active .lightbox-inner,
+.lightbox-fade-leave-active .lightbox-inner {
+  transition: transform 0.3s var(--ease-out-expo), opacity 0.3s var(--ease-out-expo);
+}
+
+.lightbox-fade-enter-from,
+.lightbox-fade-leave-to {
+  opacity: 0;
+}
+.lightbox-fade-enter-from .lightbox-inner,
+.lightbox-fade-leave-to .lightbox-inner {
+  transform: scale(0.96) translateY(8px);
+  opacity: 0;
 }
 
 .lightbox-close {
@@ -2895,17 +3181,21 @@ onUnmounted(() => {
    RESPONSIVENESS (RWD)
    ============================================== */
 @media (max-width: 1200px) {
-  .hero-title { font-size: 3rem; }
+  .hero-title { font-size: 3.2rem; }
+  .hero-container { gap: 3.5rem; }
   .final-cta-title { font-size: 3rem; }
   .services-grid-split { gap: 3rem; }
   .founder-grid-premium { gap: 3rem; }
 }
 
 @media (max-width: 1024px) {
-  .hero-container { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+  .hero-container { grid-template-columns: 1fr; gap: 3.5rem; text-align: center; padding: 4rem 2rem; }
   .hero-content { align-items: center; }
   .hero-desc { margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
+  .hero-social-proof { justify-content: center; }
+  .hero-float-badge--top { right: 8px; top: -8px; }
+  .hero-float-badge--bottom { left: 8px; bottom: -8px; }
   .hero-visual { max-width: 480px; margin: 0 auto; aspect-ratio: 1/1; }
   
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2936,11 +3226,14 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .hero-title { font-size: 2.4rem; }
+  .hero-desc { font-size: 0.95rem; }
+  .hero-proof-stats { gap: 0.65rem; }
+  .hero-float-badge { display: none; }
   .statement-text { font-size: 1.8rem; }
   .big-huge-number { font-size: 5rem; }
   .final-cta-title { font-size: 2.2rem; }
   
-  .hero-section { padding: 60px 0 100px; }
+  .hero-section { padding: 0; }
   .statement-section,
   .stats-bar-premium,
   .featured-work-section,

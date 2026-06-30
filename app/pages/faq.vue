@@ -16,7 +16,8 @@
     </section>
 
     <!-- ===== FAQ CONTENT ACCORDION ===== -->
-    <section class="section-block faq-section">
+    <section class="section-block faq-section" aria-labelledby="faq-list-heading">
+      <h2 id="faq-list-heading" class="sr-only">Danh sách câu hỏi thường gặp</h2>
       <div class="max-width faq-container">
         <FaqItem v-for="faq in faqs" :key="faq.question" :question="faq.question" :answer="faq.answer" />
       </div>
