@@ -188,7 +188,16 @@ const toggleMobile = () => { mobileOpen.value = !mobileOpen.value }
 const closeMobile = () => { mobileOpen.value = false }
 
 onMounted(() => {
-  const onScroll = () => { isScrolled.value = window.scrollY > 20 }
+  let ticking = false
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        isScrolled.value = window.scrollY > 20
+        ticking = false
+      })
+      ticking = true
+    }
+  }
   window.addEventListener('scroll', onScroll, { passive: true })
   onUnmounted(() => window.removeEventListener('scroll', onScroll))
 })

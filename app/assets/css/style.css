@@ -212,18 +212,7 @@ img { max-width: 100%; height: auto; display: block; }
   transform: translateY(-3px);
 }
 
-/* ==========================================
-   REVEAL ON SCROLL — Global
-   ========================================== */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
-}
-.reveal-on-scroll.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
+
 
 /* ==========================================
    PAGE HERO — Global (reused across pages)

@@ -38,7 +38,7 @@
 
           <div class="founder-spotlight-card glass-card">
             <div class="founder-portrait-wrap">
-              <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKProduction" class="founder-portrait-img" loading="lazy" />
+              <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKProduction" class="founder-portrait-img" loading="lazy" width="160" height="160" />
               <div class="portrait-glow-border"></div>
             </div>
             <div class="founder-info-text text-center">
@@ -117,7 +117,7 @@
           <!-- Cao Thành Lâm -->
           <div class="artist-card glass-card hover-lift">
             <div class="artist-photo-wrap">
-              <img src="/images/cao-thanh-lam.jpg" alt="Cao Thành Lâm - Singer tại XKProduction Bình Phước" class="artist-photo" loading="lazy" />
+              <img src="/images/cao-thanh-lam.jpg" alt="Cao Thành Lâm - Singer tại XKProduction Bình Phước" class="artist-photo" loading="lazy" width="90" height="90" />
               <div class="artist-photo-glow"></div>
             </div>
             <div class="artist-info">
@@ -132,7 +132,7 @@
           <!-- Revan -->
           <div class="artist-card glass-card hover-lift">
             <div class="artist-photo-wrap">
-              <img src="/images/revan.jpg" alt="Revan - Rapper tại XKProduction" class="artist-photo" loading="lazy" />
+              <img src="/images/revan.jpg" alt="Revan - Rapper tại XKProduction" class="artist-photo" loading="lazy" width="90" height="90" />
               <div class="artist-photo-glow"></div>
             </div>
             <div class="artist-info">
@@ -147,7 +147,7 @@
           <!-- Howl -->
           <div class="artist-card glass-card hover-lift">
             <div class="artist-photo-wrap">
-              <img src="/images/howl.jpg" alt="Howl - Rapper tại XKProduction" class="artist-photo" loading="lazy" />
+              <img src="/images/howl.jpg" alt="Howl - Rapper tại XKProduction" class="artist-photo" loading="lazy" width="90" height="90" />
               <div class="artist-photo-glow"></div>
             </div>
             <div class="artist-info">
@@ -162,7 +162,7 @@
           <!-- Fesu -->
           <div class="artist-card glass-card hover-lift">
             <div class="artist-photo-wrap">
-              <img src="/images/fesu.jpg" alt="Fesu - Singer tại XKProduction" class="artist-photo" loading="lazy" />
+              <img src="/images/fesu.jpg" alt="Fesu - Singer tại XKProduction" class="artist-photo" loading="lazy" width="90" height="90" />
               <div class="artist-photo-glow"></div>
             </div>
             <div class="artist-info">

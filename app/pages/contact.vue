@@ -308,16 +308,16 @@ async function handleSubmit() {
   if (!validateForm()) return
   submitState.value = 'loading'
   try {
-    const res = await fetch(FORMSPREE_ENDPOINT, {
+    const res = await fetch('/api/notify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: form.name,
         phone: form.phone,
-        email: form.email || '(không điền)',
+        email: form.email || '',
         service: form.service,
         message: form.message,
-        _subject: `[XKProduction] Yêu cầu từ ${form.name} — ${form.service}`
+        source: 'contact'
       })
     })
     if (res.ok) {
@@ -327,7 +327,8 @@ async function handleSubmit() {
     } else {
       submitState.value = 'error'
     }
-  } catch {
+  } catch (err) {
+    console.error('Lỗi gửi thông báo Telegram:', err)
     submitState.value = 'error'
   }
 }

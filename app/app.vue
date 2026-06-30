@@ -20,7 +20,7 @@ const BASE_URL = 'https://xkproduction.com'
 useOpenGraph({
   title: 'XKProduction - Phòng Thu Âm Chuyên Nghiệp Bình Phước | Hoà Âm Phối Khí | Mix Master',
   description: 'XKProduction — Music production cho nghệ sĩ muốn bản phối nghe đắt tiền, rõ, và đúng chất. 2000+ dự án. Bắt đầu tư vấn miễn phí.',
-  image: 'https://xkproduction.com/images/xk-studio-production.jpg',
+  image: 'https://xkproduction.com/images/Xkpreviewnew.png',
   type: 'website',
   locale: 'vi_VN',
   twitterHandle: '@xkproduction',

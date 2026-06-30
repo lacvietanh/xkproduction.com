@@ -25,8 +25,8 @@ export interface OpenGraphOptions {
 }
 
 const BASE_URL = 'https://xkproduction.com';
-const DEFAULT_OG_IMAGE = 'https://xkproduction.com/images/xk-studio-production.jpg';
-const DEFAULT_TWITTER_IMAGE = 'https://xkproduction.com/images/xk-studio-production.jpg';
+const DEFAULT_OG_IMAGE = 'https://xkproduction.com/images/Xkpreviewnew.png';
+const DEFAULT_TWITTER_IMAGE = 'https://xkproduction.com/images/Xkpreviewnew.png';
 
 export const useOpenGraph = (options: OpenGraphOptions = {}) => {
   const route = useRoute();

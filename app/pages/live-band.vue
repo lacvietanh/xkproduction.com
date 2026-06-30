@@ -72,13 +72,13 @@
 
         <div class="lb-gallery-grid">
           <div class="lb-gallery-item glass-card">
-            <img src="/images/quocchi-2.jpg" alt="Hệ thống âm thanh ánh sáng sân khấu sự kiện XKProduction - Quốc Chí Sound & Lighting" loading="lazy" />
+            <img src="/images/quocchi-2.jpg" alt="Hệ thống âm thanh ánh sáng sân khấu sự kiện XKProduction - Quốc Chí Sound & Lighting" loading="lazy" width="400" height="300" />
           </div>
           <div class="lb-gallery-item glass-card">
-            <img src="/images/quocchi-3.jpg" alt="Ban nhạc live biểu chuyên nghiệp tại sự kiện - XKProduction" loading="lazy" />
+            <img src="/images/quocchi-3.jpg" alt="Ban nhạc live biểu chuyên nghiệp tại sự kiện - XKProduction" loading="lazy" width="400" height="300" />
           </div>
           <div class="lb-gallery-item glass-card">
-            <img src="/images/quocchi-3.jpg" alt="Thiết kế sân khấu và lắp đặt âm thanh ánh sáng chuyên nghiệp" loading="lazy" />
+            <img src="/images/quocchi-3.jpg" alt="Thiết kế sân khấu và lắp đặt âm thanh ánh sáng chuyên nghiệp" loading="lazy" width="400" height="300" />
           </div>
         </div>
       </div>

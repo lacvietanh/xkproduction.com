@@ -119,6 +119,25 @@ export default defineNuxtConfig({
         ]
       },
       { loc: '/privacy', priority: 0.3, changefreq: 'yearly', lastmod: '2025-01-01' },
+      // Product detail pages
+      { loc: '/products/love-du-phong', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/products/chang-muon-noi-nhieu-loi', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/products/ly-do-bat-dau', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/products/kiep-sau', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/products/viet-tiep-cau-chuyen-hoa-binh', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/products/ao-cu-tinh-moi', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/products/tet-xa-cover', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      // Blog detail pages
+      { loc: '/blog/thu-am-gia-2026', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/phong-thu-am-binh-phuoc', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/mix-master-huong-dan', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/hoa-am-phoi-khi-online', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/vocal-tuning-va-vocal-production-la-gi', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/chuan-bi-truoc-khi-den-phong-thu-am', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/thu-am-binh-phuoc-dia-chi-uy-tin', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/ky-am-bai-hat-va-soan-sheet-nhac-chuyen-nghiep', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/mix-vocal-cover-nghe-sang-hon', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+      { loc: '/blog/live-sound-cho-su-kien-nho', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
     ],
   },
 
@@ -223,6 +242,14 @@ export default defineNuxtConfig({
         '/', '/about', '/services', '/products', '/live-band', '/courses',
         '/contact', '/faq', '/blog', '/privacy', '/sitemap.xml', '/robots.txt',
         '/thu-am', '/mix-master', '/hoa-am-phoi-khi', '/quay-mv-tvc',
+        // Product detail pages
+        '/products/love-du-phong',
+        '/products/chang-muon-noi-nhieu-loi',
+        '/products/ly-do-bat-dau',
+        '/products/kiep-sau',
+        '/products/viet-tiep-cau-chuyen-hoa-binh',
+        '/products/ao-cu-tinh-moi',
+        '/products/tet-xa-cover',
         // Blog detail pages — must be explicit for SSG (crawlLinks can't follow Vue client-side links)
         '/blog/thu-am-gia-2026',
         '/blog/phong-thu-am-binh-phuoc',
@@ -239,7 +266,8 @@ export default defineNuxtConfig({
     routeRules: {
       '/**': {
         headers: {
-          'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+          // @ts-expect-error - process is not defined in tsconfig type definitions
+          'Cache-Control': process.env.NODE_ENV === 'development' ? 'no-cache, no-store, must-revalidate' : 'public, max-age=3600, s-maxage=86400',
           'X-Content-Type-Options': 'nosniff',
           'X-Frame-Options': 'SAMEORIGIN',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -262,6 +290,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       formspreeEndpoint: 'https://formspree.io/f/mojybjvk',
+      crispWebsiteId: '', // Sẽ được ghi đè bằng env NUXT_PUBLIC_CRISP_WEBSITE_ID
     }
   },
 })

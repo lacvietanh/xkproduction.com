@@ -1,13 +1,23 @@
 <template>
 <div class="home-page">
   <!-- INTERACTIVE AMBIENT GLOW BACKDROP -->
-  <div class="immersive-ambient-bg" :class="`theme-${activeProject.theme}`" aria-hidden="true">
-    <div class="glow-spot spotlight-1"></div>
-    <div class="glow-spot spotlight-2"></div>
+  <div class="immersive-ambient-bg" aria-hidden="true">
+    <div class="theme-glow-layer theme-blue" :class="{ active: activeProject.theme === 'blue' }">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
+    <div class="theme-glow-layer theme-red" :class="{ active: activeProject.theme === 'red' }">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
+    <div class="theme-glow-layer theme-dark" :class="{ active: activeProject.theme === 'dark' }">
+      <div class="glow-spot spotlight-1"></div>
+      <div class="glow-spot spotlight-2"></div>
+    </div>
   </div>
 
   <!-- SECTION 01 — HERO (Full Viewport Split) -->
-  <section class="hero-section reveal-on-scroll">
+  <section class="hero-section">
     <div class="max-width hero-container">
       <div class="hero-content">
         <span class="hero-label">XKPRODUCTION</span>
@@ -24,16 +34,17 @@
         </div>
       </div>
       <div class="hero-visual-wrapper">
-        <div class="hero-visual glass-card" @mousemove="handleHeroParallax" @mouseleave="resetHeroParallax" ref="heroVisualRef">
-          <img src="/images/hero_studio_cinematic.png" alt="Phòng thu âm chuyên nghiệp XKProduction" class="hero-studio-img" />
+        <div class="hero-visual glass-card">
+          <img src="/images/hero_studio_cinematic.png" alt="Phòng thu âm chuyên nghiệp XKProduction" class="hero-studio-img" width="600" height="600" fetchpriority="high" />
           <div class="glass-reflection-overlay"></div>
+          <div class="hero-glow-border"></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SECTION 02 — FEATURED STATEMENT (Breathing Break) -->
-  <section class="statement-section reveal-on-scroll">
+  <section class="statement-section">
     <div class="max-width">
       <div class="statement-container">
         <h2 class="statement-text">
@@ -46,7 +57,7 @@
   </section>
 
   <!-- SECTION 04 — FEATURED WORK (Immersive Switcher with Audio Player) -->
-  <section id="featured-showcase" class="featured-work-section reveal-on-scroll">
+  <section id="featured-showcase" class="featured-work-section">
     <div class="max-width">
       <div class="section-header-minimal">
         <span class="header-tag">TÁC PHẨM TIÊU BIỂU</span>
@@ -64,9 +75,13 @@
             @mouseenter="selectProject(idx)"
             @click="selectProject(idx)"
           >
-            <span class="selector-num">0{{ idx + 1 }}</span>
-            <span class="selector-name">{{ w.title }}</span>
-            <span class="selector-artist">{{ w.artist }}</span>
+            <span class="selector-num-wrap">
+              <span class="selector-num">0{{ idx + 1 }}</span>
+            </span>
+            <span class="selector-info">
+              <span class="selector-name">{{ w.title }}</span>
+              <span class="selector-artist">{{ w.artist }}</span>
+            </span>
           </button>
         </div>
 
@@ -99,6 +114,8 @@
                 :alt="activeProject.title"
                 class="project-cover-img"
                 loading="lazy"
+                width="640"
+                height="360"
               />
             </Transition>
             
@@ -138,7 +155,7 @@
   </section>
 
   <!-- SECTION 05 — SERVICES (Premium split showcase) -->
-  <section class="services-premium-section reveal-on-scroll">
+  <section class="services-premium-section">
     <div class="max-width">
       <div class="services-grid-split">
         <!-- Left typographic headers -->
@@ -172,6 +189,8 @@
                   :alt="activeService.title" 
                   class="preview-img"
                   loading="lazy"
+                  width="640"
+                  height="400"
                 />
               </Transition>
               <div class="preview-overlay"></div>
@@ -195,7 +214,7 @@
   </section>
 
   <!-- SECTION 06 — WHY XKPRODUCTION -->
-  <section class="why-us-section reveal-on-scroll">
+  <section class="why-us-section">
     <div class="max-width">
       <div class="why-header text-center">
         <span class="header-tag">SỰ KHÁC BIỆT</span>
@@ -215,7 +234,7 @@
   </section>
 
   <!-- SECTION 07 — PROCESS (Horizontal scroll-reveal timeline) -->
-  <section class="process-section reveal-on-scroll">
+  <section class="process-section">
     <div class="max-width">
       <div class="section-header-minimal">
         <span class="header-tag">QUY TRÌNH LÀM VIỆC</span>
@@ -244,11 +263,11 @@
   </section>
 
   <!-- SECTION 08 — FOUNDER ( Xuân Kiệt spotlight) -->
-  <section class="founder-section-premium reveal-on-scroll">
+  <section class="founder-section-premium">
     <div class="max-width founder-grid-premium">
       <div class="founder-portrait-wrap">
         <div class="portrait-card glass-card">
-          <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKProduction" class="founder-portrait-img" loading="lazy" />
+          <img src="/images/founder-kiet.jpg" alt="Nguyễn Xuân Kiệt - Founder & Music Producer tại XKProduction" class="founder-portrait-img" loading="lazy" width="480" height="600" />
           <div class="portrait-overlay"></div>
         </div>
       </div>
@@ -286,7 +305,7 @@
   </section>
 
   <!-- SECTION 09 — TESTIMONIAL (Immersive premium quotes) -->
-  <section class="testimonial-immersive-section reveal-on-scroll">
+  <section class="testimonial-immersive-section">
     <div class="max-width text-center">
       <span class="header-tag text-center" style="margin-bottom: 2rem;">CẢM NHẬN TỪ NGHỆ SĨ</span>
       
@@ -303,7 +322,7 @@
               
               <div class="testimonial-author-meta">
                 <div class="author-avatar-wrap">
-                  <img :src="activeTestimonial.avatar" :alt="activeTestimonial.name" class="author-avatar-img" loading="lazy" />
+                  <img :src="activeTestimonial.avatar" :alt="activeTestimonial.name" class="author-avatar-img" loading="lazy" width="52" height="52" />
                 </div>
                 <div class="author-info">
                   <strong class="author-name">{{ activeTestimonial.name }}</strong>
@@ -344,7 +363,7 @@
   </section>
 
   <!-- SECTION 10 — BIG NUMBER MOMENT (Apple presentation scale) -->
-  <section class="big-numbers-section reveal-on-scroll">
+  <section class="big-numbers-section">
     <div class="max-width numbers-flex">
       <div class="number-block">
         <h2 class="big-huge-number">2000+</h2>
@@ -362,7 +381,7 @@
   </section>
 
   <!-- SECTION 11 — CONTACT (Benefits & Glass Form) -->
-  <section class="contact-premium-section reveal-on-scroll">
+  <section class="contact-premium-section">
     <div class="max-width contact-split-grid">
       <!-- Left checklists -->
       <div class="contact-benefits-panel">
@@ -467,7 +486,7 @@
   </section>
 
   <!-- SECTION 12 — FINAL CTA -->
-  <section class="final-cta-section reveal-on-scroll">
+  <section class="final-cta-section">
     <div class="cta-glow-spot"></div>
     <div class="max-width text-center">
       <h2 class="final-cta-title">Bạn đã sẵn sàng cho dự án tiếp theo?</h2>
@@ -678,21 +697,7 @@ useSchemaOrg([
 const activeProjectIdx = ref(0)
 const activeServiceIdx = ref(0)
 const activeTestimonialIdx = ref(0)
-const heroVisualRef = ref<HTMLElement | null>(null)
 
-/* === HERO MOUSE PARALLAX EFFECT === */
-function handleHeroParallax(e: MouseEvent) {
-  if (!heroVisualRef.value) return
-  const rect = heroVisualRef.value.getBoundingClientRect()
-  const x = e.clientX - rect.left - rect.width / 2
-  const y = e.clientY - rect.top - rect.height / 2
-  heroVisualRef.value.style.transform = `perspective(1000px) rotateY(${x * 0.015}deg) rotateX(${-y * 0.015}deg) scale3d(1.01, 1.01, 1.01)`
-}
-
-function resetHeroParallax() {
-  if (!heroVisualRef.value) return
-  heroVisualRef.value.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`
-}
 
 
 
@@ -1003,18 +1008,17 @@ async function submitForm() {
   if (formErrors.name || formErrors.phone) return
   formSubmitting.value = true
   formToast.value = 'idle'
-  const config = useRuntimeConfig()
   try {
-    const res = await fetch(config.public.formspreeEndpoint, {
+    const res = await fetch('/api/notify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: form.name,
-        email: form.email || '(không cung cấp)',
         phone: form.phone,
-        type: form.type || 'Không chọn',
-        message: form.message || '(không có lời nhắn)',
-        _subject: `[XKProduction] Liên hệ nhanh từ ${form.name}`
+        email: form.email || '',
+        service: form.type,
+        message: form.message || '',
+        source: 'index'
       })
     })
     formSubmitting.value = false
@@ -1026,6 +1030,7 @@ async function submitForm() {
       formErrorMessage.value = 'Gửi thông tin thất bại. Vui lòng thử lại sau.'
     }
   } catch (error) {
+    console.error('Lỗi gửi thông báo Telegram:', error)
     formSubmitting.value = false
     formToast.value = 'error'
     formErrorMessage.value = 'Lỗi kết nối. Vui lòng kiểm tra internet và gửi lại.'
@@ -1057,17 +1062,6 @@ onMounted(() => {
   
   document.querySelectorAll('.stat-number[data-target]').forEach(el => statsObserver.observe(el))
   
-  /* --- SCROLL REVEAL FADE ANIMATION --- */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return
-      const el = e.target as HTMLElement
-      el.classList.add('revealed')
-      revealObserver.unobserve(el)
-    })
-  }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' })
-
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el))
 })
 
 onUnmounted(() => {
@@ -1115,53 +1109,76 @@ onUnmounted(() => {
   padding: 140px 0;
   position: relative;
   z-index: 1;
-  transition: transform 0.8s var(--ease-out-expo), opacity 0.8s var(--ease-out-expo);
 }
 
 /* ==============================================
    INTERACTIVE AMBIENT GLOW BACKDROP
    ============================================== */
 .immersive-ambient-bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 15% 15%, rgba(15, 50, 120, 0.18), transparent 28%),
-              radial-gradient(circle at 85% 20%, rgba(0, 180, 255, 0.14), transparent 26%),
-              var(--bg-dark);
-  transition: background 1.2s var(--ease-out-expo);
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+.theme-glow-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s var(--ease-out-expo);
+}
+
+.theme-glow-layer.active {
+  opacity: 1;
 }
 
 .glow-spot {
   position: absolute;
   border-radius: 50%;
   opacity: 0.18;
-  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
 }
 
 .spotlight-1 {
-  width: 500px;
-  height: 500px;
-  top: -10%;
-  left: -10%;
+  width: 600px;
+  height: 600px;
+  top: -15%;
+  left: -15%;
+  filter: blur(100px);
+  animation: float-spot-1 25s infinite ease-in-out;
 }
 
 .spotlight-2 {
-  width: 600px;
-  height: 600px;
-  bottom: -10%;
-  right: -10%;
+  width: 700px;
+  height: 700px;
+  bottom: -15%;
+  right: -15%;
+  filter: blur(120px);
+  animation: float-spot-2 30s infinite ease-in-out;
 }
 
-/* Shifting theme backdrops */
-.theme-blue .spotlight-1 { background: rgba(125, 211, 252, 0.4); }
-.theme-blue .spotlight-2 { background: rgba(56, 189, 248, 0.25); }
+.theme-blue .spotlight-1 { background: radial-gradient(circle, rgba(125, 211, 252, 0.45) 0%, transparent 70%); }
+.theme-blue .spotlight-2 { background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%); }
 
-.theme-red .spotlight-1 { background: rgba(244, 63, 94, 0.35); }
-.theme-red .spotlight-2 { background: rgba(225, 29, 72, 0.2); }
+.theme-red .spotlight-1 { background: radial-gradient(circle, rgba(244, 63, 94, 0.40) 0%, transparent 70%); }
+.theme-red .spotlight-2 { background: radial-gradient(circle, rgba(225, 29, 72, 0.25) 0%, transparent 70%); }
 
-.theme-dark .spotlight-1 { background: rgba(245, 158, 11, 0.25); }
-.theme-dark .spotlight-2 { background: rgba(13, 23, 36, 0.6); }
+.theme-dark .spotlight-1 { background: radial-gradient(circle, rgba(245, 158, 11, 0.30) 0%, transparent 70%); }
+.theme-dark .spotlight-2 { background: radial-gradient(circle, rgba(13, 23, 36, 0.70) 0%, transparent 70%); }
+
+@keyframes float-spot-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.15); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float-spot-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 60px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
 
 
 /* ==============================================
@@ -1258,14 +1275,39 @@ onUnmounted(() => {
   border-radius: 24px;
   overflow: hidden;
   position: relative;
-  transition: transform 0.4s var(--ease-out-expo);
+  transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+  box-shadow: var(--shadow-card);
+  transform: rotateX(3deg) rotateY(-6deg);
+}
+
+.hero-visual:hover {
+  transform: rotateX(0deg) rotateY(0deg) translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(26, 140, 255, 0.25), 0 0 30px rgba(26, 140, 255, 0.1);
+}
+
+.hero-glow-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, rgba(26, 140, 255, 0.4), rgba(0, 212, 170, 0.4)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity 0.6s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.hero-visual:hover .hero-glow-border {
+  opacity: 1;
 }
 
 .hero-studio-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.02);
+  transform: scale(1.01);
   transition: transform 1.2s var(--ease-out-expo);
 }
 
@@ -1380,17 +1422,18 @@ onUnmounted(() => {
 }
 
 .selector-item {
-  background: transparent;
-  border: none;
-  padding: 1.1rem 1.8rem;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 1.1rem 1.6rem;
   text-align: left;
   border-radius: 16px;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.2rem;
   position: relative;
   transition: all 0.4s var(--ease-out-expo);
-  border: 1px solid transparent;
 }
 
 .selector-item::after {
@@ -1399,38 +1442,71 @@ onUnmounted(() => {
   left: 0;
   top: 50%;
   transform: translateY(-50%) scaleY(0);
-  width: 3px;
-  height: 28px;
-  background: var(--accent);
+  width: 4px;
+  height: 32px;
+  background: var(--primary);
   transition: transform 0.4s var(--ease-out-expo);
   border-radius: 0 4px 4px 0;
 }
 
 .selector-item:hover,
 .selector-item.active {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(26, 140, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: translateX(4px);
 }
 
 .selector-item.active::after {
   transform: translateY(-50%) scaleY(1);
 }
 
+.selector-num-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.4s var(--ease-out-expo);
+  flex-shrink: 0;
+}
+
+.selector-item.active .selector-num-wrap {
+  background: var(--primary-glow);
+  border-color: var(--primary);
+  box-shadow: 0 0 12px rgba(26, 140, 255, 0.2);
+}
+
 .selector-num {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 800;
+  color: var(--text-light);
+  transition: color 0.4s var(--ease-out-expo);
+}
+
+.selector-item.active .selector-num {
   color: var(--accent);
-  margin-bottom: 0.3rem;
+}
+
+.selector-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .selector-name {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--text-main);
-  margin-bottom: 0.15rem;
   letter-spacing: -0.01em;
   transition: color 0.3s;
+}
+
+.selector-item.active .selector-name {
+  color: var(--primary);
 }
 
 .selector-artist {
@@ -1447,23 +1523,38 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease;
+  transition: transform 0.6s var(--ease-out-expo), border-color 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
 }
 
 .display-glow {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
-  opacity: 0.12;
-  top: -50px;
-  right: -50px;
+  opacity: 0.16;
+  top: -60px;
+  right: -60px;
   pointer-events: none;
+  filter: blur(50px);
   transition: background 0.8s ease;
 }
 
+.project-display-box.theme-blue {
+  border-color: rgba(26, 140, 255, 0.25);
+  box-shadow: 0 30px 80px rgba(26, 140, 255, 0.12), 0 0 50px rgba(26, 140, 255, 0.04);
+}
 .project-display-box.theme-blue .display-glow { background: var(--accent); }
+
+.project-display-box.theme-red {
+  border-color: rgba(244, 63, 94, 0.25);
+  box-shadow: 0 30px 80px rgba(244, 63, 94, 0.12), 0 0 50px rgba(244, 63, 94, 0.04);
+}
 .project-display-box.theme-red .display-glow { background: #f43f5e; }
+
+.project-display-box.theme-dark {
+  border-color: rgba(245, 158, 11, 0.22);
+  box-shadow: 0 30px 80px rgba(245, 158, 11, 0.10), 0 0 50px rgba(245, 158, 11, 0.03);
+}
 .project-display-box.theme-dark .display-glow { background: #f59e0b; }
 
 .project-image-wrap {
@@ -1705,7 +1796,7 @@ onUnmounted(() => {
 .services-menu {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.2rem;
   width: 100%;
   margin-top: 1rem;
 }
@@ -1718,36 +1809,49 @@ onUnmounted(() => {
   align-items: center;
   gap: 1.8rem;
   cursor: pointer;
-  padding: 0.8rem 0;
-  transition: all 0.3s;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.1rem 1.6rem;
+  border-radius: 12px;
+  transition: all 0.4s var(--ease-out-expo);
+  border: 1px solid transparent;
+  width: 100%;
+}
+
+.service-menu-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.04);
+  transform: translateX(6px);
+}
+
+.service-menu-item.active {
+  background: rgba(26, 140, 255, 0.08);
+  border-color: rgba(26, 140, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(26, 140, 255, 0.1);
+  transform: translateX(10px);
 }
 
 .svc-num {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 800;
   color: var(--text-muted);
   font-family: monospace;
-  transition: color 0.3s;
+  transition: color 0.4s var(--ease-out-expo);
+}
+
+.service-menu-item.active .svc-num {
+  color: var(--accent);
 }
 
 .svc-text {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: var(--text-muted);
   letter-spacing: -0.02em;
-  transition: all 0.3s;
+  transition: color 0.4s var(--ease-out-expo);
 }
 
 .service-menu-item:hover .svc-text,
 .service-menu-item.active .svc-text {
   color: var(--text-main);
-  transform: translateX(10px);
-}
-
-.service-menu-item:hover .svc-num,
-.service-menu-item.active .svc-num {
-  color: var(--accent);
 }
 
 /* Right preview panel styling */
@@ -1760,7 +1864,14 @@ onUnmounted(() => {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease;
+  transition: transform 0.6s var(--ease-out-expo), border-color 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+  box-shadow: var(--shadow-card);
+}
+
+.services-preview-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(26, 140, 255, 0.2);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(26, 140, 255, 0.08);
 }
 
 .preview-img-wrap {
@@ -1774,6 +1885,11 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 1.2s var(--ease-out-expo);
+}
+
+.services-preview-card:hover .preview-img {
+  transform: scale(1.06);
 }
 
 .preview-overlay {
@@ -1850,17 +1966,23 @@ onUnmounted(() => {
    SECTION 07 — PROCESS (horizontal timeline)
    ============================================== */
 .process-timeline-container {
-  padding: 4rem 3rem;
+  padding: 5rem 3rem;
   margin-top: 1rem;
   position: relative;
-  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease;
+  transition: transform 0.6s var(--ease-out-expo), border-color 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+  box-shadow: var(--shadow-card);
+}
+
+.process-timeline-container:hover {
+  border-color: rgba(26, 140, 255, 0.15);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
 }
 
 .process-line {
   position: absolute;
-  top: 110px;
-  left: 8%;
-  right: 8%;
+  top: 125px;
+  left: 10%;
+  right: 10%;
   height: 2px;
   background: rgba(255, 255, 255, 0.05);
   z-index: 0;
@@ -1869,7 +1991,8 @@ onUnmounted(() => {
 .process-progress-bar {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, rgba(125, 211, 252, 0.2) 100%);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--teal) 100%);
+  box-shadow: 0 0 10px rgba(26, 140, 255, 0.5);
   transform-origin: left;
   transform: scaleX(1);
 }
@@ -1877,7 +2000,7 @@ onUnmounted(() => {
 .process-steps-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
   position: relative;
   z-index: 1;
 }
@@ -1887,33 +2010,44 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.process-step-node:hover {
+  transform: translateY(-6px);
 }
 
 .step-badge {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: var(--bg-surface);
-  border: 2px solid var(--accent);
+  background: #0d1724;
+  border: 2px solid rgba(26, 140, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
-  box-shadow: 0 0 20px rgba(125, 211, 252, 0.1);
-  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(26, 140, 255, 0.1), inset 0 0 8px rgba(26, 140, 255, 0.05);
+  transition: all 0.4s var(--ease-out-expo);
+  position: relative;
 }
 
 .step-num {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: var(--text-light);
   font-family: monospace;
+  transition: color 0.4s var(--ease-out-expo);
 }
 
 .process-step-node:hover .step-badge {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(125, 211, 252, 0.25);
-  background: rgba(125, 211, 252, 0.05);
+  border-color: var(--teal);
+  box-shadow: 0 0 25px rgba(0, 212, 170, 0.35), inset 0 0 10px rgba(0, 212, 170, 0.15);
+  background: rgba(0, 212, 170, 0.05);
+}
+
+.process-step-node:hover .step-num {
+  color: #fff;
 }
 
 .step-title {
@@ -1921,14 +2055,25 @@ onUnmounted(() => {
   font-weight: 800;
   color: var(--text-main);
   margin-bottom: 0.8rem;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  transition: color 0.3s;
+}
+
+.process-step-node:hover .step-title {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(26, 140, 255, 0.2);
 }
 
 .step-desc {
   font-size: 0.8rem;
   line-height: 1.6;
   color: var(--text-light);
-  max-width: 160px;
+  max-width: 170px;
+  transition: color 0.3s;
+}
+
+.process-step-node:hover .step-desc {
+  color: var(--text-main);
 }
 
 
@@ -2076,7 +2221,14 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease;
+  transition: transform 0.6s var(--ease-out-expo), border-color 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+  box-shadow: var(--shadow-card);
+}
+
+.testimonial-slider-wrap:hover {
+  border-color: rgba(26, 140, 255, 0.2);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35), 0 0 40px rgba(26, 140, 255, 0.08);
+  transform: translateY(-4px);
 }
 
 .testimonial-slider-glow {
@@ -2375,7 +2527,14 @@ onUnmounted(() => {
 /* Glass Form styling */
 .form-container-glass {
   padding: 3.5rem 3rem;
-  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease;
+  transition: transform 0.6s var(--ease-out-expo), border-color 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+  box-shadow: var(--shadow-card);
+}
+
+.form-container-glass:hover {
+  border-color: rgba(26, 140, 255, 0.2);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35), 0 0 40px rgba(26, 140, 255, 0.08);
+  transform: translateY(-4px);
 }
 
 .form-headline {
@@ -2580,19 +2739,7 @@ onUnmounted(() => {
 }
 
 
-/* ==============================================
-   REVEAL ON SCROLL MOTIONS
-   ============================================== */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
-}
 
-.reveal-on-scroll.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 
 /* ==============================================
